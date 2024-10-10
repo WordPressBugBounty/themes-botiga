@@ -1,0 +1,13 @@
+/**
+ * Merchant compatibility.
+ */
+/**
+ * Side Cart module.
+ */
+button:not(.components-button).merchant-quantity-plus, button:not(.components-button).merchant-quantity-minus {
+  display: none;
+}
+
+.merchant-floating-side-mini-cart-widget .product_list_widget button:not(.components-button).merchant-quantity-plus, .merchant-floating-side-mini-cart-widget .product_list_widget button:not(.components-button).merchant-quantity-minus {
+  color: #777;
+}
