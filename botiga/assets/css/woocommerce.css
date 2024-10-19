@@ -1285,6 +1285,7 @@ ul.wc-block-grid__products.columns-6 li.product .button-layout2 .button {
 .sidebar-slide.site-main {
   width: 100%;
   padding-left: 15px;
+  padding-right: 15px;
 }
 .sidebar-slide + .widget-area {
   position: fixed;
@@ -5258,6 +5259,9 @@ p.no-comments {
   background: transparent !important;
   text-decoration: underline;
   padding: 0 !important;
+}
+.widget_shopping_cart #ppc-button-minicart {
+  width: 100%;
 }
 
 .sidebar-wrapper .product_list_widget {

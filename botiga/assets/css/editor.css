@@ -579,7 +579,7 @@ div.editor-styles-wrapper a.wc-forward:not(.checkout-button) {
 div.editor-styles-wrapper a.wc-forward:not(.checkout-button):hover {
   color: var(--bt-color-link-default, #757575);
 }
-div.editor-styles-wrapper button:not(.components-button),
+div.editor-styles-wrapper button:not(.components-button):not(.pswp__button),
 div.editor-styles-wrapper a.button,
 div.editor-styles-wrapper .button,
 div.editor-styles-wrapper .checkout-button,
@@ -610,7 +610,7 @@ div.editor-styles-wrapper input[type=submit] {
   letter-spacing: var(--bt-letter-spacing-button, 0px);
   font-size: var(--bt-font-size-button, 14px);
 }
-div.editor-styles-wrapper button:not(.components-button) svg,
+div.editor-styles-wrapper button:not(.components-button):not(.pswp__button) svg,
 div.editor-styles-wrapper a.button svg,
 div.editor-styles-wrapper .button svg,
 div.editor-styles-wrapper .checkout-button svg,
@@ -623,7 +623,7 @@ div.editor-styles-wrapper input[type=reset] svg,
 div.editor-styles-wrapper input[type=submit] svg {
   fill: var(--bt-color-button, #FFF);
 }
-div.editor-styles-wrapper button:not(.components-button):not(.has-text-color), div.editor-styles-wrapper button:not(.components-button).checkout-button:not(.has-text-color), div.editor-styles-wrapper button:not(.components-button):not(.wc-forward):not(.has-text-color), div.editor-styles-wrapper button:not(.components-button).checkout:not(.has-text-color), div.editor-styles-wrapper button:not(.components-button).wc-backward,
+div.editor-styles-wrapper button:not(.components-button):not(.pswp__button):not(.has-text-color), div.editor-styles-wrapper button:not(.components-button):not(.pswp__button).checkout-button:not(.has-text-color), div.editor-styles-wrapper button:not(.components-button):not(.pswp__button):not(.wc-forward):not(.has-text-color), div.editor-styles-wrapper button:not(.components-button):not(.pswp__button).checkout:not(.has-text-color), div.editor-styles-wrapper button:not(.components-button):not(.pswp__button).wc-backward,
 div.editor-styles-wrapper a.button:not(.has-text-color),
 div.editor-styles-wrapper a.button.checkout-button:not(.has-text-color),
 div.editor-styles-wrapper a.button:not(.wc-forward):not(.has-text-color),
@@ -676,7 +676,7 @@ div.editor-styles-wrapper input[type=submit].checkout:not(.has-text-color),
 div.editor-styles-wrapper input[type=submit].wc-backward {
   color: var(--bt-color-button, #FFF);
 }
-div.editor-styles-wrapper button:not(.components-button):not(.has-text-color):hover, div.editor-styles-wrapper button:not(.components-button).checkout-button:not(.has-text-color):hover, div.editor-styles-wrapper button:not(.components-button):not(.wc-forward):not(.has-text-color):hover, div.editor-styles-wrapper button:not(.components-button).checkout:not(.has-text-color):hover, div.editor-styles-wrapper button:not(.components-button).wc-backward:hover,
+div.editor-styles-wrapper button:not(.components-button):not(.pswp__button):not(.has-text-color):hover, div.editor-styles-wrapper button:not(.components-button):not(.pswp__button).checkout-button:not(.has-text-color):hover, div.editor-styles-wrapper button:not(.components-button):not(.pswp__button):not(.wc-forward):not(.has-text-color):hover, div.editor-styles-wrapper button:not(.components-button):not(.pswp__button).checkout:not(.has-text-color):hover, div.editor-styles-wrapper button:not(.components-button):not(.pswp__button).wc-backward:hover,
 div.editor-styles-wrapper a.button:not(.has-text-color):hover,
 div.editor-styles-wrapper a.button.checkout-button:not(.has-text-color):hover,
 div.editor-styles-wrapper a.button:not(.wc-forward):not(.has-text-color):hover,
@@ -729,7 +729,7 @@ div.editor-styles-wrapper input[type=submit].checkout:not(.has-text-color):hover
 div.editor-styles-wrapper input[type=submit].wc-backward:hover {
   color: var(--bt-color-button-hover, #FFF);
 }
-div.editor-styles-wrapper button:not(.components-button).is-style-outline,
+div.editor-styles-wrapper button:not(.components-button):not(.pswp__button).is-style-outline,
 div.editor-styles-wrapper a.button.is-style-outline,
 div.editor-styles-wrapper .button.is-style-outline,
 div.editor-styles-wrapper .checkout-button.is-style-outline,
@@ -742,7 +742,7 @@ div.editor-styles-wrapper input[type=reset].is-style-outline,
 div.editor-styles-wrapper input[type=submit].is-style-outline {
   border-color: var(--bt-color-button-border, #212121);
 }
-div.editor-styles-wrapper button:not(.components-button).is-style-outline:not(.has-text-color),
+div.editor-styles-wrapper button:not(.components-button):not(.pswp__button).is-style-outline:not(.has-text-color),
 div.editor-styles-wrapper a.button.is-style-outline:not(.has-text-color),
 div.editor-styles-wrapper .button.is-style-outline:not(.has-text-color),
 div.editor-styles-wrapper .checkout-button.is-style-outline:not(.has-text-color),
@@ -756,7 +756,7 @@ div.editor-styles-wrapper input[type=submit].is-style-outline:not(.has-text-colo
   color: var(--bt-color-button, #FFF);
   border: 2px solid var(--bt-color-button-border, #212121);
 }
-.is-style-outline div.editor-styles-wrapper button:not(.components-button):not(.has-text-color):hover,
+.is-style-outline div.editor-styles-wrapper button:not(.components-button):not(.pswp__button):not(.has-text-color):hover,
 .is-style-outline div.editor-styles-wrapper a.button:not(.has-text-color):hover,
 .is-style-outline div.editor-styles-wrapper .button:not(.has-text-color):hover,
 .is-style-outline div.editor-styles-wrapper .checkout-button:not(.has-text-color):hover,
@@ -769,7 +769,7 @@ div.editor-styles-wrapper input[type=submit].is-style-outline:not(.has-text-colo
 .is-style-outline div.editor-styles-wrapper input[type=submit]:not(.has-text-color):hover {
   color: var(--bt-color-button-hover, #FFF);
 }
-.is-style-outline div.editor-styles-wrapper button:not(.components-button):not(.has-background):hover,
+.is-style-outline div.editor-styles-wrapper button:not(.components-button):not(.pswp__button):not(.has-background):hover,
 .is-style-outline div.editor-styles-wrapper a.button:not(.has-background):hover,
 .is-style-outline div.editor-styles-wrapper .button:not(.has-background):hover,
 .is-style-outline div.editor-styles-wrapper .checkout-button:not(.has-background):hover,
@@ -782,7 +782,7 @@ div.editor-styles-wrapper input[type=submit].is-style-outline:not(.has-text-colo
 .is-style-outline div.editor-styles-wrapper input[type=submit]:not(.has-background):hover {
   background-color: var(--bt-color-button-bg-hover, #757575);
 }
-div.editor-styles-wrapper button:not(.components-button):not(.has-background),
+div.editor-styles-wrapper button:not(.components-button):not(.pswp__button):not(.has-background),
 div.editor-styles-wrapper a.button:not(.has-background),
 div.editor-styles-wrapper .button:not(.has-background),
 div.editor-styles-wrapper .checkout-button:not(.has-background),
@@ -795,7 +795,7 @@ div.editor-styles-wrapper input[type=reset]:not(.has-background),
 div.editor-styles-wrapper input[type=submit]:not(.has-background) {
   background-color: var(--bt-color-button-bg, #212121);
 }
-div.editor-styles-wrapper button:not(.components-button):not(.has-background):hover,
+div.editor-styles-wrapper button:not(.components-button):not(.pswp__button):not(.has-background):hover,
 div.editor-styles-wrapper a.button:not(.has-background):hover,
 div.editor-styles-wrapper .button:not(.has-background):hover,
 div.editor-styles-wrapper .checkout-button:not(.has-background):hover,
@@ -808,7 +808,7 @@ div.editor-styles-wrapper input[type=reset]:not(.has-background):hover,
 div.editor-styles-wrapper input[type=submit]:not(.has-background):hover {
   background-color: var(--bt-color-button-bg-hover, #757575);
 }
-div.editor-styles-wrapper button:not(.components-button):hover,
+div.editor-styles-wrapper button:not(.components-button):not(.pswp__button):hover,
 div.editor-styles-wrapper a.button:hover,
 div.editor-styles-wrapper .button:hover,
 div.editor-styles-wrapper .checkout-button:hover,
@@ -821,7 +821,7 @@ div.editor-styles-wrapper input[type=reset]:hover,
 div.editor-styles-wrapper input[type=submit]:hover {
   border-color: var(--bt-color-button-border-hover, #757575);
 }
-div.editor-styles-wrapper button:not(.components-button):hover svg,
+div.editor-styles-wrapper button:not(.components-button):not(.pswp__button):hover svg,
 div.editor-styles-wrapper a.button:hover svg,
 div.editor-styles-wrapper .button:hover svg,
 div.editor-styles-wrapper .checkout-button:hover svg,
@@ -834,7 +834,7 @@ div.editor-styles-wrapper input[type=reset]:hover svg,
 div.editor-styles-wrapper input[type=submit]:hover svg {
   fill: var(--bt-color-button-hover, #FFF);
 }
-div.editor-styles-wrapper button:not(.components-button):hover:not(.has-background),
+div.editor-styles-wrapper button:not(.components-button):not(.pswp__button):hover:not(.has-background),
 div.editor-styles-wrapper a.button:hover:not(.has-background),
 div.editor-styles-wrapper .button:hover:not(.has-background),
 div.editor-styles-wrapper .checkout-button:hover:not(.has-background),
@@ -847,7 +847,7 @@ div.editor-styles-wrapper input[type=reset]:hover:not(.has-background),
 div.editor-styles-wrapper input[type=submit]:hover:not(.has-background) {
   background-color: var(--bt-color-button-bg-hover, #757575);
 }
-div.editor-styles-wrapper button:not(.components-button):active, div.editor-styles-wrapper button:not(.components-button):focus,
+div.editor-styles-wrapper button:not(.components-button):not(.pswp__button):active, div.editor-styles-wrapper button:not(.components-button):not(.pswp__button):focus,
 div.editor-styles-wrapper a.button:active,
 div.editor-styles-wrapper a.button:focus,
 div.editor-styles-wrapper .button:active,
@@ -995,6 +995,11 @@ div.editor-styles-wrapper ul.products li.product .button.added:after {
   display: inline-block;
   width: auto;
   height: auto;
+}
+div.editor-styles-wrapper button,
+div.editor-styles-wrapper .button {
+  line-height: 1.68;
+  min-height: 0;
 }
 div.editor-styles-wrapper .wp-block-freeform.block-library-rich-text__tinymce a {
   color: #212121;
@@ -2127,6 +2132,9 @@ div.editor-styles-wrapper .widget_shopping_cart .woocommerce-mini-cart__buttons 
   background: transparent !important;
   text-decoration: underline;
   padding: 0 !important;
+}
+div.editor-styles-wrapper .widget_shopping_cart #ppc-button-minicart {
+  width: 100%;
 }
 div.editor-styles-wrapper .sidebar-wrapper .product_list_widget {
   margin: 0;
@@ -4883,6 +4891,173 @@ div.editor-styles-wrapper .botiga-breadcrumb-trail .botiga-svg-icon svg {
   width: 0.9em;
   height: 0.9em;
 }
+div.editor-styles-wrapper input[type=text],
+div.editor-styles-wrapper input[type=email],
+div.editor-styles-wrapper input[type=url],
+div.editor-styles-wrapper input[type=password],
+div.editor-styles-wrapper input[type=search],
+div.editor-styles-wrapper input[type=number],
+div.editor-styles-wrapper input[type=tel],
+div.editor-styles-wrapper input[type=range],
+div.editor-styles-wrapper input[type=date],
+div.editor-styles-wrapper input[type=month],
+div.editor-styles-wrapper input[type=week],
+div.editor-styles-wrapper input[type=time],
+div.editor-styles-wrapper input[type=datetime],
+div.editor-styles-wrapper input[type=datetime-local],
+div.editor-styles-wrapper input[type=color],
+div.editor-styles-wrapper textarea,
+div.editor-styles-wrapper select,
+div.editor-styles-wrapper .wp-block-search .wp-block-search__input,
+div.editor-styles-wrapper .wc-block-product-search .wc-block-product-search__field,
+div.editor-styles-wrapper .woocommerce .select2-container .select2-selection--single,
+div.editor-styles-wrapper .woocommerce-page .select2-container .select2-selection--single {
+  color: var(--bt-color-forms-text, #212121);
+  background-color: var(--bt-color-forms-background, transparent);
+  border: 1px solid var(--bt-color-forms-borders, #212121);
+  border-radius: 0;
+  padding: 12px 16px;
+  border-radius: 0;
+  min-height: 51px;
+  max-width: 100%;
+}
+div.editor-styles-wrapper input[type=text]:focus,
+div.editor-styles-wrapper input[type=email]:focus,
+div.editor-styles-wrapper input[type=url]:focus,
+div.editor-styles-wrapper input[type=password]:focus,
+div.editor-styles-wrapper input[type=search]:focus,
+div.editor-styles-wrapper input[type=number]:focus,
+div.editor-styles-wrapper input[type=tel]:focus,
+div.editor-styles-wrapper input[type=range]:focus,
+div.editor-styles-wrapper input[type=date]:focus,
+div.editor-styles-wrapper input[type=month]:focus,
+div.editor-styles-wrapper input[type=week]:focus,
+div.editor-styles-wrapper input[type=time]:focus,
+div.editor-styles-wrapper input[type=datetime]:focus,
+div.editor-styles-wrapper input[type=datetime-local]:focus,
+div.editor-styles-wrapper input[type=color]:focus,
+div.editor-styles-wrapper textarea:focus,
+div.editor-styles-wrapper select:focus,
+div.editor-styles-wrapper .wp-block-search .wp-block-search__input:focus,
+div.editor-styles-wrapper .wc-block-product-search .wc-block-product-search__field:focus,
+div.editor-styles-wrapper .woocommerce .select2-container .select2-selection--single:focus,
+div.editor-styles-wrapper .woocommerce-page .select2-container .select2-selection--single:focus {
+  color: var(--bt-color-forms-text, #212121);
+  outline: none;
+  -webkit-box-shadow: 0 0 0 1px;
+          box-shadow: 0 0 0 1px;
+}
+div.editor-styles-wrapper select {
+  width: 100%;
+  border: 1px solid var(--bt-color-forms-borders, #212121);
+  font-family: inherit;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23212121' viewBox='0 0 448 512'%3E%3Cpath d='M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 18px) center;
+}
+div.editor-styles-wrapper .botiga-select {
+  position: relative;
+  font-size: 1rem;
+}
+div.editor-styles-wrapper .botiga-select:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0.4em;
+  height: 0.4em;
+  border-bottom: 1px solid var(--bt-color-forms-borders, #212121);
+  border-right: 1px solid var(--bt-color-forms-borders, #212121);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg) translate3d(0, -50%, 0);
+  right: 1.5em;
+  top: 46%;
+}
+div.editor-styles-wrapper .botiga-select select {
+  padding: 1em 2.5em 1em 1em;
+  background-image: none;
+  font-size: 1rem;
+  min-height: 0;
+  min-width: 140px;
+}
+div.editor-styles-wrapper textarea {
+  width: 100%;
+}
+div.editor-styles-wrapper label.error {
+  margin-top: 10px;
+  color: #dd3434;
+}
+div.editor-styles-wrapper .woocommerce .select2-container .select2-selection--single,
+div.editor-styles-wrapper .woocommerce-page .select2-container .select2-selection--single {
+  height: 100%;
+}
+div.editor-styles-wrapper .woocommerce .select2-container .select2-selection--single .select2-selection__arrow,
+div.editor-styles-wrapper .woocommerce-page .select2-container .select2-selection--single .select2-selection__arrow {
+  top: 15px;
+  right: 15px;
+}
+div.editor-styles-wrapper .woocommerce-form__label-for-checkbox {
+  position: relative;
+}
+div.editor-styles-wrapper .woocommerce-form__label-for-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+div.editor-styles-wrapper .woocommerce-form__label-for-checkbox input:checked + span:before, div.editor-styles-wrapper .woocommerce-form__label-for-checkbox input:checked + .error + span:before {
+  opacity: 1;
+}
+div.editor-styles-wrapper .woocommerce-form__label-for-checkbox input[required] + .error {
+  position: absolute;
+  bottom: -30px;
+}
+div.editor-styles-wrapper .woocommerce-form__label-for-checkbox span:not(.required) {
+  position: relative;
+  padding-left: 1.6rem;
+  line-height: 1.3;
+}
+div.editor-styles-wrapper .woocommerce-form__label-for-checkbox span:not(.required):before {
+  content: "";
+  position: absolute;
+  opacity: 0;
+  left: 0.35rem;
+  top: 0.25rem;
+  width: 0.4rem;
+  height: 0.6rem;
+  border: solid var(--bt-color-forms-text, #212121);
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transition: ease opacity 200ms;
+  transition: ease opacity 200ms;
+}
+div.editor-styles-wrapper .woocommerce-form__label-for-checkbox span:not(.required):after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid #212121;
+}
+div.editor-styles-wrapper .woocommerce-product-search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+div.editor-styles-wrapper .woocommerce-product-search .search-submit {
+  margin-left: 10px;
+}
+div.editor-styles-wrapper .woocommerce-product-search .search-submit svg {
+  fill: var(--bt-color-button, #FFF);
+}
+div.editor-styles-wrapper .woocommerce-product-search .search-submit:hover svg {
+  fill: var(--bt-color-button-hover, #FFF);
+}
 div.editor-styles-wrapper .wpforms-field :-ms-input-placeholder {
   color: var(--bt-color-forms-placeholder, #848484);
 }
@@ -4994,6 +5169,10 @@ div.editor-styles-wrapper .wp-block-social-links {
 */
 .botiga-dimensions-control > div {
   max-width: 100%;
+  gap: 3px;
+}
+.botiga-dimensions-control .components-number-control {
+  margin-bottom: 8px;
 }
 
 .botiga-inspector-tabs-content-wrapper .components-base-control__label,
