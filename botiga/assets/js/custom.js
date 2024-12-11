@@ -115,7 +115,7 @@ botiga.navigation = {
       offCanvas.classList.add('toggled');
       document.body.classList.add('mobile-menu-visible');
 
-      //Toggle submenus
+      // Toggle submenus
       var submenuToggles = offCanvas.querySelectorAll('.dropdown-symbol, .menu-item-has-children > a[href="#"]');
       var _iterator = _createForOfIteratorHelper(submenuToggles),
         _step;
@@ -144,9 +144,18 @@ botiga.navigation = {
       firstFocusableEl.focus();
     });
     function submenuToggleHandler(e) {
-      e.preventDefault();
+      if (e.cancelable) {
+        e.preventDefault();
+      }
       var parent = e.target.closest('li');
+      if (parent.querySelector('.sub-menu').classList.contains('toggling')) {
+        return false;
+      }
+      parent.querySelector('.sub-menu').classList.toggle('toggling');
       parent.querySelector('.sub-menu').classList.toggle('toggled');
+      setTimeout(function () {
+        parent.querySelector('.sub-menu').classList.remove('toggling');
+      }, 300);
     }
 
     // Close the offcanvas when a anchor that contains a hash is clicked

@@ -5,6 +5,77 @@ Theme Name: Botiga
 WooCommerce styles override
 */
 /**
+ * Notices
+ */
+/* General */
+.woocommerce-notices-wrapper:not(:empty) + .woocommerce-sorting-wrapper, .woocommerce-notices-wrapper:not(:empty) + .products {
+  margin-top: 25px;
+}
+.woocommerce-notices-wrapper:empty {
+  display: none;
+}
+.woocommerce-notices-wrapper .woocommerce-message + .woocommerce-message {
+  margin-top: 15px;
+}
+
+@media (max-width: 767px) {
+  .woocommerce-notices-wrapper .woocommerce-message {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+  }
+  .woocommerce-notices-wrapper .wc-forward {
+    padding: 8px 24px;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    margin-top: 15px;
+    -ms-flex-item-align: center;
+        align-self: center;
+    margin-right: 0;
+    -webkit-margin-end: 0;
+            margin-inline-end: 0;
+  }
+}
+/* Single Product */
+.single-product .woocommerce-notices-wrapper {
+  margin-bottom: 30px;
+}
+.single-product .woocommerce-notices-wrapper .wc-forward {
+  -webkit-margin-end: 0;
+          margin-inline-end: 0;
+  -webkit-margin-start: 15px;
+          margin-inline-start: 15px;
+}
+.single-product.no-single-breadcrumbs .woocommerce-notices-wrapper:not(:empty) {
+  margin-bottom: 120px;
+  margin-top: -40px;
+}
+
+/* Cart */
+.woocommerce-cart .woocommerce-notices-wrapper + .woocommerce-cart-form {
+  -webkit-margin-before: 25px;
+          margin-block-start: 25px;
+}
+
+@media (min-width: 992px) {
+  .cart-layout2 .woocommerce-notices-wrapper:not(:empty) {
+    margin-bottom: 30px;
+  }
+}
+/* My Account */
+.woocommerce-account .woocommerce-notices-wrapper {
+  margin-bottom: 20px;
+}
+
+/**
  * Shop tables
  */
 table.shop_table_responsive thead {
@@ -1269,10 +1340,6 @@ ul.wc-block-grid__products.columns-6 li.product .button-layout2 .button {
   text-align: center;
 }
 
-.woocommerce-notices-wrapper + .products {
-  margin-top: 25px;
-}
-
 /**
  * Sidebar
  */
@@ -2091,20 +2158,6 @@ figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
   width: 100%;
 }
 
-.single-product .woocommerce-notices-wrapper {
-  margin-bottom: 30px;
-}
-.single-product .woocommerce-notices-wrapper:empty {
-  display: none;
-}
-.single-product .woocommerce-notices-wrapper .wc-forward {
-  margin-right: 15px;
-}
-.single-product.no-single-breadcrumbs .woocommerce-notices-wrapper:not(:empty) {
-  margin-bottom: 120px;
-  margin-top: -40px;
-}
-
 .woocommerce-product-rating .star-rating,
 .comment_container .star-rating {
   -webkit-margin-start: 0;
@@ -2232,30 +2285,6 @@ form.cart .quantity.hidden {
   display: none !important;
 }
 
-@media (max-width: 767px) {
-  .single-product .woocommerce-notices-wrapper .woocommerce-message {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    text-align: center;
-  }
-  .single-product .woocommerce-notices-wrapper .wc-forward {
-    padding: 8px 24px;
-    -webkit-box-ordinal-group: 3;
-        -ms-flex-order: 2;
-            order: 2;
-    margin-top: 15px;
-    -ms-flex-item-align: center;
-        align-self: center;
-    margin-right: 0;
-  }
-}
 /*
 * Sticky add to cart
 */
@@ -3449,9 +3478,6 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
     max-width: 467px;
     margin-top: 23px;
   }
-  .cart-layout2 .woocommerce-notices-wrapper:not(:empty) {
-    margin-bottom: 30px;
-  }
   .cart-layout2 .woocommerce-cart-form {
     width: 70%;
     float: left;
@@ -4013,25 +4039,6 @@ form.woocommerce-checkout {
 /* Order total */
 .order-total .woocommerce-Price-amount {
   color: var(--bt-color-heading-4, #212121);
-}
-
-/* Coupon */
-.checkout_coupon.woocommerce-form-coupon {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-.checkout_coupon.woocommerce-form-coupon > p:first-child {
-  width: 100%;
-  margin-bottom: 20px;
-}
-.checkout_coupon.woocommerce-form-coupon > p.form-row-first, .checkout_coupon.woocommerce-form-coupon > p.form-row-last {
-  margin-bottom: 10px;
-}
-.checkout_coupon.woocommerce-form-coupon #coupon_code {
-  height: 100%;
 }
 
 /* WooCommerce Amazon Pay compatibility */
@@ -4969,8 +4976,10 @@ p.no-comments a {
   color: #716f6f;
 }
 
+.woocommerce-message .button,
 .woocommerce-info .button {
-  margin-right: 15px;
+  -webkit-margin-start: 15px;
+          margin-inline-start: 15px;
 }
 
 .woocommerce-form-coupon-toggle {
@@ -6598,9 +6607,6 @@ dl.variation p {
 /**
  * Account
  */
-.woocommerce-account .woocommerce-notices-wrapper {
-  margin-bottom: 20px;
-}
 .woocommerce-account #customer_login {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6828,4 +6834,45 @@ dl.variation p {
           flex: 0 0 100%;
   max-width: 100%;
   padding: 0;
+}
+
+/**
+* Coupon
+*/
+.coupon {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.coupon .coupon-error-notice {
+  line-height: 2.7;
+  margin: 0;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+
+#coupon_code + .button {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-left-radius: 7px !important;
+  border-bottom-left-radius: 7px !important;
+}
+
+/* Checkout */
+.checkout_coupon.woocommerce-form-coupon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.checkout_coupon.woocommerce-form-coupon > p:first-child {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.checkout_coupon.woocommerce-form-coupon > p.form-row-first, .checkout_coupon.woocommerce-form-coupon > p.form-row-last {
+  margin-bottom: 10px;
+}
+.checkout_coupon .coupon-error-notice {
+  display: block;
+  margin-top: 10px;
 }

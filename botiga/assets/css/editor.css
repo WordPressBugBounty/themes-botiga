@@ -2969,8 +2969,10 @@ div.editor-styles-wrapper .woocommerce-noreviews a,
 div.editor-styles-wrapper p.no-comments a {
   color: #716f6f;
 }
+div.editor-styles-wrapper .woocommerce-message .button,
 div.editor-styles-wrapper .woocommerce-info .button {
-  margin-right: 15px;
+  -webkit-margin-start: 15px;
+          margin-inline-start: 15px;
 }
 div.editor-styles-wrapper .woocommerce-form-coupon-toggle {
   margin-bottom: 30px;
@@ -5100,9 +5102,6 @@ div.editor-styles-wrapper ul.wc-block-grid__products.columns-5 li.product .butto
 div.editor-styles-wrapper ul.wc-block-grid__products.columns-6 li.product .button-layout2 .button {
   width: 100%;
   text-align: center;
-}
-div.editor-styles-wrapper .woocommerce-notices-wrapper + .products {
-  margin-top: 25px;
 }
 div.editor-styles-wrapper .wc-block-cart table {
   border: none;

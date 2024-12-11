@@ -3129,10 +3129,19 @@ body.toplevel_page_botiga-dashboard #wpbody-content div.error {
 }
 .botiga-dashboard .components-text-control__input {
   height: 38px !important;
+  border-color: hsl(0, 0%, 70%) !important;
+  border-radius: 4px !important;
+}
+.botiga-dashboard .components-text-control__input:focus {
+  border-color: var(--wp-admin-theme-color) !important;
 }
 .botiga-dashboard .components-base-control__help {
   color: #757575;
   font-size: 13px;
+}
+.botiga-dashboard .components-toggle-control__help {
+  -webkit-margin-start: 0;
+          margin-inline-start: 0;
 }
 .botiga-dashboard .components-radio-control .components-base-control__label,
 .botiga-dashboard .components-radio-control .components-radio-control__label {
@@ -3147,8 +3156,12 @@ body.toplevel_page_botiga-dashboard #wpbody-content div.error {
 .botiga-dashboard .components-number-control .components-input-control__container {
   max-width: 60px;
 }
-.botiga-dashboard .components-select-control .components-input-control__container {
-  max-width: 60%;
+.botiga-dashboard .components-select-control .components-input-control__backdrop {
+  border-color: hsl(0, 0%, 70%) !important;
+  border-radius: 4px !important;
+}
+.botiga-dashboard .components-select-control .components-input-control__backdrop:focus {
+  border-color: var(--wp-admin-theme-color) !important;
 }
 .botiga-dashboard .components-panel__body {
   border-top: 0 !important;
@@ -3168,10 +3181,19 @@ body.toplevel_page_botiga-dashboard #wpbody-content div.error {
 .botiga-dashboard .btsf-field-terms-wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
   gap: 15px;
   margin-bottom: 20px;
 }
 .botiga-dashboard .btsf-field-terms-wrapper .components-base-control {
+  width: 100%;
+}
+.botiga-dashboard .btsf-field-terms-wrapper .components-card .components-panel__row {
+  width: 100%;
+}
+.botiga-dashboard .btsf-field-terms-wrapper .components-card .components-panel__row > div {
   width: 100%;
 }
 .botiga-dashboard .btsf-custom-color-picker {
@@ -3193,6 +3215,9 @@ body.toplevel_page_botiga-dashboard #wpbody-content div.error {
 }
 .botiga-dashboard .btsf-components-select__add-all {
   margin-right: 10px;
+}
+.botiga-dashboard .components-select-control__input {
+  height: 38px !important;
 }
 .botiga-dashboard .btsf-filter-actions {
   display: -webkit-box;

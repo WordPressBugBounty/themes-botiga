@@ -619,6 +619,10 @@ li.control-section-botiga-section-hidden {
 #customize-outer-theme-controls .control-subsection h3 {
   padding: 9px 16px;
 }
+#customize-theme-controls .control-subsection .accordion-section-title button,
+#customize-outer-theme-controls .control-subsection .accordion-section-title button {
+  padding: 6px 10px;
+}
 #customize-theme-controls .control-subsection.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-lock-icon,
 #customize-outer-theme-controls .control-subsection.control-section-botiga-section-upsell .accordion-section-title .botiga-pro-lock-icon {
   right: 13px;
@@ -2348,10 +2352,11 @@ label[for=search_icon-icon-custom] .img-cont, label[for=cart_icon-icon-custom] .
 }
 #customize-outer-theme-controls .accordion-section-title button,
 #customize-theme-controls .accordion-section-title button {
-  padding: 0;
+  padding: 0px;
 }
-#customize-outer-theme-controls .accordion-section-title button:hover,
-#customize-theme-controls .accordion-section-title button:hover {
+#customize-outer-theme-controls .accordion-section-title button:hover, #customize-outer-theme-controls .accordion-section-title button:focus,
+#customize-theme-controls .accordion-section-title button:hover,
+#customize-theme-controls .accordion-section-title button:focus {
   color: #3858E9 !important;
   background: none !important;
 }
