@@ -1218,6 +1218,42 @@ ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity .butt
 ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity .add_to_cart_button {
   margin: 0;
 }
+@media (max-width: 1024px) {
+  ul.products li.product .button-with-quantity.button-layout2,
+  ul.products li.wc-block-grid__product .button-with-quantity.button-layout2,
+  ul.wc-block-grid__products li.product .button-with-quantity.button-layout2,
+  ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity.button-layout2 {
+    max-height: none;
+  }
+  ul.products li.product .button-with-quantity.button-layout2 .quantity,
+  ul.products li.wc-block-grid__product .button-with-quantity.button-layout2 .quantity,
+  ul.wc-block-grid__products li.product .button-with-quantity.button-layout2 .quantity,
+  ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity.button-layout2 .quantity {
+    width: 100%;
+    max-width: 100%;
+    height: 45px;
+  }
+  ul.products li.product .button-with-quantity.button-layout2 .button,
+  ul.products li.wc-block-grid__product .button-with-quantity.button-layout2 .button,
+  ul.wc-block-grid__products li.product .button-with-quantity.button-layout2 .button,
+  ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity.button-layout2 .button {
+    width: 100%;
+    text-align: center;
+  }
+  ul.products li.product .button-with-quantity.button-width-full,
+  ul.products li.wc-block-grid__product .button-with-quantity.button-width-full,
+  ul.wc-block-grid__products li.product .button-with-quantity.button-width-full,
+  ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity.button-width-full {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  ul.products li.product .button-with-quantity.button-width-full .quantity,
+  ul.products li.wc-block-grid__product .button-with-quantity.button-width-full .quantity,
+  ul.wc-block-grid__products li.product .button-with-quantity.button-width-full .quantity,
+  ul.wc-block-grid__products li.wc-block-grid__product .button-with-quantity.button-width-full .quantity {
+    width: 100%;
+  }
+}
 ul.products .button-layout2.button-with-quantity,
 ul.wc-block-grid__products .button-layout2.button-with-quantity {
   margin-top: 10px;
@@ -1305,10 +1341,17 @@ ul.wc-block-grid__products .botiga-add-to-cart-button-layout4.botiga-quick-view-
   opacity: 1;
   visibility: visible;
 }
+ul.products.columns-4 li.product .button-with-quantity.button-layout2, ul.products.columns-5 li.product .button-with-quantity.button-layout2, ul.products.columns-6 li.product .button-with-quantity.button-layout2,
+ul.wc-block-grid__products.columns-4 li.product .button-with-quantity.button-layout2,
+ul.wc-block-grid__products.columns-5 li.product .button-with-quantity.button-layout2,
+ul.wc-block-grid__products.columns-6 li.product .button-with-quantity.button-layout2 {
+  max-height: none;
+}
 ul.products.columns-4 li.product .button-with-quantity.button-layout2 .quantity, ul.products.columns-5 li.product .button-with-quantity.button-layout2 .quantity, ul.products.columns-6 li.product .button-with-quantity.button-layout2 .quantity,
 ul.wc-block-grid__products.columns-4 li.product .button-with-quantity.button-layout2 .quantity,
 ul.wc-block-grid__products.columns-5 li.product .button-with-quantity.button-layout2 .quantity,
 ul.wc-block-grid__products.columns-6 li.product .button-with-quantity.button-layout2 .quantity {
+  width: 100%;
   max-width: 100%;
   height: 45px;
 }
@@ -1336,6 +1379,42 @@ ul.products.columns-4 li.product .button-layout2 .button, ul.products.columns-5 
 ul.wc-block-grid__products.columns-4 li.product .button-layout2 .button,
 ul.wc-block-grid__products.columns-5 li.product .button-layout2 .button,
 ul.wc-block-grid__products.columns-6 li.product .button-layout2 .button {
+  width: 100%;
+  text-align: center;
+}
+
+.has-4-columns .wc-block-grid__products .wc-block-grid__product .button-with-quantity.button-layout2,
+.has-5-columns .wc-block-grid__products .wc-block-grid__product .button-with-quantity.button-layout2,
+.has-6-columns .wc-block-grid__products .wc-block-grid__product .button-with-quantity.button-layout2 {
+  max-height: none;
+}
+.has-4-columns .wc-block-grid__products .wc-block-grid__product .button-with-quantity.button-layout2 .quantity,
+.has-5-columns .wc-block-grid__products .wc-block-grid__product .button-with-quantity.button-layout2 .quantity,
+.has-6-columns .wc-block-grid__products .wc-block-grid__product .button-with-quantity.button-layout2 .quantity {
+  width: 100%;
+  max-width: 100%;
+  height: 45px;
+}
+.has-4-columns .wc-block-grid__products .wc-block-grid__product .button-with-quantity.button-layout2 .button,
+.has-5-columns .wc-block-grid__products .wc-block-grid__product .button-with-quantity.button-layout2 .button,
+.has-6-columns .wc-block-grid__products .wc-block-grid__product .button-with-quantity.button-layout2 .button {
+  width: 100%;
+  text-align: center;
+}
+.has-4-columns .wc-block-grid__products .wc-block-grid__product .button-with-quantity.button-width-full,
+.has-5-columns .wc-block-grid__products .wc-block-grid__product .button-with-quantity.button-width-full,
+.has-6-columns .wc-block-grid__products .wc-block-grid__product .button-with-quantity.button-width-full {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.has-4-columns .wc-block-grid__products .wc-block-grid__product .button-with-quantity.button-width-full .quantity,
+.has-5-columns .wc-block-grid__products .wc-block-grid__product .button-with-quantity.button-width-full .quantity,
+.has-6-columns .wc-block-grid__products .wc-block-grid__product .button-with-quantity.button-width-full .quantity {
+  width: 100%;
+}
+.has-4-columns .wc-block-grid__products .wc-block-grid__product .button-layout2 .button,
+.has-5-columns .wc-block-grid__products .wc-block-grid__product .button-layout2 .button,
+.has-6-columns .wc-block-grid__products .wc-block-grid__product .button-layout2 .button {
   width: 100%;
   text-align: center;
 }
@@ -2256,6 +2335,11 @@ table.variations td select {
   text-decoration: underline;
   font-size: 13px;
   font-size: 0.8125rem;
+}
+
+button.reset_variations {
+  background: none;
+  border: none;
 }
 
 .grouped_form.cart .product_type_variable {
@@ -6685,9 +6769,9 @@ dl.variation p {
 }
 .woocommerce-account.logged-in .entry-content > .woocommerce .woocommerce-MyAccount-content {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 70%;
-          flex: 0 0 70%;
-  max-width: 70%;
+      -ms-flex: 0 0 80%;
+          flex: 0 0 80%;
+  max-width: 80%;
   padding-left: 30px;
 }
 .woocommerce-account.logged-in .entry-content > .woocommerce .button {

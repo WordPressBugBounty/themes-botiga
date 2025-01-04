@@ -144,6 +144,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       'toggleClass': 'header-contact-inline'
     }
   };
+
+  // check if is rtl
+  if ($('html').attr('dir') === 'rtl') {
+    css['bhfb_mobile_offcanvas_close_offset']['prop'] = ['top', 'left'];
+  }
   $.each(css, function (option, props) {
     wp.customize(option, function (value) {
       value.bind(function (to) {

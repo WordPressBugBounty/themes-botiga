@@ -1018,6 +1018,9 @@ botiga.qtyButton = {
     this.events(type);
     this.wooEvents();
   },
+  isInsideCarousel: function isInsideCarousel(el) {
+    return el.closest('.botiga-carousel') !== null && el.closest('.botiga-carousel').classList.contains('botiga-carousel-not-initialized') === false && el.closest('.botiga-carousel').getAttribute('data-initialized') !== 'true';
+  },
   events: function events(type) {
     var self = this;
     var qty = document.querySelectorAll('.botiga-quantity-minus');
@@ -1026,7 +1029,7 @@ botiga.qtyButton = {
     }
     for (var i = 0; i < qty.length; i++) {
       var wrapper = qty[i].closest('.quantity');
-      if (wrapper === null || wrapper.dataset.qtyInitialized) {
+      if (wrapper === null || wrapper.dataset.qtyInitialized || self.isInsideCarousel(qty[i])) {
         continue;
       }
       if (wrapper.classList.contains('hidden')) {
@@ -1174,6 +1177,7 @@ botiga.carousel = {
     this.events();
   },
   build: function build() {
+    var self = this;
     if (document.querySelector('.botiga-carousel') === null && document.querySelector('.has-cross-sells-carousel') === null && document.querySelector('.botiga-woocommerce-mini-cart__cross-sell') === null) {
       return false;
     }
@@ -1234,11 +1238,12 @@ botiga.carousel = {
             multipleDrag: false,
             threshold: 20,
             loop: true,
-            rtl: false,
+            rtl: 'rtl' === document.querySelector('html').getAttribute('dir') ? true : false,
             // autoplay: true, TO DO
             margin: margin,
             onInit: function onInit() {
               window.dispatchEvent(new Event('botiga.carousel.initialized'));
+              self.maybeInitExtraFeatures();
             }
           });
         }
@@ -1274,6 +1279,9 @@ botiga.carousel = {
         }, onpageload ? 1000 : 0);
       });
     }
+  },
+  maybeInitExtraFeatures: function maybeInitExtraFeatures() {
+    botiga.qtyButton.init();
   }
 };
 
