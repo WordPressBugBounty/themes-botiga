@@ -5,6 +5,74 @@ Theme Name: Botiga
 WooCommerce styles override
 */
 /**
+ * Blocks
+ */
+/** 
+ * All reviews
+ * Reviews by category 
+ * Reviews by product
+ *
+ */
+.wp-block-woocommerce-all-reviews .wc-block-sort-select,
+.wp-block-woocommerce-reviews-by-category .wc-block-sort-select,
+.wp-block-woocommerce-reviews-by-product .wc-block-sort-select {
+  font-size: 0.85rem;
+}
+.wp-block-woocommerce-all-reviews .wc-block-sort-select .wc-block-components-sort-select__select,
+.wp-block-woocommerce-reviews-by-category .wc-block-sort-select .wc-block-components-sort-select__select,
+.wp-block-woocommerce-reviews-by-product .wc-block-sort-select .wc-block-components-sort-select__select {
+  padding: 3px 27px 3px 7px;
+  min-height: 0;
+  margin-bottom: 10px;
+}
+.wp-block-woocommerce-all-reviews .wc-block-components-review-list-item__info,
+.wp-block-woocommerce-reviews-by-category .wc-block-components-review-list-item__info,
+.wp-block-woocommerce-reviews-by-product .wc-block-components-review-list-item__info {
+  margin-bottom: 10px;
+}
+.wp-block-woocommerce-all-reviews .wc-block-components-review-list-item__product,
+.wp-block-woocommerce-reviews-by-category .wc-block-components-review-list-item__product,
+.wp-block-woocommerce-reviews-by-product .wc-block-components-review-list-item__product {
+  line-height: 1.4;
+}
+.wp-block-woocommerce-all-reviews .wc-block-components-review-list-item__product a,
+.wp-block-woocommerce-reviews-by-category .wc-block-components-review-list-item__product a,
+.wp-block-woocommerce-reviews-by-product .wc-block-components-review-list-item__product a {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.wp-block-woocommerce-all-reviews .wc-block-components-review-list-item__rating,
+.wp-block-woocommerce-reviews-by-category .wc-block-components-review-list-item__rating,
+.wp-block-woocommerce-reviews-by-product .wc-block-components-review-list-item__rating {
+  margin: 7px 0 10px;
+}
+.wp-block-woocommerce-all-reviews .wc-block-review-list-item__author,
+.wp-block-woocommerce-all-reviews .wc-block-review-list-item__published-date,
+.wp-block-woocommerce-reviews-by-category .wc-block-review-list-item__author,
+.wp-block-woocommerce-reviews-by-category .wc-block-review-list-item__published-date,
+.wp-block-woocommerce-reviews-by-product .wc-block-review-list-item__author,
+.wp-block-woocommerce-reviews-by-product .wc-block-review-list-item__published-date {
+  font-size: 0.7rem;
+}
+.wp-block-woocommerce-all-reviews .wc-block-review-list-item__text,
+.wp-block-woocommerce-reviews-by-category .wc-block-review-list-item__text,
+.wp-block-woocommerce-reviews-by-product .wc-block-review-list-item__text {
+  font-size: 0.85rem;
+}
+
+/* Featured product */
+.wc-block-featured-product .wc-block-featured-product__title {
+  font-size: 1.8rem;
+  line-height: 1.3;
+}
+
+/* Featured category */
+.wc-block-featured-category .wc-block-featured-category__title {
+  font-size: 1.8rem;
+  line-height: 1.3;
+}
+
+/**
  * Notices
  */
 /* General */
@@ -344,7 +412,7 @@ table.woocommerce-product-attributes p {
   opacity: 0.5;
 }
 .shop-table-layout2 .shop_table.botiga_wishlist_table .product-addtocart {
-  width: 30%;
+  width: 45%;
   text-align: end;
 }
 
@@ -405,7 +473,7 @@ table.woocommerce-product-attributes p {
     margin-top: 10px;
   }
 }
-@media (max-width: 991px) {
+@media (max-width: 767px) {
   .shop-table-layout2 .botiga_wishlist_table .botiga-qty-remove-wrapper {
     position: absolute;
     top: 25px;
@@ -6686,6 +6754,90 @@ dl.variation p {
   background-color: transparent;
   padding: 0;
   margin-left: 10px;
+}
+
+/** 
+ * Top rated products
+ * Products
+ * Recent reviews
+ * 
+ */
+.widget_top_rated_products .product_list_widget li,
+.widget_products .product_list_widget li,
+.widget_recent_reviews .product_list_widget li {
+  display: block;
+  padding: 0;
+  padding-bottom: 25px;
+  min-height: 0;
+}
+.widget_top_rated_products .product_list_widget li:after,
+.widget_products .product_list_widget li:after,
+.widget_recent_reviews .product_list_widget li:after {
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+.widget_top_rated_products .product_list_widget li a,
+.widget_products .product_list_widget li a,
+.widget_recent_reviews .product_list_widget li a {
+  margin: 0;
+}
+.widget_top_rated_products .product_list_widget li img,
+.widget_products .product_list_widget li img,
+.widget_recent_reviews .product_list_widget li img {
+  top: 0;
+  left: 0;
+}
+.widget_top_rated_products .product_list_widget li .product-title,
+.widget_products .product_list_widget li .product-title,
+.widget_recent_reviews .product_list_widget li .product-title {
+  max-width: calc(75% + 15px);
+  font-size: 0.85rem;
+  padding-left: 0;
+  margin-left: calc(15% + 15px);
+}
+.widget_top_rated_products .product_list_widget li .star-rating,
+.widget_products .product_list_widget li .star-rating,
+.widget_recent_reviews .product_list_widget li .star-rating {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.widget_top_rated_products .product_list_widget li .reviewer,
+.widget_products .product_list_widget li .reviewer,
+.widget_recent_reviews .product_list_widget li .reviewer {
+  font-size: 0.7rem;
+}
+.widget_top_rated_products .product_list_widget li del, .widget_top_rated_products .product_list_widget li ins,
+.widget_products .product_list_widget li del,
+.widget_products .product_list_widget li ins,
+.widget_recent_reviews .product_list_widget li del,
+.widget_recent_reviews .product_list_widget li ins {
+  font-size: 0.875rem;
+}
+.widget_top_rated_products .product_list_widget li del,
+.widget_products .product_list_widget li del,
+.widget_recent_reviews .product_list_widget li del {
+  color: #999;
+}
+.widget_top_rated_products .product_list_widget li ins,
+.widget_products .product_list_widget li ins,
+.widget_recent_reviews .product_list_widget li ins {
+  font-weight: 700;
+}
+.widget_top_rated_products .product_list_widget li + li,
+.widget_products .product_list_widget li + li,
+.widget_recent_reviews .product_list_widget li + li {
+  margin-top: 25px;
+}
+
+/* Tag cloud */
+.tagcloud {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 10px;
 }
 
 /**

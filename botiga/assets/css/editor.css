@@ -489,6 +489,12 @@
           align-items: center;
 }
 
+.justify-content-center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .justify-content-between {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -579,6 +585,30 @@
 
 .bt-p-0 {
   padding: 0 !important;
+}
+
+.gap-0 {
+  gap: 0px !important;
+}
+
+.gap-1 {
+  gap: 1px !important;
+}
+
+.gap-2 {
+  gap: 2px !important;
+}
+
+.gap-3 {
+  gap: 3px !important;
+}
+
+.gap-4 {
+  gap: 4px !important;
+}
+
+.gap-5 {
+  gap: 5px !important;
 }
 
 .container {
@@ -1341,6 +1371,14 @@ div.editor-styles-wrapper {
   /**
    * No products found popular products
    */
+  /** 
+   * All reviews
+   * Reviews by category 
+   * Reviews by product
+   *
+   */
+  /* Featured product */
+  /* Featured category */
   /* Responsive shop columns */
   /**
    * Grid & List View
@@ -1495,6 +1533,24 @@ div.editor-styles-wrapper .bt-pl-0 {
 }
 div.editor-styles-wrapper .bt-p-0 {
   padding: 0 !important;
+}
+div.editor-styles-wrapper .gap-0 {
+  gap: 0px !important;
+}
+div.editor-styles-wrapper .gap-1 {
+  gap: 1px !important;
+}
+div.editor-styles-wrapper .gap-2 {
+  gap: 2px !important;
+}
+div.editor-styles-wrapper .gap-3 {
+  gap: 3px !important;
+}
+div.editor-styles-wrapper .gap-4 {
+  gap: 4px !important;
+}
+div.editor-styles-wrapper .gap-5 {
+  gap: 5px !important;
 }
 div.editor-styles-wrapper body,
 div.editor-styles-wrapper button,
@@ -1672,6 +1728,9 @@ div.editor-styles-wrapper ins {
 div.editor-styles-wrapper big {
   font-size: 125%;
 }
+div.editor-styles-wrapper .strong {
+  font-weight: 700;
+}
 div.editor-styles-wrapper .editor-visual-editor__post-title-wrapper {
   margin: 1rem 0 0 !important;
 }
@@ -1738,6 +1797,8 @@ div.editor-styles-wrapper .wp-block-button__link,
 div.editor-styles-wrapper .wc-block-components-button,
 div.editor-styles-wrapper ul.products li.product .button,
 div.editor-styles-wrapper .wpforms-submit,
+div.editor-styles-wrapper .widget_product_search button,
+div.editor-styles-wrapper .search-submit,
 div.editor-styles-wrapper input[type=button],
 div.editor-styles-wrapper input[type=reset],
 div.editor-styles-wrapper input[type=submit] {
@@ -1768,6 +1829,8 @@ div.editor-styles-wrapper .wp-block-button__link svg,
 div.editor-styles-wrapper .wc-block-components-button svg,
 div.editor-styles-wrapper ul.products li.product .button svg,
 div.editor-styles-wrapper .wpforms-submit svg,
+div.editor-styles-wrapper .widget_product_search button svg,
+div.editor-styles-wrapper .search-submit svg,
 div.editor-styles-wrapper input[type=button] svg,
 div.editor-styles-wrapper input[type=reset] svg,
 div.editor-styles-wrapper input[type=submit] svg {
@@ -1804,6 +1867,16 @@ div.editor-styles-wrapper .wpforms-submit.checkout-button:not(.has-text-color),
 div.editor-styles-wrapper .wpforms-submit:not(.wc-forward):not(.has-text-color),
 div.editor-styles-wrapper .wpforms-submit.checkout:not(.has-text-color),
 div.editor-styles-wrapper .wpforms-submit.wc-backward,
+div.editor-styles-wrapper .widget_product_search button:not(.has-text-color),
+div.editor-styles-wrapper .widget_product_search button.checkout-button:not(.has-text-color),
+div.editor-styles-wrapper .widget_product_search button:not(.wc-forward):not(.has-text-color),
+div.editor-styles-wrapper .widget_product_search button.checkout:not(.has-text-color),
+div.editor-styles-wrapper .widget_product_search button.wc-backward,
+div.editor-styles-wrapper .search-submit:not(.has-text-color),
+div.editor-styles-wrapper .search-submit.checkout-button:not(.has-text-color),
+div.editor-styles-wrapper .search-submit:not(.wc-forward):not(.has-text-color),
+div.editor-styles-wrapper .search-submit.checkout:not(.has-text-color),
+div.editor-styles-wrapper .search-submit.wc-backward,
 div.editor-styles-wrapper input[type=button]:not(.has-text-color),
 div.editor-styles-wrapper input[type=button].checkout-button:not(.has-text-color),
 div.editor-styles-wrapper input[type=button]:not(.wc-forward):not(.has-text-color),
@@ -1852,6 +1925,16 @@ div.editor-styles-wrapper .wpforms-submit.checkout-button:not(.has-text-color):h
 div.editor-styles-wrapper .wpforms-submit:not(.wc-forward):not(.has-text-color):hover,
 div.editor-styles-wrapper .wpforms-submit.checkout:not(.has-text-color):hover,
 div.editor-styles-wrapper .wpforms-submit.wc-backward:hover,
+div.editor-styles-wrapper .widget_product_search button:not(.has-text-color):hover,
+div.editor-styles-wrapper .widget_product_search button.checkout-button:not(.has-text-color):hover,
+div.editor-styles-wrapper .widget_product_search button:not(.wc-forward):not(.has-text-color):hover,
+div.editor-styles-wrapper .widget_product_search button.checkout:not(.has-text-color):hover,
+div.editor-styles-wrapper .widget_product_search button.wc-backward:hover,
+div.editor-styles-wrapper .search-submit:not(.has-text-color):hover,
+div.editor-styles-wrapper .search-submit.checkout-button:not(.has-text-color):hover,
+div.editor-styles-wrapper .search-submit:not(.wc-forward):not(.has-text-color):hover,
+div.editor-styles-wrapper .search-submit.checkout:not(.has-text-color):hover,
+div.editor-styles-wrapper .search-submit.wc-backward:hover,
 div.editor-styles-wrapper input[type=button]:not(.has-text-color):hover,
 div.editor-styles-wrapper input[type=button].checkout-button:not(.has-text-color):hover,
 div.editor-styles-wrapper input[type=button]:not(.wc-forward):not(.has-text-color):hover,
@@ -1876,6 +1959,8 @@ div.editor-styles-wrapper .wp-block-button__link.is-style-outline,
 div.editor-styles-wrapper .wc-block-components-button.is-style-outline,
 div.editor-styles-wrapper ul.products li.product .button.is-style-outline,
 div.editor-styles-wrapper .wpforms-submit.is-style-outline,
+div.editor-styles-wrapper .widget_product_search button.is-style-outline,
+div.editor-styles-wrapper .search-submit.is-style-outline,
 div.editor-styles-wrapper input[type=button].is-style-outline,
 div.editor-styles-wrapper input[type=reset].is-style-outline,
 div.editor-styles-wrapper input[type=submit].is-style-outline {
@@ -1888,6 +1973,8 @@ div.editor-styles-wrapper .wp-block-button__link.is-style-outline:not(.has-text-
 div.editor-styles-wrapper .wc-block-components-button.is-style-outline:not(.has-text-color),
 div.editor-styles-wrapper ul.products li.product .button.is-style-outline:not(.has-text-color),
 div.editor-styles-wrapper .wpforms-submit.is-style-outline:not(.has-text-color),
+div.editor-styles-wrapper .widget_product_search button.is-style-outline:not(.has-text-color),
+div.editor-styles-wrapper .search-submit.is-style-outline:not(.has-text-color),
 div.editor-styles-wrapper input[type=button].is-style-outline:not(.has-text-color),
 div.editor-styles-wrapper input[type=reset].is-style-outline:not(.has-text-color),
 div.editor-styles-wrapper input[type=submit].is-style-outline:not(.has-text-color) {
@@ -1901,6 +1988,8 @@ div.editor-styles-wrapper input[type=submit].is-style-outline:not(.has-text-colo
 .is-style-outline div.editor-styles-wrapper .wc-block-components-button:not(.has-text-color):hover,
 .is-style-outline div.editor-styles-wrapper ul.products li.product .button:not(.has-text-color):hover,
 .is-style-outline div.editor-styles-wrapper .wpforms-submit:not(.has-text-color):hover,
+.is-style-outline div.editor-styles-wrapper .widget_product_search button:not(.has-text-color):hover,
+.is-style-outline div.editor-styles-wrapper .search-submit:not(.has-text-color):hover,
 .is-style-outline div.editor-styles-wrapper input[type=button]:not(.has-text-color):hover,
 .is-style-outline div.editor-styles-wrapper input[type=reset]:not(.has-text-color):hover,
 .is-style-outline div.editor-styles-wrapper input[type=submit]:not(.has-text-color):hover {
@@ -1913,6 +2002,8 @@ div.editor-styles-wrapper input[type=submit].is-style-outline:not(.has-text-colo
 .is-style-outline div.editor-styles-wrapper .wc-block-components-button:not(.has-background):hover,
 .is-style-outline div.editor-styles-wrapper ul.products li.product .button:not(.has-background):hover,
 .is-style-outline div.editor-styles-wrapper .wpforms-submit:not(.has-background):hover,
+.is-style-outline div.editor-styles-wrapper .widget_product_search button:not(.has-background):hover,
+.is-style-outline div.editor-styles-wrapper .search-submit:not(.has-background):hover,
 .is-style-outline div.editor-styles-wrapper input[type=button]:not(.has-background):hover,
 .is-style-outline div.editor-styles-wrapper input[type=reset]:not(.has-background):hover,
 .is-style-outline div.editor-styles-wrapper input[type=submit]:not(.has-background):hover {
@@ -1925,6 +2016,8 @@ div.editor-styles-wrapper .wp-block-button__link:not(.has-background),
 div.editor-styles-wrapper .wc-block-components-button:not(.has-background),
 div.editor-styles-wrapper ul.products li.product .button:not(.has-background),
 div.editor-styles-wrapper .wpforms-submit:not(.has-background),
+div.editor-styles-wrapper .widget_product_search button:not(.has-background),
+div.editor-styles-wrapper .search-submit:not(.has-background),
 div.editor-styles-wrapper input[type=button]:not(.has-background),
 div.editor-styles-wrapper input[type=reset]:not(.has-background),
 div.editor-styles-wrapper input[type=submit]:not(.has-background) {
@@ -1937,6 +2030,8 @@ div.editor-styles-wrapper .wp-block-button__link:not(.has-background):hover,
 div.editor-styles-wrapper .wc-block-components-button:not(.has-background):hover,
 div.editor-styles-wrapper ul.products li.product .button:not(.has-background):hover,
 div.editor-styles-wrapper .wpforms-submit:not(.has-background):hover,
+div.editor-styles-wrapper .widget_product_search button:not(.has-background):hover,
+div.editor-styles-wrapper .search-submit:not(.has-background):hover,
 div.editor-styles-wrapper input[type=button]:not(.has-background):hover,
 div.editor-styles-wrapper input[type=reset]:not(.has-background):hover,
 div.editor-styles-wrapper input[type=submit]:not(.has-background):hover {
@@ -1949,6 +2044,8 @@ div.editor-styles-wrapper .wp-block-button__link:hover,
 div.editor-styles-wrapper .wc-block-components-button:hover,
 div.editor-styles-wrapper ul.products li.product .button:hover,
 div.editor-styles-wrapper .wpforms-submit:hover,
+div.editor-styles-wrapper .widget_product_search button:hover,
+div.editor-styles-wrapper .search-submit:hover,
 div.editor-styles-wrapper input[type=button]:hover,
 div.editor-styles-wrapper input[type=reset]:hover,
 div.editor-styles-wrapper input[type=submit]:hover {
@@ -1961,6 +2058,8 @@ div.editor-styles-wrapper .wp-block-button__link:hover svg,
 div.editor-styles-wrapper .wc-block-components-button:hover svg,
 div.editor-styles-wrapper ul.products li.product .button:hover svg,
 div.editor-styles-wrapper .wpforms-submit:hover svg,
+div.editor-styles-wrapper .widget_product_search button:hover svg,
+div.editor-styles-wrapper .search-submit:hover svg,
 div.editor-styles-wrapper input[type=button]:hover svg,
 div.editor-styles-wrapper input[type=reset]:hover svg,
 div.editor-styles-wrapper input[type=submit]:hover svg {
@@ -1973,6 +2072,8 @@ div.editor-styles-wrapper .wp-block-button__link:hover:not(.has-background),
 div.editor-styles-wrapper .wc-block-components-button:hover:not(.has-background),
 div.editor-styles-wrapper ul.products li.product .button:hover:not(.has-background),
 div.editor-styles-wrapper .wpforms-submit:hover:not(.has-background),
+div.editor-styles-wrapper .widget_product_search button:hover:not(.has-background),
+div.editor-styles-wrapper .search-submit:hover:not(.has-background),
 div.editor-styles-wrapper input[type=button]:hover:not(.has-background),
 div.editor-styles-wrapper input[type=reset]:hover:not(.has-background),
 div.editor-styles-wrapper input[type=submit]:hover:not(.has-background) {
@@ -1991,6 +2092,10 @@ div.editor-styles-wrapper ul.products li.product .button:active,
 div.editor-styles-wrapper ul.products li.product .button:focus,
 div.editor-styles-wrapper .wpforms-submit:active,
 div.editor-styles-wrapper .wpforms-submit:focus,
+div.editor-styles-wrapper .widget_product_search button:active,
+div.editor-styles-wrapper .widget_product_search button:focus,
+div.editor-styles-wrapper .search-submit:active,
+div.editor-styles-wrapper .search-submit:focus,
 div.editor-styles-wrapper input[type=button]:active,
 div.editor-styles-wrapper input[type=button]:focus,
 div.editor-styles-wrapper input[type=reset]:active,
@@ -2103,7 +2208,7 @@ div.editor-styles-wrapper .checkout_coupon.woocommerce-form-coupon .button[name=
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 }
-div.editor-styles-wrapper ul.products li.product .button.loading:after {
+div.editor-styles-wrapper .button.loading:after {
   font-family: WooCommerce;
   content: "\e031";
   -webkit-animation: spin 2s linear infinite;
@@ -2113,11 +2218,11 @@ div.editor-styles-wrapper ul.products li.product .button.loading:after {
   width: auto;
   height: auto;
 }
-div.editor-styles-wrapper ul.products li.product .button.loading {
+div.editor-styles-wrapper .button.loading {
   opacity: 0.5;
   pointer-events: none;
 }
-div.editor-styles-wrapper ul.products li.product .button.added:after {
+div.editor-styles-wrapper .button.added:after {
   font-family: WooCommerce;
   content: "\e017";
   margin-left: 0.5em;
@@ -4237,6 +4342,60 @@ div.editor-styles-wrapper .botiga-linked-variation-tooltip:after {
 }
 div.editor-styles-wrapper .botiga-no-products-found-popular-products h2 {
   font-size: 24px;
+}
+div.editor-styles-wrapper .wp-block-woocommerce-all-reviews .wc-block-sort-select,
+div.editor-styles-wrapper .wp-block-woocommerce-reviews-by-category .wc-block-sort-select,
+div.editor-styles-wrapper .wp-block-woocommerce-reviews-by-product .wc-block-sort-select {
+  font-size: 0.85rem;
+}
+div.editor-styles-wrapper .wp-block-woocommerce-all-reviews .wc-block-sort-select .wc-block-components-sort-select__select,
+div.editor-styles-wrapper .wp-block-woocommerce-reviews-by-category .wc-block-sort-select .wc-block-components-sort-select__select,
+div.editor-styles-wrapper .wp-block-woocommerce-reviews-by-product .wc-block-sort-select .wc-block-components-sort-select__select {
+  padding: 3px 27px 3px 7px;
+  min-height: 0;
+  margin-bottom: 10px;
+}
+div.editor-styles-wrapper .wp-block-woocommerce-all-reviews .wc-block-components-review-list-item__info,
+div.editor-styles-wrapper .wp-block-woocommerce-reviews-by-category .wc-block-components-review-list-item__info,
+div.editor-styles-wrapper .wp-block-woocommerce-reviews-by-product .wc-block-components-review-list-item__info {
+  margin-bottom: 10px;
+}
+div.editor-styles-wrapper .wp-block-woocommerce-all-reviews .wc-block-components-review-list-item__product,
+div.editor-styles-wrapper .wp-block-woocommerce-reviews-by-category .wc-block-components-review-list-item__product,
+div.editor-styles-wrapper .wp-block-woocommerce-reviews-by-product .wc-block-components-review-list-item__product {
+  line-height: 1.4;
+}
+div.editor-styles-wrapper .wp-block-woocommerce-all-reviews .wc-block-components-review-list-item__product a,
+div.editor-styles-wrapper .wp-block-woocommerce-reviews-by-category .wc-block-components-review-list-item__product a,
+div.editor-styles-wrapper .wp-block-woocommerce-reviews-by-product .wc-block-components-review-list-item__product a {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+div.editor-styles-wrapper .wp-block-woocommerce-all-reviews .wc-block-components-review-list-item__rating,
+div.editor-styles-wrapper .wp-block-woocommerce-reviews-by-category .wc-block-components-review-list-item__rating,
+div.editor-styles-wrapper .wp-block-woocommerce-reviews-by-product .wc-block-components-review-list-item__rating {
+  margin: 7px 0 10px;
+}
+div.editor-styles-wrapper .wp-block-woocommerce-all-reviews .wc-block-review-list-item__author,
+div.editor-styles-wrapper .wp-block-woocommerce-all-reviews .wc-block-review-list-item__published-date,
+div.editor-styles-wrapper .wp-block-woocommerce-reviews-by-category .wc-block-review-list-item__author,
+div.editor-styles-wrapper .wp-block-woocommerce-reviews-by-category .wc-block-review-list-item__published-date,
+div.editor-styles-wrapper .wp-block-woocommerce-reviews-by-product .wc-block-review-list-item__author,
+div.editor-styles-wrapper .wp-block-woocommerce-reviews-by-product .wc-block-review-list-item__published-date {
+  font-size: 0.7rem;
+}
+div.editor-styles-wrapper .wp-block-woocommerce-all-reviews .wc-block-review-list-item__text,
+div.editor-styles-wrapper .wp-block-woocommerce-reviews-by-category .wc-block-review-list-item__text,
+div.editor-styles-wrapper .wp-block-woocommerce-reviews-by-product .wc-block-review-list-item__text {
+  font-size: 0.85rem;
+}
+div.editor-styles-wrapper .wc-block-featured-product .wc-block-featured-product__title {
+  font-size: 1.8rem;
+  line-height: 1.3;
+}
+div.editor-styles-wrapper .wc-block-featured-category .wc-block-featured-category__title {
+  font-size: 1.8rem;
+  line-height: 1.3;
 }
 div.editor-styles-wrapper .wc-block-grid__product .wc-block-grid__product-price,
 div.editor-styles-wrapper .wc-block-grid__product .wc-block-grid__product-add-to-cart {

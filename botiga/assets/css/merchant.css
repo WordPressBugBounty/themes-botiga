@@ -67,3 +67,24 @@ button[class*=merchant-]:not(.button):active, button[class*=merchant-]:not(.butt
 .merchant-floating-side-mini-cart-widget .product_list_widget .merchant-quantity-minus:hover {
   color: #1a1a1a !important;
 }
+
+/**
+ * Buy Now module.
+ */
+.single-product .product .cart .merchant-buy-now-button {
+  margin-left: 0 !important;
+}
+
+/**
+ * Product Labels module.
+ */
+.merchant-product-labels__regular {
+  z-index: 998;
+}
+
+/**
+ * Wishlist module.
+ */
+.merchant-wishlist-button {
+  z-index: 998 !important;
+}

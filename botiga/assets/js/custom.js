@@ -932,6 +932,7 @@ botiga.customAddToCartButton = {
         e.preventDefault();
         var button = this,
           productId = this.getAttribute('data-product-id'),
+          context = this.getAttribute('data-context'),
           initial_text = this.innerHTML,
           loading_text = this.getAttribute('data-loading-text'),
           added_text = this.getAttribute('data-added-text'),
@@ -951,7 +952,7 @@ botiga.customAddToCartButton = {
             document.body.dispatchEvent(new Event('botiga.custom_added_to_cart'));
           }
         };
-        ajax.send('action=botiga_custom_addtocart&product_id=' + productId + '&nonce=' + nonce);
+        ajax.send('action=botiga_custom_addtocart&product_id=' + productId + '&context=' + context + '&nonce=' + nonce);
       });
     }
   }

@@ -571,6 +571,10 @@ big {
   font-size: 125%;
 }
 
+.strong {
+  font-weight: 700;
+}
+
 /* Elements
 --------------------------------------------- */
 .botiga-badge {
@@ -739,6 +743,8 @@ a.button,
 .wc-block-components-button,
 ul.products li.product .button,
 .wpforms-submit,
+.widget_product_search button,
+.search-submit,
 input[type=button],
 input[type=reset],
 input[type=submit] {
@@ -769,6 +775,8 @@ a.button svg,
 .wc-block-components-button svg,
 ul.products li.product .button svg,
 .wpforms-submit svg,
+.widget_product_search button svg,
+.search-submit svg,
 input[type=button] svg,
 input[type=reset] svg,
 input[type=submit] svg {
@@ -805,6 +813,16 @@ ul.products li.product .button.wc-backward,
 .wpforms-submit:not(.wc-forward):not(.has-text-color),
 .wpforms-submit.checkout:not(.has-text-color),
 .wpforms-submit.wc-backward,
+.widget_product_search button:not(.has-text-color),
+.widget_product_search button.checkout-button:not(.has-text-color),
+.widget_product_search button:not(.wc-forward):not(.has-text-color),
+.widget_product_search button.checkout:not(.has-text-color),
+.widget_product_search button.wc-backward,
+.search-submit:not(.has-text-color),
+.search-submit.checkout-button:not(.has-text-color),
+.search-submit:not(.wc-forward):not(.has-text-color),
+.search-submit.checkout:not(.has-text-color),
+.search-submit.wc-backward,
 input[type=button]:not(.has-text-color),
 input[type=button].checkout-button:not(.has-text-color),
 input[type=button]:not(.wc-forward):not(.has-text-color),
@@ -853,6 +871,16 @@ ul.products li.product .button.wc-backward:hover,
 .wpforms-submit:not(.wc-forward):not(.has-text-color):hover,
 .wpforms-submit.checkout:not(.has-text-color):hover,
 .wpforms-submit.wc-backward:hover,
+.widget_product_search button:not(.has-text-color):hover,
+.widget_product_search button.checkout-button:not(.has-text-color):hover,
+.widget_product_search button:not(.wc-forward):not(.has-text-color):hover,
+.widget_product_search button.checkout:not(.has-text-color):hover,
+.widget_product_search button.wc-backward:hover,
+.search-submit:not(.has-text-color):hover,
+.search-submit.checkout-button:not(.has-text-color):hover,
+.search-submit:not(.wc-forward):not(.has-text-color):hover,
+.search-submit.checkout:not(.has-text-color):hover,
+.search-submit.wc-backward:hover,
 input[type=button]:not(.has-text-color):hover,
 input[type=button].checkout-button:not(.has-text-color):hover,
 input[type=button]:not(.wc-forward):not(.has-text-color):hover,
@@ -877,6 +905,8 @@ a.button.is-style-outline,
 .wc-block-components-button.is-style-outline,
 ul.products li.product .button.is-style-outline,
 .wpforms-submit.is-style-outline,
+.widget_product_search button.is-style-outline,
+.search-submit.is-style-outline,
 input[type=button].is-style-outline,
 input[type=reset].is-style-outline,
 input[type=submit].is-style-outline {
@@ -889,6 +919,8 @@ a.button.is-style-outline:not(.has-text-color),
 .wc-block-components-button.is-style-outline:not(.has-text-color),
 ul.products li.product .button.is-style-outline:not(.has-text-color),
 .wpforms-submit.is-style-outline:not(.has-text-color),
+.widget_product_search button.is-style-outline:not(.has-text-color),
+.search-submit.is-style-outline:not(.has-text-color),
 input[type=button].is-style-outline:not(.has-text-color),
 input[type=reset].is-style-outline:not(.has-text-color),
 input[type=submit].is-style-outline:not(.has-text-color) {
@@ -902,6 +934,8 @@ input[type=submit].is-style-outline:not(.has-text-color) {
 .is-style-outline .wc-block-components-button:not(.has-text-color):hover,
 .is-style-outline ul.products li.product .button:not(.has-text-color):hover,
 .is-style-outline .wpforms-submit:not(.has-text-color):hover,
+.is-style-outline .widget_product_search button:not(.has-text-color):hover,
+.is-style-outline .search-submit:not(.has-text-color):hover,
 .is-style-outline input[type=button]:not(.has-text-color):hover,
 .is-style-outline input[type=reset]:not(.has-text-color):hover,
 .is-style-outline input[type=submit]:not(.has-text-color):hover {
@@ -914,6 +948,8 @@ input[type=submit].is-style-outline:not(.has-text-color) {
 .is-style-outline .wc-block-components-button:not(.has-background):hover,
 .is-style-outline ul.products li.product .button:not(.has-background):hover,
 .is-style-outline .wpforms-submit:not(.has-background):hover,
+.is-style-outline .widget_product_search button:not(.has-background):hover,
+.is-style-outline .search-submit:not(.has-background):hover,
 .is-style-outline input[type=button]:not(.has-background):hover,
 .is-style-outline input[type=reset]:not(.has-background):hover,
 .is-style-outline input[type=submit]:not(.has-background):hover {
@@ -926,6 +962,8 @@ a.button:not(.has-background),
 .wc-block-components-button:not(.has-background),
 ul.products li.product .button:not(.has-background),
 .wpforms-submit:not(.has-background),
+.widget_product_search button:not(.has-background),
+.search-submit:not(.has-background),
 input[type=button]:not(.has-background),
 input[type=reset]:not(.has-background),
 input[type=submit]:not(.has-background) {
@@ -938,6 +976,8 @@ a.button:not(.has-background):hover,
 .wc-block-components-button:not(.has-background):hover,
 ul.products li.product .button:not(.has-background):hover,
 .wpforms-submit:not(.has-background):hover,
+.widget_product_search button:not(.has-background):hover,
+.search-submit:not(.has-background):hover,
 input[type=button]:not(.has-background):hover,
 input[type=reset]:not(.has-background):hover,
 input[type=submit]:not(.has-background):hover {
@@ -950,6 +990,8 @@ a.button:hover,
 .wc-block-components-button:hover,
 ul.products li.product .button:hover,
 .wpforms-submit:hover,
+.widget_product_search button:hover,
+.search-submit:hover,
 input[type=button]:hover,
 input[type=reset]:hover,
 input[type=submit]:hover {
@@ -962,6 +1004,8 @@ a.button:hover svg,
 .wc-block-components-button:hover svg,
 ul.products li.product .button:hover svg,
 .wpforms-submit:hover svg,
+.widget_product_search button:hover svg,
+.search-submit:hover svg,
 input[type=button]:hover svg,
 input[type=reset]:hover svg,
 input[type=submit]:hover svg {
@@ -974,6 +1018,8 @@ a.button:hover:not(.has-background),
 .wc-block-components-button:hover:not(.has-background),
 ul.products li.product .button:hover:not(.has-background),
 .wpforms-submit:hover:not(.has-background),
+.widget_product_search button:hover:not(.has-background),
+.search-submit:hover:not(.has-background),
 input[type=button]:hover:not(.has-background),
 input[type=reset]:hover:not(.has-background),
 input[type=submit]:hover:not(.has-background) {
@@ -992,6 +1038,10 @@ ul.products li.product .button:active,
 ul.products li.product .button:focus,
 .wpforms-submit:active,
 .wpforms-submit:focus,
+.widget_product_search button:active,
+.widget_product_search button:focus,
+.search-submit:active,
+.search-submit:focus,
 input[type=button]:active,
 input[type=button]:focus,
 input[type=reset]:active,
@@ -1113,7 +1163,7 @@ input[type=submit]:focus {
   border-bottom-left-radius: 0 !important;
 }
 
-ul.products li.product .button.loading:after {
+.button.loading:after {
   font-family: WooCommerce;
   content: "\e031";
   -webkit-animation: spin 2s linear infinite;
@@ -1123,11 +1173,11 @@ ul.products li.product .button.loading:after {
   width: auto;
   height: auto;
 }
-ul.products li.product .button.loading {
+.button.loading {
   opacity: 0.5;
   pointer-events: none;
 }
-ul.products li.product .button.added:after {
+.button.added:after {
   font-family: WooCommerce;
   content: "\e017";
   margin-left: 0.5em;
@@ -3742,6 +3792,9 @@ body.mobile-menu-visible:before {
 .single.single-post .entry-header .entry-title {
   font-size: var(--bt-font-size-post-title, 32px);
 }
+.single .author.vcard {
+  display: inline-block;
+}
 
 .entry-meta {
   font-size: var(--bt-font-size-post-meta, 14px);
@@ -4229,6 +4282,9 @@ body.mobile-menu-visible:before {
 }
 .posts-archive .post-align-right .entry-header {
   text-align: right;
+}
+.posts-archive .author.vcard {
+  display: inline-block;
 }
 .posts-archive .list-image {
   width: 30%;
@@ -6083,6 +6139,12 @@ body {
           align-items: center;
 }
 
+.justify-content-center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .justify-content-between {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -6511,6 +6573,30 @@ body {
 
 .bt-p-0 {
   padding: 0 !important;
+}
+
+.gap-0 {
+  gap: 0px !important;
+}
+
+.gap-1 {
+  gap: 1px !important;
+}
+
+.gap-2 {
+  gap: 2px !important;
+}
+
+.gap-3 {
+  gap: 3px !important;
+}
+
+.gap-4 {
+  gap: 4px !important;
+}
+
+.gap-5 {
+  gap: 5px !important;
 }
 
 /* Misc
