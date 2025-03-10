@@ -1796,7 +1796,7 @@ div.editor-styles-wrapper .checkout-button,
 div.editor-styles-wrapper .wp-block-button__link,
 div.editor-styles-wrapper .wc-block-components-button,
 div.editor-styles-wrapper ul.products li.product .button,
-div.editor-styles-wrapper .wpforms-submit,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit,
 div.editor-styles-wrapper .widget_product_search button,
 div.editor-styles-wrapper .search-submit,
 div.editor-styles-wrapper input[type=button],
@@ -1828,7 +1828,7 @@ div.editor-styles-wrapper .checkout-button svg,
 div.editor-styles-wrapper .wp-block-button__link svg,
 div.editor-styles-wrapper .wc-block-components-button svg,
 div.editor-styles-wrapper ul.products li.product .button svg,
-div.editor-styles-wrapper .wpforms-submit svg,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit svg,
 div.editor-styles-wrapper .widget_product_search button svg,
 div.editor-styles-wrapper .search-submit svg,
 div.editor-styles-wrapper input[type=button] svg,
@@ -1862,11 +1862,11 @@ div.editor-styles-wrapper ul.products li.product .button.checkout-button:not(.ha
 div.editor-styles-wrapper ul.products li.product .button:not(.wc-forward):not(.has-text-color),
 div.editor-styles-wrapper ul.products li.product .button.checkout:not(.has-text-color),
 div.editor-styles-wrapper ul.products li.product .button.wc-backward,
-div.editor-styles-wrapper .wpforms-submit:not(.has-text-color),
-div.editor-styles-wrapper .wpforms-submit.checkout-button:not(.has-text-color),
-div.editor-styles-wrapper .wpforms-submit:not(.wc-forward):not(.has-text-color),
-div.editor-styles-wrapper .wpforms-submit.checkout:not(.has-text-color),
-div.editor-styles-wrapper .wpforms-submit.wc-backward,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.has-text-color),
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit.checkout-button:not(.has-text-color),
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.wc-forward):not(.has-text-color),
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit.checkout:not(.has-text-color),
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit.wc-backward,
 div.editor-styles-wrapper .widget_product_search button:not(.has-text-color),
 div.editor-styles-wrapper .widget_product_search button.checkout-button:not(.has-text-color),
 div.editor-styles-wrapper .widget_product_search button:not(.wc-forward):not(.has-text-color),
@@ -1920,11 +1920,11 @@ div.editor-styles-wrapper ul.products li.product .button.checkout-button:not(.ha
 div.editor-styles-wrapper ul.products li.product .button:not(.wc-forward):not(.has-text-color):hover,
 div.editor-styles-wrapper ul.products li.product .button.checkout:not(.has-text-color):hover,
 div.editor-styles-wrapper ul.products li.product .button.wc-backward:hover,
-div.editor-styles-wrapper .wpforms-submit:not(.has-text-color):hover,
-div.editor-styles-wrapper .wpforms-submit.checkout-button:not(.has-text-color):hover,
-div.editor-styles-wrapper .wpforms-submit:not(.wc-forward):not(.has-text-color):hover,
-div.editor-styles-wrapper .wpforms-submit.checkout:not(.has-text-color):hover,
-div.editor-styles-wrapper .wpforms-submit.wc-backward:hover,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.has-text-color):hover,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit.checkout-button:not(.has-text-color):hover,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.wc-forward):not(.has-text-color):hover,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit.checkout:not(.has-text-color):hover,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit.wc-backward:hover,
 div.editor-styles-wrapper .widget_product_search button:not(.has-text-color):hover,
 div.editor-styles-wrapper .widget_product_search button.checkout-button:not(.has-text-color):hover,
 div.editor-styles-wrapper .widget_product_search button:not(.wc-forward):not(.has-text-color):hover,
@@ -1958,7 +1958,7 @@ div.editor-styles-wrapper .checkout-button.is-style-outline,
 div.editor-styles-wrapper .wp-block-button__link.is-style-outline,
 div.editor-styles-wrapper .wc-block-components-button.is-style-outline,
 div.editor-styles-wrapper ul.products li.product .button.is-style-outline,
-div.editor-styles-wrapper .wpforms-submit.is-style-outline,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit.is-style-outline,
 div.editor-styles-wrapper .widget_product_search button.is-style-outline,
 div.editor-styles-wrapper .search-submit.is-style-outline,
 div.editor-styles-wrapper input[type=button].is-style-outline,
@@ -1972,7 +1972,7 @@ div.editor-styles-wrapper .checkout-button.is-style-outline:not(.has-text-color)
 div.editor-styles-wrapper .wp-block-button__link.is-style-outline:not(.has-text-color),
 div.editor-styles-wrapper .wc-block-components-button.is-style-outline:not(.has-text-color),
 div.editor-styles-wrapper ul.products li.product .button.is-style-outline:not(.has-text-color),
-div.editor-styles-wrapper .wpforms-submit.is-style-outline:not(.has-text-color),
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit.is-style-outline:not(.has-text-color),
 div.editor-styles-wrapper .widget_product_search button.is-style-outline:not(.has-text-color),
 div.editor-styles-wrapper .search-submit.is-style-outline:not(.has-text-color),
 div.editor-styles-wrapper input[type=button].is-style-outline:not(.has-text-color),
@@ -1987,7 +1987,7 @@ div.editor-styles-wrapper input[type=submit].is-style-outline:not(.has-text-colo
 .is-style-outline div.editor-styles-wrapper .wp-block-button__link:not(.has-text-color):hover,
 .is-style-outline div.editor-styles-wrapper .wc-block-components-button:not(.has-text-color):hover,
 .is-style-outline div.editor-styles-wrapper ul.products li.product .button:not(.has-text-color):hover,
-.is-style-outline div.editor-styles-wrapper .wpforms-submit:not(.has-text-color):hover,
+.is-style-outline div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.has-text-color):hover,
 .is-style-outline div.editor-styles-wrapper .widget_product_search button:not(.has-text-color):hover,
 .is-style-outline div.editor-styles-wrapper .search-submit:not(.has-text-color):hover,
 .is-style-outline div.editor-styles-wrapper input[type=button]:not(.has-text-color):hover,
@@ -2001,7 +2001,7 @@ div.editor-styles-wrapper input[type=submit].is-style-outline:not(.has-text-colo
 .is-style-outline div.editor-styles-wrapper .wp-block-button__link:not(.has-background):hover,
 .is-style-outline div.editor-styles-wrapper .wc-block-components-button:not(.has-background):hover,
 .is-style-outline div.editor-styles-wrapper ul.products li.product .button:not(.has-background):hover,
-.is-style-outline div.editor-styles-wrapper .wpforms-submit:not(.has-background):hover,
+.is-style-outline div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.has-background):hover,
 .is-style-outline div.editor-styles-wrapper .widget_product_search button:not(.has-background):hover,
 .is-style-outline div.editor-styles-wrapper .search-submit:not(.has-background):hover,
 .is-style-outline div.editor-styles-wrapper input[type=button]:not(.has-background):hover,
@@ -2015,7 +2015,7 @@ div.editor-styles-wrapper .checkout-button:not(.has-background),
 div.editor-styles-wrapper .wp-block-button__link:not(.has-background),
 div.editor-styles-wrapper .wc-block-components-button:not(.has-background),
 div.editor-styles-wrapper ul.products li.product .button:not(.has-background),
-div.editor-styles-wrapper .wpforms-submit:not(.has-background),
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.has-background),
 div.editor-styles-wrapper .widget_product_search button:not(.has-background),
 div.editor-styles-wrapper .search-submit:not(.has-background),
 div.editor-styles-wrapper input[type=button]:not(.has-background),
@@ -2029,7 +2029,7 @@ div.editor-styles-wrapper .checkout-button:not(.has-background):hover,
 div.editor-styles-wrapper .wp-block-button__link:not(.has-background):hover,
 div.editor-styles-wrapper .wc-block-components-button:not(.has-background):hover,
 div.editor-styles-wrapper ul.products li.product .button:not(.has-background):hover,
-div.editor-styles-wrapper .wpforms-submit:not(.has-background):hover,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.has-background):hover,
 div.editor-styles-wrapper .widget_product_search button:not(.has-background):hover,
 div.editor-styles-wrapper .search-submit:not(.has-background):hover,
 div.editor-styles-wrapper input[type=button]:not(.has-background):hover,
@@ -2043,7 +2043,7 @@ div.editor-styles-wrapper .checkout-button:hover,
 div.editor-styles-wrapper .wp-block-button__link:hover,
 div.editor-styles-wrapper .wc-block-components-button:hover,
 div.editor-styles-wrapper ul.products li.product .button:hover,
-div.editor-styles-wrapper .wpforms-submit:hover,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit:hover,
 div.editor-styles-wrapper .widget_product_search button:hover,
 div.editor-styles-wrapper .search-submit:hover,
 div.editor-styles-wrapper input[type=button]:hover,
@@ -2057,7 +2057,7 @@ div.editor-styles-wrapper .checkout-button:hover svg,
 div.editor-styles-wrapper .wp-block-button__link:hover svg,
 div.editor-styles-wrapper .wc-block-components-button:hover svg,
 div.editor-styles-wrapper ul.products li.product .button:hover svg,
-div.editor-styles-wrapper .wpforms-submit:hover svg,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit:hover svg,
 div.editor-styles-wrapper .widget_product_search button:hover svg,
 div.editor-styles-wrapper .search-submit:hover svg,
 div.editor-styles-wrapper input[type=button]:hover svg,
@@ -2071,7 +2071,7 @@ div.editor-styles-wrapper .checkout-button:hover:not(.has-background),
 div.editor-styles-wrapper .wp-block-button__link:hover:not(.has-background),
 div.editor-styles-wrapper .wc-block-components-button:hover:not(.has-background),
 div.editor-styles-wrapper ul.products li.product .button:hover:not(.has-background),
-div.editor-styles-wrapper .wpforms-submit:hover:not(.has-background),
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit:hover:not(.has-background),
 div.editor-styles-wrapper .widget_product_search button:hover:not(.has-background),
 div.editor-styles-wrapper .search-submit:hover:not(.has-background),
 div.editor-styles-wrapper input[type=button]:hover:not(.has-background),
@@ -2090,8 +2090,8 @@ div.editor-styles-wrapper .wc-block-components-button:active,
 div.editor-styles-wrapper .wc-block-components-button:focus,
 div.editor-styles-wrapper ul.products li.product .button:active,
 div.editor-styles-wrapper ul.products li.product .button:focus,
-div.editor-styles-wrapper .wpforms-submit:active,
-div.editor-styles-wrapper .wpforms-submit:focus,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit:active,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-submit:focus,
 div.editor-styles-wrapper .widget_product_search button:active,
 div.editor-styles-wrapper .widget_product_search button:focus,
 div.editor-styles-wrapper .search-submit:active,
@@ -6426,70 +6426,70 @@ div.editor-styles-wrapper .woocommerce-product-search .search-submit svg {
 div.editor-styles-wrapper .woocommerce-product-search .search-submit:hover svg {
   fill: var(--bt-color-button-hover, #FFF);
 }
-div.editor-styles-wrapper .wpforms-field :-ms-input-placeholder {
-  color: var(--bt-color-forms-placeholder, #848484);
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field :-ms-input-placeholder {
+  color: var(--bt-color-forms-placeholder, #848484) !important;
 }
-div.editor-styles-wrapper .wpforms-field ::-ms-input-placeholder {
-  color: var(--bt-color-forms-placeholder, #848484);
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field ::-ms-input-placeholder {
+  color: var(--bt-color-forms-placeholder, #848484) !important;
 }
-div.editor-styles-wrapper .wpforms-field ::placeholder,
-div.editor-styles-wrapper .wpforms-field :-ms-input-placeholder,
-div.editor-styles-wrapper .wpforms-field ::-ms-input-placeholder {
-  color: var(--bt-color-forms-placeholder, #848484);
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field ::placeholder,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field :-ms-input-placeholder,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field ::-ms-input-placeholder {
+  color: var(--bt-color-forms-placeholder, #848484) !important;
 }
-div.editor-styles-wrapper .wpforms-field input[type=text],
-div.editor-styles-wrapper .wpforms-field input[type=email],
-div.editor-styles-wrapper .wpforms-field input[type=url],
-div.editor-styles-wrapper .wpforms-field input[type=password],
-div.editor-styles-wrapper .wpforms-field input[type=search],
-div.editor-styles-wrapper .wpforms-field input[type=number],
-div.editor-styles-wrapper .wpforms-field input[type=tel],
-div.editor-styles-wrapper .wpforms-field input[type=date],
-div.editor-styles-wrapper .wpforms-field input[type=month],
-div.editor-styles-wrapper .wpforms-field input[type=week],
-div.editor-styles-wrapper .wpforms-field input[type=time],
-div.editor-styles-wrapper .wpforms-field input[type=datetime],
-div.editor-styles-wrapper .wpforms-field input[type=datetime-local],
-div.editor-styles-wrapper .wpforms-field input[type=color],
-div.editor-styles-wrapper .wpforms-field textarea,
-div.editor-styles-wrapper .wpforms-field select {
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=text],
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=email],
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=url],
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=password],
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=search],
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=number],
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=tel],
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=date],
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=month],
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=week],
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=time],
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=datetime],
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=datetime-local],
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=color],
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field textarea,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field select {
   background-color: var(--bt-color-forms-background, transparent) !important;
   color: var(--bt-color-forms-text, #212121) !important;
-  border-color: var(--bt-color-forms-borders, #212121);
+  border-color: var(--bt-color-forms-borders, #212121) !important;
   border-radius: 0 !important;
   padding: 12px 16px !important;
   min-height: 51px !important;
 }
-div.editor-styles-wrapper .wpforms-field input[type=text]:focus,
-div.editor-styles-wrapper .wpforms-field input[type=email]:focus,
-div.editor-styles-wrapper .wpforms-field input[type=url]:focus,
-div.editor-styles-wrapper .wpforms-field input[type=password]:focus,
-div.editor-styles-wrapper .wpforms-field input[type=search]:focus,
-div.editor-styles-wrapper .wpforms-field input[type=number]:focus,
-div.editor-styles-wrapper .wpforms-field input[type=tel]:focus,
-div.editor-styles-wrapper .wpforms-field input[type=date]:focus,
-div.editor-styles-wrapper .wpforms-field input[type=month]:focus,
-div.editor-styles-wrapper .wpforms-field input[type=week]:focus,
-div.editor-styles-wrapper .wpforms-field input[type=time]:focus,
-div.editor-styles-wrapper .wpforms-field input[type=datetime]:focus,
-div.editor-styles-wrapper .wpforms-field input[type=datetime-local]:focus,
-div.editor-styles-wrapper .wpforms-field input[type=color]:focus,
-div.editor-styles-wrapper .wpforms-field textarea:focus,
-div.editor-styles-wrapper .wpforms-field select:focus {
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=text]:focus,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=email]:focus,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=url]:focus,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=password]:focus,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=search]:focus,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=number]:focus,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=tel]:focus,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=date]:focus,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=month]:focus,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=week]:focus,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=time]:focus,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=datetime]:focus,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=datetime-local]:focus,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=color]:focus,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field textarea:focus,
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field select:focus {
   outline: none !important;
   -webkit-box-shadow: 0 0 0 1px !important;
           box-shadow: 0 0 0 1px !important;
 }
-div.editor-styles-wrapper .wpforms-field input[type=range] {
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=range] {
   height: 0 !important;
   min-height: 0;
   border-radius: 0 !important;
   margin-top: 22px !important;
 }
-div.editor-styles-wrapper .wpforms-field .wpforms-field-number-slider-hint {
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field .wpforms-field-number-slider-hint {
   margin-top: 15px !important;
 }
-div.editor-styles-wrapper .wpforms-field-label {
+div.editor-styles-wrapper .wpforms-block:not(.wpforms-render-modern) .wpforms-field-label {
   margin-bottom: 15px !important;
 }
 div.editor-styles-wrapper .wpcf7 form .wpcf7-response-output {

@@ -742,7 +742,7 @@ a.button,
 .wp-block-button__link,
 .wc-block-components-button,
 ul.products li.product .button,
-.wpforms-submit,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit,
 .widget_product_search button,
 .search-submit,
 input[type=button],
@@ -774,7 +774,7 @@ a.button svg,
 .wp-block-button__link svg,
 .wc-block-components-button svg,
 ul.products li.product .button svg,
-.wpforms-submit svg,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit svg,
 .widget_product_search button svg,
 .search-submit svg,
 input[type=button] svg,
@@ -808,11 +808,11 @@ ul.products li.product .button.checkout-button:not(.has-text-color),
 ul.products li.product .button:not(.wc-forward):not(.has-text-color),
 ul.products li.product .button.checkout:not(.has-text-color),
 ul.products li.product .button.wc-backward,
-.wpforms-submit:not(.has-text-color),
-.wpforms-submit.checkout-button:not(.has-text-color),
-.wpforms-submit:not(.wc-forward):not(.has-text-color),
-.wpforms-submit.checkout:not(.has-text-color),
-.wpforms-submit.wc-backward,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.has-text-color),
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit.checkout-button:not(.has-text-color),
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.wc-forward):not(.has-text-color),
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit.checkout:not(.has-text-color),
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit.wc-backward,
 .widget_product_search button:not(.has-text-color),
 .widget_product_search button.checkout-button:not(.has-text-color),
 .widget_product_search button:not(.wc-forward):not(.has-text-color),
@@ -866,11 +866,11 @@ ul.products li.product .button.checkout-button:not(.has-text-color):hover,
 ul.products li.product .button:not(.wc-forward):not(.has-text-color):hover,
 ul.products li.product .button.checkout:not(.has-text-color):hover,
 ul.products li.product .button.wc-backward:hover,
-.wpforms-submit:not(.has-text-color):hover,
-.wpforms-submit.checkout-button:not(.has-text-color):hover,
-.wpforms-submit:not(.wc-forward):not(.has-text-color):hover,
-.wpforms-submit.checkout:not(.has-text-color):hover,
-.wpforms-submit.wc-backward:hover,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.has-text-color):hover,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit.checkout-button:not(.has-text-color):hover,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.wc-forward):not(.has-text-color):hover,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit.checkout:not(.has-text-color):hover,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit.wc-backward:hover,
 .widget_product_search button:not(.has-text-color):hover,
 .widget_product_search button.checkout-button:not(.has-text-color):hover,
 .widget_product_search button:not(.wc-forward):not(.has-text-color):hover,
@@ -904,7 +904,7 @@ a.button.is-style-outline,
 .wp-block-button__link.is-style-outline,
 .wc-block-components-button.is-style-outline,
 ul.products li.product .button.is-style-outline,
-.wpforms-submit.is-style-outline,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit.is-style-outline,
 .widget_product_search button.is-style-outline,
 .search-submit.is-style-outline,
 input[type=button].is-style-outline,
@@ -918,7 +918,7 @@ a.button.is-style-outline:not(.has-text-color),
 .wp-block-button__link.is-style-outline:not(.has-text-color),
 .wc-block-components-button.is-style-outline:not(.has-text-color),
 ul.products li.product .button.is-style-outline:not(.has-text-color),
-.wpforms-submit.is-style-outline:not(.has-text-color),
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit.is-style-outline:not(.has-text-color),
 .widget_product_search button.is-style-outline:not(.has-text-color),
 .search-submit.is-style-outline:not(.has-text-color),
 input[type=button].is-style-outline:not(.has-text-color),
@@ -933,7 +933,7 @@ input[type=submit].is-style-outline:not(.has-text-color) {
 .is-style-outline .wp-block-button__link:not(.has-text-color):hover,
 .is-style-outline .wc-block-components-button:not(.has-text-color):hover,
 .is-style-outline ul.products li.product .button:not(.has-text-color):hover,
-.is-style-outline .wpforms-submit:not(.has-text-color):hover,
+.is-style-outline .wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.has-text-color):hover,
 .is-style-outline .widget_product_search button:not(.has-text-color):hover,
 .is-style-outline .search-submit:not(.has-text-color):hover,
 .is-style-outline input[type=button]:not(.has-text-color):hover,
@@ -947,7 +947,7 @@ input[type=submit].is-style-outline:not(.has-text-color) {
 .is-style-outline .wp-block-button__link:not(.has-background):hover,
 .is-style-outline .wc-block-components-button:not(.has-background):hover,
 .is-style-outline ul.products li.product .button:not(.has-background):hover,
-.is-style-outline .wpforms-submit:not(.has-background):hover,
+.is-style-outline .wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.has-background):hover,
 .is-style-outline .widget_product_search button:not(.has-background):hover,
 .is-style-outline .search-submit:not(.has-background):hover,
 .is-style-outline input[type=button]:not(.has-background):hover,
@@ -961,7 +961,7 @@ a.button:not(.has-background),
 .wp-block-button__link:not(.has-background),
 .wc-block-components-button:not(.has-background),
 ul.products li.product .button:not(.has-background),
-.wpforms-submit:not(.has-background),
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.has-background),
 .widget_product_search button:not(.has-background),
 .search-submit:not(.has-background),
 input[type=button]:not(.has-background),
@@ -975,7 +975,7 @@ a.button:not(.has-background):hover,
 .wp-block-button__link:not(.has-background):hover,
 .wc-block-components-button:not(.has-background):hover,
 ul.products li.product .button:not(.has-background):hover,
-.wpforms-submit:not(.has-background):hover,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit:not(.has-background):hover,
 .widget_product_search button:not(.has-background):hover,
 .search-submit:not(.has-background):hover,
 input[type=button]:not(.has-background):hover,
@@ -989,7 +989,7 @@ a.button:hover,
 .wp-block-button__link:hover,
 .wc-block-components-button:hover,
 ul.products li.product .button:hover,
-.wpforms-submit:hover,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit:hover,
 .widget_product_search button:hover,
 .search-submit:hover,
 input[type=button]:hover,
@@ -1003,7 +1003,7 @@ a.button:hover svg,
 .wp-block-button__link:hover svg,
 .wc-block-components-button:hover svg,
 ul.products li.product .button:hover svg,
-.wpforms-submit:hover svg,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit:hover svg,
 .widget_product_search button:hover svg,
 .search-submit:hover svg,
 input[type=button]:hover svg,
@@ -1017,7 +1017,7 @@ a.button:hover:not(.has-background),
 .wp-block-button__link:hover:not(.has-background),
 .wc-block-components-button:hover:not(.has-background),
 ul.products li.product .button:hover:not(.has-background),
-.wpforms-submit:hover:not(.has-background),
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit:hover:not(.has-background),
 .widget_product_search button:hover:not(.has-background),
 .search-submit:hover:not(.has-background),
 input[type=button]:hover:not(.has-background),
@@ -1036,8 +1036,8 @@ a.button:active, a.button:focus,
 .wc-block-components-button:focus,
 ul.products li.product .button:active,
 ul.products li.product .button:focus,
-.wpforms-submit:active,
-.wpforms-submit:focus,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit:active,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-submit:focus,
 .widget_product_search button:active,
 .widget_product_search button:focus,
 .search-submit:active,
@@ -5262,71 +5262,70 @@ button.wc-block-components-filter-reset-button:hover {
 /* WPForms
 --------------------------------------------- */
 /* WPForms */
-.wpforms-field :-ms-input-placeholder {
-  color: var(--bt-color-forms-placeholder, #848484);
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field :-ms-input-placeholder {
+  color: var(--bt-color-forms-placeholder, #848484) !important;
 }
-.wpforms-field ::-ms-input-placeholder {
-  color: var(--bt-color-forms-placeholder, #848484);
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field ::-ms-input-placeholder {
+  color: var(--bt-color-forms-placeholder, #848484) !important;
 }
-.wpforms-field ::placeholder,
-.wpforms-field :-ms-input-placeholder,
-.wpforms-field ::-ms-input-placeholder {
-  color: var(--bt-color-forms-placeholder, #848484);
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field ::placeholder,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field :-ms-input-placeholder,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field ::-ms-input-placeholder {
+  color: var(--bt-color-forms-placeholder, #848484) !important;
 }
-.wpforms-field input[type=text],
-.wpforms-field input[type=email],
-.wpforms-field input[type=url],
-.wpforms-field input[type=password],
-.wpforms-field input[type=search],
-.wpforms-field input[type=number],
-.wpforms-field input[type=tel],
-.wpforms-field input[type=date],
-.wpforms-field input[type=month],
-.wpforms-field input[type=week],
-.wpforms-field input[type=time],
-.wpforms-field input[type=datetime],
-.wpforms-field input[type=datetime-local],
-.wpforms-field input[type=color],
-.wpforms-field textarea,
-.wpforms-field select {
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=text],
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=email],
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=url],
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=password],
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=search],
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=number],
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=tel],
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=date],
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=month],
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=week],
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=time],
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=datetime],
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=datetime-local],
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=color],
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field textarea,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field select {
   background-color: var(--bt-color-forms-background, transparent) !important;
   color: var(--bt-color-forms-text, #212121) !important;
-  border-color: var(--bt-color-forms-borders, #212121);
+  border-color: var(--bt-color-forms-borders, #212121) !important;
   border-radius: 0 !important;
   padding: 12px 16px !important;
   min-height: 51px !important;
 }
-.wpforms-field input[type=text]:focus,
-.wpforms-field input[type=email]:focus,
-.wpforms-field input[type=url]:focus,
-.wpforms-field input[type=password]:focus,
-.wpforms-field input[type=search]:focus,
-.wpforms-field input[type=number]:focus,
-.wpforms-field input[type=tel]:focus,
-.wpforms-field input[type=date]:focus,
-.wpforms-field input[type=month]:focus,
-.wpforms-field input[type=week]:focus,
-.wpforms-field input[type=time]:focus,
-.wpforms-field input[type=datetime]:focus,
-.wpforms-field input[type=datetime-local]:focus,
-.wpforms-field input[type=color]:focus,
-.wpforms-field textarea:focus,
-.wpforms-field select:focus {
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=text]:focus,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=email]:focus,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=url]:focus,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=password]:focus,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=search]:focus,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=number]:focus,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=tel]:focus,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=date]:focus,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=month]:focus,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=week]:focus,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=time]:focus,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=datetime]:focus,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=datetime-local]:focus,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=color]:focus,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field textarea:focus,
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field select:focus {
   outline: none !important;
   -webkit-box-shadow: 0 0 0 1px !important;
           box-shadow: 0 0 0 1px !important;
 }
-.wpforms-field input[type=range] {
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field input[type=range] {
   height: 0 !important;
   min-height: 0;
   border-radius: 0 !important;
   margin-top: 22px !important;
 }
-.wpforms-field .wpforms-field-number-slider-hint {
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field .wpforms-field-number-slider-hint {
   margin-top: 15px !important;
 }
-
-.wpforms-field-label {
+.wpforms-block:not(.wpforms-render-modern) .wpforms-field-label {
   margin-bottom: 15px !important;
 }
 
@@ -5457,6 +5456,10 @@ body {
 .wp-block-categories-list li a,
 .wc-block-product-categories-list li a {
   text-decoration: none;
+}
+
+.wp-block-post-title a {
+  text-decoration: inherit;
 }
 
 /* Ajax Search

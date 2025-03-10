@@ -6947,6 +6947,41 @@ dl.variation p {
 .woocommerce-account fieldset input[type=password] {
   width: 100%;
 }
+.woocommerce-account .password-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.woocommerce-account .password-input .show-password-input {
+  background: none;
+  border: 0;
+  margin-left: -2.6em;
+  width: 2.6em;
+}
+@media (max-width: 767px) {
+  .woocommerce-account .password-input .show-password-input {
+    margin-left: -3em;
+  }
+}
+.woocommerce-account .password-input .show-password-input:after {
+  content: "";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-image: url(../img/icons/eye-line-through.svg);
+  background-size: 1.3em;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 1.3em;
+  height: 1.3em;
+  cursor: pointer;
+}
+.woocommerce-account .password-input .show-password-input.display-password:after {
+  background-image: url(../img/icons/eye.svg);
+}
+.woocommerce-account .password-input .woocommerce-Input {
+  padding-right: 2.7em;
+}
 
 @media only screen and (max-width: 991px) {
   .woocommerce-account #customer_login .col-1,
