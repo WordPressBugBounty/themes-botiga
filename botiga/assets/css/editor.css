@@ -3937,10 +3937,18 @@ div.editor-styles-wrapper .botiga-video-ratio-auto iframe {
   width: 100%;
   max-width: 100%;
 }
+div.editor-styles-wrapper .botiga-product-video-anchor-link {
+  display: block;
+}
+div.editor-styles-wrapper .botiga-product-video-anchor-link .botiga-product-video {
+  pointer-events: none;
+}
 div.editor-styles-wrapper .botiga-product-video + .loop-image-wrap,
 div.editor-styles-wrapper .botiga-product-video + .woocommerce-loop-product__link,
 div.editor-styles-wrapper .botiga-product-audio + .loop-image-wrap,
-div.editor-styles-wrapper .botiga-product-audio + .woocommerce-loop-product__link {
+div.editor-styles-wrapper .botiga-product-audio + .woocommerce-loop-product__link,
+div.editor-styles-wrapper .botiga-product-video-anchor-link + .loop-image-wrap,
+div.editor-styles-wrapper .botiga-product-video-anchor-link + .woocommerce-loop-product__link {
   display: none !important;
 }
 div.editor-styles-wrapper .botiga-product-audio audio {

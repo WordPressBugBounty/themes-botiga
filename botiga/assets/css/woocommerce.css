@@ -6028,10 +6028,19 @@ dl.variation p {
   max-width: 100%;
 }
 
+.botiga-product-video-anchor-link {
+  display: block;
+}
+.botiga-product-video-anchor-link .botiga-product-video {
+  pointer-events: none;
+}
+
 .botiga-product-video + .loop-image-wrap,
 .botiga-product-video + .woocommerce-loop-product__link,
 .botiga-product-audio + .loop-image-wrap,
-.botiga-product-audio + .woocommerce-loop-product__link {
+.botiga-product-audio + .woocommerce-loop-product__link,
+.botiga-product-video-anchor-link + .loop-image-wrap,
+.botiga-product-video-anchor-link + .woocommerce-loop-product__link {
   display: none !important;
 }
 
