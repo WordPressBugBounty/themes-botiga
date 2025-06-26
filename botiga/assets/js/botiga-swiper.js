@@ -1,26 +1,28 @@
 "use strict";
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
-function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+function _wrapNativeSuper(t) { var r = "function" == typeof Map ? new Map() : void 0; return _wrapNativeSuper = function _wrapNativeSuper(t) { if (null === t || !_isNativeFunction(t)) return t; if ("function" != typeof t) throw new TypeError("Super expression must either be null or a function"); if (void 0 !== r) { if (r.has(t)) return r.get(t); r.set(t, Wrapper); } function Wrapper() { return _construct(t, arguments, _getPrototypeOf(this).constructor); } return Wrapper.prototype = Object.create(t.prototype, { constructor: { value: Wrapper, enumerable: !1, writable: !0, configurable: !0 } }), _setPrototypeOf(Wrapper, t); }, _wrapNativeSuper(t); }
+function _construct(t, e, r) { if (_isNativeReflectConstruct()) return Reflect.construct.apply(null, arguments); var o = [null]; o.push.apply(o, e); var p = new (t.bind.apply(t, o))(); return r && _setPrototypeOf(p, r.prototype), p; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _isNativeFunction(t) { try { return -1 !== Function.toString.call(t).indexOf("[native code]"); } catch (n) { return "function" == typeof t; } }
+function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 /**
  * Swiper 8.3.2
  * Most modern mobile touch slider and framework with hardware accelerated transitions
@@ -210,21 +212,20 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     });
   }
   var Dom7 = /*#__PURE__*/function (_Array) {
-    _inherits(Dom7, _Array);
-    var _super = _createSuper(Dom7);
     function Dom7(items) {
       var _this;
       _classCallCheck(this, Dom7);
       if (typeof items === 'number') {
-        _this = _super.call(this, items);
+        _this = _callSuper(this, Dom7, [items]);
       } else {
-        _this = _super.call.apply(_super, [this].concat(_toConsumableArray(items || [])));
+        _this = _callSuper(this, Dom7, _toConsumableArray(items || []));
         makeReactive(_assertThisInitialized(_this));
       }
-      return _possibleConstructorReturn(_this);
+      return _assertThisInitialized(_this);
     }
-    return Dom7;
-  }( /*#__PURE__*/_wrapNativeSuper(Array));
+    _inherits(Dom7, _Array);
+    return _createClass(Dom7);
+  }(/*#__PURE__*/_wrapNativeSuper(Array));
   function arrayFlat(arr) {
     if (arr === void 0) {
       arr = [];
@@ -1047,7 +1048,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     var isOutOfBound = function isOutOfBound(current, target) {
       return dir === 'next' && current >= target || dir === 'prev' && current <= target;
     };
-    var animate = function animate() {
+    var _animate = function animate() {
       time = new Date().getTime();
       if (startTime === null) {
         startTime = time;
@@ -1069,9 +1070,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         window.cancelAnimationFrame(swiper.cssModeFrameID);
         return;
       }
-      swiper.cssModeFrameID = window.requestAnimationFrame(animate);
+      swiper.cssModeFrameID = window.requestAnimationFrame(_animate);
     };
-    animate();
+    _animate();
   }
   var support;
   function calcSupport() {
@@ -2073,7 +2074,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       if (speed === 0) {
         wrapperEl[isH ? 'scrollLeft' : 'scrollTop'] = -newTranslate;
       } else {
-        var _wrapperEl$scrollTo;
         if (!swiper.support.smoothScroll) {
           animateCSSModeScroll({
             swiper: swiper,
@@ -2082,7 +2082,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           });
           return true;
         }
-        wrapperEl.scrollTo((_wrapperEl$scrollTo = {}, _defineProperty(_wrapperEl$scrollTo, isH ? 'left' : 'top', -newTranslate), _defineProperty(_wrapperEl$scrollTo, "behavior", 'smooth'), _wrapperEl$scrollTo));
+        wrapperEl.scrollTo(_defineProperty(_defineProperty({}, isH ? 'left' : 'top', -newTranslate), "behavior", 'smooth'));
       }
       return true;
     }
@@ -2316,7 +2316,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           });
         }
       } else {
-        var _wrapperEl$scrollTo2;
         if (!swiper.support.smoothScroll) {
           animateCSSModeScroll({
             swiper: swiper,
@@ -2325,7 +2324,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           });
           return true;
         }
-        wrapperEl.scrollTo((_wrapperEl$scrollTo2 = {}, _defineProperty(_wrapperEl$scrollTo2, isH ? 'left' : 'top', t), _defineProperty(_wrapperEl$scrollTo2, "behavior", 'smooth'), _wrapperEl$scrollTo2));
+        wrapperEl.scrollTo(_defineProperty(_defineProperty({}, isH ? 'left' : 'top', t), "behavior", 'smooth'));
       }
       return true;
     }
@@ -3837,7 +3836,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
       return swiper;
     }
-    _createClass(Swiper, [{
+    return _createClass(Swiper, [{
       key: "enable",
       value: function enable() {
         var swiper = this;
@@ -4234,7 +4233,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         return Swiper;
       }
     }]);
-    return Swiper;
   }();
   Object.keys(prototypes).forEach(function (prototypeGroup) {
     Object.keys(prototypes[prototypeGroup]).forEach(function (protoMethod) {
@@ -6614,12 +6612,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           var maxIndex = Math.min(activeIndex + spv + Math.max(amount, spv), slides.length);
           var minIndex = Math.max(activeIndex - Math.max(spv, amount), 0); // Next Slides
 
-          for (var _i10 = activeIndex + spv; _i10 < maxIndex; _i10 += 1) {
-            if (slideExist(_i10)) loadInSlide(_i10);
+          for (var _i0 = activeIndex + spv; _i0 < maxIndex; _i0 += 1) {
+            if (slideExist(_i0)) loadInSlide(_i0);
           } // Prev Slides
 
-          for (var _i11 = minIndex; _i11 < activeIndex; _i11 += 1) {
-            if (slideExist(_i11)) loadInSlide(_i11);
+          for (var _i1 = minIndex; _i1 < activeIndex; _i1 += 1) {
+            if (slideExist(_i1)) loadInSlide(_i1);
           }
         } else {
           var nextSlide = $wrapperEl.children(".".concat(swiperParams.slideNextClass));
@@ -7674,8 +7672,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           thumbsSwiper.$wrapperEl.children("[data-swiper-slide-index=\"".concat(swiper.realIndex + i, "\"]")).addClass(thumbActiveClass);
         }
       } else {
-        for (var _i12 = 0; _i12 < thumbsToActivate; _i12 += 1) {
-          thumbsSwiper.slides.eq(swiper.realIndex + _i12).addClass(thumbActiveClass);
+        for (var _i10 = 0; _i10 < thumbsToActivate; _i10 += 1) {
+          thumbsSwiper.slides.eq(swiper.realIndex + _i10).addClass(thumbActiveClass);
         }
       }
       var autoScrollOffset = swiper.params.thumbs.autoScrollOffset;
@@ -8138,15 +8136,15 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       slidesBuffer.unshift(currentSlide);
     }
     if (_typeof(slides) === 'object' && 'length' in slides) {
-      for (var _i13 = 0; _i13 < slides.length; _i13 += 1) {
-        if (slides[_i13]) $wrapperEl.append(slides[_i13]);
+      for (var _i11 = 0; _i11 < slides.length; _i11 += 1) {
+        if (slides[_i11]) $wrapperEl.append(slides[_i11]);
       }
       newActiveIndex = activeIndexBuffer > index ? activeIndexBuffer + slides.length : activeIndexBuffer;
     } else {
       $wrapperEl.append(slides);
     }
-    for (var _i14 = 0; _i14 < slidesBuffer.length; _i14 += 1) {
-      $wrapperEl.append(slidesBuffer[_i14]);
+    for (var _i12 = 0; _i12 < slidesBuffer.length; _i12 += 1) {
+      $wrapperEl.append(slidesBuffer[_i12]);
     }
     if (params.loop) {
       swiper.loopCreate();
@@ -8776,7 +8774,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         var margin = slidesSizesGrid[0] / 2 - swiper.params.slidesOffsetBefore || 0;
         $wrapperEl.transform("translateX(calc(50% - ".concat(margin, "px))"));
       }
-      var _loop = function _loop(i) {
+      var _loop = function _loop() {
         var $slideEl = slides.eq(i);
         var slideProgress = $slideEl[0].progress;
         var progress = Math.min(Math.max($slideEl[0].progress, -params.limitProgress), params.limitProgress);
@@ -8839,7 +8837,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         }
       };
       for (var i = 0; i < slides.length; i += 1) {
-        _loop(i);
+        _loop();
       }
     };
     var setTransition = function setTransition(duration) {

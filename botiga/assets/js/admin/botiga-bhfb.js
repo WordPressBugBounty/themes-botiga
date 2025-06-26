@@ -1,13 +1,13 @@
 "use strict";
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t.return || t.return(); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 (function ($) {
   'use strict';
 
@@ -650,19 +650,19 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           // Desktop. 
           if (_this.currentDevice === 'desktop') {
             var column_id = 1;
-            var _iterator10 = _createForOfIteratorHelper(value.desktop),
-              _step10;
+            var _iterator0 = _createForOfIteratorHelper(value.desktop),
+              _step0;
             try {
-              for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
-                var columns = _step10.value;
+              for (_iterator0.s(); !(_step0 = _iterator0.n()).done;) {
+                var columns = _step0.value;
                 $('.botiga-bhfb-' + _this.currentBuilderType + ' .botiga-bhfb-' + current_row + '-row').append('<div class="botiga-bhfb-area" data-bhfb-row="' + current_row + '_' + _this.currentBuilderType + '_row"><a class="bhfb-edit-column" href="#" onClick="event.stopPropagation(); wp.customize.section(\'botiga_' + _this.currentBuilderType + '_row__' + current_row + '_' + _this.currentBuilderType + '_row_column' + column_id + '\').focus();"><svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="2" height="15" fill="#FFF"/><rect x="7" width="2" height="15" fill="#FFF"/><rect y="3" width="3" height="16" transform="rotate(-90 0 3)" fill="#FFF"/><rect y="15" width="2" height="16" transform="rotate(-90 0 15)" fill="#FFF"/><rect x="14" width="2" height="15" fill="#FFF"/></svg></a>');
                 var column = $('.botiga-bhfb-' + current_row + '-row').find('.botiga-bhfb-area:last-child');
                 if (columns.length) {
-                  var _iterator11 = _createForOfIteratorHelper(columns),
-                    _step11;
+                  var _iterator1 = _createForOfIteratorHelper(columns),
+                    _step1;
                   try {
-                    for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
-                      var _element2 = _step11.value;
+                    for (_iterator1.s(); !(_step1 = _iterator1.n()).done;) {
+                      var _element2 = _step1.value;
                       _element2 = _this.getElementData(_element2);
                       if (_typeof(_element2) !== 'object') {
                         continue;
@@ -670,36 +670,36 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
                       column.append('<div class="botiga-bhfb-element">' + '<a href="#" class="bhfb-button" data-bhfb-id="' + _element2.id + '" data-bhfb-focus-section="botiga_section_' + cprefix + '_component__' + _element2.id + '">' + '<span class="bhfb-title-element">' + _element2.label + '</span>' + '<i class="bhfb-edit-element dashicons dashicons-admin-generic"></i>' + '<i class="bhfb-remove-element dashicons dashicons-no-alt"></i>' + '</a>' + '</div>');
                     }
                   } catch (err) {
-                    _iterator11.e(err);
+                    _iterator1.e(err);
                   } finally {
-                    _iterator11.f();
+                    _iterator1.f();
                   }
                 }
                 column_id++;
               }
             } catch (err) {
-              _iterator10.e(err);
+              _iterator0.e(err);
             } finally {
-              _iterator10.f();
+              _iterator0.f();
             }
           }
 
           // Mobile.
           if (_this.currentDevice === 'mobile') {
             var _column_id = 1;
-            var _iterator12 = _createForOfIteratorHelper(value.mobile),
-              _step12;
+            var _iterator10 = _createForOfIteratorHelper(value.mobile),
+              _step10;
             try {
-              for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
-                var _columns = _step12.value;
+              for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
+                var _columns = _step10.value;
                 $('.botiga-bhfb-' + current_row + '-row').append('<div class="botiga-bhfb-area" data-bhfb-row="' + current_row + '_' + _this.currentBuilderType + '_row"><a class="bhfb-edit-column" href="#" onClick="event.stopPropagation(); wp.customize.section(\'botiga_' + _this.currentBuilderType + '_row__' + current_row + '_' + _this.currentBuilderType + '_row_column' + _column_id + '\').focus();"><svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="2" height="15" fill="#FFF"/><rect x="7" width="2" height="15" fill="#FFF"/><rect y="3" width="3" height="16" transform="rotate(-90 0 3)" fill="#FFF"/><rect y="15" width="2" height="16" transform="rotate(-90 0 15)" fill="#FFF"/><rect x="14" width="2" height="15" fill="#FFF"/></svg></a>');
                 var _column = $('.botiga-bhfb-' + current_row + '-row').find('.botiga-bhfb-area:last-child');
                 if (_columns.length) {
-                  var _iterator14 = _createForOfIteratorHelper(_columns),
-                    _step14;
+                  var _iterator12 = _createForOfIteratorHelper(_columns),
+                    _step12;
                   try {
-                    for (_iterator14.s(); !(_step14 = _iterator14.n()).done;) {
-                      var _element3 = _step14.value;
+                    for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
+                      var _element3 = _step12.value;
                       _element3 = _this.getElementData(_element3);
                       if (_typeof(_element3) !== 'object') {
                         continue;
@@ -707,9 +707,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
                       _column.append('<div class="botiga-bhfb-element">' + '<a href="#" class="bhfb-button" data-bhfb-id="' + _element3.id + '" data-bhfb-focus-section="botiga_section_' + cprefix + '_component__' + _element3.id + '">' + '<span class="bhfb-title-element">' + _element3.label + '</span>' + '<i class="bhfb-edit-element dashicons dashicons-admin-generic"></i>' + '<i class="bhfb-remove-element dashicons dashicons-no-alt"></i>' + '</a>' + '</div>');
                     }
                   } catch (err) {
-                    _iterator14.e(err);
+                    _iterator12.e(err);
                   } finally {
-                    _iterator14.f();
+                    _iterator12.f();
                   }
                 }
                 _column_id++;
@@ -717,19 +717,19 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
               // Mobile Off-Canvas.
             } catch (err) {
-              _iterator12.e(err);
+              _iterator10.e(err);
             } finally {
-              _iterator12.f();
+              _iterator10.f();
             }
             if (field.indexOf('mobile_offcanvas') !== -1) {
               $('.botiga-bhfb-area-offcanvas').html('');
               if (value.mobile_offcanvas.length) {
                 var elements = value.mobile_offcanvas[0];
-                var _iterator13 = _createForOfIteratorHelper(elements),
-                  _step13;
+                var _iterator11 = _createForOfIteratorHelper(elements),
+                  _step11;
                 try {
-                  for (_iterator13.s(); !(_step13 = _iterator13.n()).done;) {
-                    var element = _step13.value;
+                  for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
+                    var element = _step11.value;
                     element = _this.getElementData(element);
                     if (_typeof(element) !== 'object') {
                       continue;
@@ -737,9 +737,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
                     $('.botiga-bhfb-area-offcanvas').append('<div class="botiga-bhfb-element">' + '<a href="#" class="bhfb-button" data-bhfb-id="' + element.id + '" data-bhfb-focus-section="botiga_section_hb_component__' + element.id + '">' + '<span class="bhfb-title-element">' + element.label + '</span>' + '<i class="bhfb-edit-element dashicons dashicons-admin-generic"></i>' + '<i class="bhfb-remove-element dashicons dashicons-no-alt"></i>' + '</a>' + '</div>');
                   }
                 } catch (err) {
-                  _iterator13.e(err);
+                  _iterator11.e(err);
                 } finally {
-                  _iterator13.f();
+                  _iterator11.f();
                 }
               }
             }
@@ -767,19 +767,19 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       if (_this.currentBuilderType === 'footer') {
         elements = botiga_hfb.components.footer;
       }
-      var _iterator15 = _createForOfIteratorHelper(elements),
-        _step15;
+      var _iterator13 = _createForOfIteratorHelper(elements),
+        _step13;
       try {
-        for (_iterator15.s(); !(_step15 = _iterator15.n()).done;) {
-          var el = _step15.value;
+        for (_iterator13.s(); !(_step13 = _iterator13.n()).done;) {
+          var el = _step13.value;
           if (el.id === element) {
             return el;
           }
         }
       } catch (err) {
-        _iterator15.e(err);
+        _iterator13.e(err);
       } finally {
-        _iterator15.f();
+        _iterator13.f();
       }
       return '';
     },
@@ -941,11 +941,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       for (var _i8 = 0, _areas2 = areas; _i8 < _areas2.length; _i8++) {
         var area = _areas2[_i8];
         var prefix = area === 'header' ? 'hb' : 'fb';
-        var _iterator16 = _createForOfIteratorHelper(rows),
-          _step16;
+        var _iterator14 = _createForOfIteratorHelper(rows),
+          _step14;
         try {
           var _loop5 = function _loop5() {
-            var row = _step16.value;
+            var row = _step14.value;
             var sectionID = 'botiga_section_' + prefix + '_' + row + '_' + area + '_row';
             if (typeof wp.customize.section(sectionID) !== 'undefined') {
               wp.customize.section(sectionID).expanded.bind(function (is_active) {
@@ -981,13 +981,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
               });
             }
           };
-          for (_iterator16.s(); !(_step16 = _iterator16.n()).done;) {
+          for (_iterator14.s(); !(_step14 = _iterator14.n()).done;) {
             _loop5();
           }
         } catch (err) {
-          _iterator16.e(err);
+          _iterator14.e(err);
         } finally {
-          _iterator16.f();
+          _iterator14.f();
         }
       }
     },
@@ -1034,7 +1034,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         if (typeof wp.customize.control(optionID) !== 'undefined') {
           var devices = optionID.indexOf('header') !== -1 ? ['desktop', 'tablet'] : ['desktop'];
           var _loop7 = function _loop7() {
-            var device = _devices3[_i10];
+            var device = _devices3[_i0];
             var deviceSelector = optionID.indexOf('header') !== -1 ? '_' + device : '';
             wp.customize(optionID + deviceSelector, function (option) {
               option.bind(function (to) {
@@ -1076,7 +1076,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
               });
             });
           };
-          for (var _i10 = 0, _devices3 = devices; _i10 < _devices3.length; _i10++) {
+          for (var _i0 = 0, _devices3 = devices; _i0 < _devices3.length; _i0++) {
             _loop7();
           }
         }
@@ -1094,8 +1094,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     footerCustomizerOptions: function footerCustomizerOptions() {
       // Rows.
       var rows = ['above', 'main', 'below'];
-      for (var _i11 = 0, _rows4 = rows; _i11 < _rows4.length; _i11++) {
-        var row = _rows4[_i11];
+      for (var _i1 = 0, _rows4 = rows; _i1 < _rows4.length; _i1++) {
+        var row = _rows4[_i1];
         var fieldID = 'botiga_footer_row__' + row + '_footer_row';
 
         // Vertical Aligment.

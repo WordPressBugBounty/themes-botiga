@@ -101,9 +101,7 @@
       }
     };
     n = 0;
-    for (K = this.length; n < K; n++) {
-      b = this[n], J(c(b));
-    }
+    for (K = this.length; n < K; n++) b = this[n], J(c(b));
     return this;
   };
 }).call(void 0);

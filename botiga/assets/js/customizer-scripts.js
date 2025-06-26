@@ -65,7 +65,9 @@ jQuery(document).ready(function ($) {
 jQuery(document).ready(function ($) {
   $('.control-section-botiga-section-upsell, .control-panel-botiga-panel-upsell').on('click', function () {
     var feature = $(this).data('feature');
-    window.open('https://athemes.com/botiga-upgrade?utm_source=theme_customizer&utm_content=' + feature + '&utm_medium=botiga_customizer&utm_campaign=Botiga', '_blank');
+    var decodedUpgradeLink = decodeURIComponent(botigaadm.customizer_upgrade_link_with_utm_content_markup);
+    var url = decodedUpgradeLink.replace('{{utm_content}}', feature);
+    window.open(url, '_blank');
   });
 });
 
@@ -594,8 +596,8 @@ wp.customize.bind('ready', function () {
   wp.customize('custom_color1', function (control) {
     control.bind(function (value) {
       var elements1 = ['scrolltop_bg_color', 'button_background_color', 'button_border_color', 'color_link_default', 'footer_credits_links_color', 'single_product_tabs_border_color_active', 'single_product_tabs_text_color_active', 'single_product_tabs_text_color', 'shop_archive_header_button_color', 'shop_archive_header_button_border_color', 'ql_item_bg_hover'];
-      for (var _i10 = 0, _elements9 = elements1; _i10 < _elements9.length; _i10++) {
-        var element = _elements9[_i10];
+      for (var _i0 = 0, _elements9 = elements1; _i0 < _elements9.length; _i0++) {
+        var element = _elements9[_i0];
         if (typeof wp.customize(element) !== 'undefined') {
           botigaChangeElementColors(element, value);
         }
@@ -605,8 +607,8 @@ wp.customize.bind('ready', function () {
   wp.customize('custom_color2', function (control) {
     control.bind(function (value) {
       var elements2 = ['footer_widgets_links_hover_color', 'scrolltop_bg_color_hover', 'button_background_color_hover', 'button_border_color_hover', 'color_link_hover', 'footer_credits_links_color_hover', 'shop_archive_header_button_background_color_hover', 'shop_archive_header_button_border_color_hover', 'main_header_sticky_active_color_hover', 'main_header_color_hover', 'main_header_sticky_active_submenu_color_hover', 'main_header_submenu_color_hover', 'ql_item_color_hover'];
-      for (var _i11 = 0, _elements10 = elements2; _i11 < _elements10.length; _i11++) {
-        var element = _elements10[_i11];
+      for (var _i1 = 0, _elements0 = elements2; _i1 < _elements0.length; _i1++) {
+        var element = _elements0[_i1];
         if (typeof wp.customize(element) !== 'undefined') {
           botigaChangeElementColors(element, value);
         }
@@ -616,8 +618,8 @@ wp.customize.bind('ready', function () {
   wp.customize('custom_color3', function (control) {
     control.bind(function (value) {
       var elements3 = ['single_post_title_color', 'main_header_submenu_color', 'main_header_sticky_active_submenu_color', 'offcanvas_menu_color', 'mobile_header_color', 'footer_widgets_title_color', 'single_product_title_color', 'color_forms_text', 'shop_product_product_title', 'loop_post_meta_color', 'loop_post_title_color', 'main_header_color', 'main_header_sticky_active_color', 'site_title_color', 'site_description_color', 'color_heading_1', 'color_heading_2', 'color_heading_3', 'color_heading_4', 'color_heading_5', 'color_heading_6', 'shop_archive_header_title_color', 'shop_archive_header_description_color', 'bhfb_search_icon_color', 'bhfb_woo_icons_color', 'bhfb_contact_info_icon_color', 'ql_item_color'];
-      for (var _i12 = 0, _elements11 = elements3; _i12 < _elements11.length; _i12++) {
-        var element = _elements11[_i12];
+      for (var _i10 = 0, _elements1 = elements3; _i10 < _elements1.length; _i10++) {
+        var element = _elements1[_i10];
         if (typeof wp.customize(element) !== 'undefined') {
           botigaChangeElementColors(element, value);
         }
@@ -627,8 +629,8 @@ wp.customize.bind('ready', function () {
   wp.customize('custom_color4', function (control) {
     control.bind(function (value) {
       var elements4 = ['footer_widgets_links_color', 'footer_widgets_text_color', 'color_body_text', 'footer_credits_text_color', 'color_forms_placeholder', 'topbar_color', 'main_header_bottom_color', 'single_sticky_add_to_cart_style_color_content', 'loop_post_text_color'];
-      for (var _i13 = 0, _elements12 = elements4; _i13 < _elements12.length; _i13++) {
-        var element = _elements12[_i13];
+      for (var _i11 = 0, _elements10 = elements4; _i11 < _elements10.length; _i11++) {
+        var element = _elements10[_i11];
         if (typeof wp.customize(element) !== 'undefined') {
           botigaChangeElementColors(element, value);
         }
@@ -638,8 +640,8 @@ wp.customize.bind('ready', function () {
   wp.customize('custom_color5', function (control) {
     control.bind(function (value) {
       var elements5 = ['color_forms_borders', 'single_product_tabs_remaining_borders', 'single_sticky_add_to_cart_style_color_border', 'botiga_header_row__above_header_row_border_bottom_color', 'botiga_header_row__main_header_row_border_bottom_color', 'botiga_header_row__below_header_row_border_bottom_color', 'botiga_footer_row__above_footer_row_border_top_color', 'botiga_footer_row__main_footer_row_border_top_color', 'botiga_footer_row__below_footer_row_border_top_color', 'ql_item_border_color'];
-      for (var _i14 = 0, _elements13 = elements5; _i14 < _elements13.length; _i14++) {
-        var element = _elements13[_i14];
+      for (var _i12 = 0, _elements11 = elements5; _i12 < _elements11.length; _i12++) {
+        var element = _elements11[_i12];
         if (typeof wp.customize(element) !== 'undefined') {
           botigaChangeElementColors(element, value);
         }
@@ -649,8 +651,8 @@ wp.customize.bind('ready', function () {
   wp.customize('custom_color6', function (control) {
     control.bind(function (value) {
       var elements6 = ['footer_widgets_background', 'footer_credits_background', 'content_cards_background', 'single_product_tabs_background_color', 'single_product_tabs_background_color_active', 'single_product_gallery_styles_background_color', 'single_sticky_add_to_cart_style_color_background', 'botiga_footer_row__above_footer_row_background_color', 'botiga_footer_row__main_footer_row_background_color', 'botiga_footer_row__below_footer_row_background_color', 'ql_background_color'];
-      for (var _i15 = 0, _elements14 = elements6; _i15 < _elements14.length; _i15++) {
-        var element = _elements14[_i15];
+      for (var _i13 = 0, _elements12 = elements6; _i13 < _elements12.length; _i13++) {
+        var element = _elements12[_i13];
         if (typeof wp.customize(element) !== 'undefined') {
           botigaChangeElementColors(element, value);
         }
@@ -660,8 +662,8 @@ wp.customize.bind('ready', function () {
   wp.customize('custom_color7', function (control) {
     control.bind(function (value) {
       var elements7 = ['background_color', 'button_color', 'button_color_hover', 'scrolltop_color', 'scrolltop_color_hover', 'color_forms_background', 'topbar_background', 'single_product_reviews_advanced_section_bg_color'];
-      for (var _i16 = 0, _elements15 = elements7; _i16 < _elements15.length; _i16++) {
-        var element = _elements15[_i16];
+      for (var _i14 = 0, _elements13 = elements7; _i14 < _elements13.length; _i14++) {
+        var element = _elements13[_i14];
         if (typeof wp.customize(element) !== 'undefined') {
           botigaChangeElementColors(element, value);
         }
@@ -671,8 +673,8 @@ wp.customize.bind('ready', function () {
   wp.customize('custom_color8', function (control) {
     control.bind(function (value) {
       var elements8 = ['main_header_submenu_background', 'main_header_sticky_active_submenu_background_color', 'main_header_background', 'main_header_sticky_active_background', 'main_header_bottom_background', 'mobile_header_background', 'offcanvas_menu_background', 'shop_archive_header_background_color', 'shop_archive_header_button_background_color', 'shop_archive_header_button_color_hover', 'botiga_header_row__above_header_row_background_color', 'botiga_header_row__main_header_row_background_color', 'botiga_header_row__below_header_row_background_color', 'login_register_submenu_background'];
-      for (var _i17 = 0, _elements16 = elements8; _i17 < _elements16.length; _i17++) {
-        var element = _elements16[_i17];
+      for (var _i15 = 0, _elements14 = elements8; _i15 < _elements14.length; _i15++) {
+        var element = _elements14[_i15];
         if (typeof wp.customize(element) !== 'undefined') {
           botigaChangeElementColors(element, value);
         }

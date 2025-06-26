@@ -34,7 +34,7 @@ botiga.popup = {
     }
 
     // Open popup link/button
-    var _loop = function _loop(i) {
+    var _loop = function _loop() {
       var button = buttons[i],
         popup = document.getElementById(button.getAttribute('data-popup-id'));
       button.addEventListener('click', function (e) {
@@ -55,7 +55,7 @@ botiga.popup = {
       }
     };
     for (var i = 0; i < buttons.length; i++) {
-      _loop(i);
+      _loop();
     }
 
     // Close popup link/button
@@ -98,7 +98,7 @@ botiga.popup = {
     event.preventDefault();
     var is_customizer = document.getElementById('customize-preview-js') === null ? false : true;
     var popups = document.querySelectorAll('.botiga-popup');
-    var _loop2 = function _loop2(i) {
+    var _loop2 = function _loop2() {
       var popup = popups[i];
       if (!is_customizer && parseInt(popup.getAttribute('data-cookie'))) {
         botiga.helpers.setCookie(popup.getAttribute('data-cookie-name'), 1, popup.getAttribute('data-cookie-expiration'));
@@ -111,7 +111,7 @@ botiga.popup = {
       }, 300);
     };
     for (var i = 0; i < popups.length; i++) {
-      _loop2(i);
+      _loop2();
     }
   }
 };

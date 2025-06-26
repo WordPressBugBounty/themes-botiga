@@ -1,9 +1,8 @@
 "use strict";
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t.return || t.return(); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 var botiga = botiga || {};
 
 /**
@@ -337,8 +336,8 @@ botiga.navigation = {
     try {
       var _loop = function _loop() {
         var li = _step6.value;
-        var mouseOutTimeout = void 0,
-          mouseOverTimeout = void 0,
+        var mouseOutTimeout,
+          mouseOverTimeout,
           delayTime = 300;
         var parent = li;
         li.addEventListener('mouseover', function (e) {
@@ -436,11 +435,11 @@ botiga.navigation = {
   */
   checkMenuReverse: function checkMenuReverse() {
     var items = document.querySelectorAll('.header-login-register, .top-bar-login-register, .botiga-dropdown .menu li');
-    var _iterator10 = _createForOfIteratorHelper(items),
-      _step10;
+    var _iterator0 = _createForOfIteratorHelper(items),
+      _step0;
     try {
-      for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
-        var element = _step10.value;
+      for (_iterator0.s(); !(_step0 = _iterator0.n()).done;) {
+        var element = _step0.value;
         element.removeEventListener('mouseover', this.menuReverseEventHandler);
         element.addEventListener('mouseover', this.menuReverseEventHandler, {
           passive: true
@@ -451,9 +450,9 @@ botiga.navigation = {
         });
       }
     } catch (err) {
-      _iterator10.e(err);
+      _iterator0.e(err);
     } finally {
-      _iterator10.f();
+      _iterator0.f();
     }
   },
   menuReverseEventHandler: function menuReverseEventHandler() {
@@ -505,11 +504,11 @@ botiga.desktopOffCanvasToggleNav = {
 
     //Toggle submenus
     var submenuToggles = offCanvas.querySelectorAll('.dropdown-symbol, .menu-item-has-children > a[href="#"]');
-    var _iterator11 = _createForOfIteratorHelper(submenuToggles),
-      _step11;
+    var _iterator1 = _createForOfIteratorHelper(submenuToggles),
+      _step1;
     try {
-      for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
-        var submenuToggle = _step11.value;
+      for (_iterator1.s(); !(_step1 = _iterator1.n()).done;) {
+        var submenuToggle = _step1.value;
         submenuToggle.addEventListener('touchstart', submenuToggleHandler);
         submenuToggle.addEventListener('click', submenuToggleHandler);
         submenuToggle.addEventListener('keydown', function (e) {
@@ -523,9 +522,9 @@ botiga.desktopOffCanvasToggleNav = {
         });
       }
     } catch (err) {
-      _iterator11.e(err);
+      _iterator1.e(err);
     } finally {
-      _iterator11.f();
+      _iterator1.f();
     }
     function submenuToggleHandler(e) {
       e.preventDefault();
@@ -587,27 +586,27 @@ botiga.headerSearch = {
       form = document.querySelector('.header-search-form');
     }
     if (typeof overlay !== 'undefined') {
-      var _iterator12 = _createForOfIteratorHelper(button),
-        _step12;
+      var _iterator10 = _createForOfIteratorHelper(button),
+        _step10;
       try {
-        for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
-          var buttonEl = _step12.value;
+        for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
+          var buttonEl = _step10.value;
           buttonEl.addEventListener('click', function (e) {
             e.preventDefault();
 
             // Hide other search icons 
             if (button.length > 1) {
-              var _iterator13 = _createForOfIteratorHelper(button),
-                _step13;
+              var _iterator11 = _createForOfIteratorHelper(button),
+                _step11;
               try {
-                for (_iterator13.s(); !(_step13 = _iterator13.n()).done;) {
-                  var btn = _step13.value;
+                for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
+                  var btn = _step11.value;
                   btn.classList.toggle('hide');
                 }
               } catch (err) {
-                _iterator13.e(err);
+                _iterator11.e(err);
               } finally {
-                _iterator13.f();
+                _iterator11.f();
               }
             }
             form.classList.toggle('active');
@@ -635,9 +634,9 @@ botiga.headerSearch = {
           });
         }
       } catch (err) {
-        _iterator12.e(err);
+        _iterator10.e(err);
       } finally {
-        _iterator12.f();
+        _iterator10.f();
       }
       overlay.addEventListener('click', function () {
         form.classList.remove('active');
@@ -679,19 +678,19 @@ botiga.headerSearch = {
     return this;
   },
   backButtonsToDefaultState: function backButtonsToDefaultState(button) {
-    var _iterator14 = _createForOfIteratorHelper(button),
-      _step14;
+    var _iterator12 = _createForOfIteratorHelper(button),
+      _step12;
     try {
-      for (_iterator14.s(); !(_step14 = _iterator14.n()).done;) {
-        var btn = _step14.value;
+      for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
+        var btn = _step12.value;
         btn.classList.remove('hide');
         btn.querySelector('.icon-cancel').classList.remove('active');
         btn.querySelector('.icon-search').classList.add('active');
       }
     } catch (err) {
-      _iterator14.e(err);
+      _iterator12.e(err);
     } finally {
-      _iterator14.f();
+      _iterator12.f();
     }
   }
 };
@@ -996,17 +995,17 @@ botiga.backToTop = {
     if (!links.length) {
       return false;
     }
-    var _iterator15 = _createForOfIteratorHelper(links),
-      _step15;
+    var _iterator13 = _createForOfIteratorHelper(links),
+      _step13;
     try {
-      for (_iterator15.s(); !(_step15 = _iterator15.n()).done;) {
-        var link = _step15.value;
+      for (_iterator13.s(); !(_step13 = _iterator13.n()).done;) {
+        var link = _step13.value;
         link.addEventListener('touchend', function () {});
       }
     } catch (err) {
-      _iterator15.e(err);
+      _iterator13.e(err);
     } finally {
-      _iterator15.f();
+      _iterator13.f();
     }
   }
 };
@@ -1183,11 +1182,11 @@ botiga.carousel = {
       return false;
     }
     var carouselEls = document.querySelectorAll('.botiga-carousel, #masthead .cross-sells, .botiga-side-mini-cart .cross-sells, .cart-collaterals .cross-sells');
-    var _iterator16 = _createForOfIteratorHelper(carouselEls),
-      _step16;
+    var _iterator14 = _createForOfIteratorHelper(carouselEls),
+      _step14;
     try {
-      for (_iterator16.s(); !(_step16 = _iterator16.n()).done;) {
-        var carouselEl = _step16.value;
+      for (_iterator14.s(); !(_step14 = _iterator14.n()).done;) {
+        var carouselEl = _step14.value;
         if (carouselEl.querySelector('.botiga-carousel-stage') === null) {
           carouselEl.querySelector('.products').classList.add('botiga-carousel-stage');
         }
@@ -1250,9 +1249,9 @@ botiga.carousel = {
         }
       }
     } catch (err) {
-      _iterator16.e(err);
+      _iterator14.e(err);
     } finally {
-      _iterator16.f();
+      _iterator14.f();
     }
   },
   events: function events() {
@@ -1336,36 +1335,37 @@ botiga.collapse = {
     }
     var _this = this;
     var _loop2 = function _loop2(i) {
-      var opts = elements[i].getAttribute('data-botiga-collapse'),
-        options = JSON.parse(opts.replace(/'/g, '"').replace(';', ''));
-      if (!options.enable) {
-        return {
-          v: false
-        };
-      }
-      _this.expand(elements[i], options, true);
-      elements[i].addEventListener('click', function (e) {
-        e.preventDefault();
-        this.dispatchEvent(new Event('botiga.collapse.before.expand'));
-        if (!elements[i].classList.contains('active')) {
-          _this.expand(elements[i], options);
-        } else {
-          _this.collapse(elements[i], options);
+        var opts = elements[i].getAttribute('data-botiga-collapse'),
+          options = JSON.parse(opts.replace(/'/g, '"').replace(';', ''));
+        if (!options.enable) {
+          return {
+            v: false
+          };
         }
-        this.dispatchEvent(new Event('botiga.collapse.after.collapse'));
-      });
-      if (options.options.oneAtTime) {
-        elements[i].addEventListener('botiga.collapse.before.expand', function () {
-          var botiga_collapse = document.querySelectorAll(options.options.oneAtTimeParentSelector + ' [data-botiga-collapse]');
-          for (var u = 0; u < botiga_collapse.length; u++) {
-            _this.collapseAll(botiga_collapse[u], options);
+        _this.expand(elements[i], options, true);
+        elements[i].addEventListener('click', function (e) {
+          e.preventDefault();
+          this.dispatchEvent(new Event('botiga.collapse.before.expand'));
+          if (!elements[i].classList.contains('active')) {
+            _this.expand(elements[i], options);
+          } else {
+            _this.collapse(elements[i], options);
           }
+          this.dispatchEvent(new Event('botiga.collapse.after.collapse'));
         });
-      }
-    };
+        if (options.options.oneAtTime) {
+          elements[i].addEventListener('botiga.collapse.before.expand', function () {
+            var botiga_collapse = document.querySelectorAll(options.options.oneAtTimeParentSelector + ' [data-botiga-collapse]');
+            for (var u = 0; u < botiga_collapse.length; u++) {
+              _this.collapseAll(botiga_collapse[u], options);
+            }
+          });
+        }
+      },
+      _ret;
     for (var i = 0; i < elements.length; i++) {
-      var _ret = _loop2(i);
-      if (_typeof(_ret) === "object") return _ret.v;
+      _ret = _loop2(i);
+      if (_ret) return _ret.v;
     }
   },
   expand: function expand(el, options, first_load) {
@@ -1410,26 +1410,24 @@ botiga.tabsNav = {
   },
   events: function events() {
     var tabsNavItems = document.querySelectorAll('.botiga-tabs-nav-item');
-    var _iterator17 = _createForOfIteratorHelper(tabsNavItems),
-      _step17;
+    var _iterator15 = _createForOfIteratorHelper(tabsNavItems),
+      _step15;
     try {
-      for (_iterator17.s(); !(_step17 = _iterator17.n()).done;) {
-        var tabItem = _step17.value;
+      var _loop3 = function _loop3() {
+        var tabItem = _step15.value;
         var hasClickOnMouseOver = tabItem.closest('.botiga-tabs-nav').classList.contains('botiga-tabs-nav-click-on-mouseover');
         if (hasClickOnMouseOver) {
-          (function () {
-            var st = void 0;
-            tabItem.addEventListener('mouseover', function (e) {
-              e.preventDefault();
-              var self = this;
-              st = setTimeout(function () {
-                self.dispatchEvent(new Event('click'));
-              }, 500);
-            });
-            tabItem.addEventListener('mouseout', function (e) {
-              clearTimeout(st);
-            });
-          })();
+          var st;
+          tabItem.addEventListener('mouseover', function (e) {
+            e.preventDefault();
+            var self = this;
+            st = setTimeout(function () {
+              self.dispatchEvent(new Event('click'));
+            }, 500);
+          });
+          tabItem.addEventListener('mouseout', function (e) {
+            clearTimeout(st);
+          });
         }
         tabItem.addEventListener('click', function (e) {
           e.preventDefault();
@@ -1449,11 +1447,11 @@ botiga.tabsNav = {
             return false;
           }
           tabsNavItems = this.closest('.botiga-tabs-nav').querySelectorAll('.botiga-tabs-nav-item');
-          var _iterator18 = _createForOfIteratorHelper(tabsNavItems),
-            _step18;
+          var _iterator16 = _createForOfIteratorHelper(tabsNavItems),
+            _step16;
           try {
-            for (_iterator18.s(); !(_step18 = _iterator18.n()).done;) {
-              var _tabItem = _step18.value;
+            for (_iterator16.s(); !(_step16 = _iterator16.n()).done;) {
+              var _tabItem = _step16.value;
               var _tabContentTo = document.querySelector(_tabItem.querySelector('.botiga-tabs-nav-link').getAttribute('href'));
               if (_tabContentTo === null) {
                 continue;
@@ -1462,9 +1460,9 @@ botiga.tabsNav = {
               _tabContentTo.classList.remove('is-active');
             }
           } catch (err) {
-            _iterator18.e(err);
+            _iterator16.e(err);
           } finally {
-            _iterator18.f();
+            _iterator16.f();
           }
           previousActiveTab.classList.add('removing');
           setTimeout(function () {
@@ -1477,11 +1475,14 @@ botiga.tabsNav = {
             previousActiveTab.classList.remove('removing');
           }, 300);
         });
+      };
+      for (_iterator15.s(); !(_step15 = _iterator15.n()).done;) {
+        _loop3();
       }
     } catch (err) {
-      _iterator17.e(err);
+      _iterator15.e(err);
     } finally {
-      _iterator17.f();
+      _iterator15.f();
     }
   }
 };
