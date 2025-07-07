@@ -377,26 +377,26 @@ jQuery(document).ready(function ($) {
       var visibles = $tab.data('connected');
       $tab.addClass('active');
       $siblings.removeClass('active');
-      $.each(visibles, function (i, v) {
+      visibles.forEach(function (element, i) {
         if (i === 0) {
-          $(this).addClass('botiga-tab-control-item-first');
+          $(element).addClass('botiga-tab-control-item-first');
         }
         if (i === visibles.length - 1) {
-          $(this).addClass('botiga-tab-control-item-last');
+          $(element).addClass('botiga-tab-control-item-last');
         }
-        $(this).removeClass('botiga-hide-control');
+        $(element).removeClass('botiga-hide-control');
       });
       $siblings.each(function () {
         var $sibling = $(this);
         var hiddens = $sibling.data('connected');
-        $.each(hiddens, function (i, v) {
+        hiddens.forEach(function (element, i) {
           if (i === 0) {
-            $(this).removeClass('botiga-tab-control-item-first');
+            $(element).addClass('botiga-tab-control-item-first');
           }
           if (i === hiddens.length - 1) {
-            $(this).removeClass('botiga-tab-control-item-last');
+            $(element).addClass('botiga-tab-control-item-last');
           }
-          $(this).addClass('botiga-hide-control');
+          $(element).addClass('botiga-hide-control');
         });
       });
     });
