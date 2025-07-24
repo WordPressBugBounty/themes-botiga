@@ -341,16 +341,14 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
         _this.builderGridContent();
       });
       $('#customize-preview iframe').on('mouseup', function (e) {
-        if (!_this.currentBuilder) {
-          return false;
+        if (_this.currentBuilder) {
+          _this.closeElementsPopup(e);
         }
-        _this.closeElementsPopup(e);
       });
       $(document).on('mouseup', function (e) {
-        if (!_this.currentBuilder) {
-          return false;
+        if (_this.currentBuilder) {
+          _this.closeElementsPopup(e);
         }
-        _this.closeElementsPopup(e);
       });
     },
     closeElementsPopup: function closeElementsPopup(e) {

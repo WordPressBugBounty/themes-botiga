@@ -299,6 +299,13 @@
   max-width: 27px;
   max-height: 27px;
 }
+.bhfb.bhfb-header .bhfb-component-search .header-search .icon-search,
+.bhfb.bhfb-header .bhfb-component-search .header-search .icon-cancel,
+.bhfb-mobile_offcanvas .bhfb-component-search .header-search .icon-search,
+.bhfb-mobile_offcanvas .bhfb-component-search .header-search .icon-cancel {
+  width: 25px;
+  height: 25px;
+}
 .bhfb.bhfb-header .bhfb-component-search svg,
 .bhfb.bhfb-header .bhfb-component-woo_icons svg,
 .bhfb.bhfb-header .bhfb-component-social svg,
