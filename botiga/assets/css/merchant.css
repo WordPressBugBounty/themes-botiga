@@ -68,6 +68,14 @@ button[class*=merchant-]:not(.button):active, button[class*=merchant-]:not(.butt
   color: #1a1a1a !important;
 }
 
+.woocommerce-mini-cart__total.botiga-final-total .price-data {
+  max-width: 200px;
+}
+
+.botiga-side-mini-cart__body .woocommerce-mini-cart__total.botiga-final-total .price-data {
+  max-width: 300px;
+}
+
 /**
  * Buy Now module.
  */
