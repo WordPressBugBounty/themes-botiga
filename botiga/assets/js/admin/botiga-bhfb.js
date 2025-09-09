@@ -374,7 +374,7 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
       elementsWrapper.html('');
       mobileElementsWrapper.html('');
       var cprefix = 'hb';
-      if (_this.currentBuilderType && _this.currentBuilderType === 'footer') {
+      if (_this.currentBuilderType === 'footer') {
         cprefix = 'fb';
       }
       if (elements.desktop.length) {
@@ -427,18 +427,68 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
     updateAvailableComponents: function updateAvailableComponents() {
       var _this = this;
       if (_this.currentBuilderType === 'header') {
-        // Header Desktop Components.
-        $('.botiga-header-builder-available-components').html('');
-        $('.botiga-header-builder-available-components').html($('.botiga-bhfb-header .botiga-bhfb-elements-desktop').html());
+        // Header Desktop Components - regenerate instead of copying
+        var headerElements = _this.getElementsUnused();
+        var headerDesktopHTML = '';
+        if (headerElements.desktop.length) {
+          var _iterator9 = _createForOfIteratorHelper(headerElements.desktop),
+            _step9;
+          try {
+            for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
+              var element = _step9.value;
+              headerDesktopHTML += '<div class="botiga-bhfb-element botiga-bhfb-element-desktop">' + '<a href="#" class="bhfb-button" data-bhfb-id="' + element.id + '" data-bhfb-focus-section="botiga_section_hb_component__' + element.id + '">' + element.label + '</a>' + '</div>';
+            }
+          } catch (err) {
+            _iterator9.e(err);
+          } finally {
+            _iterator9.f();
+          }
+        } else {
+          headerDesktopHTML = '<p class="bhfb-elements-message">' + botiga_hfb.i18n.elementsMessage + '</p>';
+        }
+        $('.botiga-header-builder-available-components').html(headerDesktopHTML);
 
-        // Header Mobile Components.
-        $('.botiga-header-builder-available-mobile-components').html('');
-        $('.botiga-header-builder-available-mobile-components').html($('.botiga-bhfb-header .botiga-bhfb-elements-mobile').html());
+        // Header Mobile Components - regenerate instead of copying
+        var headerMobileHTML = '';
+        if (headerElements.mobile.length) {
+          var _iterator0 = _createForOfIteratorHelper(headerElements.mobile),
+            _step0;
+          try {
+            for (_iterator0.s(); !(_step0 = _iterator0.n()).done;) {
+              var _element2 = _step0.value;
+              headerMobileHTML += '<div class="botiga-bhfb-element botiga-bhfb-element-mobile">' + '<a href="#" class="bhfb-button" data-bhfb-id="' + _element2.id + '" data-bhfb-focus-section="botiga_section_hb_component__' + _element2.id + '">' + _element2.label + '</a>' + '</div>';
+            }
+          } catch (err) {
+            _iterator0.e(err);
+          } finally {
+            _iterator0.f();
+          }
+        } else {
+          headerMobileHTML = '<p class="bhfb-elements-message">' + botiga_hfb.i18n.elementsMessage + '</p>';
+        }
+        $('.botiga-header-builder-available-mobile-components').html(headerMobileHTML);
       }
       if (_this.currentBuilderType === 'footer') {
-        // Footer Components.
-        $('.botiga-footer-builder-available-footer-components').html('');
-        $('.botiga-footer-builder-available-footer-components').html($('.botiga-bhfb-footer .botiga-bhfb-elements-desktop').html());
+        // Footer Components - regenerate instead of copying
+        var footerElements = _this.getElementsUnused();
+        var footerHTML = '';
+        if (footerElements.desktop.length) {
+          var _iterator1 = _createForOfIteratorHelper(footerElements.desktop),
+            _step1;
+          try {
+            for (_iterator1.s(); !(_step1 = _iterator1.n()).done;) {
+              var _element3 = _step1.value;
+              footerHTML += '<div class="botiga-bhfb-element botiga-bhfb-element-desktop">' + '<a href="#" class="bhfb-button" data-bhfb-id="' + _element3.id + '" data-bhfb-focus-section="botiga_section_fb_component__' + _element3.id + '">' + _element3.label + '</a>' + '</div>';
+            }
+          } catch (err) {
+            _iterator1.e(err);
+          } finally {
+            _iterator1.f();
+          }
+        } else {
+          footerHTML = '<p class="bhfb-elements-message">' + botiga_hfb.i18n.elementsMessage + '</p>';
+        }
+        $('.botiga-footer-builder-available-footer-components').html(footerHTML);
       }
     },
     addUpsellComponents: function addUpsellComponents() {
@@ -448,17 +498,17 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
       }
       var upsellComponentsHTML = '',
         components = _this.currentBuilderType === 'header' ? botiga_hfb.upsell_components.header : botiga_hfb.upsell_components.footer;
-      var _iterator9 = _createForOfIteratorHelper(components),
-        _step9;
+      var _iterator10 = _createForOfIteratorHelper(components),
+        _step10;
       try {
-        for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
-          var component = _step9.value;
+        for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
+          var component = _step10.value;
           upsellComponentsHTML += "\n                    <div class=\"botiga-bhfb-element botiga-bhfb-element-desktop\">\n                        <a href=\"#\" class=\"bhfb-button\">".concat(component.label, "</a> \n                    </div>\n                ");
         }
       } catch (err) {
-        _iterator9.e(err);
+        _iterator10.e(err);
       } finally {
-        _iterator9.f();
+        _iterator10.f();
       }
       var upsellHTML = "\n                <div class=\"botiga-bhfb-upsell-components-wrapper\">\n                    <h4>".concat(botiga_hfb.upsell_components.title, "</h4>\n                    <div class=\"botiga-bhfb-upsell-components\">").concat(upsellComponentsHTML, "</div>\n                    <p>").concat(botiga_hfb.upsell_components.total, "</p>\n                    <a href=\"").concat(botiga_hfb.upsell_components.link, "\" target=\"_blank\" class=\"bhfb-upsell-button\">").concat(botiga_hfb.upsell_components.button, "</a>\n                </div>\n            ");
       $('#botiga-bhfb-elements .botiga-bhfb-elements-wrapper .botiga-bhfb-upsell-components-wrapper').remove();
@@ -648,61 +698,24 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
           // Desktop. 
           if (_this.currentDevice === 'desktop') {
             var column_id = 1;
-            var _iterator0 = _createForOfIteratorHelper(value.desktop),
-              _step0;
+            var _iterator11 = _createForOfIteratorHelper(value.desktop),
+              _step11;
             try {
-              for (_iterator0.s(); !(_step0 = _iterator0.n()).done;) {
-                var columns = _step0.value;
+              for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
+                var columns = _step11.value;
                 $('.botiga-bhfb-' + _this.currentBuilderType + ' .botiga-bhfb-' + current_row + '-row').append('<div class="botiga-bhfb-area" data-bhfb-row="' + current_row + '_' + _this.currentBuilderType + '_row"><a class="bhfb-edit-column" href="#" onClick="event.stopPropagation(); wp.customize.section(\'botiga_' + _this.currentBuilderType + '_row__' + current_row + '_' + _this.currentBuilderType + '_row_column' + column_id + '\').focus();"><svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="2" height="15" fill="#FFF"/><rect x="7" width="2" height="15" fill="#FFF"/><rect y="3" width="3" height="16" transform="rotate(-90 0 3)" fill="#FFF"/><rect y="15" width="2" height="16" transform="rotate(-90 0 15)" fill="#FFF"/><rect x="14" width="2" height="15" fill="#FFF"/></svg></a>');
                 var column = $('.botiga-bhfb-' + current_row + '-row').find('.botiga-bhfb-area:last-child');
                 if (columns.length) {
-                  var _iterator1 = _createForOfIteratorHelper(columns),
-                    _step1;
-                  try {
-                    for (_iterator1.s(); !(_step1 = _iterator1.n()).done;) {
-                      var _element2 = _step1.value;
-                      _element2 = _this.getElementData(_element2);
-                      if (_typeof(_element2) !== 'object') {
-                        continue;
-                      }
-                      column.append('<div class="botiga-bhfb-element">' + '<a href="#" class="bhfb-button" data-bhfb-id="' + _element2.id + '" data-bhfb-focus-section="botiga_section_' + cprefix + '_component__' + _element2.id + '">' + '<span class="bhfb-title-element">' + _element2.label + '</span>' + '<i class="bhfb-edit-element dashicons dashicons-admin-generic"></i>' + '<i class="bhfb-remove-element dashicons dashicons-no-alt"></i>' + '</a>' + '</div>');
-                    }
-                  } catch (err) {
-                    _iterator1.e(err);
-                  } finally {
-                    _iterator1.f();
-                  }
-                }
-                column_id++;
-              }
-            } catch (err) {
-              _iterator0.e(err);
-            } finally {
-              _iterator0.f();
-            }
-          }
-
-          // Mobile.
-          if (_this.currentDevice === 'mobile') {
-            var _column_id = 1;
-            var _iterator10 = _createForOfIteratorHelper(value.mobile),
-              _step10;
-            try {
-              for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
-                var _columns = _step10.value;
-                $('.botiga-bhfb-' + current_row + '-row').append('<div class="botiga-bhfb-area" data-bhfb-row="' + current_row + '_' + _this.currentBuilderType + '_row"><a class="bhfb-edit-column" href="#" onClick="event.stopPropagation(); wp.customize.section(\'botiga_' + _this.currentBuilderType + '_row__' + current_row + '_' + _this.currentBuilderType + '_row_column' + _column_id + '\').focus();"><svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="2" height="15" fill="#FFF"/><rect x="7" width="2" height="15" fill="#FFF"/><rect y="3" width="3" height="16" transform="rotate(-90 0 3)" fill="#FFF"/><rect y="15" width="2" height="16" transform="rotate(-90 0 15)" fill="#FFF"/><rect x="14" width="2" height="15" fill="#FFF"/></svg></a>');
-                var _column = $('.botiga-bhfb-' + current_row + '-row').find('.botiga-bhfb-area:last-child');
-                if (_columns.length) {
-                  var _iterator12 = _createForOfIteratorHelper(_columns),
+                  var _iterator12 = _createForOfIteratorHelper(columns),
                     _step12;
                   try {
                     for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
-                      var _element3 = _step12.value;
-                      _element3 = _this.getElementData(_element3);
-                      if (_typeof(_element3) !== 'object') {
+                      var _element4 = _step12.value;
+                      _element4 = _this.getElementData(_element4);
+                      if (_typeof(_element4) !== 'object') {
                         continue;
                       }
-                      _column.append('<div class="botiga-bhfb-element">' + '<a href="#" class="bhfb-button" data-bhfb-id="' + _element3.id + '" data-bhfb-focus-section="botiga_section_' + cprefix + '_component__' + _element3.id + '">' + '<span class="bhfb-title-element">' + _element3.label + '</span>' + '<i class="bhfb-edit-element dashicons dashicons-admin-generic"></i>' + '<i class="bhfb-remove-element dashicons dashicons-no-alt"></i>' + '</a>' + '</div>');
+                      column.append('<div class="botiga-bhfb-element">' + '<a href="#" class="bhfb-button" data-bhfb-id="' + _element4.id + '" data-bhfb-focus-section="botiga_section_' + cprefix + '_component__' + _element4.id + '">' + '<span class="bhfb-title-element">' + _element4.label + '</span>' + '<i class="bhfb-edit-element dashicons dashicons-admin-generic"></i>' + '<i class="bhfb-remove-element dashicons dashicons-no-alt"></i>' + '</a>' + '</div>');
                     }
                   } catch (err) {
                     _iterator12.e(err);
@@ -710,24 +723,61 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
                     _iterator12.f();
                   }
                 }
+                column_id++;
+              }
+            } catch (err) {
+              _iterator11.e(err);
+            } finally {
+              _iterator11.f();
+            }
+          }
+
+          // Mobile.
+          if (_this.currentDevice === 'mobile') {
+            var _column_id = 1;
+            var _iterator13 = _createForOfIteratorHelper(value.mobile),
+              _step13;
+            try {
+              for (_iterator13.s(); !(_step13 = _iterator13.n()).done;) {
+                var _columns = _step13.value;
+                $('.botiga-bhfb-' + current_row + '-row').append('<div class="botiga-bhfb-area" data-bhfb-row="' + current_row + '_' + _this.currentBuilderType + '_row"><a class="bhfb-edit-column" href="#" onClick="event.stopPropagation(); wp.customize.section(\'botiga_' + _this.currentBuilderType + '_row__' + current_row + '_' + _this.currentBuilderType + '_row_column' + _column_id + '\').focus();"><svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="2" height="15" fill="#FFF"/><rect x="7" width="2" height="15" fill="#FFF"/><rect y="3" width="3" height="16" transform="rotate(-90 0 3)" fill="#FFF"/><rect y="15" width="2" height="16" transform="rotate(-90 0 15)" fill="#FFF"/><rect x="14" width="2" height="15" fill="#FFF"/></svg></a>');
+                var _column = $('.botiga-bhfb-' + current_row + '-row').find('.botiga-bhfb-area:last-child');
+                if (_columns.length) {
+                  var _iterator15 = _createForOfIteratorHelper(_columns),
+                    _step15;
+                  try {
+                    for (_iterator15.s(); !(_step15 = _iterator15.n()).done;) {
+                      var _element5 = _step15.value;
+                      _element5 = _this.getElementData(_element5);
+                      if (_typeof(_element5) !== 'object') {
+                        continue;
+                      }
+                      _column.append('<div class="botiga-bhfb-element">' + '<a href="#" class="bhfb-button" data-bhfb-id="' + _element5.id + '" data-bhfb-focus-section="botiga_section_' + cprefix + '_component__' + _element5.id + '">' + '<span class="bhfb-title-element">' + _element5.label + '</span>' + '<i class="bhfb-edit-element dashicons dashicons-admin-generic"></i>' + '<i class="bhfb-remove-element dashicons dashicons-no-alt"></i>' + '</a>' + '</div>');
+                    }
+                  } catch (err) {
+                    _iterator15.e(err);
+                  } finally {
+                    _iterator15.f();
+                  }
+                }
                 _column_id++;
               }
 
               // Mobile Off-Canvas.
             } catch (err) {
-              _iterator10.e(err);
+              _iterator13.e(err);
             } finally {
-              _iterator10.f();
+              _iterator13.f();
             }
             if (field.indexOf('mobile_offcanvas') !== -1) {
               $('.botiga-bhfb-area-offcanvas').html('');
               if (value.mobile_offcanvas.length) {
                 var elements = value.mobile_offcanvas[0];
-                var _iterator11 = _createForOfIteratorHelper(elements),
-                  _step11;
+                var _iterator14 = _createForOfIteratorHelper(elements),
+                  _step14;
                 try {
-                  for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
-                    var element = _step11.value;
+                  for (_iterator14.s(); !(_step14 = _iterator14.n()).done;) {
+                    var element = _step14.value;
                     element = _this.getElementData(element);
                     if (_typeof(element) !== 'object') {
                       continue;
@@ -735,9 +785,9 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
                     $('.botiga-bhfb-area-offcanvas').append('<div class="botiga-bhfb-element">' + '<a href="#" class="bhfb-button" data-bhfb-id="' + element.id + '" data-bhfb-focus-section="botiga_section_hb_component__' + element.id + '">' + '<span class="bhfb-title-element">' + element.label + '</span>' + '<i class="bhfb-edit-element dashicons dashicons-admin-generic"></i>' + '<i class="bhfb-remove-element dashicons dashicons-no-alt"></i>' + '</a>' + '</div>');
                   }
                 } catch (err) {
-                  _iterator11.e(err);
+                  _iterator14.e(err);
                 } finally {
-                  _iterator11.f();
+                  _iterator14.f();
                 }
               }
             }
@@ -765,19 +815,19 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
       if (_this.currentBuilderType === 'footer') {
         elements = botiga_hfb.components.footer;
       }
-      var _iterator13 = _createForOfIteratorHelper(elements),
-        _step13;
+      var _iterator16 = _createForOfIteratorHelper(elements),
+        _step16;
       try {
-        for (_iterator13.s(); !(_step13 = _iterator13.n()).done;) {
-          var el = _step13.value;
+        for (_iterator16.s(); !(_step16 = _iterator16.n()).done;) {
+          var el = _step16.value;
           if (el.id === element) {
             return el;
           }
         }
       } catch (err) {
-        _iterator13.e(err);
+        _iterator16.e(err);
       } finally {
-        _iterator13.f();
+        _iterator16.f();
       }
       return '';
     },
@@ -939,11 +989,11 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
       for (var _i8 = 0, _areas2 = areas; _i8 < _areas2.length; _i8++) {
         var area = _areas2[_i8];
         var prefix = area === 'header' ? 'hb' : 'fb';
-        var _iterator14 = _createForOfIteratorHelper(rows),
-          _step14;
+        var _iterator17 = _createForOfIteratorHelper(rows),
+          _step17;
         try {
           var _loop5 = function _loop5() {
-            var row = _step14.value;
+            var row = _step17.value;
             var sectionID = 'botiga_section_' + prefix + '_' + row + '_' + area + '_row';
             if (typeof wp.customize.section(sectionID) !== 'undefined') {
               wp.customize.section(sectionID).expanded.bind(function (is_active) {
@@ -979,13 +1029,13 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
               });
             }
           };
-          for (_iterator14.s(); !(_step14 = _iterator14.n()).done;) {
+          for (_iterator17.s(); !(_step17 = _iterator17.n()).done;) {
             _loop5();
           }
         } catch (err) {
-          _iterator14.e(err);
+          _iterator17.e(err);
         } finally {
-          _iterator14.f();
+          _iterator17.f();
         }
       }
     },
