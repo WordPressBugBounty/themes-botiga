@@ -621,6 +621,9 @@ body {
   width: 24px;
   height: 24px;
 }
+.search-submit .ws-svg-icon svg:not(.stroke-based) {
+  fill: #ffffff;
+}
 
 hr {
   background-color: #ccc;
@@ -2159,16 +2162,22 @@ html {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
   }
-  .botiga-dropdown.main-navigation > div#primary-menu > ul li + li {
+  .botiga-dropdown.main-navigation > div#primary-menu > ul > li + li {
     margin-left: 35px;
   }
 }
-.botiga-dropdown .botiga-dropdown-ul {
+.botiga-dropdown .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu {
   list-style: none;
   margin: 0;
   padding-left: 0;
 }
-.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul {
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .children,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .children,
+.botiga-dropdown .nav-menu .sub-menu {
   width: 200px;
   -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -2185,11 +2194,45 @@ html {
   -webkit-transition: ease transform 300ms, ease opacity 300ms;
   transition: ease transform 300ms, ease opacity 300ms;
 }
-.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-ul {
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .children,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .children .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .children .children,
+.botiga-dropdown .botiga-dropdown-ul .children .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .children,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .sub-menu,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .children,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .sub-menu,
+.botiga-dropdown .nav-menu .children .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .children .children,
+.botiga-dropdown .nav-menu .children .sub-menu,
+.botiga-dropdown .nav-menu .sub-menu .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .sub-menu .children,
+.botiga-dropdown .nav-menu .sub-menu .sub-menu {
   left: 100%;
   top: 0;
 }
-.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li {
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .page_item,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .menu-item,
+.botiga-dropdown .botiga-dropdown-ul .children .botiga-dropdown-li,
+.botiga-dropdown .botiga-dropdown-ul .children .page_item,
+.botiga-dropdown .botiga-dropdown-ul .children .menu-item,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .botiga-dropdown-li,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .page_item,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .menu-item,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .botiga-dropdown-li,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .page_item,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .menu-item,
+.botiga-dropdown .nav-menu .children .botiga-dropdown-li,
+.botiga-dropdown .nav-menu .children .page_item,
+.botiga-dropdown .nav-menu .children .menu-item,
+.botiga-dropdown .nav-menu .sub-menu .botiga-dropdown-li,
+.botiga-dropdown .nav-menu .sub-menu .page_item,
+.botiga-dropdown .nav-menu .sub-menu .menu-item {
   background: #fff;
   padding: 0;
   display: -webkit-box;
@@ -2197,22 +2240,231 @@ html {
   display: flex;
   margin-right: 0;
 }
-.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li.hovered > .botiga-dropdown-ul, .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li:hover > .botiga-dropdown-ul, .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul {
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li.hovered > .botiga-dropdown-ul, .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li:hover > .botiga-dropdown-ul, .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul, .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li.hovered > .children, .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li:hover > .children, .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li.focus > .children, .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li.hovered > .sub-menu, .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li:hover > .sub-menu, .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li.focus > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .page_item.hovered > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .page_item:hover > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .page_item.focus > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .page_item.hovered > .children,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .page_item:hover > .children,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .page_item.focus > .children,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .page_item.hovered > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .page_item:hover > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .page_item.focus > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .menu-item.hovered > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .menu-item:hover > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .menu-item.focus > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .menu-item.hovered > .children,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .menu-item:hover > .children,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .menu-item.focus > .children,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .menu-item.hovered > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .menu-item:hover > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .menu-item.focus > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .children .botiga-dropdown-li.hovered > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .children .botiga-dropdown-li:hover > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .children .botiga-dropdown-li.focus > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .children .botiga-dropdown-li.hovered > .children,
+.botiga-dropdown .botiga-dropdown-ul .children .botiga-dropdown-li:hover > .children,
+.botiga-dropdown .botiga-dropdown-ul .children .botiga-dropdown-li.focus > .children,
+.botiga-dropdown .botiga-dropdown-ul .children .botiga-dropdown-li.hovered > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .children .botiga-dropdown-li:hover > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .children .botiga-dropdown-li.focus > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .children .page_item.hovered > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .children .page_item:hover > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .children .page_item.focus > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .children .page_item.hovered > .children,
+.botiga-dropdown .botiga-dropdown-ul .children .page_item:hover > .children,
+.botiga-dropdown .botiga-dropdown-ul .children .page_item.focus > .children,
+.botiga-dropdown .botiga-dropdown-ul .children .page_item.hovered > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .children .page_item:hover > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .children .page_item.focus > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .children .menu-item.hovered > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .children .menu-item:hover > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .children .menu-item.focus > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .children .menu-item.hovered > .children,
+.botiga-dropdown .botiga-dropdown-ul .children .menu-item:hover > .children,
+.botiga-dropdown .botiga-dropdown-ul .children .menu-item.focus > .children,
+.botiga-dropdown .botiga-dropdown-ul .children .menu-item.hovered > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .children .menu-item:hover > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .children .menu-item.focus > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .botiga-dropdown-li.hovered > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .botiga-dropdown-li:hover > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .botiga-dropdown-li.focus > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .botiga-dropdown-li.hovered > .children,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .botiga-dropdown-li:hover > .children,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .botiga-dropdown-li.focus > .children,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .botiga-dropdown-li.hovered > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .botiga-dropdown-li:hover > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .botiga-dropdown-li.focus > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .page_item.hovered > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .page_item:hover > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .page_item.focus > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .page_item.hovered > .children,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .page_item:hover > .children,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .page_item.focus > .children,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .page_item.hovered > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .page_item:hover > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .page_item.focus > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .menu-item.hovered > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .menu-item:hover > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .menu-item.focus > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .menu-item.hovered > .children,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .menu-item:hover > .children,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .menu-item.focus > .children,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .menu-item.hovered > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .menu-item:hover > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .menu-item.focus > .sub-menu,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .botiga-dropdown-li.hovered > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .botiga-dropdown-li:hover > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .botiga-dropdown-li.hovered > .children,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .botiga-dropdown-li:hover > .children,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .botiga-dropdown-li.focus > .children,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .botiga-dropdown-li.hovered > .sub-menu,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .botiga-dropdown-li:hover > .sub-menu,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .botiga-dropdown-li.focus > .sub-menu,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .page_item.hovered > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .page_item:hover > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .page_item.focus > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .page_item.hovered > .children,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .page_item:hover > .children,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .page_item.focus > .children,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .page_item.hovered > .sub-menu,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .page_item:hover > .sub-menu,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .page_item.focus > .sub-menu,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .menu-item.hovered > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .menu-item:hover > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .menu-item.focus > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .menu-item.hovered > .children,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .menu-item:hover > .children,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .menu-item.focus > .children,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .menu-item.hovered > .sub-menu,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .menu-item:hover > .sub-menu,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .menu-item.focus > .sub-menu,
+.botiga-dropdown .nav-menu .children .botiga-dropdown-li.hovered > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .children .botiga-dropdown-li:hover > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .children .botiga-dropdown-li.focus > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .children .botiga-dropdown-li.hovered > .children,
+.botiga-dropdown .nav-menu .children .botiga-dropdown-li:hover > .children,
+.botiga-dropdown .nav-menu .children .botiga-dropdown-li.focus > .children,
+.botiga-dropdown .nav-menu .children .botiga-dropdown-li.hovered > .sub-menu,
+.botiga-dropdown .nav-menu .children .botiga-dropdown-li:hover > .sub-menu,
+.botiga-dropdown .nav-menu .children .botiga-dropdown-li.focus > .sub-menu,
+.botiga-dropdown .nav-menu .children .page_item.hovered > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .children .page_item:hover > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .children .page_item.focus > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .children .page_item.hovered > .children,
+.botiga-dropdown .nav-menu .children .page_item:hover > .children,
+.botiga-dropdown .nav-menu .children .page_item.focus > .children,
+.botiga-dropdown .nav-menu .children .page_item.hovered > .sub-menu,
+.botiga-dropdown .nav-menu .children .page_item:hover > .sub-menu,
+.botiga-dropdown .nav-menu .children .page_item.focus > .sub-menu,
+.botiga-dropdown .nav-menu .children .menu-item.hovered > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .children .menu-item:hover > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .children .menu-item.focus > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .children .menu-item.hovered > .children,
+.botiga-dropdown .nav-menu .children .menu-item:hover > .children,
+.botiga-dropdown .nav-menu .children .menu-item.focus > .children,
+.botiga-dropdown .nav-menu .children .menu-item.hovered > .sub-menu,
+.botiga-dropdown .nav-menu .children .menu-item:hover > .sub-menu,
+.botiga-dropdown .nav-menu .children .menu-item.focus > .sub-menu,
+.botiga-dropdown .nav-menu .sub-menu .botiga-dropdown-li.hovered > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .sub-menu .botiga-dropdown-li:hover > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .sub-menu .botiga-dropdown-li.focus > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .sub-menu .botiga-dropdown-li.hovered > .children,
+.botiga-dropdown .nav-menu .sub-menu .botiga-dropdown-li:hover > .children,
+.botiga-dropdown .nav-menu .sub-menu .botiga-dropdown-li.focus > .children,
+.botiga-dropdown .nav-menu .sub-menu .botiga-dropdown-li.hovered > .sub-menu,
+.botiga-dropdown .nav-menu .sub-menu .botiga-dropdown-li:hover > .sub-menu,
+.botiga-dropdown .nav-menu .sub-menu .botiga-dropdown-li.focus > .sub-menu,
+.botiga-dropdown .nav-menu .sub-menu .page_item.hovered > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .sub-menu .page_item:hover > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .sub-menu .page_item.focus > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .sub-menu .page_item.hovered > .children,
+.botiga-dropdown .nav-menu .sub-menu .page_item:hover > .children,
+.botiga-dropdown .nav-menu .sub-menu .page_item.focus > .children,
+.botiga-dropdown .nav-menu .sub-menu .page_item.hovered > .sub-menu,
+.botiga-dropdown .nav-menu .sub-menu .page_item:hover > .sub-menu,
+.botiga-dropdown .nav-menu .sub-menu .page_item.focus > .sub-menu,
+.botiga-dropdown .nav-menu .sub-menu .menu-item.hovered > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .sub-menu .menu-item:hover > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .sub-menu .menu-item.focus > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .sub-menu .menu-item.hovered > .children,
+.botiga-dropdown .nav-menu .sub-menu .menu-item:hover > .children,
+.botiga-dropdown .nav-menu .sub-menu .menu-item.focus > .children,
+.botiga-dropdown .nav-menu .sub-menu .menu-item.hovered > .sub-menu,
+.botiga-dropdown .nav-menu .sub-menu .menu-item:hover > .sub-menu,
+.botiga-dropdown .nav-menu .sub-menu .menu-item.focus > .sub-menu {
   display: block;
   left: 100%;
 }
-.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li .dropdown-symbol {
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li .dropdown-symbol,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .page_item .dropdown-symbol,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .menu-item .dropdown-symbol,
+.botiga-dropdown .botiga-dropdown-ul .children .botiga-dropdown-li .dropdown-symbol,
+.botiga-dropdown .botiga-dropdown-ul .children .page_item .dropdown-symbol,
+.botiga-dropdown .botiga-dropdown-ul .children .menu-item .dropdown-symbol,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .botiga-dropdown-li .dropdown-symbol,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .page_item .dropdown-symbol,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .menu-item .dropdown-symbol,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .botiga-dropdown-li .dropdown-symbol,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .page_item .dropdown-symbol,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .menu-item .dropdown-symbol,
+.botiga-dropdown .nav-menu .children .botiga-dropdown-li .dropdown-symbol,
+.botiga-dropdown .nav-menu .children .page_item .dropdown-symbol,
+.botiga-dropdown .nav-menu .children .menu-item .dropdown-symbol,
+.botiga-dropdown .nav-menu .sub-menu .botiga-dropdown-li .dropdown-symbol,
+.botiga-dropdown .nav-menu .sub-menu .page_item .dropdown-symbol,
+.botiga-dropdown .nav-menu .sub-menu .menu-item .dropdown-symbol {
   margin-top: 10px;
   margin-right: 15px;
 }
-.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li .dropdown-symbol svg {
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-li .dropdown-symbol svg,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .page_item .dropdown-symbol svg,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .menu-item .dropdown-symbol svg,
+.botiga-dropdown .botiga-dropdown-ul .children .botiga-dropdown-li .dropdown-symbol svg,
+.botiga-dropdown .botiga-dropdown-ul .children .page_item .dropdown-symbol svg,
+.botiga-dropdown .botiga-dropdown-ul .children .menu-item .dropdown-symbol svg,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .botiga-dropdown-li .dropdown-symbol svg,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .page_item .dropdown-symbol svg,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .menu-item .dropdown-symbol svg,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .botiga-dropdown-li .dropdown-symbol svg,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .page_item .dropdown-symbol svg,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .menu-item .dropdown-symbol svg,
+.botiga-dropdown .nav-menu .children .botiga-dropdown-li .dropdown-symbol svg,
+.botiga-dropdown .nav-menu .children .page_item .dropdown-symbol svg,
+.botiga-dropdown .nav-menu .children .menu-item .dropdown-symbol svg,
+.botiga-dropdown .nav-menu .sub-menu .botiga-dropdown-li .dropdown-symbol svg,
+.botiga-dropdown .nav-menu .sub-menu .page_item .dropdown-symbol svg,
+.botiga-dropdown .nav-menu .sub-menu .menu-item .dropdown-symbol svg {
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
 }
-.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul.toggled .botiga-dropdown-li {
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul.toggled .botiga-dropdown-li,
+.botiga-dropdown .botiga-dropdown-ul .children.toggled .botiga-dropdown-li,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu.toggled .botiga-dropdown-li,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul.toggled .botiga-dropdown-li,
+.botiga-dropdown .nav-menu .children.toggled .botiga-dropdown-li,
+.botiga-dropdown .nav-menu .sub-menu.toggled .botiga-dropdown-li {
   background-color: transparent;
 }
-.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-link {
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .botiga-dropdown-link,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .page_item a,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-ul .menu-item a,
+.botiga-dropdown .botiga-dropdown-ul .children .botiga-dropdown-link,
+.botiga-dropdown .botiga-dropdown-ul .children .page_item a,
+.botiga-dropdown .botiga-dropdown-ul .children .menu-item a,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .botiga-dropdown-link,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .page_item a,
+.botiga-dropdown .botiga-dropdown-ul .sub-menu .menu-item a,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .botiga-dropdown-link,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .page_item a,
+.botiga-dropdown .nav-menu .botiga-dropdown-ul .menu-item a,
+.botiga-dropdown .nav-menu .children .botiga-dropdown-link,
+.botiga-dropdown .nav-menu .children .page_item a,
+.botiga-dropdown .nav-menu .children .menu-item a,
+.botiga-dropdown .nav-menu .sub-menu .botiga-dropdown-link,
+.botiga-dropdown .nav-menu .sub-menu .page_item a,
+.botiga-dropdown .nav-menu .sub-menu .menu-item a {
   width: 100%;
   display: inline-block;
   text-transform: none;
@@ -2220,7 +2472,22 @@ html {
 }
 .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.hovered > .botiga-dropdown-ul,
 .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li:hover > .botiga-dropdown-ul,
-.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul {
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .page_item.hovered > .children,
+.botiga-dropdown .botiga-dropdown-ul .page_item:hover > .children,
+.botiga-dropdown .botiga-dropdown-ul .page_item.focus > .children,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.hovered > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .menu-item:hover > .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.focus > .sub-menu,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.hovered > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .botiga-dropdown-li:hover > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.focus > .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .page_item.hovered > .children,
+.botiga-dropdown .nav-menu .page_item:hover > .children,
+.botiga-dropdown .nav-menu .page_item.focus > .children,
+.botiga-dropdown .nav-menu .menu-item.hovered > .sub-menu,
+.botiga-dropdown .nav-menu .menu-item:hover > .sub-menu,
+.botiga-dropdown .nav-menu .menu-item.focus > .sub-menu {
   left: auto;
   top: 100%;
   opacity: 1;
@@ -2231,42 +2498,231 @@ html {
 }
 .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.hovered > .botiga-dropdown-ul.sub-menu-reverse,
 .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li:hover > .botiga-dropdown-ul.sub-menu-reverse,
-.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul.sub-menu-reverse {
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .page_item.hovered > .children.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .page_item:hover > .children.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .page_item.focus > .children.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.hovered > .sub-menu.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .menu-item:hover > .sub-menu.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.focus > .sub-menu.sub-menu-reverse,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.hovered > .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .nav-menu .botiga-dropdown-li:hover > .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.focus > .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .nav-menu .page_item.hovered > .children.sub-menu-reverse,
+.botiga-dropdown .nav-menu .page_item:hover > .children.sub-menu-reverse,
+.botiga-dropdown .nav-menu .page_item.focus > .children.sub-menu-reverse,
+.botiga-dropdown .nav-menu .menu-item.hovered > .sub-menu.sub-menu-reverse,
+.botiga-dropdown .nav-menu .menu-item:hover > .sub-menu.sub-menu-reverse,
+.botiga-dropdown .nav-menu .menu-item.focus > .sub-menu.sub-menu-reverse {
   left: auto;
   right: 0;
 }
 .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.hovered > .botiga-dropdown-ul.sub-menu-reverse-vertically,
 .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li:hover > .botiga-dropdown-ul.sub-menu-reverse-vertically,
-.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul.sub-menu-reverse-vertically {
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .page_item.hovered > .children.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .page_item:hover > .children.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .page_item.focus > .children.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.hovered > .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .menu-item:hover > .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.focus > .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.hovered > .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .botiga-dropdown-li:hover > .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.focus > .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .page_item.hovered > .children.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .page_item:hover > .children.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .page_item.focus > .children.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .menu-item.hovered > .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .menu-item:hover > .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .menu-item.focus > .sub-menu.sub-menu-reverse-vertically {
   top: auto;
   bottom: 100%;
 }
 .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.hovered > .botiga-dropdown-ul .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.hovered > .botiga-dropdown-ul .children,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.hovered > .botiga-dropdown-ul .sub-menu,
 .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li:hover > .botiga-dropdown-ul .botiga-dropdown-ul,
-.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul .botiga-dropdown-ul {
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li:hover > .botiga-dropdown-ul .children,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li:hover > .botiga-dropdown-ul .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul .children,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .page_item.hovered > .children .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .page_item.hovered > .children .children,
+.botiga-dropdown .botiga-dropdown-ul .page_item.hovered > .children .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .page_item:hover > .children .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .page_item:hover > .children .children,
+.botiga-dropdown .botiga-dropdown-ul .page_item:hover > .children .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .page_item.focus > .children .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .page_item.focus > .children .children,
+.botiga-dropdown .botiga-dropdown-ul .page_item.focus > .children .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.hovered > .sub-menu .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.hovered > .sub-menu .children,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.hovered > .sub-menu .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .menu-item:hover > .sub-menu .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .menu-item:hover > .sub-menu .children,
+.botiga-dropdown .botiga-dropdown-ul .menu-item:hover > .sub-menu .sub-menu,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.focus > .sub-menu .botiga-dropdown-ul,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.focus > .sub-menu .children,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.focus > .sub-menu .sub-menu,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.hovered > .botiga-dropdown-ul .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.hovered > .botiga-dropdown-ul .children,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.hovered > .botiga-dropdown-ul .sub-menu,
+.botiga-dropdown .nav-menu .botiga-dropdown-li:hover > .botiga-dropdown-ul .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .botiga-dropdown-li:hover > .botiga-dropdown-ul .children,
+.botiga-dropdown .nav-menu .botiga-dropdown-li:hover > .botiga-dropdown-ul .sub-menu,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.focus > .botiga-dropdown-ul .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.focus > .botiga-dropdown-ul .children,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.focus > .botiga-dropdown-ul .sub-menu,
+.botiga-dropdown .nav-menu .page_item.hovered > .children .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .page_item.hovered > .children .children,
+.botiga-dropdown .nav-menu .page_item.hovered > .children .sub-menu,
+.botiga-dropdown .nav-menu .page_item:hover > .children .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .page_item:hover > .children .children,
+.botiga-dropdown .nav-menu .page_item:hover > .children .sub-menu,
+.botiga-dropdown .nav-menu .page_item.focus > .children .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .page_item.focus > .children .children,
+.botiga-dropdown .nav-menu .page_item.focus > .children .sub-menu,
+.botiga-dropdown .nav-menu .menu-item.hovered > .sub-menu .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .menu-item.hovered > .sub-menu .children,
+.botiga-dropdown .nav-menu .menu-item.hovered > .sub-menu .sub-menu,
+.botiga-dropdown .nav-menu .menu-item:hover > .sub-menu .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .menu-item:hover > .sub-menu .children,
+.botiga-dropdown .nav-menu .menu-item:hover > .sub-menu .sub-menu,
+.botiga-dropdown .nav-menu .menu-item.focus > .sub-menu .botiga-dropdown-ul,
+.botiga-dropdown .nav-menu .menu-item.focus > .sub-menu .children,
+.botiga-dropdown .nav-menu .menu-item.focus > .sub-menu .sub-menu {
   top: 0;
 }
 .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.hovered > .botiga-dropdown-ul .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.hovered > .botiga-dropdown-ul .children.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.hovered > .botiga-dropdown-ul .sub-menu.sub-menu-reverse,
 .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li:hover > .botiga-dropdown-ul .botiga-dropdown-ul.sub-menu-reverse,
-.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul .botiga-dropdown-ul.sub-menu-reverse {
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li:hover > .botiga-dropdown-ul .children.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li:hover > .botiga-dropdown-ul .sub-menu.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul .children.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul .sub-menu.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .page_item.hovered > .children .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .page_item.hovered > .children .children.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .page_item.hovered > .children .sub-menu.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .page_item:hover > .children .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .page_item:hover > .children .children.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .page_item:hover > .children .sub-menu.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .page_item.focus > .children .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .page_item.focus > .children .children.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .page_item.focus > .children .sub-menu.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.hovered > .sub-menu .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.hovered > .sub-menu .children.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.hovered > .sub-menu .sub-menu.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .menu-item:hover > .sub-menu .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .menu-item:hover > .sub-menu .children.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .menu-item:hover > .sub-menu .sub-menu.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.focus > .sub-menu .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.focus > .sub-menu .children.sub-menu-reverse,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.focus > .sub-menu .sub-menu.sub-menu-reverse,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.hovered > .botiga-dropdown-ul .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.hovered > .botiga-dropdown-ul .children.sub-menu-reverse,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.hovered > .botiga-dropdown-ul .sub-menu.sub-menu-reverse,
+.botiga-dropdown .nav-menu .botiga-dropdown-li:hover > .botiga-dropdown-ul .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .nav-menu .botiga-dropdown-li:hover > .botiga-dropdown-ul .children.sub-menu-reverse,
+.botiga-dropdown .nav-menu .botiga-dropdown-li:hover > .botiga-dropdown-ul .sub-menu.sub-menu-reverse,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.focus > .botiga-dropdown-ul .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.focus > .botiga-dropdown-ul .children.sub-menu-reverse,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.focus > .botiga-dropdown-ul .sub-menu.sub-menu-reverse,
+.botiga-dropdown .nav-menu .page_item.hovered > .children .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .nav-menu .page_item.hovered > .children .children.sub-menu-reverse,
+.botiga-dropdown .nav-menu .page_item.hovered > .children .sub-menu.sub-menu-reverse,
+.botiga-dropdown .nav-menu .page_item:hover > .children .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .nav-menu .page_item:hover > .children .children.sub-menu-reverse,
+.botiga-dropdown .nav-menu .page_item:hover > .children .sub-menu.sub-menu-reverse,
+.botiga-dropdown .nav-menu .page_item.focus > .children .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .nav-menu .page_item.focus > .children .children.sub-menu-reverse,
+.botiga-dropdown .nav-menu .page_item.focus > .children .sub-menu.sub-menu-reverse,
+.botiga-dropdown .nav-menu .menu-item.hovered > .sub-menu .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .nav-menu .menu-item.hovered > .sub-menu .children.sub-menu-reverse,
+.botiga-dropdown .nav-menu .menu-item.hovered > .sub-menu .sub-menu.sub-menu-reverse,
+.botiga-dropdown .nav-menu .menu-item:hover > .sub-menu .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .nav-menu .menu-item:hover > .sub-menu .children.sub-menu-reverse,
+.botiga-dropdown .nav-menu .menu-item:hover > .sub-menu .sub-menu.sub-menu-reverse,
+.botiga-dropdown .nav-menu .menu-item.focus > .sub-menu .botiga-dropdown-ul.sub-menu-reverse,
+.botiga-dropdown .nav-menu .menu-item.focus > .sub-menu .children.sub-menu-reverse,
+.botiga-dropdown .nav-menu .menu-item.focus > .sub-menu .sub-menu.sub-menu-reverse {
   left: auto;
   right: 100%;
 }
 .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.hovered > .botiga-dropdown-ul .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.hovered > .botiga-dropdown-ul .children.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.hovered > .botiga-dropdown-ul .sub-menu.sub-menu-reverse-vertically,
 .botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li:hover > .botiga-dropdown-ul .botiga-dropdown-ul.sub-menu-reverse-vertically,
-.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul .botiga-dropdown-ul.sub-menu-reverse-vertically {
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li:hover > .botiga-dropdown-ul .children.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li:hover > .botiga-dropdown-ul .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul .children.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .page_item.hovered > .children .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .page_item.hovered > .children .children.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .page_item.hovered > .children .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .page_item:hover > .children .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .page_item:hover > .children .children.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .page_item:hover > .children .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .page_item.focus > .children .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .page_item.focus > .children .children.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .page_item.focus > .children .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.hovered > .sub-menu .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.hovered > .sub-menu .children.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.hovered > .sub-menu .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .menu-item:hover > .sub-menu .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .menu-item:hover > .sub-menu .children.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .menu-item:hover > .sub-menu .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.focus > .sub-menu .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.focus > .sub-menu .children.sub-menu-reverse-vertically,
+.botiga-dropdown .botiga-dropdown-ul .menu-item.focus > .sub-menu .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.hovered > .botiga-dropdown-ul .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.hovered > .botiga-dropdown-ul .children.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.hovered > .botiga-dropdown-ul .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .botiga-dropdown-li:hover > .botiga-dropdown-ul .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .botiga-dropdown-li:hover > .botiga-dropdown-ul .children.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .botiga-dropdown-li:hover > .botiga-dropdown-ul .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.focus > .botiga-dropdown-ul .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.focus > .botiga-dropdown-ul .children.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .botiga-dropdown-li.focus > .botiga-dropdown-ul .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .page_item.hovered > .children .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .page_item.hovered > .children .children.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .page_item.hovered > .children .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .page_item:hover > .children .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .page_item:hover > .children .children.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .page_item:hover > .children .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .page_item.focus > .children .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .page_item.focus > .children .children.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .page_item.focus > .children .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .menu-item.hovered > .sub-menu .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .menu-item.hovered > .sub-menu .children.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .menu-item.hovered > .sub-menu .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .menu-item:hover > .sub-menu .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .menu-item:hover > .sub-menu .children.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .menu-item:hover > .sub-menu .sub-menu.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .menu-item.focus > .sub-menu .botiga-dropdown-ul.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .menu-item.focus > .sub-menu .children.sub-menu-reverse-vertically,
+.botiga-dropdown .nav-menu .menu-item.focus > .sub-menu .sub-menu.sub-menu-reverse-vertically {
   top: auto;
   bottom: 0;
 }
-.botiga-dropdown .botiga-dropdown-li {
+.botiga-dropdown .botiga-dropdown-li,
+.botiga-dropdown .page_item,
+.botiga-dropdown .menu-item {
   position: relative;
   margin-right: 35px;
   padding-bottom: 0;
 }
-.botiga-dropdown .botiga-dropdown-li:last-of-type {
+.botiga-dropdown .botiga-dropdown-li:last-of-type,
+.botiga-dropdown .page_item:last-of-type,
+.botiga-dropdown .menu-item:last-of-type {
   margin-right: 0;
 }
-.botiga-dropdown .botiga-dropdown-link {
+.botiga-dropdown .botiga-dropdown-link,
+.botiga-dropdown .page_item a,
+.botiga-dropdown .menu-item a {
   padding: 10px 0;
   display: inline-block;
   text-decoration: none;
@@ -2279,31 +2735,89 @@ html {
 .botiga-dropdown .dropdown-symbol {
   margin-left: 8px;
 }
-.botiga-dropdown.with-hover-delay .botiga-dropdown-ul .botiga-dropdown-ul {
+.botiga-dropdown.with-hover-delay .botiga-dropdown-ul .botiga-dropdown-ul,
+.botiga-dropdown.with-hover-delay .botiga-dropdown-ul .children,
+.botiga-dropdown.with-hover-delay .botiga-dropdown-ul .sub-menu,
+.botiga-dropdown.with-hover-delay .children .botiga-dropdown-ul,
+.botiga-dropdown.with-hover-delay .children .children,
+.botiga-dropdown.with-hover-delay .children .sub-menu,
+.botiga-dropdown.with-hover-delay .sub-menu .botiga-dropdown-ul,
+.botiga-dropdown.with-hover-delay .sub-menu .children,
+.botiga-dropdown.with-hover-delay .sub-menu .sub-menu {
   -webkit-transition-delay: 0ms;
           transition-delay: 0ms;
 }
 .botiga-dropdown.with-hover-delay .botiga-dropdown-ul .botiga-dropdown-li.hovered > .botiga-dropdown-ul,
 .botiga-dropdown.with-hover-delay .botiga-dropdown-ul .botiga-dropdown-li:hover > .botiga-dropdown-ul,
-.botiga-dropdown.with-hover-delay .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul {
+.botiga-dropdown.with-hover-delay .botiga-dropdown-ul .botiga-dropdown-li.focus > .botiga-dropdown-ul,
+.botiga-dropdown.with-hover-delay .botiga-dropdown-ul .page_item.hovered > .children,
+.botiga-dropdown.with-hover-delay .botiga-dropdown-ul .page_item:hover > .children,
+.botiga-dropdown.with-hover-delay .botiga-dropdown-ul .page_item.focus > .children,
+.botiga-dropdown.with-hover-delay .botiga-dropdown-ul .menu-item.hovered > .sub-menu,
+.botiga-dropdown.with-hover-delay .botiga-dropdown-ul .menu-item:hover > .sub-menu,
+.botiga-dropdown.with-hover-delay .botiga-dropdown-ul .menu-item.focus > .sub-menu,
+.botiga-dropdown.with-hover-delay .children .botiga-dropdown-li.hovered > .botiga-dropdown-ul,
+.botiga-dropdown.with-hover-delay .children .botiga-dropdown-li:hover > .botiga-dropdown-ul,
+.botiga-dropdown.with-hover-delay .children .botiga-dropdown-li.focus > .botiga-dropdown-ul,
+.botiga-dropdown.with-hover-delay .children .page_item.hovered > .children,
+.botiga-dropdown.with-hover-delay .children .page_item:hover > .children,
+.botiga-dropdown.with-hover-delay .children .page_item.focus > .children,
+.botiga-dropdown.with-hover-delay .children .menu-item.hovered > .sub-menu,
+.botiga-dropdown.with-hover-delay .children .menu-item:hover > .sub-menu,
+.botiga-dropdown.with-hover-delay .children .menu-item.focus > .sub-menu,
+.botiga-dropdown.with-hover-delay .sub-menu .botiga-dropdown-li.hovered > .botiga-dropdown-ul,
+.botiga-dropdown.with-hover-delay .sub-menu .botiga-dropdown-li:hover > .botiga-dropdown-ul,
+.botiga-dropdown.with-hover-delay .sub-menu .botiga-dropdown-li.focus > .botiga-dropdown-ul,
+.botiga-dropdown.with-hover-delay .sub-menu .page_item.hovered > .children,
+.botiga-dropdown.with-hover-delay .sub-menu .page_item:hover > .children,
+.botiga-dropdown.with-hover-delay .sub-menu .page_item.focus > .children,
+.botiga-dropdown.with-hover-delay .sub-menu .menu-item.hovered > .sub-menu,
+.botiga-dropdown.with-hover-delay .sub-menu .menu-item:hover > .sub-menu,
+.botiga-dropdown.with-hover-delay .sub-menu .menu-item.focus > .sub-menu {
   -webkit-transition-delay: 300ms;
           transition-delay: 300ms;
 }
 @media (max-width: 1024px) {
-  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li {
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item {
     margin-right: 0;
   }
-  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children {
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children, .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
   }
-  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children > .botiga-dropdown-link {
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children > .botiga-dropdown-link,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children > a, .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children > .botiga-dropdown-link,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children > a,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children > .botiga-dropdown-link,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children > a,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children > .botiga-dropdown-link,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children > a,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children > .botiga-dropdown-link,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children > a,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children > .botiga-dropdown-link,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children > a {
     width: calc(100% - (var(--dropdown--symbol--size) + 0.5em));
   }
-  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children > .sub-menu {
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children > .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children > .children, .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children > .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children > .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children > .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children > .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children > .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children > .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children > .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children > .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children > .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children > .children {
     position: relative;
     width: 100%;
     left: 0;
@@ -2314,26 +2828,106 @@ html {
     -webkit-box-shadow: none;
             box-shadow: none;
   }
-  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children > .sub-menu > .botiga-dropdown-li {
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children > .sub-menu > .botiga-dropdown-li,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children > .sub-menu > .page_item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children > .sub-menu > .menu-item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children > .children > .botiga-dropdown-li,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children > .children > .page_item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children > .children > .menu-item, .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children > .sub-menu > .botiga-dropdown-li,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children > .sub-menu > .page_item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children > .sub-menu > .menu-item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children > .children > .botiga-dropdown-li,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children > .children > .page_item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children > .children > .menu-item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children > .sub-menu > .botiga-dropdown-li,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children > .sub-menu > .page_item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children > .sub-menu > .menu-item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children > .children > .botiga-dropdown-li,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children > .children > .page_item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children > .children > .menu-item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children > .sub-menu > .botiga-dropdown-li,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children > .sub-menu > .page_item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children > .sub-menu > .menu-item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children > .children > .botiga-dropdown-li,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children > .children > .page_item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children > .children > .menu-item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children > .sub-menu > .botiga-dropdown-li,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children > .sub-menu > .page_item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children > .sub-menu > .menu-item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children > .children > .botiga-dropdown-li,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children > .children > .page_item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children > .children > .menu-item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children > .sub-menu > .botiga-dropdown-li,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children > .sub-menu > .page_item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children > .sub-menu > .menu-item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children > .children > .botiga-dropdown-li,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children > .children > .page_item,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children > .children > .menu-item {
     background-color: transparent;
   }
-  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children > .sub-menu .sub-menu {
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children > .sub-menu .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children > .sub-menu .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children > .children .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children > .children .children, .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children > .sub-menu .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children > .sub-menu .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children > .children .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children > .children .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children > .sub-menu .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children > .sub-menu .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children > .children .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children > .children .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children > .sub-menu .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children > .sub-menu .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children > .children .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children > .children .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children > .sub-menu .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children > .sub-menu .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children > .children .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children > .children .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children > .sub-menu .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children > .sub-menu .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children > .children .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children > .children .children {
     padding-left: 20px;
   }
-  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children.expand > .sub-menu {
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children.expand > .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children.expand > .children, .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children.expand > .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children.expand > .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children.expand > .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children.expand > .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children.expand > .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children.expand > .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children.expand > .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children.expand > .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children.expand > .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children.expand > .children {
     opacity: 1;
     height: auto;
     overflow: visible;
   }
-  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children:not(.expand) > .sub-menu {
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children:not(.expand) > .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.menu-item-has-children:not(.expand) > .children, .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children:not(.expand) > .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li.page_item_has_children:not(.expand) > .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children:not(.expand) > .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.menu-item-has-children:not(.expand) > .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children:not(.expand) > .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item.page_item_has_children:not(.expand) > .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children:not(.expand) > .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.menu-item-has-children:not(.expand) > .children,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children:not(.expand) > .sub-menu,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item.page_item_has_children:not(.expand) > .children {
     opacity: 0;
     height: 0;
     overflow: hidden;
   }
-  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li .dropdown-symbol {
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li .dropdown-symbol,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item .dropdown-symbol,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item .dropdown-symbol {
     margin: 0 !important;
   }
-  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li .dropdown-symbol svg {
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .botiga-dropdown-li .dropdown-symbol svg,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .page_item .dropdown-symbol svg,
+  .botiga-dropdown.botiga-dropdown-mobile-accordion .menu-item .dropdown-symbol svg {
     -webkit-transform: none !important;
             transform: none !important;
   }
@@ -2357,12 +2951,14 @@ html {
 }
 
 /* Small menu. */
-.botiga-dropdown.toggled .botiga-dropdown-ul {
+.botiga-dropdown.toggled .botiga-dropdown-ul,
+.botiga-dropdown.toggled .nav-menu {
   display: block;
 }
 
 @media screen and (min-width: 1025px) {
-  .botiga-dropdown .botiga-dropdown-ul {
+  .botiga-dropdown .botiga-dropdown-ul,
+  .botiga-dropdown .nav-menu {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

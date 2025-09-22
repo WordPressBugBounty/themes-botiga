@@ -6999,6 +6999,9 @@ dl.variation p {
 .woocommerce-account.logged-in .entry-content > .woocommerce .button {
   color: #fff;
 }
+.woocommerce-account.logged-in .entry-content > .woocommerce .order-actions-button {
+  margin-right: 8px;
+}
 .woocommerce-account .woocommerce-EditAccountForm.edit-account input[type=text],
 .woocommerce-account .woocommerce-EditAccountForm.edit-account input[type=tel],
 .woocommerce-account .woocommerce-EditAccountForm.edit-account input[type=email],

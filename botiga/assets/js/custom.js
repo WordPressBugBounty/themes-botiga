@@ -1649,15 +1649,15 @@ botiga.misc = {
     }
   },
   customizer: function customizer() {
-    if (!window.parent.document.body.classList.contains('wp-customizer')) {
+    if (typeof wp === 'undefined' || typeof wp.customize === 'undefined') {
       return false;
     }
-    window.onload = function () {
+    wp.customize.bind('preview-ready', function () {
       var cart_count = document.querySelectorAll('.cart-count');
       if (cart_count.length) {
         jQuery(document.body).trigger('wc_fragment_refresh');
       }
-    };
+    });
   }
 };
 botiga.helpers.botigaDomReady(function () {
