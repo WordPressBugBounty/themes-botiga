@@ -3864,12 +3864,12 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
     max-width: 50%;
   }
 }
-/* Shipping Calculator */
+/* Shipping Calculator - Computer only */
 @media (min-width: 768px) {
   .woocommerce-shipping-calculator {
     position: relative;
     width: calc(100% + 116px);
-    left: -116px;
+    left: -95px;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -3967,6 +3967,12 @@ body.botiga-scrolling-down .botiga-single-sticky-add-to-cart-wrapper.hide-when-s
 }
 .woocommerce-checkout .form-row {
   margin-bottom: 20px;
+}
+.woocommerce-checkout .form-row.woocommerce-invalid label {
+  color: #a00;
+}
+.woocommerce-checkout .form-row.woocommerce-invalid .woocommerce-terms-and-conditions-checkbox-text:after {
+  outline: 2px solid #a00;
 }
 
 #ship-to-different-address {
@@ -5218,6 +5224,7 @@ p.no-comments {
 .woocommerce-error {
   list-style: none;
   background-color: #f2f2f2;
+  border-left: 3px solid #a00;
 }
 
 .demo_store {

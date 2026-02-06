@@ -668,7 +668,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		public function header_mobile_layout_1() {
 			$container = get_theme_mod( 'header_container', 'container-fluid' );
 			?>
-				<header id="masthead-mobile" class="site-header mobile-header" <?php botiga_schema( 'header' ); ?>>
+				<header id="masthead-mobile" class="site-header mobile-header<?php echo esc_attr( $this->sticky( 'mobile' ) ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="row valign flex-nowrap">
 							<div class="col-sm-6 col-md-4 col-grow-mobile">
@@ -700,7 +700,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		public function header_mobile_layout_2() {
 			$container = get_theme_mod( 'header_container', 'container-fluid' );
 			?>
-				<header id="masthead-mobile" class="site-header mobile-header" <?php botiga_schema( 'header' ); ?>>
+				<header id="masthead-mobile" class="site-header mobile-header<?php echo esc_attr( $this->sticky( 'mobile' ) ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="row valign flex-nowrap">
 							<div class="col-md-4 header-elements valign">
@@ -733,7 +733,7 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 		public function header_mobile_layout_3() {
 			$container = get_theme_mod( 'header_container', 'container-fluid' );
 			?>
-				<header id="masthead-mobile" class="site-header mobile-header" <?php botiga_schema( 'header' ); ?>>
+				<header id="masthead-mobile" class="site-header mobile-header<?php echo esc_attr( $this->sticky( 'mobile' ) ); ?>" <?php botiga_schema( 'header' ); ?>>
 					<div class="<?php echo esc_attr( $container ); ?>">
 						<div class="row valign flex-nowrap">
 							<div class="col-md-4">
@@ -1120,13 +1120,22 @@ if ( !class_exists( 'Botiga_Header' ) ) :
 
 		/**
 		 * Sticky mode
+		 * 
+		 * @param string $device Device type (desktop or mobile)
 		 */
-		public function sticky() {
+		public function sticky( $device = 'desktop' ) {
 			$enabled    = get_theme_mod( 'enable_sticky_header', 0 );
 			$type       = get_theme_mod( 'sticky_header_type', 'always' );
 			$sticky     = '';
+			
+			$sticky_header_behaviour = get_theme_mod( 'sticky_header_behaviour', 'desktop-only' );
+			
+			$apply_sticky =
+				( 'desktop-only' === $sticky_header_behaviour && 'desktop' === $device ) ||
+				( 'mobile-only' === $sticky_header_behaviour && 'mobile' === $device ) ||
+				'all' === $sticky_header_behaviour;
 
-			if ( $enabled ) {
+			if ( $enabled && $apply_sticky ) {
 				$sticky = ' sticky-header sticky-' . esc_html( $type );
 			}
 

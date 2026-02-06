@@ -82,6 +82,8 @@ class Botiga_Dashboard
 
         add_action('switch_theme', array( $this, 'reset_notices' ));
         add_action('after_switch_theme', array( $this, 'reset_notices' ));
+        
+        add_filter( 'botiga_dashboard_notification_changelog_content', array( $this, 'filter_fixed_changelog_content' ) );
     }
     
     /**
@@ -980,6 +982,102 @@ class Botiga_Dashboard
     public function html_patcher() {
         require get_template_directory() . '/inc/dashboard/html-patcher.php';
     }
+    
+	/**
+	 * Default filter for dashboard changelog content.
+	 *
+	 * Removes <li> items that contain a "changelog-fixed" tag.
+	 * If only fixed items exist, returns an empty string so the caller can skip that notification.
+	 *
+	 * @param string $content Raw changelog HTML content.
+	 *
+	 * @return string
+	 */
+	public function filter_fixed_changelog_content( $content ) {
+		if ( '' === $content ) {
+			return '';
+		}
+
+		// If there is no "changelog-fixed" marker at all, return early and keep everything.
+		if ( false === strpos( $content, 'changelog-fixed' ) ) {
+			return $content;
+		}
+
+		// If DOM extension is not available, do not attempt to filter.
+		if ( ! class_exists( 'DOMDocument' ) ) {
+			return $content;
+		}
+
+		$dom_document          = new DOMDocument();
+		$libxml_previous_state = libxml_use_internal_errors( true );
+
+		// Wrap in a container so we can extract inner HTML cleanly later.
+		$dom_document->loadHTML(
+			'<?xml encoding="utf-8" ?><div id="botiga_changelog_root">' . $content . '</div>',
+			LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD
+		);
+
+		libxml_clear_errors();
+		libxml_use_internal_errors( $libxml_previous_state );
+
+		$xpath      = new DOMXPath( $dom_document );
+		$list_items = $xpath->query( '//li' );
+
+		// If we cannot find any list items, bail out and keep original.
+		if ( ! $list_items || 0 === $list_items->length ) {
+			return $content;
+		}
+
+		$has_non_fixed_items = false;
+
+		foreach ( $list_items as $list_item ) {
+			$is_fixed_item = false;
+
+			$spans = $xpath->query( './/span[contains(@class, "changelog-tag")]', $list_item );
+
+			if ( $spans && $spans->length > 0 ) {
+				foreach ( $spans as $span ) {
+					$class_attribute = $span->getAttribute( 'class' );
+
+					if ( false !== strpos( $class_attribute, 'changelog-fixed' ) ) {
+						$is_fixed_item = true;
+						break;
+					}
+				}
+			}
+
+			if ( $is_fixed_item ) {
+				$list_item->parentNode->removeChild( $list_item );
+				continue;
+			}
+
+			$has_non_fixed_items = true;
+		}
+
+		// If we removed all items (only Fixed existed), return empty so the template can skip this notification.
+		if ( ! $has_non_fixed_items ) {
+			return '';
+		}
+
+		$wrapper = $dom_document->getElementById( 'botiga_changelog_root' );
+
+		if ( ! $wrapper ) {
+			return '';
+		}
+
+		$filtered_content = '';
+
+		foreach ( $wrapper->childNodes as $child_node ) {
+			$filtered_content .= $dom_document->saveHTML( $child_node );
+		}
+
+		// If somehow everything became empty, return empty to skip the notification.
+		if ( '' === trim( wp_strip_all_tags( $filtered_content ) ) ) {
+			return '';
+		}
+
+		return $filtered_content;
+	}
 }
 
 new Botiga_Dashboard();

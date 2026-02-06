@@ -1300,6 +1300,11 @@
       $(buttonSelector).css('border-radius', to + 'px');
     });
   });
+  wp.customize('button_border_width', function (value) {
+    value.bind(function (to) {
+      $(buttonSelector).css('border-width', to + 'px');
+    });
+  });
   var $buttonTBPadding = {
     'button_top_bottom_padding': buttonSelector
   };

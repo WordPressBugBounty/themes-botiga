@@ -127,17 +127,23 @@ if( botiga_sticky_header_enabled() ) {
         }
     }
     
-    if( get_theme_mod( 'site_layout', 'default' ) === 'padded' ) {
-        $sticky_gap = $sticky_gap + get_theme_mod( 'padded_layout_spacing_desktop', 20 );
-    }
-
-    if( $sticky_row === 'all' ) {
-        $css .= '@media(min-width: 1025px) { body.has-bhfb-builder:not(.header-transparent) { padding-top: '. esc_attr( $sticky_gap ) .'px; } }';
-    }
+	$sticky_header_behaviour = get_theme_mod( 'sticky_header_behaviour', 'desktop-only' );
+	$mobile_breakpoint       = absint( get_theme_mod( 'mobile_breakpoint', 1024 ) );
+	
+	if ( 'all' === $sticky_row ) {
+		$media_query  = '';
+		$padding_rule = 'body.has-bhfb-builder:not(.header-transparent) { padding-top: ' . esc_attr( $sticky_gap ) . 'px; }';
+	if ( 'desktop-only' === $sticky_header_behaviour ) {
+		$media_query = '@media (min-width: ' . $mobile_breakpoint . 'px){' . $padding_rule . '}';
+	} elseif ( 'mobile-only' === $sticky_header_behaviour ) {
+		$media_query = '@media (max-width: ' . $mobile_breakpoint . 'px){' . $padding_rule . '}';
+	}
+		$css .= $media_query ? $media_query : $padding_rule;
+	}
 
     if( $sticky_row === 'main-header-row' || $sticky_row === 'below-header-row' ) {
         $sticky_gap = is_admin_bar_showing() ? $sticky_gap + 42 : $sticky_gap;
-        $css .= '@media(min-width: 1025px) { body.has-bhfb-builder.sticky-header-active:not(.header-transparent) { padding-top: '. esc_attr( $sticky_gap ) .'px; } }';
+        $css .= 'body.has-bhfb-builder.sticky-header-active:not(.header-transparent) { padding-top: '. esc_attr( $sticky_gap ) .'px; }';
     }
 }
 

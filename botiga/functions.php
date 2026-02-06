@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.3.7' );
+	define( 'BOTIGA_VERSION', '2.4.0' );
 }
 
 // aThemes White Label Compatibility
@@ -339,11 +339,14 @@ function botiga_scripts() {
 		}
 	}
 
-	wp_enqueue_script( 'botiga-custom', get_template_directory_uri() . '/assets/js/custom.min.js', array(), BOTIGA_VERSION, true );
+	wp_enqueue_script( 'botiga-custom', get_template_directory_uri() . '/assets/js/custom.min.js', array( 'jquery' ), BOTIGA_VERSION, true );
 	wp_localize_script( 'botiga-custom', 'botiga', array(
 		'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		'settings' => array(
 			'misc' => array(
+                // Added in botiga pro
+                // inc/customizer/options/woocommerce/single-product/section-layout.php:70
+                'auto_select_variations' => get_theme_mod( 'auto_select_available_variations' ),
 				'dropdowns_hover_delay' => get_option( 'botiga_dropdowns_hover_delay', 'yes' ),
 			),
 		),
@@ -430,6 +433,23 @@ add_action( 'after_switch_theme', 'botiga_deactivate_ele_onboarding' );
  * Modules Class.
  */
 require get_template_directory() . '/inc/modules/class-botiga-modules.php';
+
+/**
+ * Action Scheduler.
+ * Load on plugins_loaded to ensure it's available before init.
+ */
+add_action(
+	'plugins_loaded',
+	static function() {
+		
+		// Check if Action Scheduler is already loaded.
+		if ( function_exists( 'as_schedule_recurring_action' ) ) {
+			return;
+		}
+
+		require_once get_template_directory() . '/vendor/woocommerce/action-scheduler/action-scheduler.php';
+	}
+);
 
 /**
  * Gutenberg editor.
@@ -586,6 +606,12 @@ require get_template_directory() . '/inc/dashboard/class-dashboard.php';
  * Theme dashboard settings.
  */
 require get_template_directory() . '/inc/dashboard/class-dashboard-settings.php';
+
+/**
+ * Usage Tracking.
+ */
+require get_template_directory() . '/inc/usage-tracking/class-botiga-usage-tracking.php';
+require get_template_directory() . '/inc/usage-tracking/class-botiga-send-usage-task.php';
 
 /**
  * Modules.

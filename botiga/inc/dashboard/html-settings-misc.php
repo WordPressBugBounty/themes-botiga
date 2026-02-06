@@ -37,6 +37,33 @@ if ( ! defined('ABSPATH') ) {
         </div>
     </div>
 </div>
+<?php if ( ! defined( 'BOTIGA_PRO_VERSION' ) ) : ?>
+<div class="botiga-dashboard-card">
+    <div class="botiga-dashboard-card-body">
+        <div class="botiga-dashboard-module-card">
+            <div class="botiga-dashboard-module-card-header bt-align-items-center">
+                <div class="botiga-dashboard-module-card-header-info">
+                    <h2 class="bt-m-0 bt-mb-10px"><?php echo esc_html__( 'Improve Botiga', 'botiga' ); ?></h2>
+                    <p class="bt-text-color-grey"><?php esc_html_e('By allowing us to track usage data, we can better help you, as we will know which WordPress configurations, themes, and plugins we should test. No sensitive data is collected.', 'botiga'); ?></p>
+                </div>
+                <div class="botiga-dashboard-module-card-header-actions bt-pt-0">
+                    <div class="botiga-dashboard-box-link">
+                        <?php if ( get_option( 'botiga-usage-tracking-enabled', false ) ) : ?>
+                            <a href="#" class="botiga-dashboard-link botiga-dashboard-link-danger botiga-dashboard-option-switcher" data-option-id="botiga-usage-tracking-enabled" data-option-activate="false">
+                                <?php echo esc_html__( 'Deactivate', 'botiga' ); ?>
+                            </a>
+                        <?php else : ?>
+                            <a href="#" class="botiga-dashboard-link botiga-dashboard-link-success botiga-dashboard-option-switcher" data-option-id="botiga-usage-tracking-enabled" data-option-activate="true">
+                                <?php echo esc_html__( 'Activate', 'botiga' ); ?>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
 <?php if ( defined( 'BOTIGA_PRO_VERSION' ) ) : ?>
 <div class="botiga-dashboard-card">
     <div class="botiga-dashboard-card-body">

@@ -18,15 +18,15 @@ if( $header_transparent ) {
         $rows = explode( ',', $header_transparent_hb_rows );
 
         if( in_array( 'top-row', $rows ) ) {
-            $css .= 'body:not(.sticky-header-active) .header-transparent-wrapper .bhfb-header.bhfb-desktop .bhfb-above_header_row { background-color: transparent; }';
+            $css .= 'body:not(.sticky-header-active) .header-transparent-wrapper .bhfb-header .bhfb-above_header_row { background-color: transparent; }';
         }
 
         if( in_array( 'main-row', $rows ) ) {
-            $css .= 'body:not(.sticky-header-active) .header-transparent-wrapper .bhfb-header.bhfb-desktop .bhfb-main_header_row { background-color: transparent; }';
+            $css .= 'body:not(.sticky-header-active) .header-transparent-wrapper .bhfb-header .bhfb-main_header_row { background-color: transparent; }';
         }
 
         if( in_array( 'bottom-row', $rows ) ) {
-            $css .= 'body:not(.sticky-header-active) .header-transparent-wrapper .bhfb-header.bhfb-desktop .bhfb-below_header_row { background-color: transparent; }';
+            $css .= 'body:not(.sticky-header-active) .header-transparent-wrapper .bhfb-header .bhfb-below_header_row { background-color: transparent; }';
         }
 
     }

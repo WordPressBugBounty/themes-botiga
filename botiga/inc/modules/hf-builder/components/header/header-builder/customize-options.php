@@ -13,6 +13,7 @@ $opts_to_move = array(
     'general' => array(
         'enable_sticky_header',
         'sticky_header_type',
+        'sticky_header_behaviour',
         'header_transparent',
         'header_transparent_display_rules_title',
         'header_transparent_display_on',

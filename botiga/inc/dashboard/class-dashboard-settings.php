@@ -15,6 +15,44 @@ if( ! is_admin() ) {
 	return;
 }
 
+/**
+ * Redirect back to Botiga Dashboard after activating Botiga Pro.
+ *
+ * @param string $location The redirect location.
+ *
+ * @return string
+ */
+function botiga_dashboard_redirect_after_activate_pro( $location ) {
+	if ( ! is_admin() ) {
+		return $location;
+	}
+
+	$action = isset( $_REQUEST['action'] ) ? sanitize_key( wp_unslash( $_REQUEST['action'] ) ) : '';
+
+	if ( $action !== 'activate' ) {
+		return $location;
+	}
+
+	$plugin = isset( $_REQUEST['plugin'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['plugin'] ) ) : '';
+
+	if ( empty( $plugin ) ) {
+		return $location;
+	}
+
+	// Match the Botiga Pro main plugin file, regardless of folder casing.
+	if ( stripos( $plugin, 'botiga-pro.php' ) === false ) {
+		return $location;
+	}
+
+	return add_query_arg(
+		array(
+			'page' => 'botiga-dashboard',
+		),
+		admin_url( 'admin.php#botiga-pro-dashboard-section' )
+	);
+}
+add_filter( 'wp_redirect', 'botiga_dashboard_redirect_after_activate_pro' );
+
 function botiga_dashboard_settings() {
 
 	$settings = array();
@@ -27,6 +65,26 @@ function botiga_dashboard_settings() {
 	$settings['starter_plugin_path'] = 'athemes-starter-sites/athemes-starter-sites.php';
 	$settings['has_pro']             = false;
 	$settings['website_link']        = 'https://athemes.com/';
+	
+	$settings['can_activate_plugins'] = current_user_can( 'activate_plugins' );
+	
+	// Botiga Pro.
+	$pro_plugin_path               = botiga_get_pro_plugin_path();
+	$settings['has_pro_installed'] = ! empty( $pro_plugin_path );
+	$settings['pro_activate_url']  = '';
+	
+	if ( ! empty( $pro_plugin_path ) ) {
+		$settings['pro_activate_url'] = wp_nonce_url(
+			add_query_arg(
+				array(
+					'action' => 'activate',
+					'plugin' => $pro_plugin_path,
+				),
+				admin_url( 'plugins.php' )
+			),
+			'activate-plugin_' . $pro_plugin_path
+		);
+	}
 
 	//
 	// Hero.

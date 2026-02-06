@@ -1802,7 +1802,7 @@ div.editor-styles-wrapper .search-submit,
 div.editor-styles-wrapper input[type=button],
 div.editor-styles-wrapper input[type=reset],
 div.editor-styles-wrapper input[type=submit] {
-  border: 2px solid var(--bt-color-button-border, #212121);
+  border: var(--bt-border-width-button, 0px) solid var(--bt-color-button-border, #212121);
   -webkit-box-shadow: none;
           box-shadow: none;
   background: var(--bt-color-button-bg, #212121);
@@ -1979,7 +1979,7 @@ div.editor-styles-wrapper input[type=button].is-style-outline:not(.has-text-colo
 div.editor-styles-wrapper input[type=reset].is-style-outline:not(.has-text-color),
 div.editor-styles-wrapper input[type=submit].is-style-outline:not(.has-text-color) {
   color: var(--bt-color-button, #FFF);
-  border: 2px solid var(--bt-color-button-border, #212121);
+  border: var(--bt-border-width-button, 0px) solid var(--bt-color-button-border, #212121);
 }
 .is-style-outline div.editor-styles-wrapper a.button:not(.has-text-color):hover,
 .is-style-outline div.editor-styles-wrapper .button:not(.has-text-color):hover,
@@ -3099,6 +3099,7 @@ div.editor-styles-wrapper p.no-comments {
 div.editor-styles-wrapper .woocommerce-error {
   list-style: none;
   background-color: #f2f2f2;
+  border-left: 3px solid #a00;
 }
 div.editor-styles-wrapper .demo_store {
   position: fixed;

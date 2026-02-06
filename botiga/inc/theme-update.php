@@ -245,6 +245,12 @@ function botiga_migrate_2_0_0_modules( $old_theme_name ) {
     if ( ! empty( $flag ) ) {
         return;
     }
+    
+	if ( function_exists( 'botiga_is_legacy_install_for_modules_migration' ) && ! botiga_is_legacy_install_for_modules_migration() ) {
+		// Prevent running on every admin load for fresh installs.
+		set_theme_mod( 'botiga_migrate_2_0_0_modules_flag', true );
+		return;
+	}
 
     $modules = get_option( 'botiga-modules', array() );
 
@@ -296,20 +302,10 @@ function botiga_migrate_2_0_0_modules( $old_theme_name ) {
         $modules = array_merge( $modules, array( 'login-popup' => true ) );
     }
 
-    // Video gallery module
-    if( ! isset( $modules[ 'video-gallery' ] ) ) {
-        $modules = array_merge( $modules, array( 'video-gallery' => true ) );
-    }
-
     // Wishlist module
     $wishlist_enabled = get_theme_mod( 'shop_product_wishlist_layout', 'layout1' ) !== 'layout1' ? true : false;
     if( $wishlist_enabled ) {
         $modules = array_merge( $modules, array( 'wishlist' => true ) );
-    }
-
-    // Table of contents module
-    if( ! isset( $modules[ 'table-of-contents' ] ) ) {
-        $modules = array_merge( $modules, array( 'table-of-contents' => true ) );
     }
 
     // Custom sidebars module
@@ -318,12 +314,7 @@ function botiga_migrate_2_0_0_modules( $old_theme_name ) {
         $modules = array_merge( $modules, array( 'custom-sidebars' => true ) );
     }
 
-    // Variations gallery module
-    if( ! isset( $modules[ 'variations-gallery' ] ) ) {
-        $modules = array_merge( $modules, array( 'variations-gallery' => true ) );
-    }
-
-    update_option( 'botiga-modules', $modules );
+    update_option( 'botiga-modules', $modules, false );
 
     //Set flag
     set_theme_mod( 'botiga_migrate_2_0_0_modules_flag', true );
@@ -564,25 +555,41 @@ add_action( 'init', 'botiga_enable_templates_builder_v3' );
  * 
  * @return void
  */
-
-function botiga_set_database_theme_version_to_new_users( $old_theme_name ) {
-    $flag = get_theme_mod( 'botiga_set_database_theme_version_to_new_users_flag', false );
-
-    if ( ! empty( $flag ) ) {
-        return;
-    }
-
-	$old_theme_name = strtolower( $old_theme_name );
-    $not_theme_update = strpos( $old_theme_name, 'botiga' ) === FALSE;
-
-	if( ! get_option( 'botiga-first-theme-version' ) && $not_theme_update ) {
-		update_option( 'botiga-first-theme-version', BOTIGA_VERSION );
+function botiga_run_templates_builder_initial_setup() {
+	$legacy_migrated = (bool) get_option( 'botiga-legacy_templates_builder_migrated', false );
+	$legacy_flag     = get_option( 'botiga-legacy-templates-builder', false );
+	$new_ui_flag     = get_theme_mod( 'botiga_templates_builder_new_ui_flag', false );
+	$v3_flag         = get_option( 'botiga_templates_builder_v3', '' );
+	
+	// First-time migration: not migrated yet, set everything to the desired state.
+	if ( ! $legacy_migrated ) {
+		set_theme_mod( 'botiga_templates_builder_new_ui_flag', true );
+		update_option( 'botiga-legacy-templates-builder', false );
+		update_option( 'botiga-legacy_templates_builder_migrated', true );
+		update_option( 'botiga_templates_builder_v3', 'yes' );
+	
+		return;
 	}
-
-    // Set flag
-    set_theme_mod( 'botiga_set_database_theme_version_to_new_users_flag', true );
+	
+	// From this point on, we are in "self-healing" mode:
+	// if anything is off, fix it so every refresh ends with a consistent state.
+	
+	// Legacy flag must always be false once migrated.
+	if ( $legacy_flag ) {
+		update_option( 'botiga-legacy-templates-builder', false );
+	}
+	
+	// New UI flag must always be truthy once migrated.
+	if ( empty( $new_ui_flag ) ) {
+		set_theme_mod( 'botiga_templates_builder_new_ui_flag', true );
+	}
+	
+	// V3 flag must always be 'yes' once migrated.
+	if ( 'yes' !== $v3_flag ) {
+		update_option( 'botiga_templates_builder_v3', 'yes' );
+	}
 }
-add_action('after_switch_theme', 'botiga_set_database_theme_version_to_new_users');
+add_action( 'init', 'botiga_run_templates_builder_initial_setup', 5 );
 
 /**
  * Update the theme version in the database after every update or

@@ -15,6 +15,7 @@ if ( ! class_exists( 'Botiga_Modules' ) ) {
 		public function __construct() {
 			add_action( 'admin_init', array( $this, 'activate_modules' ) );
 			add_action( 'admin_init', array( $this, 'modules_default_status' ) );
+			add_filter( 'option_botiga-modules', array( $this, 'filter_botiga_modules_option' ) );
 		}
 
 		/**
@@ -109,6 +110,31 @@ if ( ! class_exists( 'Botiga_Modules' ) ) {
 					}
 				}
 			}
+		}
+		
+		/**
+		 * Filter the botiga-modules option so only modules that exist for the current site remain.
+		 * - Lite only: keep Lite filesystem ids.
+		 * - Lite + Pro active: keep Lite + Pro filesystem ids.
+		 *
+		 * @param mixed $value Option value.
+		 *
+		 * @return mixed
+		 */
+		public function filter_botiga_modules_option( $value ) {
+			$value = is_array( $value ) ? $value : (array) $value;
+
+			if ( ! function_exists( 'botiga_get_available_modules_ids' ) ) {
+				return $value;
+			}
+
+			$modules_ids = botiga_get_available_modules_ids();
+
+			if ( empty( $modules_ids ) ) {
+				return array();
+			}
+
+			return array_intersect_key( $value, array_flip( $modules_ids ) );
 		}
 	}   
     

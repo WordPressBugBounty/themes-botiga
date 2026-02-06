@@ -869,15 +869,16 @@ class Botiga_Header_Footer_Builder {
      * Header Builder Front Output
      */
     public function header_front_output() {
-        $sticky_header_styles = array();
-        $sticky_header        = get_theme_mod( 'enable_sticky_header', 0 );
-        $sticky_header_type   = get_theme_mod( 'sticky_header_type', 'always' );
-        $sticky_row           = get_theme_mod( 'botiga_section_hb_wrapper__header_builder_sticky_row', 'main-header-row' );
+        $sticky_header_styles    = array();
+        $sticky_header           = get_theme_mod( 'enable_sticky_header', 0 );
+        $sticky_header_type      = get_theme_mod( 'sticky_header_type', 'always' );
+        $sticky_header_behaviour = get_theme_mod( 'sticky_header_behaviour', 'desktop-only' );
+        $sticky_row              = get_theme_mod( 'botiga_section_hb_wrapper__header_builder_sticky_row', 'main-header-row' );
 
         $devices = array( 'desktop', 'mobile' );
         foreach( $devices as $device ) { ?>
 
-            <?php 
+            <?php
             if ( ! did_action( 'botiga_before_header' ) ) {
 
                 /**
@@ -887,9 +888,27 @@ class Botiga_Header_Footer_Builder {
                  */
                 do_action( 'botiga_before_header' );
             } 
+			
+			$wrapper_classnames    = '';
+			$wrapper_inline_styles = '';
+			
+			$apply_sticky =
+				( 'desktop-only' === $sticky_header_behaviour && 'desktop' === $device ) ||
+				( 'mobile-only' === $sticky_header_behaviour && 'mobile' === $device ) ||
+				'all' === $sticky_header_behaviour;
+
+			if ( $apply_sticky && ! empty( $sticky_header ) ) {
+				$wrapper_classnames = sprintf(
+					' has-sticky-header sticky-%s sticky-row-%s',
+					esc_attr( $sticky_header_type ),
+					esc_attr( $sticky_row ),
+				);
+
+				$wrapper_inline_styles = esc_attr( implode( ' ', $sticky_header_styles ) );
+			}
             ?>
 
-            <header class="bhfb bhfb-header bhfb-<?php echo esc_attr( $device ); ?><?php echo ( $device === 'desktop' && $sticky_header ? ' has-sticky-header sticky-' . esc_attr( $sticky_header_type ) . ' sticky-row-' . esc_attr( $sticky_row ) : '' ); ?>"<?php echo $device === 'desktop' && ! empty($sticky_header_styles) ? 'style="' . esc_attr( implode( ' ', $sticky_header_styles ) ) . '"' : ''; ?> <?php botiga_schema( 'header' ); ?>> <?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<header class="bhfb bhfb-header bhfb-<?php echo esc_attr( $device ); ?><?php echo esc_attr( $wrapper_classnames ); ?>"<?php echo ! empty( $wrapper_inline_styles ) ? 'style="' . esc_attr( $wrapper_inline_styles ) . '"' : ''; ?> <?php botiga_schema( 'header' ); ?>> <?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
                 <?php 
                 /**

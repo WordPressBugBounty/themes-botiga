@@ -68,10 +68,19 @@ if ( ! defined( 'ABSPATH' ) ) {
                     ?>
 
                     <?php foreach( $this->settings[ 'notifications' ] as $notification ) : 
-                        $date    = isset( $notification->post_date ) ? $notification->post_date : false;
-                        $version = isset( $notification->post_title ) ? $notification->post_title : false;
-                        $content = isset( $notification->post_content ) ? $notification->post_content : false;
-                        
+						$date        = isset( $notification->post_date ) ? $notification->post_date : false;
+						$version     = isset( $notification->post_title ) ? $notification->post_title : false;
+						$content_raw = isset( $notification->post_content ) ? $notification->post_content : '';
+						$content     = apply_filters(
+							'botiga_dashboard_notification_changelog_content',
+							$content_raw,
+							$notification
+						);
+						
+						// Skip releases that only had "Fixed" items (or if a filter decides to hide it).
+						if ( '' === trim( wp_strip_all_tags( $content ) ) ) {
+							continue;
+						}
                         ?>
 
                         <div class="botiga-dashboard-notification">
@@ -116,10 +125,19 @@ if ( ! defined( 'ABSPATH' ) ) {
                     ?>
 
                     <?php foreach( $this->settings[ 'notifications_pro' ] as $notification ) : 
-                        $date    = isset( $notification->post_date ) ? $notification->post_date : false;
-                        $version = isset( $notification->post_title ) ? $notification->post_title : false;
-                        $content = isset( $notification->post_content ) ? $notification->post_content : false;
-                        
+						$date        = isset( $notification->post_date ) ? $notification->post_date : false;
+						$version     = isset( $notification->post_title ) ? $notification->post_title : false;
+						$content     = isset( $notification->post_content ) ? $notification->post_content : false;
+						$content_raw = isset( $notification->post_content ) ? $notification->post_content : '';
+						$content     = apply_filters(
+							'botiga_dashboard_notification_changelog_content',
+							$content_raw,
+							$notification
+						);
+												
+						if ( '' === trim( wp_strip_all_tags( $content ) ) ) {
+							continue;
+						}
                         ?>
 
                         <div class="botiga-dashboard-notification">

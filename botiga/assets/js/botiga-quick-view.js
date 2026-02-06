@@ -46,6 +46,11 @@ botiga.quickView = {
             popupContent.innerHTML = this.response;
             var $wrapper = jQuery(popupContent);
 
+            // Initialize Quick View ajax add to cart.
+            if (botiga.quickView && botiga.quickView.add_to_cart_ajax) {
+              botiga.quickView.add_to_cart_ajax.init($wrapper);
+            }
+
             // Initialize gallery 
             var $gallery = $wrapper.find('.woocommerce-product-gallery');
             if ($gallery.length) {
@@ -107,6 +112,162 @@ botiga.quickView = {
     var _this = this;
     window.addEventListener('botiga.carousel.initialized', function () {
       _this.build();
+    });
+  }
+};
+botiga.quickView.add_to_cart_ajax = {
+  isBound: false,
+  isProcessing: false,
+  init: function init() {
+    if (this.isBound) {
+      return;
+    }
+    this.bindEvents();
+    this.isBound = true;
+  },
+  bindEvents: function bindEvents() {
+    var _this2 = this;
+    var addToCartSelector = '.botiga-quick-view-summary form.cart .single_add_to_cart_button';
+    jQuery(document).on('click', addToCartSelector, function (event) {
+      var $button = jQuery(event.currentTarget);
+      var $form = $button.closest('form.cart');
+
+      // If it's disabled, let Woo handle it.
+      if ($button.hasClass('disabled') || $button.prop('disabled')) {
+        return;
+      }
+
+      // Prevent default form submit, we handle via Ajax.
+      event.preventDefault();
+      event.stopPropagation();
+
+      // Bail early if a request is already running.
+      if (_this2.isProcessing) {
+        return;
+      }
+
+      // For safety: if no form/action, fall back to default behavior.
+      if (!$form.length || !$form.attr('action')) {
+        return;
+      }
+      _this2.isProcessing = true;
+      var productId = $button.val() || $form.find('input[name="add-to-cart"]').val() || $form.find('input[name="product_id"]').val();
+      var requestData = _this2.buildRequestData($form, productId);
+      var $insertTarget = _this2.getNoticeTarget();
+
+      // Mark last result as failed until proven otherwise.
+      $button.data('botigaQuickViewLastResult', 'error');
+      jQuery(document.body).trigger('adding_to_cart', [$button, requestData]);
+      jQuery.ajax({
+        type: 'POST',
+        url: $form.attr('action'),
+        data: requestData,
+        beforeSend: function beforeSend() {
+          $button.prop('disabled', true);
+          $button.removeClass('added').addClass('loading');
+          _this2.clearNotices($insertTarget);
+        },
+        complete: function complete() {
+          $button.prop('disabled', false);
+          $button.addClass('added').removeClass('loading');
+          _this2.isProcessing = false;
+        },
+        success: function success(responseHtml) {
+          // Refresh fragments first (mini-cart, counters, etc.).
+          _this2.refreshFragments();
+          var $response = jQuery(responseHtml);
+          var hasError = Boolean($response.find('.woocommerce-error').length);
+          var hasMessage = Boolean($response.find('.woocommerce-message').length);
+          if (hasError) {
+            _this2.renderNotice('error', $response, $insertTarget);
+            $button.data('botigaQuickViewLastResult', 'error');
+
+            // Do NOT close modal on error.
+            return;
+          }
+          if (hasMessage) {
+            _this2.renderNotice('message', $response, $insertTarget);
+            $button.data('botigaQuickViewLastResult', 'success');
+
+            // Trigger Woo event for compatibility.
+            jQuery(document.body).trigger('added_to_cart', [null, null, $button]);
+
+            // Optional close (kept commented as requested).
+            setTimeout(function () {
+              // botiga.quickView.close();
+            }, 300);
+            return;
+          }
+
+          // If neither error nor message exists, keep modal open.
+        },
+        error: function error() {
+          _this2.isProcessing = false;
+          jQuery(document.body).trigger('wc_ajax_error', [$button]);
+        }
+      });
+    });
+  },
+  buildRequestData: function buildRequestData($form, productId) {
+    var serialized = $form.serialize();
+
+    // Ensure add-to-cart is present and matches clicked product button value.
+    if (productId) {
+      return "add-to-cart=".concat(encodeURIComponent(productId), "&").concat(serialized);
+    }
+    return serialized;
+  },
+  getNoticeTarget: function getNoticeTarget() {
+    var $popupContent = jQuery('.botiga-quick-view-popup-content-ajax');
+    if (!$popupContent.length) {
+      return jQuery('.botiga-quick-view-popup-content-ajax');
+    }
+    var $notices = $popupContent.find('.woocommerce-notices-wrapper');
+    if (!$notices.length) {
+      $notices = jQuery('<div class="woocommerce-notices-wrapper"></div>');
+      $popupContent.prepend($notices);
+    }
+    return $notices;
+  },
+  clearNotices: function clearNotices($target) {
+    if (!$target || !$target.length) {
+      return;
+    }
+    $target.find('.woocommerce-error, .woocommerce-message, .woocommerce-info').remove();
+  },
+  renderNotice: function renderNotice(type, $response, $target) {
+    if (!$target || !$target.length) {
+      return;
+    }
+    var selector = ".woocommerce-".concat(type);
+    var $newNotice = $response.find(selector).first();
+    if (!$newNotice.length) {
+      return;
+    }
+
+    // Clone to avoid moving nodes out of $response.
+    $target.append($newNotice.clone(true, true));
+  },
+  refreshFragments: function refreshFragments() {
+    var ajaxUrl = window.woocommerce_params && window.woocommerce_params.ajax_url ? window.woocommerce_params.ajax_url : window.botiga && window.botiga.ajaxurl ? window.botiga.ajaxurl : '';
+    if (!ajaxUrl) {
+      return;
+    }
+    jQuery.ajax({
+      type: 'POST',
+      url: ajaxUrl,
+      data: {
+        action: 'woocommerce_get_refreshed_fragments'
+      },
+      success: function success(response) {
+        if (!response || !response.fragments) {
+          return;
+        }
+        jQuery.each(response.fragments, function (key, value) {
+          jQuery(key).replaceWith(value);
+        });
+        jQuery('body').trigger('wc_fragments_refreshed');
+      }
     });
   }
 };

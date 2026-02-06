@@ -241,3 +241,252 @@ function botiga_upgrade_link( $medium = 'link', $content = '', $hashtag = '' ) {
 	 */
 	return apply_filters( 'botiga_upgrade_link', $upgrade );
 }
+
+/**
+ * Get Botiga Pro plugin file path (directory/file.php) if installed.
+ *
+ * @since 2.4.0
+ *
+ * @return string
+ */
+function botiga_get_pro_plugin_path() {
+	if ( ! function_exists( 'get_plugins' ) ) {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+	}
+
+	$plugins = get_plugins();
+
+	foreach ( array_keys( $plugins ) as $plugin_path ) {
+		// Match both "botiga-pro/botiga-pro.php" and "Botiga-Pro/botiga-pro.php".
+		if ( preg_match( '#(^|/)(botiga-pro)\.php$#i', $plugin_path ) && stripos( $plugin_path, 'botiga-pro/' ) !== false ) {
+			return $plugin_path;
+		}
+
+		// Any folder name, but main file is botiga-pro.php.
+		if ( preg_match( '#(^|/)(botiga-pro)\.php$#i', $plugin_path ) ) {
+			return $plugin_path;
+		}
+	}
+
+	return '';
+}
+
+/**
+ * Check whether Botiga Pro is active.
+ *
+ * @since 2.4.0
+ *
+ * @return bool
+ */
+function botiga_is_pro_active() {
+	static $is_active = null;
+
+	if ( null !== $is_active ) {
+		return (bool) $is_active;
+	}
+	
+	// Fast path if Pro is active and exposes a stable class.
+	if ( class_exists( 'Botiga_Pro' ) ) {
+		$is_active = true;
+		return true;
+	}
+
+	if ( ! function_exists( 'is_plugin_active' ) ) {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+	}
+
+	$pro_plugin_path = botiga_get_pro_plugin_path();
+
+	if ( empty( $pro_plugin_path ) ) {
+		$is_active = false;
+		return false;
+	}
+
+	$is_active = is_plugin_active( $pro_plugin_path );
+
+	return (bool) $is_active;
+}
+
+/**
+ * Check whether a theme mod exists in the DB (not defaulted).
+ *
+ * @since 2.4.0
+ *
+ * @param string $key Theme mod key.
+ *
+ * @return bool
+ */
+function botiga_theme_mod_exists( $key ) {
+	if ( empty( $key ) || ! is_string( $key ) ) {
+		return false;
+	}
+
+	$mods = get_theme_mods();
+
+	if ( empty( $mods ) || ! is_array( $mods ) ) {
+		return false;
+	}
+
+	return array_key_exists( $key, $mods );
+}
+
+/**
+ * Get Lite (theme) module IDs.
+ *
+ * @since 2.4.0
+ *
+ * @return array
+ */
+function botiga_get_lite_modules_ids() {
+	static $ids = null;
+
+	if ( null !== $ids ) {
+		return $ids;
+	}
+
+	$ids = array(
+		'hf-builder',
+		'schema-markup',
+		'adobe-typekit',
+		'local-google-fonts',
+	);
+
+	/**
+	 * Filter Lite module IDs.
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param array $ids Lite module IDs.
+	 */
+	$ids = apply_filters( 'botiga_lite_modules_ids', $ids );
+
+	$ids = array_map( 'sanitize_key', (array) $ids );
+	$ids = array_values( array_unique( array_filter( $ids ) ) );
+
+	return $ids;
+}
+
+/**
+ * Get Pro module IDs.
+ *
+ * @since 2.4.0
+ *
+ * @return array
+ */
+function botiga_get_pro_modules_ids() {
+	static $ids = null;
+
+	// If Pro isn't active, it must contribute nothing.
+	if ( ! botiga_is_pro_active() ) {
+		return array();
+	}
+
+	if ( null !== $ids ) {
+		return $ids;
+	}
+
+	// Keep this list aligned with Botiga Pro module slugs.
+	$ids = array(
+		'shop-filters',
+		'custom-fonts',
+		'wishlist',
+		'product-swatches',
+		'video-gallery',
+		'variations-gallery',
+		'size-chart',
+		'advanced-reviews',
+		'buy-now',
+		'free-shipping-progress-bar',
+		'quantity-step-control',
+		'sticky-add-to-cart',
+		'linked-variations',
+		'custom-sidebars',
+		'mega-menu',
+		'add-to-cart-notifications',
+		'modal-popup',
+		'login-popup',
+		'breadcrumbs',
+		'quick-links',
+		'google-autocomplete',
+		'table-of-contents',
+		'templates',
+	);
+
+	/**
+	 * Filter Pro module IDs.
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param array $ids Pro module IDs.
+	 */
+	$ids = apply_filters( 'botiga_pro_modules_ids', $ids );
+
+	$ids = array_map( 'sanitize_key', (array) $ids );
+	$ids = array_values( array_unique( array_filter( $ids ) ) );
+
+	return $ids;
+}
+
+/**
+ * Get all available module IDs for the current site (Lite + Pro when active).
+ *
+ * @since 2.4.0
+ *
+ * @return array
+ */
+function botiga_get_available_modules_ids() {
+	static $ids = null;
+
+	if ( null !== $ids ) {
+		return $ids;
+	}
+
+	$ids = botiga_get_lite_modules_ids();
+
+	if ( botiga_is_pro_active() ) {
+		$ids = array_merge( $ids, botiga_get_pro_modules_ids() );
+	}
+
+	$ids = array_map( 'sanitize_key', (array) $ids );
+	$ids = array_values( array_unique( array_filter( $ids ) ) );
+
+	return $ids;
+}
+
+/**
+ * Determine whether this site is a legacy install that predates modules (2.0.0).
+ *
+ * @since 2.4.0
+ *
+ * @return bool
+ */
+function botiga_is_legacy_install_for_modules_migration() {
+	$first_version = get_option( 'botiga-first-theme-version', '' );
+
+	// If the theme stored its initial version, use it.
+	if ( ! empty( $first_version ) && is_string( $first_version ) ) {
+		return version_compare( $first_version, '2.0.0', '<' );
+	}
+
+	// Fallback: detect legacy by checking if any old module-related theme mods exist in DB.
+	$legacy_keys = array(
+		'single_size_chart',
+		'single_product_linked_variations',
+		'product_swatch',
+		'modal_popup_enable',
+		'perf_google_fonts_local',
+		'single_sticky_add_to_cart',
+		'single_product_reviews_advanced_enable',
+		'login_register_popup',
+		'shop_product_wishlist_layout',
+		'custom_sidebars',
+	);
+
+	foreach ( $legacy_keys as $key ) {
+		if ( botiga_theme_mod_exists( $key ) ) {
+			return true;
+		}
+	}
+
+	return false;
+}

@@ -196,6 +196,23 @@ $wp_customize->add_control(
 	)
 );
 
+$wp_customize->add_setting( 'sticky_header_behaviour', array(
+	'sanitize_callback' => 'botiga_sanitize_select',
+	'default'           => 'desktop-only',
+) );
+$wp_customize->add_control( 'sticky_header_behaviour', array(
+	'type'      => 'select',
+	'section'   => 'botiga_section_main_header',
+	'label'     => esc_html__( 'Sticky behaviour', 'botiga' ),
+	'choices' => array(
+		'all'           => esc_html__( 'Sticky on all devices', 'botiga' ),
+		'desktop-only'  => esc_html__( 'Desktop only', 'botiga' ),
+		'mobile-only'   => esc_html__( 'Mobile/tablet only', 'botiga' ),
+	),
+	'active_callback' => 'botiga_callback_sticky_header',
+	'priority'        => 27,
+) );
+
 $wp_customize->add_setting( 'sticky_header_type',
 	array(
 		'default'           => 'always',

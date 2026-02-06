@@ -4,10 +4,10 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.3.7
-Tested up to: 6.8
+Version: 2.4.0
+Tested up to: 6.9
 Requires PHP: 7
-Stable tag: 2.3.7
+Stable tag: 2.4.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,11 +30,30 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.4.0 =
+* Added - A sticky header behaviour option to control where sticky headers apply across desktop and mobile devices.
+* Added - Allow activating Botiga Pro directly from the dashboard when installed but inactive.
+* Fixed - Invisible cart icon in Add to Cart layout 4 on dark backgrounds.
+* Fixed - Prevent Pro modules from activating on fresh installs.
+* Fixed - Template Builder not opening when using Elementor due to early loader initialization.
+* Fixed - Hide card radius, background, and border controls when Card Style is set to Layout 1.
+* Changed - Improve Quick View Ajax add to cart notices and cart fragment refresh.
+* Changed - Optimization to the Botiga_Custom_CSS class to only update custom-styles.css if content has changed.
+
+= 2.3.9 =
+* Added - Added an option to set button border width in the Theme Customizer
+* Fixed - Highlighting the Terms & Conditions field and WooCommerce errors during checkout
+
+= 2.3.8 =
+Added - Conflict modal appears when Botiga’s Free Shipping is active and the user tries to enable Merchant’s Free Shipping, letting them choose which to use
+Fixed - Shipping Address field overflow issue on the checkout
+Fixed - Enabling wishlist only when Botiga Pro enabled
+
 = 2.3.7 =
-* Added - Support for x.com and Threads in the Header/Footer social icons component
-* Fixed - WooCommerce Account: Added margin to order actions button for better spacing
-* Fixed - WordPress.org Preview: Search bar now correctly displays the search icon
-* Fixed - Sub-pages are rendered as a dropdown submenu under the parent page instead of a bullet list
+Added - Support for x.com and Threads in the Header/Footer social icons component
+Fixed - WooCommerce Account: Added margin to order actions button for better spacing
+Fixed - WordPress.org Preview: Search bar now correctly displays the search icon
+Fixed - Sub-pages are rendered as a dropdown submenu under the parent page instead of a bullet list
 
 = 2.3.6 =
 Fixed - Footer Builder: Fixed issue where header components appeared in the “Available Components” section

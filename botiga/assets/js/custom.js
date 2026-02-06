@@ -489,6 +489,62 @@ botiga.navigation = {
   }
 };
 
+// Auto select single available variation
+botiga.autoSelectVariations = {
+  init: function init() {
+    var _botiga$settings;
+    if (!((_botiga$settings = botiga.settings) !== null && _botiga$settings !== void 0 && (_botiga$settings = _botiga$settings.misc) !== null && _botiga$settings !== void 0 && _botiga$settings.auto_select_variations)) {
+      return;
+    }
+    // Use event delegation on document to catch dynamically loaded forms
+    document.addEventListener('wc_variation_form', function (e) {
+      var form = e.target;
+      if (!form || !form.matches('.variations_form')) return;
+
+      // Get variation data from the form's dataset
+      var variationData = form.dataset.product_variations ? JSON.parse(form.dataset.product_variations) : [];
+
+      // Filter for in-stock and purchasable variations
+      var availableVariations = variationData.filter(function (variation) {
+        return variation.is_in_stock && variation.is_purchasable;
+      });
+
+      // Proceed only if exactly one variation is available
+      if (availableVariations.length !== 1) return;
+      var singleVariation = availableVariations[0];
+      var attributes = singleVariation.attributes;
+
+      // Loop through each attribute and set the corresponding <select>
+      Object.keys(attributes).forEach(function (attributeName) {
+        var attributeValue = attributes[attributeName];
+        var select = form.querySelector("select[name=\"".concat(attributeName, "\"]"));
+        if (select) {
+          select.value = attributeValue;
+        }
+      });
+
+      // Trigger change on the first select to update WooCommerce UI
+      var firstSelect = form.querySelector('select');
+      if (firstSelect) {
+        firstSelect.dispatchEvent(new Event('change', {
+          bubbles: true
+        }));
+      }
+    }, true); // Use capture phase to ensure we catch the event early
+
+    // Also handle forms that are already on the page on load
+    document.querySelectorAll('.variations_form').forEach(function (form) {
+      if (form.dataset.product_variations) {
+        var _event2 = new CustomEvent('wc_variation_form', {
+          bubbles: true,
+          cancelable: true
+        });
+        form.dispatchEvent(_event2);
+      }
+    });
+  }
+};
+
 /**
  * Desktop off canvas toggle navigation
  */
@@ -700,90 +756,181 @@ botiga.headerSearch = {
  */
 botiga.stickyHeader = {
   init: function init() {
-    var _this = this,
-      sticky = document.getElementsByClassName('sticky-header')[0],
-      bhfb_sticky = document.getElementsByClassName('bhfb-sticky-header')[0],
-      body = document.getElementsByTagName('body')[0];
-    if ('undefined' === typeof sticky && 'undefined' === typeof bhfb_sticky) {
+    var _this = this;
+    var body = document.body;
+    var is_element_visible = function is_element_visible(el) {
+      if (!el) {
+        return false;
+      }
+
+      // Works for display:none and most responsive hide/show patterns.
+      return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+    };
+
+    // Support multiple sticky instances:
+    // - Legacy sticky header: .sticky-header
+    // - BHFB headers: header.bhfb (desktop + mobile) when sticky is enabled.
+    var sticky_headers = Array.from(document.querySelectorAll('.sticky-header, header.bhfb.has-sticky-header'));
+    if (!sticky_headers.length) {
       return;
     }
-    var sticky_selector = 'undefined' !== typeof sticky ? '.sticky-header' : '.bhfb-sticky-header';
-    if ('undefined' === typeof sticky) {
-      sticky = bhfb_sticky;
-    }
     this.stickyChangeLogo();
-    var topOffset = window.pageYOffset || document.documentElement.scrollTop;
-    if (topOffset > 10) {
-      sticky.classList.add('is-sticky');
+    var get_header_offset_y = function get_header_offset_y(sticky_el) {
+      var offset_y = sticky_el.getBoundingClientRect().y;
+      if (body.classList.contains('admin-bar')) {
+        offset_y = offset_y - 32;
+      }
+      if (body.classList.contains('botiga-site-layout-padded')) {
+        offset_y = offset_y - parseInt(getComputedStyle(body).getPropertyValue('--botiga_padded_spacing'), 10);
+      }
+      return offset_y;
+    };
+    var has_scrolltop_effect = sticky_headers.some(function (sticky_el) {
+      return sticky_el.classList.contains('sticky-scrolltop');
+    });
+
+    // Initial state (page loaded already scrolled).
+    var top_offset = window.pageYOffset || document.documentElement.scrollTop;
+    if (top_offset > 10) {
+      sticky_headers.forEach(function (sticky_el) {
+        sticky_el.classList.add('is-sticky');
+      });
       body.classList.add('sticky-header-active');
+
+      // Apply BHFB adjustments for all BHFB headers.
+      sticky_headers.forEach(function (sticky_el) {
+        if (sticky_el.matches('header.bhfb')) {
+          _this.isHBStickyActive('', sticky_el);
+        }
+      });
       window.dispatchEvent(new Event('botiga.sticky.header.activated'));
     }
-    var header_offset_y = document.querySelector(sticky_selector).getBoundingClientRect().y;
-    if (document.body.classList.contains('admin-bar')) {
-      header_offset_y = header_offset_y - 32;
-    }
-    if (document.body.classList.contains('botiga-site-layout-padded')) {
-      header_offset_y = header_offset_y - parseInt(getComputedStyle(document.body).getPropertyValue('--botiga_padded_spacing'));
-    }
-    if (sticky.classList.contains('sticky-scrolltop') || document.querySelector('.bhfb.sticky-scrolltop') !== null) {
-      var lastScrollTop = 0;
+    if (has_scrolltop_effect) {
+      var last_scroll_top = 0;
       window.addEventListener('scroll', function () {
-        var scroll = window.pageYOffset || document.documentElement.scrollTop,
-          is_sticky = scroll > lastScrollTop || scroll < 10;
-        if (document.querySelector('.bhfb.sticky-scrolltop') !== null) {
-          var bhfb_header_height = document.querySelector('.bhfb.sticky-scrolltop').getBoundingClientRect().height;
+        var scroll = window.pageYOffset || document.documentElement.scrollTop;
+        var is_sticky = scroll > last_scroll_top || scroll < 10;
+
+        // Keep old behavior: if any BHFB scrolltop header exists, use its height gate.
+        var bhfb_scrolltop = jQuery('header.bhfb.sticky-scrolltop:visible')[0];
+        if (bhfb_scrolltop) {
+          var bhfb_header_height = bhfb_scrolltop.getBoundingClientRect().height;
           is_sticky = scroll < bhfb_header_height;
         }
         if (is_sticky) {
-          sticky.classList.remove('is-sticky');
+          sticky_headers.forEach(function (sticky_el) {
+            sticky_el.classList.remove('is-sticky');
+          });
           body.classList.remove('sticky-header-active');
-          _this.isHBStickyDeactivated('scrolltop');
           body.classList.add('on-header-area');
+          sticky_headers.forEach(function (sticky_el) {
+            if (sticky_el.matches('header.bhfb')) {
+              _this.isHBStickyDeactivated('scrolltop', sticky_el);
+            }
+          });
           window.dispatchEvent(new Event('botiga.sticky.header.deactivated'));
         } else {
-          sticky.classList.add('is-sticky');
+          sticky_headers.forEach(function (sticky_el) {
+            sticky_el.classList.add('is-sticky');
+          });
           body.classList.add('sticky-header-active');
-          _this.isHBStickyActive('scrolltop');
           body.classList.remove('on-header-area');
+          sticky_headers.forEach(function (sticky_el) {
+            if (sticky_el.matches('header.bhfb')) {
+              _this.isHBStickyActive('scrolltop', sticky_el);
+            }
+          });
           window.dispatchEvent(new Event('botiga.sticky.header.activated'));
         }
-        lastScrollTop = scroll <= 0 ? 0 : scroll;
+        last_scroll_top = scroll <= 0 ? 0 : scroll;
       }, false);
     } else {
+      // Cache offsets per sticky element.
+      var offsets = new Map();
+      var refresh_offsets = function refresh_offsets() {
+        sticky_headers.forEach(function (sticky_el) {
+          offsets.set(sticky_el, get_header_offset_y(sticky_el));
+        });
+      };
+
+      // Initial fill.
+      refresh_offsets();
+
+      // On resize/orientation change: refresh offsets + clear stale shadow on hidden headers.
+      window.addEventListener('resize', function () {
+        refresh_offsets();
+
+        // Remove shadow from any hidden header (prevents "stuck" shadow when breakpoint switches).
+        sticky_headers.forEach(function (sticky_el) {
+          if (!is_element_visible(sticky_el)) {
+            sticky_el.classList.remove('sticky-shadow', 'is-sticky');
+          }
+        });
+
+        // Re-run the scroll logic immediately so the visible header is in the right state.
+        window.dispatchEvent(new Event('scroll'));
+      });
       window.addEventListener('scroll', function () {
-        var vertDist = window.scrollY;
-        if (vertDist > header_offset_y) {
-          sticky.classList.add('sticky-shadow');
+        var vert_dist = window.scrollY;
+        var any_active = false;
+        sticky_headers.forEach(function (sticky_el) {
+          // IMPORTANT: only the visible header should participate.
+          if (!is_element_visible(sticky_el)) {
+            sticky_el.classList.remove('sticky-shadow');
+            return;
+          }
+          var header_offset_y = offsets.get(sticky_el) || 0;
+          if (vert_dist > header_offset_y) {
+            sticky_el.classList.add('sticky-shadow');
+            any_active = true;
+          } else {
+            sticky_el.classList.remove('sticky-shadow');
+          }
+        });
+        var scroll = window.pageYOffset || document.documentElement.scrollTop;
+        if (any_active && scroll > 0) {
           body.classList.add('sticky-header-active');
-          _this.isHBStickyActive();
+          sticky_headers.forEach(function (sticky_el) {
+            if (sticky_el.matches('header.bhfb') && is_element_visible(sticky_el)) {
+              _this.isHBStickyActive('', sticky_el);
+            }
+          });
           window.dispatchEvent(new Event('botiga.sticky.header.activated'));
         } else {
-          sticky.classList.remove('sticky-shadow');
           body.classList.remove('sticky-header-active');
-          _this.isHBStickyDeactivated();
+          sticky_headers.forEach(function (sticky_el) {
+            if (sticky_el.matches('header.bhfb') && is_element_visible(sticky_el)) {
+              _this.isHBStickyDeactivated('', sticky_el);
+            }
+          });
           window.dispatchEvent(new Event('botiga.sticky.header.deactivated'));
         }
       }, false);
     }
   },
-  isHBStickyActive: function isHBStickyActive(effect) {
-    var bhfb = document.querySelector('header.bhfb'),
-      has_admin_bar = document.body.classList.contains('admin-bar'),
-      above_header_row = document.querySelector('.bhfb-above_header_row'),
-      main_header_row = document.querySelector('.bhfb-main_header_row'),
-      below_header_row = document.querySelector('.bhfb-below_header_row');
-    if (bhfb === null) {
+  isHBStickyActive: function isHBStickyActive(effect, bhfb) {
+    var header_el = bhfb || document.querySelector('header.bhfb');
+    if (header_el === null) {
       return false;
     }
-    var topVal = 0,
-      convertToPositive = false;
+    var has_admin_bar = document.body.classList.contains('admin-bar');
+    var above_header_row = header_el.querySelector('.bhfb-above_header_row');
+    var main_header_row = header_el.querySelector('.bhfb-main_header_row');
+    var below_header_row = header_el.querySelector('.bhfb-below_header_row');
 
-    // Remove any existing sticky visibility classes
+    // If rows are missing, bail (prevents errors for partial markup).
+    if (!above_header_row || !main_header_row || !below_header_row) {
+      return false;
+    }
+    var topVal = 0;
+    var convertToPositive = false;
+
+    // Remove any existing sticky visibility classes.
     above_header_row.classList.remove('bhfb-sticky-hidden');
     main_header_row.classList.remove('bhfb-sticky-hidden');
     below_header_row.classList.remove('bhfb-sticky-hidden');
-    if (bhfb.classList.contains('sticky-row-main-header-row')) {
-      // Hide bottom row when main row is sticky
+    if (header_el.classList.contains('sticky-row-main-header-row')) {
+      // Hide bottom row when main row is sticky.
       if (!below_header_row.classList.contains('bt-d-none')) {
         below_header_row.classList.add('bhfb-sticky-hidden');
       }
@@ -796,63 +943,67 @@ botiga.stickyHeader = {
         convertToPositive = true;
       }
 
-      // Admin Bar
+      // Admin Bar.
       if (has_admin_bar) {
-        topVal = topVal - 32;
+        if (window.matchMedia('screen and (min-width: 601px)').matches) {
+          topVal = topVal - 32;
+        }
       } else {
         if (!above_header_row.classList.contains('bt-d-none') && document.body.classList.contains('botiga-site-layout-padded')) {
           convertToPositive = false;
         }
       }
 
-      // Padded Layout
+      // Padded Layout.
       if (document.body.classList.contains('botiga-site-layout-padded')) {
         topVal = topVal - parseFloat(getComputedStyle(document.body).getPropertyValue('--botiga_padded_spacing'));
       }
 
-      // Conert to negative value
+      // Convert to negative value.
       topVal = convertToPositive ? +Math.abs(topVal) : -Math.abs(topVal);
-      bhfb.style.top = "".concat(topVal, "px");
+      header_el.style.transform = "translateY(".concat(topVal, "px)");
     }
-    if (bhfb.classList.contains('sticky-row-below-header-row')) {
+    if (header_el.classList.contains('sticky-row-below-header-row')) {
       if (!below_header_row.classList.contains('bt-d-none')) {
+        var border_bottom = parseFloat(getComputedStyle(below_header_row).borderBottomWidth);
         if (has_admin_bar) {
-          topVal = bhfb.clientHeight - below_header_row.clientHeight - 32 - parseFloat(getComputedStyle(below_header_row).borderBottomWidth);
+          topVal = header_el.clientHeight - below_header_row.clientHeight - 32 - border_bottom;
         } else {
-          topVal = bhfb.clientHeight - below_header_row.clientHeight - parseFloat(getComputedStyle(below_header_row).borderBottomWidth);
+          topVal = header_el.clientHeight - below_header_row.clientHeight - border_bottom;
         }
       }
       if (above_header_row.classList.contains('bt-d-none') && main_header_row.classList.contains('bt-d-none')) {
         convertToPositive = true;
       }
 
-      // Padded Layout
+      // Padded Layout.
       if (document.body.classList.contains('botiga-site-layout-padded')) {
         topVal = topVal - parseFloat(getComputedStyle(document.body).getPropertyValue('--botiga_padded_spacing'));
       }
 
-      // Conert to negative value
+      // Convert to negative value.
       topVal = convertToPositive ? +Math.abs(topVal) : -Math.abs(topVal);
-      bhfb.style.top = "".concat(topVal, "px");
+      header_el.style.transform = "translateY(".concat(topVal, "px)");
     }
     if (effect === 'scrolltop' && document.body.classList.contains('on-header-area')) {
-      bhfb.classList.add('bhfb-no-transition');
+      header_el.classList.add('bhfb-no-transition');
       setTimeout(function () {
-        bhfb.classList.remove('bhfb-no-transition');
+        header_el.classList.remove('bhfb-no-transition');
       }, 500);
     }
   },
-  isHBStickyDeactivated: function isHBStickyDeactivated(effect) {
-    var bhfb = document.querySelector('header.bhfb');
-    if (bhfb === null) {
+  isHBStickyDeactivated: function isHBStickyDeactivated(effect, bhfb) {
+    var header_el = bhfb || document.querySelector('header.bhfb');
+    if (header_el === null) {
       return false;
     }
-    if (bhfb.classList.contains('sticky-row-main-header-row')) {
-      bhfb.style.top = '0px';
+    if (header_el.classList.contains('sticky-row-main-header-row')) {
+      header_el.style.transform = 'translateY(0px)';
     }
-    if (bhfb.classList.contains('sticky-row-below-header-row')) {
-      if (!document.querySelector('.bhfb-below_header_row').classList.contains('bt-d-none')) {
-        bhfb.style.top = '0px';
+    if (header_el.classList.contains('sticky-row-below-header-row')) {
+      var below_header_row = header_el.querySelector('.bhfb-below_header_row');
+      if (below_header_row && !below_header_row.classList.contains('bt-d-none')) {
+        header_el.style.transform = 'translateY(0px)';
       }
     }
   },
@@ -860,39 +1011,55 @@ botiga.stickyHeader = {
     var sticky_flag = false;
     if (window.matchMedia('screen and (min-width: 1024px)').matches) {
       if (typeof botiga_sticky_header_logo !== 'undefined') {
-        var logo = document.body.classList.contains('has-bhfb-builder') ? document.querySelector('.bhfb-sticky-header .site-branding img') : document.querySelector('.sticky-header .site-branding img');
-        if (logo === null) {
+        // Support multiple possible logos (desktop BHFB + legacy sticky header).
+        var logos = Array.from(document.querySelectorAll('.bhfb-sticky-header .site-branding img, .sticky-header .site-branding img')).filter(function (el) {
+          return el !== null;
+        });
+        if (!logos.length) {
           return false;
         }
-        var initialSrc = logo.getAttribute('src'),
-          initialSrcset = logo.getAttribute('srcset'),
-          initialSizes = logo.getAttribute('sizes'),
-          initialHeight = logo.clientHeight;
+
+        // Store initial values per logo.
+        var initial = new Map();
+        logos.forEach(function (logo) {
+          initial.set(logo, {
+            src: logo.getAttribute('src'),
+            srcset: logo.getAttribute('srcset'),
+            sizes: logo.getAttribute('sizes'),
+            height: logo.clientHeight
+          });
+        });
         window.addEventListener('botiga.sticky.header.activated', function () {
           if (sticky_flag) {
             return false;
           }
-          logo.setAttribute('src', botiga_sticky_header_logo[0]);
-          logo.setAttribute('style', 'max-height: ' + initialHeight + 'px;');
-          if (typeof botiga_sticky_header_logo['srcset'] !== 'undefined') {
-            logo.setAttribute('srcset', botiga_sticky_header_logo['srcset']);
-          }
-          if (typeof botiga_sticky_header_logo['sizes'] !== 'undefined') {
-            logo.setAttribute('sizes', botiga_sticky_header_logo['sizes']);
-          }
+          logos.forEach(function (logo) {
+            var init = initial.get(logo);
+            logo.setAttribute('src', botiga_sticky_header_logo[0]);
+            logo.setAttribute('style', 'max-height: ' + init.height + 'px;');
+            if (typeof botiga_sticky_header_logo.srcset !== 'undefined') {
+              logo.setAttribute('srcset', botiga_sticky_header_logo.srcset);
+            }
+            if (typeof botiga_sticky_header_logo.sizes !== 'undefined') {
+              logo.setAttribute('sizes', botiga_sticky_header_logo.sizes);
+            }
+          });
           sticky_flag = true;
         });
         window.addEventListener('botiga.sticky.header.deactivated', function () {
           if (!sticky_flag) {
             return false;
           }
-          logo.setAttribute('src', initialSrc);
-          if (initialSrcset !== null) {
-            logo.setAttribute('srcset', initialSrcset);
-          }
-          if (initialSizes !== null) {
-            logo.setAttribute('sizes', initialSizes);
-          }
+          logos.forEach(function (logo) {
+            var init = initial.get(logo);
+            logo.setAttribute('src', init.src);
+            if (init.srcset !== null) {
+              logo.setAttribute('srcset', init.srcset);
+            }
+            if (init.sizes !== null) {
+              logo.setAttribute('sizes', init.sizes);
+            }
+          });
           sticky_flag = false;
         });
       }
@@ -1662,6 +1829,7 @@ botiga.misc = {
 };
 botiga.helpers.botigaDomReady(function () {
   botiga.navigation.init();
+  botiga.autoSelectVariations.init();
   botiga.desktopOffcanvasNav.init();
   botiga.desktopOffCanvasToggleNav.init();
   botiga.headerSearch.init();

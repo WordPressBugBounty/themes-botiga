@@ -608,10 +608,10 @@ body {
 }
 
 .ws-svg-icon svg:not(.stroke-based) {
-  fill: #212121;
+  fill: currentColor;
 }
 .ws-svg-icon svg.stroke-based {
-  stroke: #212121;
+  stroke: currentColor;
 }
 .back-to-top .ws-svg-icon svg {
   fill: none;
@@ -751,7 +751,7 @@ ul.products li.product .button,
 input[type=button],
 input[type=reset],
 input[type=submit] {
-  border: 2px solid var(--bt-color-button-border, #212121);
+  border: var(--bt-border-width-button, 0px) solid var(--bt-color-button-border, #212121);
   -webkit-box-shadow: none;
           box-shadow: none;
   background: var(--bt-color-button-bg, #212121);
@@ -928,7 +928,7 @@ input[type=button].is-style-outline:not(.has-text-color),
 input[type=reset].is-style-outline:not(.has-text-color),
 input[type=submit].is-style-outline:not(.has-text-color) {
   color: var(--bt-color-button, #FFF);
-  border: 2px solid var(--bt-color-button-border, #212121);
+  border: var(--bt-border-width-button, 0px) solid var(--bt-color-button-border, #212121);
 }
 .is-style-outline a.button:not(.has-text-color):hover,
 .is-style-outline .button:not(.has-text-color):hover,
@@ -3893,8 +3893,10 @@ body.mobile-menu-visible:before {
   position: sticky;
   top: 0;
 }
-.admin-bar .sticky-header.is-sticky, .admin-bar .sticky-header.sticky-always {
-  top: 32px;
+@media (min-width: 601px) {
+  .admin-bar .sticky-header.is-sticky, .admin-bar .sticky-header.sticky-always {
+    top: 32px;
+  }
 }
 .sticky-header.sticky-shadow, .sticky-header.is-sticky {
   -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.07);
@@ -4235,28 +4237,35 @@ body.mobile-menu-visible:before {
   .header-transparent .woocommerce-page-header + .content-wrapper {
     margin-top: 80px !important;
   }
-  .header-transparent .header-transparent-wrapper {
-    position: absolute;
-    top: auto;
-    width: 100%;
-    z-index: 12;
-    max-width: inherit;
-  }
-  .header-transparent .header-transparent-wrapper .top-bar {
-    position: relative;
-    z-index: 1000;
-  }
-  .header-transparent.sticky-header-active .header-transparent-wrapper .sticky-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
-  .header-transparent.sticky-header-active.admin-bar .header-transparent-wrapper .sticky-header {
-    top: 32px;
-  }
-  .header-transparent.sticky-header-active:not(.has-bhfb-builder) .header-transparent-wrapper .sticky-header {
-    max-width: inherit;
-  }
+}
+.header-transparent .header-transparent-wrapper {
+  position: absolute;
+  top: auto;
+  width: 100%;
+  z-index: 12;
+  max-width: inherit;
+}
+.header-transparent .header-transparent-wrapper #masthead {
+  -webkit-transition: ease all 300ms;
+  transition: ease all 300ms;
+}
+.header-transparent .header-transparent-wrapper .top-bar {
+  position: relative;
+  z-index: 1000;
+}
+.header-transparent:not(.sticky-header-active) .header-transparent-wrapper #masthead {
+  background-color: transparent;
+}
+.header-transparent.sticky-header-active .header-transparent-wrapper .sticky-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.header-transparent.sticky-header-active.admin-bar .header-transparent-wrapper .sticky-header {
+  top: 32px;
+}
+.header-transparent.sticky-header-active:not(.has-bhfb-builder) .header-transparent-wrapper .sticky-header {
+  max-width: inherit;
 }
 
 @media screen and (max-width: 1024px) {
