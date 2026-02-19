@@ -25,6 +25,10 @@ $css .= Botiga_Custom_CSS::get_fill_css( 'main_header_color', '', '.bhfb .main-n
 $css .= Botiga_Custom_CSS::get_color_css( 'main_header_color_hover', '', '.bhfb .main-navigation a.botiga-dropdown-link:hover' );
 $css .= Botiga_Custom_CSS::get_fill_css( 'main_header_color_hover', '', '.bhfb .main-navigation a.botiga-dropdown-link:hover + .dropdown-symbol svg' );
 
+// Transparent Text Color
+$css .= Botiga_Custom_CSS::get_color_css( 'main_header_transparent_active_color', '', '.header-transparent:not(.sticky-header-active) .header-transparent-wrapper .bhfb .main-navigation ul.menu > li > a.botiga-dropdown-link' );
+$css .= Botiga_Custom_CSS::get_fill_css( 'main_header_transparent_active_color', '', '.header-transparent:not(.sticky-header-active) .header-transparent-wrapper .bhfb .main-navigation ul.menu > li > a.botiga-dropdown-link + .dropdown-symbol svg' );
+
 // Submenu Background
 $css .= Botiga_Custom_CSS::get_background_color_css( 'main_header_submenu_background', '', '.bhfb .sub-menu.botiga-dropdown-ul, .bhfb .sub-menu.botiga-dropdown-ul li.botiga-dropdown-li' );
 

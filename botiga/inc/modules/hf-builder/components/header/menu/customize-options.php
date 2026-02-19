@@ -15,6 +15,8 @@ $opts_to_move = array(
         'main_header',
         'main_header_submenu_background',
         'main_header_submenu',
+        'main_header_transparent_active_title_1',
+        'main_header_transparent_active',
         'main_header_sticky_active_title_1',
         'main_header_sticky_active',
         'main_header_sticky_active_submenu_background_color',

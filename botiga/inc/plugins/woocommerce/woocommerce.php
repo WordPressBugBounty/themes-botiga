@@ -817,3 +817,8 @@ require get_template_directory() . '/inc/plugins/woocommerce/woocommerce-templat
  * WooCommerce Ajax Callbacks
  */
 require get_template_directory() . '/inc/plugins/woocommerce/woocommerce-ajax-callbacks.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+
+/**
+ * WooCommerce Variation Selection Notice.
+ */
+require get_template_directory() . '/inc/plugins/woocommerce/features/single-variation-selection-notice.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound

@@ -1248,14 +1248,23 @@ if ( ! class_exists( 'Botiga_Custom_CSS' ) ) :
 				$css .= $this->get_border_color_css( 'main_header_color', '#212121', '.site-header .header-login-register >a:after', true );
 				$css .= $this->get_border_color_css( 'main_header_color_hover', '#212121', '.site-header .header-login-register >a:hover:after', true );
 
+				$site_header_inner_selector = '.site-header-inner';
+				if( in_array( $header_layout, array( 'header_layout_3', 'header_layout_4', 'header_layout_5' ) ) ) {
+					$site_header_inner_selector = '.bottom-header-inner';
+				}
+				
+				if ( get_theme_mod( 'header_transparent', 0 ) ) {
+					// text color
+					$css .= $this->get_color_css( 'main_header_transparent_active_color', '', ".header-transparent:not(.sticky-header-active) .header-transparent-wrapper $site_header_inner_selector .site-title a, .header-transparent:not(.sticky-header-active) .header-transparent-wrapper $site_header_inner_selector .site-description, .header-transparent:not(.sticky-header-active) .header-transparent-wrapper $site_header_inner_selector .botiga-dropdown .menu > .botiga-dropdown-li > .botiga-dropdown-link, .header-transparent:not(.sticky-header-active) .header-transparent-wrapper $site_header_inner_selector .header-contact a, .header-transparent:not(.sticky-header-active) .header-transparent-wrapper .header-login-register>a", true );
+					$css .= $this->get_border_color_css( 'main_header_transparent_active_color', '', ".header-transparent:not(.sticky-header-active) .header-transparent-wrapper $site_header_inner_selector .header-login-register>a:after", true );
+					$css .= $this->get_fill_css( 'main_header_transparent_active_color', '', ".header-transparent:not(.sticky-header-active) .header-transparent-wrapper $site_header_inner_selector .header-item svg:not(.stroke-based), .header-transparent:not(.sticky-header-active) .header-transparent-wrapper $site_header_inner_selector .dropdown-symbol .ws-svg-icon svg" );
+					$css .= $this->get_stroke_css( 'main_header_transparent_active_color', '', ".header-transparent:not(.sticky-header-active) .header-transparent-wrapper $site_header_inner_selector .header-item svg.stroke-based" );
+					$css .= $this->get_background_color_css( 'main_header_transparent_active_color', '', ".header-transparent:not(.sticky-header-active) .header-transparent-wrapper $site_header_inner_selector .botiga-image.is-svg" );
+				}
+				
 				//Sticky header active state
 				$sticky_header = get_theme_mod( 'enable_sticky_header', 0 );
 				if( $sticky_header ) {
-
-					$site_header_inner_selector = '.site-header-inner';
-					if( in_array( $header_layout, array( 'header_layout_3', 'header_layout_4', 'header_layout_5' ) ) ) {
-						$site_header_inner_selector = '.bottom-header-inner';
-					}
 
 					$css .= '.sticky-header, .sticky-header .ws-svg-icon svg { -webkit-transition: ease all 300ms; transition: ease all 300ms; }';
 					$css .= '@media only screen and (min-width: 1025px) {';
