@@ -1,8 +1,8 @@
 /**
  * Botiga Ajax Search
- * 
+ *
  * jQuery Dependant: true
- * 
+ *
  */
 
 'use strict';
@@ -12,7 +12,7 @@ botiga.ajaxSearch = {
   ajax: function ajax(action, nonce, extraParams, successCallback) {
     var ajax = new XMLHttpRequest();
     ajax.open('POST', botiga.ajaxurl, true);
-    ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     ajax.onload = function () {
       if (this.status >= 200 && this.status < 400) {
         successCallback.apply(this);
@@ -31,27 +31,56 @@ botiga.ajaxSearch = {
       woo_search_fields = document.querySelectorAll('.wc-search-field, .wc-block-product-search__field');
     if (woo_search_fields.length) {
       var _loop = function _loop(i) {
-        // Disable default html autocomplete
+        // Disable default html autocomplete.
         woo_search_fields[i].setAttribute('autocomplete', 'off');
+
+        // Trigger on typing.
         woo_search_fields[i].addEventListener('keyup', _this2.debounce(function () {
           _this.searchFormHandler(woo_search_fields[i]);
         }, 300));
-        woo_search_fields[i].addEventListener('focus', _this2.debounce(function () {
+
+        /**
+         * Trigger search on paste / autofill / voice input.
+         * 'input' event covers paste and non-keyboard changes.
+         */
+        woo_search_fields[i].addEventListener('input', _this2.debounce(function () {
           _this.searchFormHandler(woo_search_fields[i]);
         }, 300));
+
+        // Re-trigger on focus if value already exists.
+        woo_search_fields[i].addEventListener('focus', _this2.debounce(function () {
+          if (woo_search_fields[i].value.length >= 3) {
+            _this.searchFormHandler(woo_search_fields[i]);
+          }
+        }, 200));
+
+        // If value becomes empty (native clear button), destroy results.
+        woo_search_fields[i].addEventListener('search', function () {
+          if (this.value.length < 3) {
+            _this.destroy(this);
+          }
+        });
       };
       for (var i = 0; i < woo_search_fields.length; i++) {
         _loop(i);
       }
+
+      /**
+       * Do NOT destroy when clicking inside the search container.
+       * Previously it only allowed clicks inside wrapper,
+       * but input itself is outside wrapper → causing disappearance.
+       */
       document.addEventListener('click', function (e) {
-        if (e.target.closest('.botiga-ajax-search__wrapper') === null) {
-          _this.destroy();
+        if (e.target.closest('.botiga-ajax-search__wrapper') !== null || e.target.closest('.wc-search-field') !== null || e.target.closest('.wc-block-product-search__field') !== null || e.target.closest('.woocommerce-product-search') !== null) {
+          return;
         }
+        _this.destroy();
       });
     }
   },
   searchFormHandler: function searchFormHandler(el) {
     if (el.value.length < 3) {
+      this.destroy(el); // remove results when cleared.
       return false;
     }
     var _this = this,
@@ -64,7 +93,7 @@ botiga.ajaxSearch = {
     }, function () {
       var response = JSON.parse(this.response);
 
-      // Create ajax search wrapper for the results
+      // Create ajax search wrapper for the results.
       var ajax_search_wrapper = el.parentNode.getElementsByClassName('botiga-ajax-search__wrapper')[0];
       if (typeof ajax_search_wrapper === 'undefined') {
         ajax_search_wrapper = document.createElement('div');
@@ -73,12 +102,12 @@ botiga.ajaxSearch = {
         el.parentNode.classList.add('botiga-ajax-search');
       }
       ajax_search_wrapper.innerHTML = response.output;
-      var products_wrapper = document.querySelector('.botiga-ajax-search-products');
+      var products_wrapper = ajax_search_wrapper.querySelector('.botiga-ajax-search-products');
       if (products_wrapper !== null && _this.scrollbarVisible(products_wrapper)) {
         products_wrapper.classList.add('has-scrollbar');
       }
 
-      // Check if element is out of screen (horizontal)
+      // Check if element is out of screen (horizontal).
       if (_this.elementIsOutOfScreenHorizontal(ajax_search_wrapper)) {
         ajax_search_wrapper.classList.add('reverse');
       }

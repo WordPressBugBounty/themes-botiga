@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.4.1' );
+	define( 'BOTIGA_VERSION', '2.4.2' );
 }
 
 // aThemes White Label Compatibility
@@ -436,20 +436,13 @@ require get_template_directory() . '/inc/modules/class-botiga-modules.php';
 
 /**
  * Action Scheduler.
- * Load on plugins_loaded to ensure it's available before init.
+ *
+ * Load the bundled library directly from the theme so it can register
+ * its bootstrap hooks before init runs.
  */
-add_action(
-	'plugins_loaded',
-	static function() {
-		
-		// Check if Action Scheduler is already loaded.
-		if ( function_exists( 'as_schedule_recurring_action' ) ) {
-			return;
-		}
-
-		require_once get_template_directory() . '/vendor/woocommerce/action-scheduler/action-scheduler.php';
-	}
-);
+if ( ! function_exists( 'as_schedule_recurring_action' ) ) {
+	require_once get_template_directory() . '/vendor/woocommerce/action-scheduler/action-scheduler.php';
+}
 
 /**
  * Gutenberg editor.

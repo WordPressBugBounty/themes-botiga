@@ -27,8 +27,7 @@ do_action( 'botiga_before_ajax_search_categories' );
 
 ?>
 
-<h2 class="botiga-ajax-search__heading-title"><?php echo esc_html__( 'Categories', 'botiga' ); ?></h2>
-<hr class="botiga-ajax-search__divider">
+<h3 class="botiga-ajax-search__heading-subtitle"><?php echo esc_html__( 'Categories', 'botiga' ); ?></h3>
 <div class="botiga-ajax-search-categories">
 
 	<?php foreach( $terms as $category ) : 

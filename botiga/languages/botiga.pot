@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: aThemes <team@athemes.com>\n"
 "Last-Translator: aThemes <team@athemes.com>\n"
-"POT-Creation-Date: 2026-02-19 13:04+0000\n"
+"POT-Creation-Date: 2026-03-12 13:53+0000\n"
 "Report-Msgid-Bugs-To: https://athemes.com/contact/\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -142,11 +142,11 @@ msgid "Are you sure you want to dismiss this notice?"
 msgstr ""
 
 #. translators: %s plugins html anchor link.
-#: functions.php:636
+#: functions.php:629
 msgid "It looks like your website is running Botiga Pro but not with its latest version. Please note that Botiga 1.1.9+ (free theme) requires Botiga Pro updated to a minimum version of 1.1.0. For it please go to %s and update Botiga Pro."
 msgstr ""
 
-#: functions.php:639
+#: functions.php:632
 msgid "Plugins"
 msgstr ""
 
@@ -2143,13 +2143,29 @@ msgstr ""
 msgid "Categories"
 msgstr ""
 
+#: template-parts/search/content-ajax-search-loop-start-popular.php:15, inc/plugins/woocommerce/features/no-posts-found.php:29
+msgid "Popular Products"
+msgstr ""
+
 #: template-parts/search/content-ajax-search-loop-start.php:21
 msgid "Products"
+msgstr ""
+
+#: template-parts/search/content-ajax-search-popular.php:18
+msgid "No products found. Showing popular products instead."
 msgstr ""
 
 #. translators: 1. Search results quantity
 #: template-parts/search/content-ajax-search-see-all-button.php:28
 msgid "See all products (%s)"
+msgstr ""
+
+#: template-parts/search/content-ajax-search-suggestions-start.php:12
+msgid "Suggestions"
+msgstr ""
+
+#: template-parts/search/content-ajax-search-tags.php:17, inc/customizer/options/woocommerce/single-product/section-layout.php:307
+msgid "Tags"
 msgstr ""
 
 #: template-parts/single-product/content-reviews-advanced-modal.php:12
@@ -4352,15 +4368,39 @@ msgstr ""
 msgid "Display product categories in the results if the searched term matches with category name."
 msgstr ""
 
-#: inc/customizer/options/woocommerce/woocommerce-search.php:224
+#: inc/customizer/options/woocommerce/woocommerce-search.php:225
+msgid "Display Tags"
+msgstr ""
+
+#: inc/customizer/options/woocommerce/woocommerce-search.php:226
+msgid "Display product tags in the results if the searched term matches with tag name."
+msgstr ""
+
+#: inc/customizer/options/woocommerce/woocommerce-search.php:247
+msgid "Display Attributes"
+msgstr ""
+
+#: inc/customizer/options/woocommerce/woocommerce-search.php:248
+msgid "Display selected product attributes in the results if the searched term matches with attribute terms."
+msgstr ""
+
+#: inc/customizer/options/woocommerce/woocommerce-search.php:269
+msgid "Searchable Attributes"
+msgstr ""
+
+#: inc/customizer/options/woocommerce/woocommerce-search.php:270
+msgid "Comma-separated attribute taxonomy names to include in suggestions (e.g. pa_author, pa_language, pa_format)."
+msgstr ""
+
+#: inc/customizer/options/woocommerce/woocommerce-search.php:288
 msgid "Display See All Products Link"
 msgstr ""
 
-#: inc/customizer/options/woocommerce/woocommerce-search.php:244
+#: inc/customizer/options/woocommerce/woocommerce-search.php:308
 msgid "Enable Popular Products"
 msgstr ""
 
-#: inc/customizer/options/woocommerce/woocommerce-search.php:245
+#: inc/customizer/options/woocommerce/woocommerce-search.php:309
 msgid "Show popular products if no products found in search results page."
 msgstr ""
 
@@ -4402,10 +4442,6 @@ msgstr ""
 
 #: inc/plugins/woocommerce/features/mini-cart.php:59
 msgid "View your shopping cart"
-msgstr ""
-
-#: inc/plugins/woocommerce/features/no-posts-found.php:29
-msgid "Popular Products"
 msgstr ""
 
 #. translators: %s: quick view product title
@@ -4687,10 +4723,6 @@ msgstr ""
 msgid "SKU"
 msgstr ""
 
-#: inc/customizer/options/woocommerce/single-product/section-layout.php:307
-msgid "Tags"
-msgstr ""
-
 #: inc/customizer/options/woocommerce/single-product/section-layout.php:344
 msgid "Upsell products"
 msgstr ""
@@ -4719,7 +4751,7 @@ msgstr ""
 msgid "Layout Style"
 msgstr ""
 
-#: inc/plugins/woocommerce/features/real-time-ajax-search/real-time-ajax-search.php:183
+#: inc/plugins/woocommerce/features/real-time-ajax-search/real-time-ajax-search.php:458
 msgid "No products found."
 msgstr ""
 

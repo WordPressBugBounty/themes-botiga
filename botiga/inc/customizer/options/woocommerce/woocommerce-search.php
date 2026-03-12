@@ -209,6 +209,70 @@ $wp_customize->add_control(
 	)
 );
 
+// Display Tags.
+$wp_customize->add_setting(
+	'shop_search_ajax_show_tags',
+	array(
+		'default'           => 1,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'shop_search_ajax_show_tags',
+		array(
+			'label'           => esc_html__( 'Display Tags', 'botiga' ),
+			'description'     => esc_html__( 'Display product tags in the results if the searched term matches with tag name.', 'botiga' ),
+			'section'         => 'botiga_section_shop_search',
+			'active_callback' => 'botiga_shop_search_ajax_is_enabled',
+			'priority'        => 50,
+		)
+	)
+);
+
+// Display Attributes.
+$wp_customize->add_setting(
+	'shop_search_ajax_show_attributes',
+	array(
+		'default'           => 1,
+		'sanitize_callback' => 'botiga_sanitize_checkbox',
+	)
+);
+$wp_customize->add_control(
+	new Botiga_Toggle_Control(
+		$wp_customize,
+		'shop_search_ajax_show_attributes',
+		array(
+			'label'           => esc_html__( 'Display Attributes', 'botiga' ),
+			'description'     => esc_html__( 'Display selected product attributes in the results if the searched term matches with attribute terms.', 'botiga' ),
+			'section'         => 'botiga_section_shop_search',
+			'active_callback' => 'botiga_shop_search_ajax_is_enabled',
+			'priority'        => 50,
+		)
+	)
+);
+
+// Attributes list (comma-separated taxonomy names, e.g. "pa_author,pa_language").
+$wp_customize->add_setting(
+	'shop_search_ajax_attributes',
+	array(
+		'default'           => '',
+		'sanitize_callback' => 'sanitize_text_field',
+	)
+);
+$wp_customize->add_control(
+	'shop_search_ajax_attributes',
+	array(
+		'type'            => 'text',
+		'section'         => 'botiga_section_shop_search',
+		'label'           => esc_html__( 'Searchable Attributes', 'botiga' ),
+		'description'     => esc_html__( 'Comma-separated attribute taxonomy names to include in suggestions (e.g. pa_author, pa_language, pa_format).', 'botiga' ),
+		'active_callback' => 'botiga_shop_search_ajax_attributes_is_enabled',
+		'priority'        => 50,
+	)
+);
+
 $wp_customize->add_setting(
 	'shop_search_ajax_display_see_all',
 	array(
@@ -248,3 +312,17 @@ $wp_customize->add_control(
 		)
 	)
 );
+
+/**
+ * Check if AJAX search and attribute suggestions are enabled.
+ *
+ * @param WP_Customize_Control $control Control instance.
+ *
+ * @return bool
+ */
+function botiga_shop_search_ajax_attributes_is_enabled( $control ) {
+	return (
+		1 === (int) $control->manager->get_setting( 'shop_search_enable_ajax' )->value()
+		&& 1 === (int) $control->manager->get_setting( 'shop_search_ajax_show_attributes' )->value()
+	);
+}
