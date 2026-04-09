@@ -118,34 +118,61 @@ class Botiga_Real_Time_Ajax_Search_Helper {
 	public static function set_query_post_clauses( $clauses, $query ) {
 		global $wpdb;
 
+		// Bail on YITH filters request.
 		if ( isset( $_GET['yith_wcan'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			return $clauses;
 		}
 
-		if ( ! is_admin() && $query->is_main_query() && $query->is_search() && 'product' === $query->get( 'post_type' ) && '' !== $query->get( 's' ) ) {
-			$search_term = $wpdb->esc_like( $query->get( 's' ) );
-
-			// Join SKU meta (for OR search).
-			$clauses['join'] .= " LEFT JOIN {$wpdb->postmeta} AS botiga_sku_pm ON ( {$wpdb->posts}.ID = botiga_sku_pm.post_id )";
-
-			// Wrap existing WHERE before appending OR conditions.
-			$clauses['where'] = " ( {$clauses['where']} ) ";
-
-			$clauses['where'] .= $wpdb->prepare(
-				" OR ( botiga_sku_pm.meta_key = '_sku' AND botiga_sku_pm.meta_value LIKE %s )",
-				"%{$search_term}%"
-			);
-
-			// Exclude out of stock products using a dedicated alias (so it doesn't conflict with the SKU row).
-			if ( 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) ) {
-				$clauses['join'] .= " LEFT JOIN {$wpdb->postmeta} AS botiga_stock_pm ON ( {$wpdb->posts}.ID = botiga_stock_pm.post_id AND botiga_stock_pm.meta_key = '_stock_status' )";
-
-				$clauses['where'] .= $wpdb->prepare(
-					" AND ( botiga_stock_pm.meta_value IS NULL OR botiga_stock_pm.meta_value NOT LIKE %s )",
-					'outofstock'
-				);
-			}
+		// Bail if not applicable query.
+		if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
+			return $clauses;
 		}
+
+		if ( 'product' !== $query->get( 'post_type' ) ) {
+			return $clauses;
+		}
+
+		$search_term = trim( (string) $query->get( 's' ) );
+
+		if ( '' === $search_term ) {
+			return $clauses;
+		}
+
+		$search_like    = '%' . $wpdb->esc_like( $search_term ) . '%';
+		$existing_where = trim( $clauses['where'] );
+
+		// Join SKU meta (for OR search).
+		$clauses['join'] .= " LEFT JOIN {$wpdb->postmeta} AS botiga_sku_pm ON ( {$wpdb->posts}.ID = botiga_sku_pm.post_id )";
+
+		// Normalize existing WHERE (remove leading AND).
+		if ( 0 === strpos( $existing_where, 'AND ' ) ) {
+			$existing_where = substr( $existing_where, 4 );
+		}
+
+		// Build WHERE clause safely.
+		if ( '' === $existing_where ) {
+			$clauses['where'] = $wpdb->prepare(
+				" AND ( botiga_sku_pm.meta_key = '_sku' AND botiga_sku_pm.meta_value LIKE %s )",
+				$search_like
+			);
+		} else {
+			$clauses['where'] = $wpdb->prepare(
+				" AND ( ( {$existing_where} ) OR ( botiga_sku_pm.meta_key = '_sku' AND botiga_sku_pm.meta_value LIKE %s ) )", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				$search_like
+			);
+		}
+
+		// Exclude out of stock products.
+		if ( 'yes' !== get_option( 'woocommerce_hide_out_of_stock_items' ) ) {
+			return $clauses;
+		}
+
+		$clauses['join'] .= " LEFT JOIN {$wpdb->postmeta} AS botiga_stock_pm ON ( {$wpdb->posts}.ID = botiga_stock_pm.post_id AND botiga_stock_pm.meta_key = '_stock_status' )";
+
+		$clauses['where'] .= $wpdb->prepare(
+			" AND ( botiga_stock_pm.meta_value IS NULL OR botiga_stock_pm.meta_value != %s )",
+			'outofstock'
+		);
 
 		return $clauses;
 	}

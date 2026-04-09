@@ -26,30 +26,48 @@ function botiga_dashboard_redirect_after_activate_pro( $location ) {
 	if ( ! is_admin() ) {
 		return $location;
 	}
-
+	
 	$action = isset( $_REQUEST['action'] ) ? sanitize_key( wp_unslash( $_REQUEST['action'] ) ) : '';
-
-	if ( $action !== 'activate' ) {
+	
+	if ( 'activate' !== $action ) {
 		return $location;
 	}
-
+	
 	$plugin = isset( $_REQUEST['plugin'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['plugin'] ) ) : '';
-
-	if ( empty( $plugin ) ) {
+	
+	if ( empty( $plugin ) || false === stripos( $plugin, 'botiga-pro.php' ) ) {
 		return $location;
 	}
-
-	// Match the Botiga Pro main plugin file, regardless of folder casing.
-	if ( stripos( $plugin, 'botiga-pro.php' ) === false ) {
-		return $location;
-	}
-
-	return add_query_arg(
-		array(
-			'page' => 'botiga-dashboard',
-		),
-		admin_url( 'admin.php#botiga-pro-dashboard-section' )
+	
+	$args = array(
+		'page' => 'botiga-dashboard',
 	);
+	
+	$activate_module = isset( $_REQUEST['activate_module'] ) && is_array( $_REQUEST['activate_module'] )
+		? array_map( 'sanitize_text_field', wp_unslash( $_REQUEST['activate_module'] ) )
+		: array();
+	
+	if ( ! empty( $activate_module['module-page'] ) && current_user_can( 'manage_options' ) ) {
+		$modules = get_option( 'botiga-modules', array() );
+	
+		$module_page = sanitize_key( $activate_module['module-page'] );
+	
+		$modules[ $module_page ] = true;
+	
+		update_option( 'botiga-modules', $modules );
+	
+		$args['module-page'] = $module_page;
+	
+		if ( ! empty( $activate_module['settings-page'] ) ) {
+			$args['settings-page'] = sanitize_key( $activate_module['settings-page'] );
+		}
+	}
+	
+	$url = add_query_arg( $args, admin_url( 'admin.php' ) );
+	
+	$url .= '#botiga-pro-dashboard-section';
+	
+	return $url;
 }
 add_filter( 'wp_redirect', 'botiga_dashboard_redirect_after_activate_pro' );
 

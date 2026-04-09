@@ -1,3 +1,25 @@
+<?php
+$is_pro_installed = ! empty( $this->settings['has_pro_installed'] );
+
+$action_url = $is_pro_installed
+	? add_query_arg(
+		array(
+			'activate_module[module-page]'   => 'shop-filters',
+			'activate_module[settings-page]' => 'filter-presets',
+		),
+		$this->settings['pro_activate_url']
+	)
+	: $this->settings['pf_upgrade_pro'];
+
+$target = $is_pro_installed ? '_self' : '_blank';
+
+$primary_action_label = $is_pro_installed
+	? __( 'Activate Botiga Pro', 'botiga' )
+	: __( 'Upgrade Now', 'botiga' );
+
+$tooltip_message = $is_pro_installed ? __( 'Activate Botiga Pro to use this feature', 'botiga' ) : __( 'This is only available on Botiga Pro', 'botiga' );
+?>
+
 <div class="botiga-dashboard-card botiga-dashboard-card-no-box-shadow">
     <div class="botiga-dashboard-card-inner-header bt-mb-10px">
         <h2 class="bt-font-size-20px bt-mb-10px bt-mt-0"><?php echo esc_html__( 'SEO Settings', 'botiga' ); ?></h2>
@@ -66,7 +88,7 @@
         </div>
     </form>
     <hr class="botiga-dashboard-divider">
-    <a href="<?php echo esc_url( $this->settings['pf_upgrade_pro'] ); ?>" class="button button-primary btsf-save-settings botiga-dashboard-pro-tooltip" data-tooltip-message="<?php echo esc_attr__( 'This is only available on Botiga Pro', 'botiga' ); ?>" target="_blank" style="max-width: 150px;">
+    <a href="<?php echo esc_url( $action_url ); ?>" class="button button-primary btsf-save-settings botiga-dashboard-pro-tooltip" data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>" target="<?php echo esc_attr( $target ); ?>" style="max-width: 150px;">
         Save settings
         <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
     </a>

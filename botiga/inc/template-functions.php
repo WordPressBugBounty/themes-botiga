@@ -2193,13 +2193,19 @@ function botiga_get_display_conditions_select_options( $term, $source ) {
 			if ( $source === 'product-category-id' ) {
 				$taxonomy = 'product_cat';
 			}
-
-			$query = new WP_Term_Query( array(
+			
+			$query_args = array(
 				'search'     => $term,
 				'taxonomy'   => $taxonomy,
 				'number'     => 25,
 				'hide_empty' => false,
-			) );
+			);
+			
+			if ( function_exists( 'pll_languages_list' ) ) {
+				$query_args['lang'] = '';
+			}
+
+			$query = new WP_Term_Query( $query_args );
 		
 			if ( ! empty( $query->terms ) ) {
 				foreach ( $query->terms as $term ) {
