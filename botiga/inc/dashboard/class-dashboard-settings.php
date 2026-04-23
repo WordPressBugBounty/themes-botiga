@@ -107,10 +107,21 @@ function botiga_dashboard_settings() {
 	//
 	// Hero.
 	//
-	$settings['hero_title'] = esc_html__('Welcome to Botiga', 'botiga');
-	$settings['hero_desc']  = esc_html__('Botiga is now installed and ready to go. To help you with the next step, we’ve gathered together on this page all the resources you might need. We hope you enjoy using Botiga.', 'botiga');
-	$settings['hero_image'] = get_template_directory_uri() . '/assets/img/dashboard/welcome-banner@2x.png';
+	$settings['hero_title'] = esc_html__( 'Welcome to Botiga', 'botiga' );
 
+	$has_onboarding      = class_exists( 'ATSS_Onboarding_Wizard' );
+	$has_wizard_state    = (bool) get_option( 'atss_wizard_state' );
+	$has_current_starter = (bool) get_option( 'atss_current_starter' );
+	
+	$settings['hero_desc'] = esc_html__( 'Botiga is now installed and ready to go. Click "Let’s Get Started" to browse our professionally designed starter sites and get your website up and running in minutes.', 'botiga' );
+	
+	if ( $has_onboarding && $has_wizard_state ) {
+		$settings['hero_desc'] = esc_html__( 'Pick up where you left off! Click Resume Site Wizard to finish choosing your template and customizing your site’s design and branding.', 'botiga' );
+	} elseif ( $has_onboarding && $has_current_starter ) {
+		$settings['hero_desc'] = esc_html__( 'Starter Site is installed and ready for you! Check out the resources on this page to help you get started. Enjoy using Botiga!', 'botiga' );
+	}
+	
+	$settings['hero_image'] = get_template_directory_uri() . '/assets/img/dashboard/welcome-banner@2x.png';
 	//
 	// Documentation.
 	//

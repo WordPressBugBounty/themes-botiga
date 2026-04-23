@@ -85,5 +85,9 @@ if (!defined('ABSPATH')) {
 
         <?php endif; ?>
 
+        <?php 
+		// Load Wizard section.
+		require get_template_directory() . '/inc/dashboard/html-settings-wizard.php';
+		?>
     </div>
 </div>

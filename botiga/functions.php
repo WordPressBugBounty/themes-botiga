@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.4.3' );
+	define( 'BOTIGA_VERSION', '2.4.4' );
 }
 
 // aThemes White Label Compatibility
@@ -258,6 +258,9 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		 * Appearance tools.
 		 */
 		add_theme_support( 'appearance-tools' );
+		
+		// Enable Onboarding Wizard.
+		add_filter( 'atss_enable_onboarding_wizard', '__return_true' );
 	}
 endif;
 add_action( 'after_setup_theme', 'botiga_setup' );

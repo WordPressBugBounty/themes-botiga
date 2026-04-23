@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'athemes/botiga',
-        'pretty_version' => 'v2.4.3',
-        'version' => '2.4.3.0',
-        'reference' => '519b8205a2d058ea0872029c8dd8999089c08526',
+        'pretty_version' => 'v2.4.4',
+        'version' => '2.4.4.0',
+        'reference' => 'f5d58e09b7e9095c78f3eaefae2a0a54e2ddc049',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'athemes/botiga' => array(
-            'pretty_version' => 'v2.4.3',
-            'version' => '2.4.3.0',
-            'reference' => '519b8205a2d058ea0872029c8dd8999089c08526',
+            'pretty_version' => 'v2.4.4',
+            'version' => '2.4.4.0',
+            'reference' => 'f5d58e09b7e9095c78f3eaefae2a0a54e2ddc049',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
