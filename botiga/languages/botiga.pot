@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: aThemes <team@athemes.com>\n"
 "Last-Translator: aThemes <team@athemes.com>\n"
-"POT-Creation-Date: 2026-04-23 16:12+0000\n"
+"POT-Creation-Date: 2026-05-21 12:38+0000\n"
 "Report-Msgid-Bugs-To: https://athemes.com/contact/\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -33,120 +33,115 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: functions.php:83
+#: functions.php:71
 msgid "Primary"
 msgstr ""
 
-#: functions.php:84, inc/modules/hf-builder/class-header-footer-builder.php:97, inc/modules/hf-builder/class-header-footer-builder.php:133, inc/modules/hf-builder/components/header/secondary-menu/customize-options.php:24, inc/modules/hf-builder/components/header/secondary-menu/customize-options.php:430
+#: functions.php:72, inc/modules/hf-builder/class-header-footer-builder.php:97, inc/modules/hf-builder/class-header-footer-builder.php:133, inc/modules/hf-builder/components/header/secondary-menu/customize-options.php:24, inc/modules/hf-builder/components/header/secondary-menu/customize-options.php:430
 msgid "Secondary Menu"
 msgstr ""
 
-#. translators: %s: color palette
-#: functions.php:184, functions.php:175
-msgid "Color %s"
-msgstr ""
-
-#: functions.php:203
+#: functions.php:162
 msgid "Small"
 msgstr ""
 
-#: functions.php:204
+#: functions.php:163
 msgctxt "Font size"
 msgid "S"
 msgstr ""
 
-#: functions.php:209, inc/customizer/options/typography.php:164, inc/customizer/options/typography.php:376, inc/customizer/options/typography.php:765, inc/customizer/controls/color-group/class_botiga_color_group.php:30
+#: functions.php:168, inc/customizer/options/typography.php:164, inc/customizer/options/typography.php:376, inc/customizer/options/typography.php:765, inc/customizer/controls/color-group/class_botiga_color_group.php:30
 msgid "Normal"
 msgstr ""
 
-#: functions.php:210
+#: functions.php:169
 msgctxt "Font size"
 msgid "N"
 msgstr ""
 
-#: functions.php:215
+#: functions.php:174
 msgid "Large"
 msgstr ""
 
-#: functions.php:216, functions.php:222
+#: functions.php:175, functions.php:181
 msgctxt "Font size"
 msgid "L"
 msgstr ""
 
-#: functions.php:221
+#: functions.php:180
 msgid "Larger"
 msgstr ""
 
-#: functions.php:227
+#: functions.php:186
 msgid "Extra large"
 msgstr ""
 
-#: functions.php:228
+#: functions.php:187
 msgctxt "Font size"
 msgid "XL"
 msgstr ""
 
-#: functions.php:233
+#: functions.php:192
 msgid "Huge"
 msgstr ""
 
-#: functions.php:234
+#: functions.php:193
 msgctxt "Font size"
 msgid "XXL"
 msgstr ""
 
-#: functions.php:239
+#: functions.php:198
 msgid "Gigantic"
 msgstr ""
 
-#: functions.php:240
+#: functions.php:199
 msgctxt "Font size"
 msgid "XXXL"
 msgstr ""
 
-#: functions.php:293, inc/classes/class-botiga-metabox.php:143
+#: functions.php:252, inc/classes/class-botiga-metabox.php:143
 msgid "Sidebar"
 msgstr ""
 
-#: functions.php:295, functions.php:311
+#: functions.php:254, functions.php:270
 msgid "Add widgets here."
 msgstr ""
 
-#: functions.php:300
+#: functions.php:259
 msgid "Close sidebar"
 msgstr ""
 
 #. translators: %s = footer widget area number
-#: functions.php:309
+#: functions.php:268
 msgid "Footer %s"
 msgstr ""
 
-#: functions.php:357
+#: functions.php:316
 msgid "Copy link"
 msgstr ""
 
-#: functions.php:358
+#: functions.php:317
 msgid "Copied!"
 msgstr ""
 
-#: functions.php:398
+#: functions.php:357
 msgid "Are you sure you want to upgrade your header?"
 msgstr ""
 
-#: functions.php:399, functions.php:403
+#: functions.php:358, functions.php:362
 msgid "It was not possible complete the request, please reload the page and try again."
 msgstr ""
 
-#: functions.php:402
+#: functions.php:361
 msgid "Are you sure you want to dismiss this notice?"
 msgstr ""
 
 #. translators: %s plugins html anchor link.
-#: functions.php:632
+#: functions.php:591
 msgid "It looks like your website is running Botiga Pro but not with its latest version. Please note that Botiga 1.1.9+ (free theme) requires Botiga Pro updated to a minimum version of 1.1.0. For it please go to %s and update Botiga Pro."
 msgstr ""
 
-#: functions.php:635
+#: functions.php:594
 msgid "Plugins"
 msgstr ""
 
@@ -514,6 +509,11 @@ msgstr ""
 
 #: inc/template-functions.php:2781
 msgid "Save Conditions"
+msgstr ""
+
+#. translators: %s: color palette number.
+#: inc/template-functions.php:2815
+msgid "Color %s"
 msgstr ""
 
 #. translators: used between list items, there is a space after the comma

@@ -180,36 +180,34 @@ add_action( 'wp', 'botiga_product_card_hooks' );
  * Loop add to cart
  */
 function botiga_filter_loop_add_to_cart( $button, $product, $args ) {
-	global $product;
-
-	$button_layout  = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
-
-	$args['attributes'] = array(
-		'title' => $product->add_to_cart_text(),
-	);
-
+	$button_layout = get_theme_mod( 'shop_product_add_to_cart_layout', 'layout3' );
+	
+	if ( ! isset( $args['attributes'] ) || ! is_array( $args['attributes'] ) ) {
+		$args['attributes'] = array();
+	}
+	
+	$args['attributes']['title'] = $product->add_to_cart_description();
+	
 	if ( 'layout4' !== $button_layout ) {
-		$button = str_replace( 'href=', 'title="' . $product->add_to_cart_description() . '" href=', $button );
-
+		$button = str_replace( 'href=', 'title="' . esc_attr( $product->add_to_cart_description() ) . '" href=', $button );
+	
 		return $button;
 	}
-
+	
 	if ( $product->is_type( 'simple' ) ) {
 		$text = '<i class="ws-svg-icon">' . botiga_get_svg_icon( 'icon-cart', false ) . '</i>';
 	} else {
 		$text = '<i class="ws-svg-icon">' . botiga_get_svg_icon( 'icon-eye', false ) . '</i>';
 	}
-
-	$button = sprintf(
+	
+	return sprintf(
 		'<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
 		esc_url( $product->add_to_cart_url() ),
 		esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
 		esc_attr( isset( $args['class'] ) ? $args['class'] : 'button' ),
-		isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
+		wc_implode_html_attributes( $args['attributes'] ),
 		$text
 	);
-
-	return $button;
 }
 add_filter( 'woocommerce_loop_add_to_cart_link', 'botiga_filter_loop_add_to_cart', 10, 3 );
 

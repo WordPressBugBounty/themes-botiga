@@ -2785,3 +2785,66 @@ function botiga_display_conditions_script_template() {
 		</script>
 	<?php
 }
+
+/**
+ * Get the current Botiga editor color palette.
+ *
+ * @since 2.4.5
+ *
+ * @return array
+ */
+function botiga_get_editor_color_palette() {
+	$colors                = array();
+	$selected_palette      = get_theme_mod( 'color_palettes', 'palette1' );
+	$palettes              = botiga_global_color_palettes();
+	$custom_palette_toggle = get_theme_mod( 'custom_palette_toggle', 0 );
+
+	if ( ! isset( $palettes[ $selected_palette ] ) ) {
+		$selected_palette = 'palette1';
+	}
+
+	for ( $i = 0; $i < 8; $i++ ) {
+		$color = isset( $palettes[ $selected_palette ][ $i ] ) ? $palettes[ $selected_palette ][ $i ] : '#212121';
+
+		if ( $custom_palette_toggle ) {
+			$color = get_theme_mod( 'custom_color' . ( $i + 1 ), '#212121' );
+		}
+
+		$colors[] = array(
+			/* translators: %s: color palette number. */
+			'name'  => sprintf( esc_html__( 'Color %s', 'botiga' ), $i + 1 ),
+			'slug'  => 'color-' . $i,
+			'color' => $color,
+		);
+	}
+
+	return $colors;
+}
+
+/**
+ * Update theme.json color palette from Botiga Customizer palette.
+ *
+ * @since 2.4.5
+ *
+ * @param WP_Theme_JSON_Data $theme_json Theme JSON data.
+ * @return WP_Theme_JSON_Data
+ */
+function botiga_filter_theme_json_data_theme( $theme_json ) {
+	if ( ! method_exists( $theme_json, 'update_with' ) ) {
+		return $theme_json;
+	}
+
+	$theme_json->update_with(
+		array(
+			'version'  => 2,
+			'settings' => array(
+				'color' => array(
+					'palette' => botiga_get_editor_color_palette(),
+				),
+			),
+		)
+	);
+
+	return $theme_json;
+}
+add_filter( 'wp_theme_json_data_theme', 'botiga_filter_theme_json_data_theme' );

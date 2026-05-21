@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.4.4' );
+	define( 'BOTIGA_VERSION', '2.4.5' );
 }
 
 // aThemes White Label Compatibility
@@ -20,18 +20,6 @@ if( function_exists( 'athemes_wl_get_data' ) ) {
 		define( 'BOTIGA_AWL_ACTIVE', true );
 	}
 }
-
-/**
- * Declare incompatibility with WooCommerce 8.3+ new default cart and checkout blocks.
- * 
- */
-add_action( 'plugins_loaded', function(){
-	add_action( 'before_woocommerce_init', function() {
-		if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
-			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'cart_checkout_blocks', __FILE__, false );
-		}
-	} );
-} );
 
 if ( ! function_exists( 'botiga_setup' ) ) :
 	/**
@@ -162,36 +150,7 @@ if ( ! function_exists( 'botiga_setup' ) ) :
 		/**
 		 * Color palettes
 		 */
-		$selected_palette   = get_theme_mod( 'color_palettes', 'palette1' );
-		$palettes           = botiga_global_color_palettes();
-
-		$colors = array();
-		
-		$custom_palette_toggle = get_theme_mod( 'custom_palette_toggle', 0 );
-		if( $custom_palette_toggle ) {
-			for ( $i = 0; $i < 8; $i++ ) {
-				$colors[] = array(
-					/* translators: %s: color palette */
-					'name'  => sprintf( esc_html__( 'Color %s', 'botiga' ), ($i+1) ),
-					'slug'  => 'color-' . $i,
-					'color' => get_theme_mod( 'custom_color' . ($i+1), '#212121' ),
-				);
-			}
-		} else {
-			for ( $i = 0; $i < 8; $i++ ) { 
-				$colors[] = array(
-					/* translators: %s: color palette */
-					'name'  => sprintf( esc_html__( 'Color %s', 'botiga' ), ($i+1) ),
-					'slug'  => 'color-' . $i,
-					'color' => $palettes[$selected_palette][$i],
-				);
-			}
-		}
-
-		add_theme_support(
-			'editor-color-palette',
-			$colors
-		);  
+		add_theme_support( 'editor-color-palette', botiga_get_editor_color_palette() );
 		
 		/**
 		 * Editor font sizes
