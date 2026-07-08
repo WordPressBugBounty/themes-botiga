@@ -724,6 +724,11 @@ function botiga_disable_coming_soon_block_from_widget_areas( $block_types ) {
 add_filter( 'woocommerce_get_block_types', 'botiga_disable_coming_soon_block_from_widget_areas' );
 
 /**
+ * Block patterns.
+ */
+require get_template_directory() . '/inc/plugins/woocommerce/block-patterns.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+
+/**
  * WooCommerce Blocks
  */
 require get_template_directory() . '/inc/plugins/woocommerce/blocks/product-categories/class-botiga-woocommerce-block-product-categories.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound

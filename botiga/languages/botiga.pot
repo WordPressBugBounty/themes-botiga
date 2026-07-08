@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: aThemes <team@athemes.com>\n"
 "Last-Translator: aThemes <team@athemes.com>\n"
-"POT-Creation-Date: 2026-05-21 12:38+0000\n"
+"POT-Creation-Date: 2026-07-02 12:55+0000\n"
 "Report-Msgid-Bugs-To: https://athemes.com/contact/\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -137,11 +137,11 @@ msgid "Are you sure you want to dismiss this notice?"
 msgstr ""
 
 #. translators: %s plugins html anchor link.
-#: functions.php:591
+#: functions.php:596
 msgid "It looks like your website is running Botiga Pro but not with its latest version. Please note that Botiga 1.1.9+ (free theme) requires Botiga Pro updated to a minimum version of 1.1.0. For it please go to %s and update Botiga Pro."
 msgstr ""
 
-#: functions.php:594
+#: functions.php:599
 msgid "Plugins"
 msgstr ""
 
@@ -178,6 +178,46 @@ msgstr ""
 #: searchform.php:24
 msgctxt "placeholder"
 msgid "Search &hellip;"
+msgstr ""
+
+#: inc/block-patterns.php:25
+msgid "Botiga Hero"
+msgstr ""
+
+#: inc/block-patterns.php:28
+msgid "Botiga Featured Products"
+msgstr ""
+
+#: inc/block-patterns.php:31
+msgid "Botiga Product Categories"
+msgstr ""
+
+#: inc/block-patterns.php:34
+msgid "Botiga Promotional Banners"
+msgstr ""
+
+#: inc/block-patterns.php:37
+msgid "Botiga Product Highlights"
+msgstr ""
+
+#: inc/block-patterns.php:40
+msgid "Botiga Testimonials"
+msgstr ""
+
+#: inc/block-patterns.php:43
+msgid "Botiga Newsletter"
+msgstr ""
+
+#: inc/block-patterns.php:46
+msgid "Botiga Trust / Benefits"
+msgstr ""
+
+#: inc/block-patterns.php:49
+msgid "Botiga CTA"
+msgstr ""
+
+#: inc/block-patterns.php:52
+msgid "Botiga Shop"
 msgstr ""
 
 #: inc/customizer-helpers.php:49

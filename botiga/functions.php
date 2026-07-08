@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.4.5' );
+	define( 'BOTIGA_VERSION', '2.4.6' );
 }
 
 // aThemes White Label Compatibility
@@ -410,6 +410,11 @@ if ( ! function_exists( 'as_schedule_recurring_action' ) ) {
  * Gutenberg editor.
  */
 require get_template_directory() . '/inc/editor.php';
+
+/**
+ * Block patterns.
+ */
+require get_template_directory() . '/inc/block-patterns.php';
 
 /**
  * Implement the Custom Header feature.
