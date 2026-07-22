@@ -80,6 +80,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			require get_template_directory() . '/inc/customizer/controls/custom-fonts/class_botiga_typography_custom_control.php';
 			require get_template_directory() . '/inc/customizer/controls/dimensions/class_botiga_dimensions_control.php';
 			require get_template_directory() . '/inc/customizer/controls/multi-list-toggle/class_botiga_multi_list_toggle_control.php';
+			require get_template_directory() . '/inc/customizer/controls/sortable/class_botiga_sortable_control.php'; // @since 2.4.7
 			if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
 				require get_template_directory() . '/inc/customizer/controls/class_botiga_upsell_message.php';
 			}
@@ -89,7 +90,7 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 			$wp_customize->register_section_type( 'Botiga_Section_Upsell' );
 			$wp_customize->register_section_type( 'Botiga_Section_Upsell_Message' );
 
-			$wp_customize->register_control_type( '\Kirki\Control\sortable' );
+			$wp_customize->register_control_type( 'Botiga_Sortable_Control' ); // @since 2.4.7
 			$wp_customize->register_control_type( 'Botiga_Multi_List_Toggle_Control' );
 
 			$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
@@ -216,3 +217,6 @@ if ( !class_exists( 'Botiga_Customizer' ) ) {
 Botiga_Customizer::get_instance();
 
 require get_template_directory() . '/inc/customizer-helpers.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+
+// Style Guide.
+require get_template_directory() . '/inc/customizer/style-guide/class-botiga-style-guide.php';

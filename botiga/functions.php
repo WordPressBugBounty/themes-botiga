@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.4.6' );
+	define( 'BOTIGA_VERSION', '2.4.7' );
 }
 
 // aThemes White Label Compatibility
@@ -550,12 +550,6 @@ require get_template_directory() . '/inc/classes/class-botiga-plugin-installer.p
  * Theme ajax callbacks.
  */
 require get_template_directory() . '/inc/ajax-callbacks.php';
-
-/**
- * Legacy composer autoload.
- * Purpose is autoload only needed kirki-framework controls classes. 
- */
-require_once get_parent_theme_file_path( 'vendor-legacy/autoload.php' );
 
 /**
  * Theme dashboard.

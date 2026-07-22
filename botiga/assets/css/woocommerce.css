@@ -1680,6 +1680,9 @@ body.sidebar-slide-opened:before {
 /**
  * Single product
  */
+.single-product .content-wrapper {
+  margin-bottom: 0;
+}
 .single-product .header-image:not(:empty) {
   margin-bottom: 80px;
 }
@@ -2346,9 +2349,6 @@ body.sidebar-slide-opened:before {
   -webkit-transform: translate3d(-50%, 0, 0);
           transform: translate3d(-50%, 0, 0);
   z-index: 1;
-}
-.single-product .site-main > .product > section.products:last-child {
-  margin-bottom: -120px;
 }
 .single-product.botiga-site-layout-boxed .site-main > .product > section.products:after {
   max-width: var(--botiga_boxed_width, 1200px);

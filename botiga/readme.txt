@@ -4,10 +4,10 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.4.6
+Version: 2.4.7
 Tested up to: 7.0
 Requires PHP: 7
-Stable tag: 2.4.6
+Stable tag: 2.4.7
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,44 +30,49 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.4.7 =
+Added - A Style Guide inside the Botiga Customizer to preview and edit site identity, colors, buttons, and typography.
+Fixed - Excessive bottom spacing on WooCommerce single product pages.
+Updated - Replaced the bundled Kirki packages with a native sortable Customizer control.
+
 = 2.4.6 =
-* Added - Native block pattern registration foundation for Botiga.
+Added - Native block pattern registration foundation for Botiga.
 
 = 2.4.5 =
-* Added - Initial theme.json foundation with layout, color palette, typography, and shadow presets.
-* Changed - Removed stale Cart/Checkout block incompatibility declaration from the theme.
-* Fixed - Product Button Layout 4 not preserving standard WooCommerce AJAX add-to-cart attributes on product archive pages.
+Added - Initial theme.json foundation with layout, color palette, typography, and shadow presets.
+Changed - Removed stale Cart/Checkout block incompatibility declaration from the theme.
+Fixed - Product Button Layout 4 not preserving standard WooCommerce AJAX add-to-cart attributes on product archive pages.
 
 = 2.4.4 =
-* Added - New Botiga onboarding setup wizard to guide users through the initial theme setup process after activation.
+Added - New Botiga onboarding setup wizard to guide users through the initial theme setup process after activation.
 
 = 2.4.3 =
-* Fixed - SQL syntax error when "Search by SKU" is enabled causing product search to return no results on some environments (MariaDB).
-* Changed - Polylang compatibility for taxonomy terms in template builder Display Conditions.
-* Changed - Product Filters actions when Botiga Pro is inactive by switching to “Activate Botiga Pro” and redirecting after activation.
+Fixed - SQL syntax error when "Search by SKU" is enabled causing product search to return no results on some environments (MariaDB).
+Changed - Polylang compatibility for taxonomy terms in template builder Display Conditions.
+Changed - Product Filters actions when Botiga Pro is inactive by switching to “Activate Botiga Pro” and redirecting after activation.
 
 = 2.4.2 =
-* Added - Support categories, tags, and selected attributes in AJAX search.
-* Fixed - Action Scheduler not initializing when loaded from theme.
-* Changed - Reverse sidebar filter desktop logic to match positive toggle label.
+Added - Support categories, tags, and selected attributes in AJAX search.
+Fixed - Action Scheduler not initializing when loaded from theme.
+Changed - Reverse sidebar filter desktop logic to match positive toggle label.
 
 = 2.4.1 =
-* Added - Inline variation selection notice for variable products.
-* Added - Transparent Header–specific menu text color control.
+Added - Inline variation selection notice for variable products.
+Added - Transparent Header–specific menu text color control.
 
 = 2.4.0 =
-* Added - A sticky header behaviour option to control where sticky headers apply across desktop and mobile devices.
-* Added - Allow activating Botiga Pro directly from the dashboard when installed but inactive.
-* Fixed - Invisible cart icon in Add to Cart layout 4 on dark backgrounds.
-* Fixed - Prevent Pro modules from activating on fresh installs.
-* Fixed - Template Builder not opening when using Elementor due to early loader initialization.
-* Fixed - Hide card radius, background, and border controls when Card Style is set to Layout 1.
-* Changed - Improve Quick View Ajax add to cart notices and cart fragment refresh.
-* Changed - Optimization to the Botiga_Custom_CSS class to only update custom-styles.css if content has changed.
+Added - A sticky header behaviour option to control where sticky headers apply across desktop and mobile devices.
+Added - Allow activating Botiga Pro directly from the dashboard when installed but inactive.
+Fixed - Invisible cart icon in Add to Cart layout 4 on dark backgrounds.
+Fixed - Prevent Pro modules from activating on fresh installs.
+Fixed - Template Builder not opening when using Elementor due to early loader initialization.
+Fixed - Hide card radius, background, and border controls when Card Style is set to Layout 1.
+Changed - Improve Quick View Ajax add to cart notices and cart fragment refresh.
+Changed - Optimization to the Botiga_Custom_CSS class to only update custom-styles.css if content has changed.
 
 = 2.3.9 =
-* Added - Added an option to set button border width in the Theme Customizer
-* Fixed - Highlighting the Terms & Conditions field and WooCommerce errors during checkout
+Added - Added an option to set button border width in the Theme Customizer
+Fixed - Highlighting the Terms & Conditions field and WooCommerce errors during checkout
 
 = 2.3.8 =
 Added - Conflict modal appears when Botiga’s Free Shipping is active and the user tries to enable Merchant’s Free Shipping, letting them choose which to use

@@ -27,9 +27,6 @@ class Botiga_Dashboard
      * Constructor.
      */
     public function __construct() {
-        if ( defined('BOTIGA_AWL_ACTIVE') ) {
-            return;
-        }
 
         // Display conditions ajax callback needs to be loaded before. 
         if( defined( 'BOTIGA_PRO_VERSION' ) ) {
@@ -37,6 +34,23 @@ class Botiga_Dashboard
         }
 
         if( ! is_admin() ) {
+            return;
+        }
+
+        // White Label active: hide the theme dashboard from the admin menu, but
+        // keep it reachable by direct URL (admin.php?page=botiga-dashboard) so the
+        // agency can still edit settings and switch White Label off. Register only
+        // the page, its assets and the White Label save handler — no menu item and
+        // none of the client-facing notices/footer branding.
+        if ( defined( 'BOTIGA_AWL_ACTIVE' ) ) {
+            if( $this->is_botiga_dashboard_page() ) {
+                add_action( 'init', array( $this, 'set_settings' ) );
+                add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+            }
+
+            add_action( 'admin_menu', array( $this, 'add_menu_page' ) );
+            add_action( 'wp_ajax_botiga_white_label_save_handler', array( $this, 'ajax_white_label_save_handler' ) );
+
             return;
         }
 
@@ -69,6 +83,8 @@ class Botiga_Dashboard
         add_action('wp_ajax_botiga_dismissed_handler', array( $this, 'ajax_dismissed_handler' ));
 
         add_action( 'wp_ajax_botiga_option_switcher_handler', array( $this, 'ajax_option_switcher_handler' ) );
+
+        add_action( 'wp_ajax_botiga_white_label_save_handler', array( $this, 'ajax_white_label_save_handler' ) );
         
         add_action( 'wp_ajax_botiga_module_activation_handler', array( $this, 'ajax_module_activation_handler' ) );
         add_action( 'wp_ajax_botiga_module_activation_all_handler', array( $this, 'ajax_module_activation_all_handler' ) );
@@ -231,6 +247,15 @@ class Botiga_Dashboard
                 6
             );
         }
+
+        // White Label: keep the page registered (so admin.php?page=botiga-dashboard
+        // still works by direct URL) but drop it from the admin menu so clients
+        // don't see the Botiga branding. remove_menu_page() only hides the menu
+        // entry — the page callback and its capability check remain active.
+        if ( defined( 'BOTIGA_AWL_ACTIVE' ) ) {
+            $botiga_awl_menu_slug = isset( $this->settings['menu_slug'] ) ? $this->settings['menu_slug'] : 'botiga-dashboard';
+            remove_menu_page( $botiga_awl_menu_slug );
+        }
     }
 
     /**
@@ -307,7 +332,42 @@ class Botiga_Dashboard
                 'failed_message' => esc_html__('Something went wrong, contact support.', 'botiga'),
             ),
         ));
+
+        // White Label section (Settings > White Label): dedicated assets.
+        $white_label_available = function_exists( 'botiga_white_label_is_available' ) ? botiga_white_label_is_available() : false;
+
+        $white_label_upgrade_url = function_exists( 'botiga_upgrade_link' )
+            ? botiga_upgrade_link( 'theme_dashboard', 'Settings > White Label Upsell', 'agency' )
+            : 'https://athemes.com/botiga-upgrade/';
+
+        $white_label_license_url = add_query_arg(
+            array(
+                'page'        => 'botiga-dashboard',
+                'tab'         => 'settings',
+                'current_tab' => 'general',
+            ),
+            admin_url( 'admin.php' )
+        );
+
+        wp_enqueue_style( 'botiga-white-label', get_template_directory_uri() . '/assets/css/admin/botiga-white-label.min.css', array( 'botiga-dashboard' ), BOTIGA_VERSION );
+
+        wp_enqueue_script( 'botiga-white-label', get_template_directory_uri() . '/assets/js/admin/botiga-white-label.min.js', array( 'jquery' ), BOTIGA_VERSION, true );
+
+        wp_localize_script( 'botiga-white-label', 'botigaWhiteLabel', array(
+            'ajax_url'     => admin_url( 'admin-ajax.php' ),
+            'nonce'        => wp_create_nonce( 'nonce-bt-dashboard' ),
+            'is_available' => (bool) $white_label_available,
+            'upgrade_url'  => esc_url_raw( $white_label_upgrade_url ),
+            'license_url'  => esc_url_raw( $white_label_license_url ),
+            'i18n'         => array(
+                'saving' => esc_html__( 'Saving...', 'botiga' ),
+                'saved'  => esc_html__( 'Saved!', 'botiga' ),
+                'save'   => esc_html__( 'Save Changes', 'botiga' ),
+                'error'  => esc_html__( 'Something went wrong, please try again.', 'botiga' ),
+            ),
+        ) );
     }
+
 
     /**
      * Enqueue aThemes Patcher preview scripts and styles.
@@ -570,6 +630,86 @@ class Botiga_Dashboard
         update_option( $option_id, $activate );
 
         wp_send_json_success();
+    }
+
+    /**
+     * White Label settings save handler (Settings > White Label, Agency tier).
+     *
+     * Writes the submitted values into the aThemes White Label plugin's own
+     * option ("athemes_white_label_settings") using its exact keys, so the
+     * plugin reads and applies them. This is only the in-dashboard input
+     * surface — it does not reimplement any white-labeling behaviour.
+     */
+    public function ajax_white_label_save_handler() {
+        check_ajax_referer( 'nonce-bt-dashboard', 'nonce' );
+
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error( array( 'message' => esc_html__( 'You are not allowed to do this.', 'botiga' ) ) );
+        }
+
+        // Re-check eligibility server-side: only Agency-tier sites may save,
+        // regardless of what the client submits.
+        $is_available = function_exists( 'botiga_white_label_is_available' ) ? botiga_white_label_is_available() : false;
+        if ( ! $is_available ) {
+            wp_send_json_error( array( 'message' => esc_html__( 'White Label is available on the Agency plan.', 'botiga' ) ) );
+        }
+
+        // Preserve any keys the dashboard doesn't manage (e.g. per-plugin branding).
+        $stored = get_option( 'athemes_white_label_settings', array() );
+        if ( ! is_array( $stored ) ) {
+            $stored = array();
+        }
+
+        $text_fields = array( 'awl_agency_name', 'awl_theme_name' );
+        foreach ( $text_fields as $field ) {
+            if ( isset( $_POST[ $field ] ) ) {
+                $stored[ $field ] = sanitize_text_field( wp_unslash( $_POST[ $field ] ) );
+            }
+        }
+
+        $textarea_fields = array( 'awl_theme_description' );
+        foreach ( $textarea_fields as $field ) {
+            if ( isset( $_POST[ $field ] ) ) {
+                $stored[ $field ] = sanitize_textarea_field( wp_unslash( $_POST[ $field ] ) );
+            }
+        }
+
+        $url_fields = array( 'awl_agency_url', 'awl_theme_screenshot' );
+        foreach ( $url_fields as $field ) {
+            if ( isset( $_POST[ $field ] ) ) {
+                $stored[ $field ] = esc_url_raw( wp_unslash( $_POST[ $field ] ) );
+            }
+        }
+
+        $activate = ( isset( $_POST['activate_white_label'] ) && '1' === sanitize_text_field( wp_unslash( $_POST['activate_white_label'] ) ) );
+        if ( $activate ) {
+            $stored['activate_white_label'] = 1;
+        } else {
+            unset( $stored['activate_white_label'] );
+        }
+
+        /**
+         * Allow Botiga Pro (or other extensions) to sanitize and merge their own
+         * White Label fields (e.g. the per-plugin hide toggles). The request is
+         * already authorised above (nonce + manage_options + Agency re-check); the
+         * callback is responsible for sanitizing each field it reads.
+         *
+         * @param array $stored The settings about to be saved.
+         * @param array $posted The unslashed $_POST payload.
+         */
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- nonce verified via check_ajax_referer; extensions sanitize their own keys.
+        $stored = apply_filters( 'botiga_white_label_save_settings', $stored, wp_unslash( $_POST ) );
+
+        update_option( 'athemes_white_label_settings', $stored );
+
+        wp_send_json_success(
+            array(
+                // Enabling White Label defines BOTIGA_AWL_ACTIVE on the next load,
+                // which hides the theme dashboard — let the client warn the user.
+                'white_label_active' => $activate,
+                'message'            => esc_html__( 'Saved!', 'botiga' ),
+            )
+        );
     }
 
     /**

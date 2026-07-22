@@ -220,6 +220,14 @@ function botiga_dashboard_settings() {
 		$settings['settings']['merchant'] = esc_html__('Merchant', 'botiga');
 	}
 
+	// White Label.
+	//
+	// Shown to every user (Lite included). Agency-tier sites get functional
+	// controls; all other tiers get a locked toggle that opens an upgrade modal.
+	// Positioned last — the design places it after "Version Control", a section
+	// that doesn't exist in the current dashboard.
+	$settings['settings']['white-label'] = esc_html__( 'White Label', 'botiga' );
+
 	//
 	// Notifications.
 	//
@@ -926,6 +934,93 @@ function botiga_dashboard_settings() {
 }
 add_filter('botiga_dashboard_settings', 'botiga_dashboard_settings');
 
+if ( ! function_exists( 'botiga_white_label_is_available' ) ) :
+/**
+ * Whether the current site is eligible for White Label (Agency tier).
+ *
+ * Based on the site's actual license tier — the same signal the usage tracking
+ * layer already reads (Botiga_Usage_Tracking::get_license_type(), which
+ * anticipates plan names such as "agency"/"lifetime" stored in the
+ * "botiga_pro_license_item_name" option). We deliberately do NOT gate on whether
+ * the aThemes White Label plugin happens to be installed, so the locked state
+ * stays accurate even if the plugin is present without a covering license.
+ *
+ * Reads Botiga Pro's license helpers when present; a site without Pro (Lite)
+ * is never eligible, which is the correct locked/upsell state.
+ *
+ * Filterable so the tier detection can be refined as licensing evolves.
+ *
+ * @since 2.4.7
+ *
+ * @return bool True when the site is on the Agency tier.
+ */
+function botiga_white_label_is_available() {
+
+	// Agency eligibility. Prefer Botiga Pro's White Label engine: its check reads
+	// the license options directly and stays available even while White Label is
+	// active — at which point Pro skips loading inc/license.php, so
+	// botiga_pro_license_is_agency() would be undefined and this gate would wrongly
+	// lock the editor (leaving no way to switch White Label back off).
+	if ( class_exists( 'Botiga_Pro_White_Label' ) ) {
+		$is_available = Botiga_Pro_White_Label::is_agency();
+	} elseif ( function_exists( 'botiga_pro_license_is_agency' ) ) {
+		$is_available = botiga_pro_license_is_agency();
+	} else {
+		// Without Pro (Lite) there's no license engine — stay locked.
+		$is_available = false;
+	}
+
+	/**
+	 * Filter whether the current site is eligible for White Label (Agency tier).
+	 *
+	 * @since 2.4.7
+	 *
+	 * @param bool $is_available Whether the site is on the Agency tier.
+	 */
+	return (bool) apply_filters( 'botiga_white_label_is_available', $is_available );
+}
+endif;
+
+if ( ! function_exists( 'botiga_white_label_get_settings' ) ) :
+/**
+ * Read the White Label settings stored by the aThemes White Label plugin.
+ *
+ * Reads the plugin's own option directly (the same option the plugin applies)
+ * so any existing values continue to show, edits made here are picked up by the
+ * plugin, and values remain shared even if the plugin is installed later.
+ *
+ * @since 2.4.7
+ *
+ * @return array Saved settings, keyed by the plugin's field names.
+ */
+function botiga_white_label_get_settings() {
+	$data = get_option( 'athemes_white_label_settings', array() );
+
+	return is_array( $data ) ? $data : array();
+}
+endif;
+
+if ( ! function_exists( 'botiga_white_label_plugin_available' ) ) :
+/**
+ * Whether the aThemes White Label plugin is present to apply the settings.
+ *
+ * Only used to warn eligible (Agency) users when the plugin isn't active yet —
+ * it never affects the locked/upsell state, which is driven purely by tier.
+ *
+ * @since 2.4.7
+ *
+ * @return bool
+ */
+function botiga_white_label_plugin_available() {
+	/*
+	 * "Available" means something will actually apply these settings across the
+	 * site — either the standalone aThemes White Label plugin, or Botiga Pro's
+	 * built-in White Label engine. Both expose athemes_wl_get_data().
+	 */
+	return function_exists( 'athemes_wl_get_data' );
+}
+endif;
+
 /**
  * Get all modules ids
  * 
@@ -1005,6 +1100,13 @@ function botiga_dashboard_get_setting_icon( $slug ) {
 
 		case 'merchant':
 			$icon = '<svg viewBox="0 0 256 256" width="24" height="24" xmlns="http://www.w3.org/2000/svg" class="stroke-based"><rect fill="none" height="256" width="256"/><path d="M212,132l-57.4,57.4a31.9,31.9,0,0,1-45.2,0L66.6,146.6a31.9,31.9,0,0,1,0-45.2L124,44" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="18"/><line fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="18" x1="88" x2="32" y1="168" y2="224"/><line fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="18" x1="144" x2="184" y1="64" y2="24"/><line fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="18" x1="232" x2="192" y1="72" y2="112"/><line fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="18" x1="224" x2="112" y1="144" y2="32"/></svg>';
+			break;
+
+		case 'white-label':
+			$icon = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M4 5.5A1.5 1.5 0 0 1 5.5 4h9A1.5 1.5 0 0 1 16 5.5V9h2.5A1.5 1.5 0 0 1 20 10.5v8A1.5 1.5 0 0 1 18.5 20h-13A1.5 1.5 0 0 1 4 18.5v-13Zm1.5 0v13h13v-8H10V5.5H5.5Z" fill="#1E1E1E"/>
+				<path d="M7 8h6v1.5H7V8Zm0 3h1.5v1.5H7V11Zm0 3h1.5v1.5H7V14Zm4.5-3H13v1.5h-1.5V11Zm4 0H17v1.5h-1.5V11Zm-4 3H13v1.5h-1.5V14Zm4 0H17v1.5h-1.5V14Z" fill="#1E1E1E"/>
+			</svg>';
 			break;
 
 		case 'info':
