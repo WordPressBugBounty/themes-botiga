@@ -55,22 +55,332 @@ if ( ! class_exists( 'Botiga_Plugin_Installer' ) ) {
                 'ajax_url' => admin_url( 'admin-ajax.php' ),
                 'nonce' => wp_create_nonce( 'botiga_plugin_installer_nonce' ),
                 'i18n' => array(
-                    'defaultText' => esc_html__( 'Install and Activate', 'botiga' ),
-                    'installingText' => esc_html__( 'Installing...', 'botiga' ),
-                    'activatingText' => esc_html__( 'Activating...', 'botiga' ),
+                    'installingText'   => esc_html__( 'Installing...', 'botiga' ),
+                    'activatingText'   => esc_html__( 'Activating...', 'botiga' ),
+                    'networkErrorText' => esc_html__( 'Installation failed. Please try again.', 'botiga' ),
                 ),
             ) );
         }
 
-        /**
-         * Install plugin.
-         * This method is responsible for installing plugins from the wp.org.
-         * 
-         * @return void
-         */
-        public function install_plugin() {
-            // TODO: Implement this method.
-        }
+		/**
+		 * Install plugin.
+		 * This method is responsible for installing plugins from the wp.org.
+		 * 
+		 * @return void
+		 */
+		public function install_plugin() {
+			$request = $this->validate_wporg_install_request();
+		
+			$slug        = $request['slug'];
+			$plugin_name = $request['plugin_name'];
+				
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+				
+			$plugin_state = $this->get_plugin_state( $plugin_name );
+				
+			if ( 'active' === $plugin_state ) {
+				wp_send_json_success(
+					array(
+						'message' => esc_html__(
+							'Plugin is already active.',
+							'botiga'
+						),
+					)
+				);
+			}
+				
+			if ( 'not_installed' === $plugin_state ) {
+				$download_url = $this->get_wporg_download_url( $slug );
+				
+				if ( is_wp_error( $download_url ) ) {
+					wp_send_json_error(
+						array(
+							'message' => $download_url->get_error_message(),
+						)
+					);
+				}
+				
+				$install_result = $this->install_from_url( $download_url );
+				
+				if ( is_wp_error( $install_result ) ) {
+					wp_send_json_error(
+						array(
+							'message' => $install_result->get_error_message(),
+						)
+					);
+				}
+			}
+
+			if ( ! file_exists( WP_PLUGIN_DIR . '/' . $plugin_name ) ) {
+				wp_send_json_error(
+					array(
+						'message' => esc_html__(
+							'Plugin entry file could not be found.',
+							'botiga'
+						),
+					)
+				);
+			}
+				
+			$activate_result = activate_plugin( $plugin_name );
+				
+			if ( is_wp_error( $activate_result ) ) {
+				wp_send_json_error(
+					array(
+						'message' => $activate_result->get_error_message(),
+					)
+				);
+			}
+				
+			wp_send_json_success(
+				array(
+					'message' => esc_html__(
+						'Plugin activated successfully.',
+						'botiga'
+					),
+				)
+			);
+		}
+
+		/**
+		 * Validates a WordPress.org plugin installation request.
+		 * 
+		 * @since 2.4.8
+		 *
+		 * @return array
+		 */
+		private function validate_wporg_install_request() {
+			check_ajax_referer(
+				'botiga_plugin_installer_nonce',
+				'nonce'
+			);
+
+			if (
+				! current_user_can( 'install_plugins' ) ||
+				! current_user_can( 'activate_plugins' )
+			) {
+				wp_send_json_error(
+					array(
+						'message' => esc_html__(
+							'You do not have permission to install plugins.',
+							'botiga'
+						),
+					)
+				);
+			}
+
+			$slug = isset( $_POST['slug'] )
+				? sanitize_key( wp_unslash( $_POST['slug'] ) )
+				: '';
+
+			$plugin_name = isset( $_POST['plugin_name'] )
+				? sanitize_text_field(
+					wp_unslash( $_POST['plugin_name'] )
+				)
+				: '';
+
+			if ( '' === $slug ) {
+				wp_send_json_error(
+					array(
+						'message' => esc_html__(
+							'Plugin slug is required.',
+							'botiga'
+						),
+					)
+				);
+			}
+
+			if (
+				'' === $plugin_name ||
+				0 !== validate_file( $plugin_name ) ||
+				$slug !== dirname( $plugin_name ) ||
+				'php' !== strtolower( pathinfo( $plugin_name, PATHINFO_EXTENSION ) )
+			) {
+				wp_send_json_error(
+					array(
+						'message' => esc_html__(
+							'Valid plugin name is required.',
+							'botiga'
+						),
+					)
+				);
+			}
+
+			return array(
+				'slug'        => $slug,
+				'plugin_name' => $plugin_name,
+			);
+		}
+
+		/**
+		 * Returns the current plugin installation state.
+		 * 
+		 * @since 2.4.8
+		 *
+		 * @param string $plugin_name Plugin basename.
+		 *
+		 * @return string
+		 */
+		private function get_plugin_state( $plugin_name ) {
+			if ( is_plugin_active( $plugin_name ) ) {
+				return 'active';
+			}
+
+			if ( file_exists( WP_PLUGIN_DIR . '/' . $plugin_name ) ) {
+				return 'installed';
+			}
+
+			return 'not_installed';
+		}
+
+		/**
+		 * Returns a WordPress.org plugin download URL.
+		 * 
+		 * @since 2.4.8
+		 *
+		 * @param string $slug Plugin slug.
+		 *
+		 * @return string|WP_Error
+		 */
+		private function get_wporg_download_url( $slug ) {
+			require_once ABSPATH .
+				'wp-admin/includes/plugin-install.php';
+
+			$plugin = plugins_api(
+				'plugin_information',
+				array(
+					'slug'   => $slug,
+					'fields' => array(
+						'downloadlink' => true,
+						'requires'     => true,
+						'requires_php' => true,
+						'sections'     => false,
+					),
+				)
+			);
+
+			if ( is_wp_error( $plugin ) ) {
+				return new WP_Error(
+					'botiga_plugin_api_failed',
+					esc_html__(
+						'Could not retrieve the plugin from WordPress.org. Please check your server connection and try again.',
+						'botiga'
+					)
+				);
+			}
+
+			$requirements_result =
+				$this->validate_wporg_plugin_requirements( $plugin );
+
+			if ( is_wp_error( $requirements_result ) ) {
+				return $requirements_result;
+			}
+
+			if ( empty( $plugin->download_link ) ) {
+				return new WP_Error(
+					'botiga_plugin_download_unavailable',
+					esc_html__(
+						'The plugin download is unavailable.',
+						'botiga'
+					)
+				);
+			}
+
+			return $plugin->download_link;
+		}
+
+		/**
+		 * Validates a WordPress.org plugin's requirements.
+		 *
+		 * @since 2.4.8
+		 *
+		 * @param object $plugin WordPress.org plugin information.
+		 *
+		 * @return true|WP_Error
+		 */
+		private function validate_wporg_plugin_requirements( $plugin ) {
+			$requires_wp = isset( $plugin->requires )
+				? (string) $plugin->requires
+				: '';
+
+			if ( ! is_wp_version_compatible( $requires_wp ) ) {
+				return new WP_Error(
+					'botiga_plugin_incompatible_wordpress',
+					sprintf(
+						/* translators: %s: Required WordPress version. */
+						esc_html__(
+							'This plugin requires WordPress %s or later.',
+							'botiga'
+						),
+						esc_html( $requires_wp )
+					)
+				);
+			}
+
+			$requires_php = isset( $plugin->requires_php )
+				? (string) $plugin->requires_php
+				: '';
+
+			if ( ! is_php_version_compatible( $requires_php ) ) {
+				return new WP_Error(
+					'botiga_plugin_incompatible_php',
+					sprintf(
+						/* translators: %s: Required PHP version. */
+						esc_html__(
+							'This plugin requires PHP %s or later.',
+							'botiga'
+						),
+						esc_html( $requires_php )
+					)
+				);
+			}
+
+			return true;
+		}
+
+		/**
+		 * Installs a plugin package from a URL.
+		 * 
+		 * @since 2.4.8
+		 *
+		 * @param string $url Plugin package URL.
+		 *
+		 * @return true|WP_Error
+		 */
+		private function install_from_url( $url ) {
+			include_once ABSPATH .
+				'wp-admin/includes/class-wp-upgrader.php';
+
+			require_once get_template_directory() .
+				'/inc/classes/class-botiga-silent-upgrader-skin.php';
+
+			$upgrader = new Plugin_Upgrader(
+				new Botiga_Silent_Upgrader_Skin()
+			);
+
+			$install_result = $upgrader->install(
+				$url,
+				array(
+					'overwrite_package' => true,
+				)
+			);
+
+			if ( is_wp_error( $install_result ) ) {
+				return $install_result;
+			}
+
+			if ( ! $install_result ) {
+				return new WP_Error(
+					'botiga_plugin_install_failed',
+					esc_html__(
+						'Plugin installation failed. Please try again.',
+						'botiga'
+					)
+				);
+			}
+
+			return true;
+		}
 
         /**
          * Install external plugin.

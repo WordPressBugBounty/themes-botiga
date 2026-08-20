@@ -490,3 +490,20 @@ function botiga_is_legacy_install_for_modules_migration() {
 
 	return false;
 }
+
+/**
+ * Get the appropriate hook for block editor content styles.
+ *
+ * @since 2.4.8
+ * 
+ * @param string $legacy_hook Hook used before WordPress 6.3.
+ *
+ * @return string
+ */
+function botiga_get_block_editor_content_assets_hook( $legacy_hook = 'enqueue_block_editor_assets' ) {
+	if ( version_compare( $GLOBALS['wp_version'], '6.3', '<' ) ) {
+		return $legacy_hook;
+	}
+
+	return 'enqueue_block_assets';
+}

@@ -37,11 +37,11 @@ class Botiga_Dashboard
             return;
         }
 
-        // White Label active: hide the theme dashboard from the admin menu, but
-        // keep it reachable by direct URL (admin.php?page=botiga-dashboard) so the
-        // agency can still edit settings and switch White Label off. Register only
-        // the page, its assets and the White Label save handler — no menu item and
-        // none of the client-facing notices/footer branding.
+		// White Label active: hide the theme dashboard from the admin menu, but
+		// keep it reachable by direct URL (admin.php?page=botiga-dashboard) so the
+		// agency can still edit settings and switch White Label off. Register only
+		// the page, its assets, and the settings save handlers needed by the
+		// directly accessible dashboard.
         if ( defined( 'BOTIGA_AWL_ACTIVE' ) ) {
             if( $this->is_botiga_dashboard_page() ) {
                 add_action( 'init', array( $this, 'set_settings' ) );
@@ -50,6 +50,7 @@ class Botiga_Dashboard
 
             add_action( 'admin_menu', array( $this, 'add_menu_page' ) );
             add_action( 'wp_ajax_botiga_white_label_save_handler', array( $this, 'ajax_white_label_save_handler' ) );
+			add_action( 'wp_ajax_botiga_option_switcher_handler', array( $this, 'ajax_option_switcher_handler' ) );
 
             return;
         }

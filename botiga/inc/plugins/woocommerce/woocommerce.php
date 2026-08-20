@@ -58,14 +58,26 @@ add_action( 'after_setup_theme', 'botiga_woocommerce_setup' );
  * @return void
  */
 function botiga_admin_woocommerce_scripts() {
+	if ( ! is_admin() ) {
+		return;
+	}
+	
 	$current_screen = get_current_screen();
 
-    if( method_exists( $current_screen, 'is_block_editor' ) && $current_screen->is_block_editor() ) {
-		wp_enqueue_style( 'botiga-woocommerce-style', get_template_directory_uri() . '/assets/css/woocommerce.min.css', array(), BOTIGA_VERSION );
+	if (
+		! $current_screen ||
+		! method_exists( $current_screen, 'is_block_editor' ) ||
+		! $current_screen->is_block_editor()
+	) {
+		return;
 	}
-}
-add_action( 'admin_enqueue_scripts', 'botiga_admin_woocommerce_scripts' );
 
+	wp_enqueue_style( 'botiga-woocommerce-style', get_template_directory_uri() . '/assets/css/woocommerce.min.css', array(), BOTIGA_VERSION );
+}
+add_action(
+	botiga_get_block_editor_content_assets_hook( 'admin_enqueue_scripts' ),
+	'botiga_admin_woocommerce_scripts'
+);
 /**
  * WooCommerce specific scripts & stylesheets.
  *

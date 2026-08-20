@@ -2692,6 +2692,205 @@ body.toplevel_page_botiga-dashboard #wpbody-content div.error {
   min-width: 8px;
 }
 
+.botiga-wpvibe-banner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 24px;
+  padding: 28px 32px;
+  border-radius: 8px;
+  background-color: #1d2327;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.botiga-wpvibe-banner * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.botiga-wpvibe-banner-content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  min-width: 0;
+}
+.botiga-wpvibe-banner-eyebrow {
+  margin: 0 0 10px;
+  color: #8b8fa8;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.botiga-wpvibe-banner-title {
+  margin: 0 0 12px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.botiga-wpvibe-banner-desc {
+  max-width: 980px;
+  margin: 0 0 20px !important;
+  color: #c6c8c9;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.botiga-wpvibe-banner-desc a {
+  color: #c6c8c9;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.botiga-wpvibe-banner-desc a:hover {
+  color: #b0b3c6;
+}
+.botiga-wpvibe-banner-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
+}
+.botiga-wpvibe-banner-badges {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  gap: 10px;
+}
+
+.botiga-wpvibe-install-btn {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 6px;
+  background-color: #4f6ef7;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+}
+.botiga-wpvibe-install-btn:hover {
+  background-color: #3d5ce0;
+  color: #fff;
+}
+.botiga-wpvibe-install-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.botiga-wpvibe-active-link {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 6px;
+  color: #6ee79a;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.botiga-wpvibe-active-link:hover {
+  color: #4dcf7b;
+  text-decoration: underline;
+}
+
+.botiga-wpvibe-active-check {
+  color: #6ee79a;
+  font-size: 14px;
+}
+
+.botiga-wpvibe-badge {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  min-width: 150px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background-color: #303236;
+}
+.botiga-wpvibe-badge svg {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  border-radius: 4px;
+}
+.botiga-wpvibe-badge span {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.botiga-wpvibe-any-client {
+  margin: 4px auto 0;
+  color: #6b6f88;
+  font-size: 13px;
+  text-align: center;
+}
+
+.botiga-wpvibe-banner {
+  margin: 24px 0 10px;
+}
+
+.botiga-wpvibe-permission-message {
+  color: #c6c8c9;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 782px) {
+  .botiga-wpvibe-banner {
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 24px;
+  }
+  .botiga-wpvibe-banner-badges {
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    width: 100%;
+  }
+  .botiga-wpvibe-badge {
+    width: 100%;
+    min-width: 0;
+  }
+}
 /* Free Vs Pro Table */
 .botiga-dashboard-freevspro-table__header {
   position: sticky;

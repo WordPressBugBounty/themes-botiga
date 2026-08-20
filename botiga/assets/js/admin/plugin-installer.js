@@ -20,9 +20,19 @@
           var url = $(this).data('plugin-url');
           self.installExternalPlugin($(this), url, plugin_name, redirect_to);
         } else {
-          // self.installPlugin(plugin_name); - TODO: We don't need it yet, but we should rely on the WP API to install plugins from wp.org.
+          var slug = $(this).data('plugin-slug');
+          self.installPlugin($(this), slug, plugin_name, redirect_to);
         }
       });
+    },
+    installPlugin: function installPlugin(button, slug, plugin_name, redirect_to) {
+      var data = {
+        action: 'botiga_install_plugin',
+        slug: slug,
+        plugin_name: plugin_name,
+        nonce: botigaPluginInstallerConfig.nonce
+      };
+      this.install(button, data, redirect_to);
     },
     installExternalPlugin: function installExternalPlugin(button, url, plugin_name, redirect_to) {
       var data = {
@@ -31,17 +41,31 @@
         plugin_name: plugin_name,
         nonce: botigaPluginInstallerConfig.nonce
       };
+      this.install(button, data, redirect_to);
+    },
+    install: function install(button, data, redirect_to) {
+      var default_text = button.text().trim();
+      button.prop('disabled', true);
       button.text(botigaPluginInstallerConfig.i18n.installingText);
-      $.post(ajaxurl, data, function (response) {
+      $.post(botigaPluginInstallerConfig.ajax_url, data, function (response) {
         if (!response.success) {
-          button.text(botigaPluginInstallerConfig.i18n.defaultText);
+          button.prop('disabled', false);
+          button.text(default_text);
           alert(response.data.message);
           return;
         }
         button.text(botigaPluginInstallerConfig.i18n.activatingText);
         setTimeout(function () {
-          window.location.href = redirect_to;
+          if (redirect_to) {
+            window.location.href = redirect_to;
+            return;
+          }
+          window.location.reload();
         }, 1000);
+      }).fail(function () {
+        button.prop('disabled', false);
+        button.text(default_text);
+        alert(botigaPluginInstallerConfig.i18n.networkErrorText);
       });
     }
   };

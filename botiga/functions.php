@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.4.7' );
+	define( 'BOTIGA_VERSION', '2.4.8' );
 }
 
 // aThemes White Label Compatibility
@@ -430,6 +430,13 @@ require get_template_directory() . '/inc/template-tags.php';
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
+
+/**
+ * Abilities API integration.
+ */
+if ( function_exists( 'wp_register_ability' ) ) {
+	require get_template_directory() . '/inc/abilities/init.php';
+}
 
 /**
  * Customizer additions.

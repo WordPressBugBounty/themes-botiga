@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: aThemes <team@athemes.com>\n"
 "Last-Translator: aThemes <team@athemes.com>\n"
-"POT-Creation-Date: 2026-07-22 11:30+0000\n"
+"POT-Creation-Date: 2026-08-20 12:25+0000\n"
 "Report-Msgid-Bugs-To: https://athemes.com/contact/\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -137,11 +137,11 @@ msgid "Are you sure you want to dismiss this notice?"
 msgstr ""
 
 #. translators: %s plugins html anchor link.
-#: functions.php:590
+#: functions.php:597
 msgid "It looks like your website is running Botiga Pro but not with its latest version. Please note that Botiga 1.1.9+ (free theme) requires Botiga Pro updated to a minimum version of 1.1.0. For it please go to %s and update Botiga Pro."
 msgstr ""
 
-#: functions.php:593
+#: functions.php:600
 msgid "Plugins"
 msgstr ""
 
@@ -234,7 +234,7 @@ msgstr ""
 msgid "Project Name: %s"
 msgstr ""
 
-#: inc/customizer-helpers.php:87, inc/customizer-helpers.php:85, template-parts/content-wishlist.php:145, inc/dashboard/class-dashboard.php:324, inc/plugins/merchant/class-merchant-overlaping-features-modal.php:314, inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:58
+#: inc/customizer-helpers.php:87, inc/customizer-helpers.php:85, template-parts/content-wishlist.php:145, inc/dashboard/class-dashboard.php:325, inc/plugins/merchant/class-merchant-overlaping-features-modal.php:314, inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:58
 msgid "Loading..."
 msgstr ""
 
@@ -802,13 +802,127 @@ msgstr ""
 msgid "View Cart"
 msgstr ""
 
+#: inc/abilities/class-botiga-abilities-admin.php:62
+msgid "AI MCP"
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-customizer-manager.php:212
+msgid "The Botiga settings registry is unavailable."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-field-schema.php:224
+msgid "This field does not contain a configurable setting."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-field-schema.php:241
+msgid "This field uses a specialized core value mapping that requires a dedicated update schema."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-field-schema.php:258
+msgid "This field uses a complex value format that is available for reading but is not yet supported for updates."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-field-schema.php:269
+msgid "This field stores structured data that requires a dedicated update schema."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-field-schema.php:302
+msgid "This array field does not provide a reliable list of supported values."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-field-schema.php:317
+msgid "This composite field contains structured values that require a dedicated update schema."
+msgstr ""
+
+#. translators: %s: Customizer section ID.
+#: inc/abilities/class-botiga-abilities-settings-registry.php:149, inc/abilities/class-botiga-abilities-settings-registry.php:292
+msgid "The Botiga settings section \"%s\" was not found."
+msgstr ""
+
+#. translators: %s: Field ID.
+#: inc/abilities/class-botiga-abilities-settings-registry.php:203
+msgid "The Botiga settings field \"%s\" was not found."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-settings-registry.php:462
+msgid "The requested field does not contain a configurable setting."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-settings-registry.php:633
+msgid "The requested field is available for reading but is not supported for updates."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-settings-updater.php:85
+msgid "You are not allowed to update this setting."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-settings-updater.php:109
+msgid "The setting could not be saved."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-settings-updater.php:162
+msgid "You are not allowed to update one or more settings."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-settings-updater.php:195
+msgid "One or more settings could not be saved."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-settings-validator.php:59
+msgid "The requested field contains multiple settings."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-settings-validator.php:92
+msgid "The submitted field value must be an object."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-settings-validator.php:105
+msgid "At least one composite setting value must be provided."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-settings-validator.php:126
+msgid "The requested field does not contain multiple settings."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-settings-validator.php:167
+msgid "One or more submitted field values are invalid."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-settings-validator.php:226
+msgid "The submitted value has an invalid type."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-settings-validator.php:260
+msgid "The submitted value is not allowed."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-settings-validator.php:288
+msgid "The submitted value is below the minimum."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-settings-validator.php:304
+msgid "The submitted value exceeds the maximum."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-settings-validator.php:324
+msgid "The submitted value failed validation."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities-settings-validator.php:339
+msgid "The submitted value could not be sanitized."
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities.php:89, inc/classes/class-botiga-footer.php:242, inc/dashboard/class-dashboard.php:161, inc/dashboard/class-dashboard.php:162, inc/dashboard/html-notifications-sidebar.php:49, inc/modules/hf-builder/components/footer/copyright/copyright.php:17
+msgid "Botiga"
+msgstr ""
+
+#: inc/abilities/class-botiga-abilities.php:90
+msgid "Abilities for discovering and managing Botiga theme settings."
+msgstr ""
+
 #. translators: %1$1s, %2$2s theme copyright tags
 #: inc/classes/class-botiga-footer.php:239, inc/customizer/options/footer.php:661, inc/modules/hf-builder/components/footer/copyright/copyright.php:14
 msgid "%1$1s. Proudly powered by %2$2s"
-msgstr ""
-
-#: inc/classes/class-botiga-footer.php:242, inc/dashboard/class-dashboard.php:160, inc/dashboard/class-dashboard.php:161, inc/dashboard/html-notifications-sidebar.php:49, inc/modules/hf-builder/components/footer/copyright/copyright.php:17
-msgid "Botiga"
 msgstr ""
 
 #: inc/classes/class-botiga-footer.php:360, inc/customizer/options/scrolltotop.php:100
@@ -931,32 +1045,70 @@ msgstr ""
 msgid "Select a size chart"
 msgstr ""
 
-#: inc/classes/class-botiga-plugin-installer.php:58, inc/dashboard/html-starter-sites.php:30
-msgid "Install and Activate"
-msgstr ""
-
-#: inc/classes/class-botiga-plugin-installer.php:59, inc/dashboard/class-dashboard.php:321
+#: inc/classes/class-botiga-plugin-installer.php:58, inc/dashboard/class-dashboard.php:322
 msgid "Installing..."
 msgstr ""
 
-#: inc/classes/class-botiga-plugin-installer.php:60, inc/dashboard/class-dashboard.php:322
+#: inc/classes/class-botiga-plugin-installer.php:59, inc/dashboard/class-dashboard.php:323
 msgid "Activating..."
 msgstr ""
 
-#: inc/classes/class-botiga-plugin-installer.php:85
+#: inc/classes/class-botiga-plugin-installer.php:60
+msgid "Installation failed. Please try again."
+msgstr ""
+
+#: inc/classes/class-botiga-plugin-installer.php:84
+msgid "Plugin is already active."
+msgstr ""
+
+#: inc/classes/class-botiga-plugin-installer.php:117
+msgid "Plugin entry file could not be found."
+msgstr ""
+
+#: inc/classes/class-botiga-plugin-installer.php:137, inc/classes/class-botiga-plugin-installer.php:428
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: inc/classes/class-botiga-plugin-installer.php:164, inc/classes/class-botiga-plugin-installer.php:395
 msgid "You do not have permission to install plugins."
 msgstr ""
 
-#: inc/classes/class-botiga-plugin-installer.php:89
+#: inc/classes/class-botiga-plugin-installer.php:185
+msgid "Plugin slug is required."
+msgstr ""
+
+#: inc/classes/class-botiga-plugin-installer.php:201
+msgid "Valid plugin name is required."
+msgstr ""
+
+#: inc/classes/class-botiga-plugin-installer.php:265
+msgid "Could not retrieve the plugin from WordPress.org. Please check your server connection and try again."
+msgstr ""
+
+#: inc/classes/class-botiga-plugin-installer.php:282
+msgid "The plugin download is unavailable."
+msgstr ""
+
+#. translators: %s: Required WordPress version.
+#: inc/classes/class-botiga-plugin-installer.php:311
+msgid "This plugin requires WordPress %s or later."
+msgstr ""
+
+#. translators: %s: Required PHP version.
+#: inc/classes/class-botiga-plugin-installer.php:329
+msgid "This plugin requires PHP %s or later."
+msgstr ""
+
+#: inc/classes/class-botiga-plugin-installer.php:375
+msgid "Plugin installation failed. Please try again."
+msgstr ""
+
+#: inc/classes/class-botiga-plugin-installer.php:399
 msgid "Plugin URL is required."
 msgstr ""
 
-#: inc/classes/class-botiga-plugin-installer.php:95
+#: inc/classes/class-botiga-plugin-installer.php:405
 msgid "Plugin name is required."
-msgstr ""
-
-#: inc/classes/class-botiga-plugin-installer.php:118
-msgid "Plugin activated successfully."
 msgstr ""
 
 #: inc/classes/class-botiga-posts-archive.php:255
@@ -1036,7 +1188,7 @@ msgstr ""
 msgid "Pick up where you left off! Click Resume Site Wizard to finish choosing your template and customizing your site’s design and branding."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:140, inc/dashboard/class-dashboard.php:242, inc/dashboard/class-dashboard.php:243
+#: inc/dashboard/class-dashboard-settings.php:140, inc/dashboard/class-dashboard.php:243, inc/dashboard/class-dashboard.php:244
 msgid "Upgrade to Pro"
 msgstr ""
 
@@ -1052,7 +1204,7 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:191, inc/dashboard/class-dashboard.php:195, inc/dashboard/class-dashboard.php:196
+#: inc/dashboard/class-dashboard-settings.php:191, inc/dashboard/class-dashboard.php:196, inc/dashboard/class-dashboard.php:197
 msgid "Starter Sites"
 msgstr ""
 
@@ -1064,7 +1216,7 @@ msgstr ""
 msgid "Free vs Pro"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:202, inc/dashboard/class-dashboard-settings.php:208, inc/dashboard/class-dashboard-settings.php:894, inc/dashboard/class-dashboard.php:207, inc/dashboard/class-dashboard.php:208
+#: inc/dashboard/class-dashboard-settings.php:202, inc/dashboard/class-dashboard-settings.php:208, inc/dashboard/class-dashboard-settings.php:894, inc/dashboard/class-dashboard.php:208, inc/dashboard/class-dashboard.php:209
 msgid "Templates Builder"
 msgstr ""
 
@@ -1120,7 +1272,7 @@ msgstr ""
 msgid "Set the title and upload logo."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:315, inc/dashboard/class-dashboard-settings.php:343, inc/dashboard/class-dashboard-settings.php:351, inc/dashboard/class-dashboard-settings.php:359, inc/dashboard/class-dashboard-settings.php:325, inc/dashboard/class-dashboard-settings.php:333, inc/dashboard/class-dashboard-settings.php:369, inc/dashboard/class-dashboard-settings.php:377, inc/dashboard/class-dashboard-settings.php:385, inc/dashboard/class-dashboard-settings.php:393, inc/dashboard/class-dashboard-settings.php:401, inc/dashboard/class-dashboard-settings.php:409, inc/dashboard/class-dashboard-settings.php:417, inc/dashboard/class-dashboard-settings.php:425, inc/dashboard/class-dashboard-settings.php:433, inc/dashboard/class-dashboard-settings.php:441, inc/dashboard/class-dashboard-settings.php:449, inc/dashboard/class-dashboard-settings.php:457, inc/dashboard/class-dashboard-settings.php:474, inc/dashboard/class-dashboard-settings.php:485, inc/dashboard/class-dashboard-settings.php:502, inc/dashboard/class-dashboard-settings.php:512, inc/dashboard/class-dashboard-settings.php:522, inc/dashboard/class-dashboard-settings.php:539, inc/dashboard/class-dashboard-settings.php:567, inc/dashboard/class-dashboard-settings.php:576, inc/dashboard/class-dashboard-settings.php:585, inc/dashboard/class-dashboard-settings.php:595, inc/dashboard/class-dashboard-settings.php:605, inc/dashboard/class-dashboard-settings.php:615, inc/dashboard/class-dashboard-settings.php:625, inc/dashboard/class-dashboard-settings.php:635, inc/dashboard/class-dashboard-settings.php:644, inc/dashboard/class-dashboard-settings.php:653, inc/dashboard/class-dashboard-settings.php:662, inc/dashboard/class-dashboard-settings.php:671, inc/dashboard/class-dashboard-settings.php:680, inc/dashboard/class-dashboard-settings.php:689, inc/dashboard/class-dashboard-settings.php:698, inc/dashboard/class-dashboard-settings.php:707, inc/dashboard/class-dashboard-settings.php:717, inc/dashboard/class-dashboard-settings.php:727, inc/dashboard/class-dashboard-settings.php:736, inc/dashboard/class-dashboard-settings.php:745, inc/dashboard/class-dashboard-settings.php:754, inc/dashboard/class-dashboard-settings.php:763, inc/dashboard/class-dashboard-settings.php:773, inc/dashboard/class-dashboard-settings.php:782, inc/dashboard/class-dashboard-settings.php:791, inc/dashboard/class-dashboard-settings.php:801, inc/dashboard/class-dashboard-settings.php:819, inc/dashboard/class-dashboard-settings.php:829, inc/dashboard/class-dashboard-settings.php:839, inc/dashboard/class-dashboard-settings.php:848, inc/dashboard/class-dashboard-settings.php:857, inc/dashboard/class-dashboard-settings.php:874, inc/dashboard/class-dashboard.php:184, inc/dashboard/class-dashboard.php:185
+#: inc/dashboard/class-dashboard-settings.php:315, inc/dashboard/class-dashboard-settings.php:343, inc/dashboard/class-dashboard-settings.php:351, inc/dashboard/class-dashboard-settings.php:359, inc/dashboard/class-dashboard-settings.php:325, inc/dashboard/class-dashboard-settings.php:333, inc/dashboard/class-dashboard-settings.php:369, inc/dashboard/class-dashboard-settings.php:377, inc/dashboard/class-dashboard-settings.php:385, inc/dashboard/class-dashboard-settings.php:393, inc/dashboard/class-dashboard-settings.php:401, inc/dashboard/class-dashboard-settings.php:409, inc/dashboard/class-dashboard-settings.php:417, inc/dashboard/class-dashboard-settings.php:425, inc/dashboard/class-dashboard-settings.php:433, inc/dashboard/class-dashboard-settings.php:441, inc/dashboard/class-dashboard-settings.php:449, inc/dashboard/class-dashboard-settings.php:457, inc/dashboard/class-dashboard-settings.php:474, inc/dashboard/class-dashboard-settings.php:485, inc/dashboard/class-dashboard-settings.php:502, inc/dashboard/class-dashboard-settings.php:512, inc/dashboard/class-dashboard-settings.php:522, inc/dashboard/class-dashboard-settings.php:539, inc/dashboard/class-dashboard-settings.php:567, inc/dashboard/class-dashboard-settings.php:576, inc/dashboard/class-dashboard-settings.php:585, inc/dashboard/class-dashboard-settings.php:595, inc/dashboard/class-dashboard-settings.php:605, inc/dashboard/class-dashboard-settings.php:615, inc/dashboard/class-dashboard-settings.php:625, inc/dashboard/class-dashboard-settings.php:635, inc/dashboard/class-dashboard-settings.php:644, inc/dashboard/class-dashboard-settings.php:653, inc/dashboard/class-dashboard-settings.php:662, inc/dashboard/class-dashboard-settings.php:671, inc/dashboard/class-dashboard-settings.php:680, inc/dashboard/class-dashboard-settings.php:689, inc/dashboard/class-dashboard-settings.php:698, inc/dashboard/class-dashboard-settings.php:707, inc/dashboard/class-dashboard-settings.php:717, inc/dashboard/class-dashboard-settings.php:727, inc/dashboard/class-dashboard-settings.php:736, inc/dashboard/class-dashboard-settings.php:745, inc/dashboard/class-dashboard-settings.php:754, inc/dashboard/class-dashboard-settings.php:763, inc/dashboard/class-dashboard-settings.php:773, inc/dashboard/class-dashboard-settings.php:782, inc/dashboard/class-dashboard-settings.php:791, inc/dashboard/class-dashboard-settings.php:801, inc/dashboard/class-dashboard-settings.php:819, inc/dashboard/class-dashboard-settings.php:829, inc/dashboard/class-dashboard-settings.php:839, inc/dashboard/class-dashboard-settings.php:848, inc/dashboard/class-dashboard-settings.php:857, inc/dashboard/class-dashboard-settings.php:874, inc/dashboard/class-dashboard.php:185, inc/dashboard/class-dashboard.php:186
 msgid "Customize"
 msgstr ""
 
@@ -1260,7 +1412,7 @@ msgstr ""
 msgid "Set and use Adobe Fonts."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:483, inc/dashboard/class-dashboard.php:219, inc/dashboard/class-dashboard.php:220
+#: inc/dashboard/class-dashboard-settings.php:483, inc/dashboard/class-dashboard.php:220, inc/dashboard/class-dashboard.php:221
 msgid "Product Filters"
 msgstr ""
 
@@ -1628,96 +1780,96 @@ msgstr ""
 msgid "Get Pro"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:172, inc/dashboard/class-dashboard.php:173, inc/dashboard/html-hero.php:69
+#: inc/dashboard/class-dashboard.php:173, inc/dashboard/class-dashboard.php:174, inc/dashboard/html-hero.php:69
 msgid "Theme Dashboard"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:230, inc/dashboard/class-dashboard.php:231
+#: inc/dashboard/class-dashboard.php:231, inc/dashboard/class-dashboard.php:232
 msgid "Patcher"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:319, inc/dashboard/html-home.php:65, inc/dashboard/html-home.php:182, inc/dashboard/html-settings-merchant.php:31, inc/dashboard/html-settings-misc.php:31, inc/dashboard/html-settings-misc.php:57, inc/dashboard/html-settings-misc.php:84, inc/dashboard/html-settings-performance.php:31, inc/dashboard/html-starter-sites.php:32
+#: inc/dashboard/class-dashboard.php:320, inc/dashboard/html-home.php:65, inc/dashboard/html-home.php:182, inc/dashboard/html-settings-ai-mcp.php:74, inc/dashboard/html-settings-ai-mcp.php:136, inc/dashboard/html-settings-merchant.php:31, inc/dashboard/html-settings-misc.php:31, inc/dashboard/html-settings-misc.php:57, inc/dashboard/html-settings-misc.php:84, inc/dashboard/html-settings-performance.php:31, inc/dashboard/html-starter-sites.php:32
 msgid "Activate"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:320, inc/dashboard/html-home.php:56, inc/dashboard/html-home.php:173, inc/dashboard/html-settings-merchant.php:27, inc/dashboard/html-settings-misc.php:27, inc/dashboard/html-settings-misc.php:53, inc/dashboard/html-settings-misc.php:80, inc/dashboard/html-settings-performance.php:27
+#: inc/dashboard/class-dashboard.php:321, inc/dashboard/html-home.php:56, inc/dashboard/html-home.php:173, inc/dashboard/html-settings-ai-mcp.php:60, inc/dashboard/html-settings-ai-mcp.php:122, inc/dashboard/html-settings-merchant.php:27, inc/dashboard/html-settings-misc.php:27, inc/dashboard/html-settings-misc.php:53, inc/dashboard/html-settings-misc.php:80, inc/dashboard/html-settings-performance.php:27
 msgid "Deactivate"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:323
+#: inc/dashboard/class-dashboard.php:324
 msgid "Deactivating..."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:325, inc/dashboard/class-dashboard.php:363
+#: inc/dashboard/class-dashboard.php:326, inc/dashboard/class-dashboard.php:364
 msgid "Saving..."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:326, inc/dashboard/class-dashboard.php:364, inc/dashboard/class-dashboard.php:710
+#: inc/dashboard/class-dashboard.php:327, inc/dashboard/class-dashboard.php:365, inc/dashboard/class-dashboard.php:711
 msgid "Saved!"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:327
+#: inc/dashboard/class-dashboard.php:328
 msgid "You have unsaved changes."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:328, inc/dashboard/html-builder.php:162
+#: inc/dashboard/class-dashboard.php:329, inc/dashboard/html-builder.php:162
 msgid "Save"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:329, inc/plugins/merchant/class-merchant-overlaping-features-modal.php:315
+#: inc/dashboard/class-dashboard.php:330, inc/plugins/merchant/class-merchant-overlaping-features-modal.php:315
 msgid "Redirecting..."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:330
+#: inc/dashboard/class-dashboard.php:331
 msgid "Activated"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:331
+#: inc/dashboard/class-dashboard.php:332
 msgid "Deactivated"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:332
+#: inc/dashboard/class-dashboard.php:333
 msgid "Something went wrong, contact support."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:365, inc/dashboard/html-settings-white-label.php:184, inc/dashboard/html-settings-white-label.php:186
+#: inc/dashboard/class-dashboard.php:366, inc/dashboard/html-settings-white-label.php:184, inc/dashboard/html-settings-white-label.php:186
 msgid "Save Changes"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:366
+#: inc/dashboard/class-dashboard.php:367
 msgid "Something went wrong, please try again."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:556
+#: inc/dashboard/class-dashboard.php:557
 msgid "Insufficient permissions to install the plugin."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:586
+#: inc/dashboard/class-dashboard.php:587
 msgid "Failed to initialize or activate the plugin."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:647
+#: inc/dashboard/class-dashboard.php:648
 msgid "You are not allowed to do this."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:654
+#: inc/dashboard/class-dashboard.php:655
 msgid "White Label is available on the Agency plan."
 msgstr ""
 
 #. translators: %s: https://wordpress.org/
-#: inc/dashboard/class-dashboard.php:837
+#: inc/dashboard/class-dashboard.php:838
 msgid "Thank you for creating your website with <a href=\"%s\" class=\"botiga-dashboard-footer-link\" target=\"_blank\">Botiga</a>."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:934
+#: inc/dashboard/class-dashboard.php:935
 msgid "Botiga Template Part - "
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:1042
+#: inc/dashboard/class-dashboard.php:1043
 msgid "Select existing"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:1039
+#: inc/dashboard/class-dashboard.php:1040
 msgid "No templates found."
 msgstr ""
 
@@ -2053,6 +2205,23 @@ msgstr ""
 msgid "Activate Product Filters"
 msgstr ""
 
+#: inc/dashboard/html-settings-ai-mcp.php:29
+msgid "Enable Abilities"
+msgstr ""
+
+#. translators: 1: open link to learn more about MCP adapter, 2: close link to learn more about MCP adapter.
+#: inc/dashboard/html-settings-ai-mcp.php:39
+msgid "Register Botiga abilities with the WordPress Abilities API. When enabled, AI clients can list, read, and interact with your theme settings. When disabled, no abilities are registered and AI clients cannot perform any actions on your theme. %1$sView Abilities API Documentation%2$s"
+msgstr ""
+
+#: inc/dashboard/html-settings-ai-mcp.php:95
+msgid "Enable Edit Abilities"
+msgstr ""
+
+#: inc/dashboard/html-settings-ai-mcp.php:104
+msgid "When enabled, AI clients can update theme settings such as typography, colors, buttons, and layout options. When disabled, these abilities are unregistered and AI clients can only read your theme data."
+msgstr ""
+
 #: inc/dashboard/html-settings-general.php:72
 msgid "Premium Features To Go Beyond"
 msgstr ""
@@ -2220,6 +2389,10 @@ msgstr ""
 msgid "In order to be able to import any starter sites for Botiga you need to have the aThemes demo importer plugin active."
 msgstr ""
 
+#: inc/dashboard/html-starter-sites.php:30
+msgid "Install and Activate"
+msgstr ""
+
 #: inc/dashboard/html-starter-sites.php:46
 msgid "Import"
 msgstr ""
@@ -2254,6 +2427,50 @@ msgstr ""
 
 #: inc/dashboard/html-templates-builder.php:178
 msgid "Start from scratch and design a custom template tailored to your specific needs."
+msgstr ""
+
+#: inc/dashboard/html-wpvibe-banner.php:37
+msgid "WordPress Abilities API + Botiga"
+msgstr ""
+
+#: inc/dashboard/html-wpvibe-banner.php:46
+msgid "Use Botiga With Your Favorite AI"
+msgstr ""
+
+#: inc/dashboard/html-wpvibe-banner.php:55
+msgid "Connect your WordPress site and Botiga to AI assistants like Claude, ChatGPT, Cursor, and more. Ask them to find brand guidelines, build pages, or edit sections in plain English. No copy-pasting, no exports. Connect them with the free WPVibe.ai plugin."
+msgstr ""
+
+#: inc/dashboard/html-wpvibe-banner.php:101
+msgid "WPVibe must be installed by an administrator."
+msgstr ""
+
+#: inc/dashboard/html-wpvibe-banner.php:93
+msgid "Activate WPVibe"
+msgstr ""
+
+#: inc/dashboard/html-wpvibe-banner.php:94
+msgid "Install & Activate WPVibe"
+msgstr ""
+
+#: inc/dashboard/html-wpvibe-banner.php:75
+msgid "WPVibe Active — Manage Settings"
+msgstr ""
+
+#: inc/dashboard/html-wpvibe-banner.php:113
+msgid "Claude"
+msgstr ""
+
+#: inc/dashboard/html-wpvibe-banner.php:120
+msgid "ChatGPT"
+msgstr ""
+
+#: inc/dashboard/html-wpvibe-banner.php:124
+msgid "Cursor"
+msgstr ""
+
+#: inc/dashboard/html-wpvibe-banner.php:127
+msgid "+ Any MCP Client"
 msgstr ""
 
 #. translators: 1. Image url.
@@ -2486,6 +2703,110 @@ msgstr ""
 
 #: template-parts/single-product/content-reviews-advanced.php:290
 msgid "Your review is awaiting approval."
+msgstr ""
+
+#: inc/abilities/abilities/abstract-class-botiga-ability.php:190
+msgid "The requested section is not a supported Botiga settings section."
+msgstr ""
+
+#: inc/abilities/abilities/abstract-class-botiga-ability.php:206
+msgid "The requested section requires Botiga Pro to be active."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-get-section-settings-ability.php:28
+msgid "Get Botiga Section Settings"
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-get-section-settings-ability.php:32
+msgid "Returns the configurable fields and current values for a Botiga Customizer section."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-get-section-settings-ability.php:43, inc/abilities/abilities/class-botiga-update-section-settings-ability.php:43, inc/abilities/abilities/class-botiga-update-setting-ability.php:43
+msgid "Customizer section ID returned by the Botiga section discovery ability."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-get-section-settings-ability.php:51
+msgid "Whether to include complete field definitions and validation metadata."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-get-section-settings-ability.php:67, inc/abilities/abilities/class-botiga-list-sections-ability.php:90
+msgid "Customizer section ID."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-get-section-settings-ability.php:74, inc/abilities/abilities/class-botiga-list-sections-ability.php:97
+msgid "Human-readable section label."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-get-section-settings-ability.php:81
+msgid "Current values keyed by configurable field ID."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-get-site-capabilities-ability.php:28
+msgid "Get Botiga Site Capabilities"
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-get-site-capabilities-ability.php:32
+msgid "Returns the active Botiga edition, license tier, integrations, and available settings features."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-list-sections-ability.php:74
+msgid "List Botiga Settings Sections"
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-list-sections-ability.php:78
+msgid "Returns the configurable Botiga Customizer sections."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-list-sections-ability.php:110
+msgid "High-level settings category."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-list-sections-ability.php:117
+msgid "Whether the section is provided by Botiga Pro."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-list-sections-ability.php:124
+msgid "Whether the section is available to the current user and site configuration."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-list-sections-ability.php:132
+msgid "Number of configurable fields in the section."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-update-section-settings-ability.php:28
+msgid "Update Botiga Section Settings"
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-update-section-settings-ability.php:32
+msgid "Validates and progressively updates one or more configurable fields in a Botiga Customizer section."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-update-section-settings-ability.php:51
+msgid "Field values keyed by Customizer control or field ID."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-update-section-settings-ability.php:214
+msgid "At least one setting value must be provided."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-update-section-settings-ability.php:280
+msgid "The setting was saved, but the field is currently inactive because its Customizer condition is not met."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-update-setting-ability.php:28
+msgid "Update a Botiga Setting"
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-update-setting-ability.php:32
+msgid "Validates and updates one configurable field in a Botiga Customizer section. Composite fields support partial updates."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-update-setting-ability.php:51
+msgid "Customizer control or field ID."
+msgstr ""
+
+#: inc/abilities/abilities/class-botiga-update-setting-ability.php:65
+msgid "The direct field value or composite setting values."
 msgstr ""
 
 #. translators: 1: page name
@@ -4302,27 +4623,27 @@ msgstr ""
 msgid "This product is currently out of stock and unavailable."
 msgstr ""
 
-#: inc/plugins/woocommerce/woocommerce.php:448
+#: inc/plugins/woocommerce/woocommerce.php:460
 msgid "Decrease quantity"
 msgstr ""
 
-#: inc/plugins/woocommerce/woocommerce.php:448
+#: inc/plugins/woocommerce/woocommerce.php:460
 msgid "Decrease product quantity."
 msgstr ""
 
-#: inc/plugins/woocommerce/woocommerce.php:453
+#: inc/plugins/woocommerce/woocommerce.php:465
 msgid "Increase quantity"
 msgstr ""
 
-#: inc/plugins/woocommerce/woocommerce.php:453
+#: inc/plugins/woocommerce/woocommerce.php:465
 msgid "Increase product quantity."
 msgstr ""
 
-#: inc/plugins/woocommerce/woocommerce.php:684
+#: inc/plugins/woocommerce/woocommerce.php:696
 msgid "Available on backorder"
 msgstr ""
 
-#: inc/plugins/woocommerce/woocommerce.php:692
+#: inc/plugins/woocommerce/woocommerce.php:704
 msgid "in stock. Remaining is available on backorder."
 msgstr ""
 
