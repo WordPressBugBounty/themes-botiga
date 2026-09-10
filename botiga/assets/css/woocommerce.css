@@ -918,7 +918,8 @@ ul.products li.product .wc-block-grid__product-link {
 }
 
 .button-layout3 .wc-forward {
-  margin-left: 5px;
+  display: block;
+  margin: 8px 0 0 !important;
 }
 .button-layout3.loop-button-wrap:empty {
   display: none !important;
@@ -1183,6 +1184,18 @@ ul.products li.product-category mark {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+}
+.product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .loop-button-wrap.button-layout3,
+.product-equal-height ul.wc-block-grid__products li.product .loop-button-wrap.button-layout3,
+.product-equal-height ul.products li.wc-block-grid__product .loop-button-wrap.button-layout3,
+.product-equal-height ul.products li.product .loop-button-wrap.button-layout3 {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .variations_form,
 .product-equal-height ul.wc-block-grid__products li.product .variations_form,
@@ -4143,6 +4156,7 @@ form.woocommerce-checkout {
 .checkout-wrapper .order-total .amount {
   font-size: 24px;
   font-size: 1.5rem;
+  white-space: nowrap;
 }
 .checkout-wrapper .order-total th, .checkout-wrapper .order-total td {
   border-bottom: 0;
@@ -6546,6 +6560,11 @@ dl.variation p {
  */
 .botiga-no-products-found-popular-products h2 {
   font-size: 24px;
+}
+
+/* WooCommerce quantity selector. */
+.wc-block-components-quantity-selector .wc-block-components-quantity-selector__input {
+  padding: 0.4em 0;
 }
 
 /**

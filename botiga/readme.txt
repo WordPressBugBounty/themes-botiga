@@ -4,10 +4,10 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.4.8
+Version: 2.4.9
 Tested up to: 7.1
 Requires PHP: 7
-Stable tag: 2.4.8
+Stable tag: 2.4.9
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,18 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.4.9 =
+* Added - Post-onboarding Setup Checklist with progress tracking and guided setup tasks.
+* Added - End-of-life notice for the aThemes Patcher plugin with an option to deactivate and delete it.
+* Changed - Removed the deprecated aThemes Patcher integration from the Botiga dashboard.
+* Fixed - Botiga admin menu icon alignment, color, and clipping in wp-admin.
+* Fixed - Theme Dashboard Starter Sites CTA showing the wrong action when the plugin is installed but inactive.
+* Fixed - View Cart link being clipped after AJAX add to cart when using Product Card Add to Cart Button Layout 3.
+* Fixed - Cart and Mini-Cart block quantity inputs clipping multi-digit values.
+* Fixed - Theme Dashboard submenu not highlighting the active section.
+* Fixed - Classic checkout Total amount wrapping when WooCommerce uses a space as the thousands separator.
+* Fixed - Prevented unauthenticated Botiga module activation/deactivation and rejected unsupported module IDs in the dashboard activation handler.
+
 = 2.4.8 =
 * Added - WordPress Abilities API support for discovering and managing Botiga settings, with site capability discovery and administrator-controlled read and write access.
 * Fixed - Block editor content styles triggering iframe compatibility warnings.

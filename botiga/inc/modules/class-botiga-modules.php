@@ -13,7 +13,6 @@ if ( ! class_exists( 'Botiga_Modules' ) ) {
 		 * Constructor
 		 */
 		public function __construct() {
-			add_action( 'admin_init', array( $this, 'activate_modules' ) );
 			add_action( 'admin_init', array( $this, 'modules_default_status' ) );
 			add_filter( 'option_botiga-modules', array( $this, 'filter_botiga_modules_option' ) );
 		}
@@ -27,59 +26,9 @@ if ( ! class_exists( 'Botiga_Modules' ) ) {
 
 			if ( array_key_exists( $module, $all_modules ) && true === $all_modules[$module] ) {
 				return true;
-			}
+		}
 		
 			return false;
-		}
-
-		/**
-		 * Activate modules on click
-		 */
-		public function activate_modules() {
-
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			if ( ! isset( $_GET['activate-module'] ) && ! isset( $_GET['deactivate-module'] ) ) {
-				return;
-			}
-
-     		$all_modules = get_option( 'botiga-modules' );
-			$all_modules = ( is_array( $all_modules ) ) ? $all_modules : (array) $all_modules;
-
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			if ( isset( $_GET['activate-module'] ) ) {
-				$module = sanitize_text_field( wp_unslash( $_GET['activate-module'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-
-				update_option( 'botiga-modules', array_merge( $all_modules, array( $module => true ) ) );
-
-			}
-
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			if ( isset( $_GET['deactivate-module'] ) ) {
-				$module = sanitize_text_field( wp_unslash( $_GET['deactivate-module'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-
-				update_option( 'botiga-modules', array_merge( $all_modules, array( $module => false ) ) );
-
-			}
-
-			$args    = array( 'page' => 'botiga-dashboard' );
-			$tab     = ( isset( $_GET['tab'] ) ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$section = ( isset( $_GET['section'] ) ) ? sanitize_text_field( wp_unslash( $_GET['section'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-
-			if ( ! empty( $section ) ) {
-				$args = array_merge( $args, array( 'section' => $section ) );
-			}
-
-
-			if ( ! empty( $tab ) ) {
-				$args = array_merge( $args, array( 'tab' => $tab ) );
-			}
-
-			// Update Custom CSS
-			$custom_css = Botiga_Custom_CSS::get_instance();
-			$custom_css->update_custom_css_file();
-
-			wp_safe_redirect( add_query_arg( $args, admin_url( 'admin.php' ) ) );
-			exit;
 		}
 
 		/**
@@ -129,6 +78,11 @@ if ( ! class_exists( 'Botiga_Modules' ) ) {
 			}
 
 			$modules_ids = botiga_get_available_modules_ids();
+
+			// Botiga Pro can become active after the available module IDs were cached earlier in the request.
+			if ( class_exists( 'Botiga_Pro' ) && ! in_array( 'shop-filters', $modules_ids, true ) ) {
+				return $value;
+			}
 
 			if ( empty( $modules_ids ) ) {
 				return array();

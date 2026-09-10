@@ -193,7 +193,7 @@ if ( ! class_exists( 'Botiga_Plugin_Installer' ) ) {
 			if (
 				'' === $plugin_name ||
 				0 !== validate_file( $plugin_name ) ||
-				$slug !== dirname( $plugin_name ) ||
+				0 !== strcasecmp( $slug, dirname( $plugin_name ) ) ||
 				'php' !== strtolower( pathinfo( $plugin_name, PATHINFO_EXTENSION ) )
 			) {
 				wp_send_json_error(

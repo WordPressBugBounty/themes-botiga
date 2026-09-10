@@ -9,7 +9,7 @@
 
 if ( ! defined( 'BOTIGA_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'BOTIGA_VERSION', '2.4.8' );
+	define( 'BOTIGA_VERSION', '2.4.9' );
 }
 
 // aThemes White Label Compatibility
@@ -439,6 +439,15 @@ if ( function_exists( 'wp_register_ability' ) ) {
 }
 
 /**
+ * Setup Checklist.
+ *
+ * @since 2.4.9
+ */
+if ( is_admin() ) {
+	require get_template_directory() . '/inc/setup-checklist/init.php';
+}
+
+/**
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
@@ -623,6 +632,11 @@ require get_template_directory() . '/inc/notices/class-botiga-pro-upsell.php';
  * Botiga campaign notice.
  */
 require get_template_directory() . '/inc/notices/class-botiga-campaign.php';
+
+/**
+ * Patcher end-of-life notice.
+ */
+require get_template_directory() . '/inc/notices/class-botiga-patcher-eol.php';
 
 /**
  * Theme update migration functions.

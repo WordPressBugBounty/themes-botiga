@@ -1371,6 +1371,7 @@
   /**
    * No products found popular products
    */
+  /* WooCommerce quantity selector. */
   /** 
    * All reviews
    * Reviews by category 
@@ -4352,6 +4353,9 @@
 .editor-styles-wrapper .botiga-no-products-found-popular-products h2 {
   font-size: 24px;
 }
+.editor-styles-wrapper .wc-block-components-quantity-selector .wc-block-components-quantity-selector__input {
+  padding: 0.4em 0;
+}
 .editor-styles-wrapper .wp-block-woocommerce-all-reviews .wc-block-sort-select,
 .editor-styles-wrapper .wp-block-woocommerce-reviews-by-category .wc-block-sort-select,
 .editor-styles-wrapper .wp-block-woocommerce-reviews-by-product .wc-block-sort-select {
@@ -4793,7 +4797,8 @@
   margin-top: 0 !important;
 }
 .editor-styles-wrapper .button-layout3 .wc-forward {
-  margin-left: 5px;
+  display: block;
+  margin: 8px 0 0 !important;
 }
 .editor-styles-wrapper .button-layout3.loop-button-wrap:empty {
   display: none !important;
@@ -5036,6 +5041,18 @@
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+}
+.editor-styles-wrapper .product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .loop-button-wrap.button-layout3,
+.editor-styles-wrapper .product-equal-height ul.wc-block-grid__products li.product .loop-button-wrap.button-layout3,
+.editor-styles-wrapper .product-equal-height ul.products li.wc-block-grid__product .loop-button-wrap.button-layout3,
+.editor-styles-wrapper .product-equal-height ul.products li.product .loop-button-wrap.button-layout3 {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .editor-styles-wrapper .product-equal-height ul.wc-block-grid__products li.wc-block-grid__product .variations_form,
 .editor-styles-wrapper .product-equal-height ul.wc-block-grid__products li.product .variations_form,

@@ -2,6 +2,93 @@
  * Notices
  * Admin CSS
  */
+/* Patcher end-of-life notice. */
+.botiga-patcher-eol-bar.notice {
+  position: relative;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: calc(100% + 20px);
+  min-height: 50px;
+  margin: 0 0 0 -20px;
+  padding: 16px 75px 16px 20px;
+  border: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #FFF;
+  color: #50575E;
+}
+.botiga-patcher-eol-bar.notice p {
+  margin: 0;
+  padding: 0;
+  color: #50575E;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 18px;
+  text-align: center;
+}
+.botiga-patcher-eol-bar.notice a {
+  font-weight: 700;
+}
+.botiga-patcher-eol-bar.notice .notice-dismiss {
+  top: 50%;
+  right: 55px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.botiga-patcher-eol-bar.notice .notice-dismiss:before {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  color: #646970;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+body:not(.botiga_page_botiga-setup-checklist) .botiga-patcher-eol-bar.notice {
+  border-bottom: 3px solid #3858E9;
+}
+
+body.toplevel_page_botiga-dashboard #wpbody-content .botiga-patcher-eol-bar.notice {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+body.botiga_page_botiga-setup-checklist #wpbody-content .botiga-patcher-eol-bar.notice {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  width: 100%;
+  margin-left: 0;
+}
+
+@media screen and (max-width: 782px) {
+  .botiga-patcher-eol-bar.notice {
+    padding: 14px 45px 14px 15px;
+  }
+  .botiga-patcher-eol-bar.notice .notice-dismiss {
+    right: 15px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .botiga-patcher-eol-bar.notice {
+    top: 46px;
+  }
+}
 .botiga-notice {
   background-color: #FFF;
   border-color: #DDE2E7;

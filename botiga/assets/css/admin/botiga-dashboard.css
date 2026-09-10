@@ -237,6 +237,9 @@ body.toplevel_page_botiga-dashboard #wpbody-content div.error {
 .botiga-dashboard .buttondisabled, .botiga-dashboard .button.disabled {
   pointer-events: none;
 }
+.botiga-dashboard .button .dashicons-update-alt {
+  line-height: 1;
+}
 .botiga-dashboard .button-medium {
   padding: 8px 16px;
 }

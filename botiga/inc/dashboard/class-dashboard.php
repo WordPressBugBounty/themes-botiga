@@ -62,19 +62,17 @@ class Botiga_Dashboard
 
         if( $this->is_botiga_dashboard_page() ) {
             add_filter( 'admin_footer_text', array( $this, 'admin_footer_text' ) );
+            add_filter( 'submenu_file', array( $this, 'set_current_submenu_file' ), 10, 2 );
 
             if( defined( 'BOTIGA_PRO_VERSION' ) ) {
                 add_action( 'admin_footer', array( $this, 'templates_builder_display_conditions_script_template' ) );
             }
         }
 
-        if( $this->is_patcher_page() ) {
-            add_action('admin_enqueue_scripts', array( $this, 'enqueue_patcher_scripts' ));
-        }
-
         add_filter('woocommerce_enable_setup_wizard', '__return_false');
 
         add_action('admin_menu', array( $this, 'add_menu_page' ));
+        add_action('admin_head', array( $this, 'admin_menu_icon_style' ));
         add_action('admin_footer', array( $this, 'add_admin_footer_internal_scripts' ));
         add_action('admin_notices', array( $this, 'html_notice' ));
         
@@ -124,14 +122,63 @@ class Botiga_Dashboard
     }
 
     /**
-     * Is aThemes Patcher page.
-     * 
+     * Set the active Botiga dashboard submenu item.
+     *
+     * @since 2.4.9
+     *
+     * @param string $submenu_file Current submenu file.
+     * @param string $parent_file  Current parent file.
+     *
+     * @return string
      */
-    public function is_patcher_page() {
-        global $pagenow;
+    public function set_current_submenu_file( $submenu_file, $parent_file ) {
+        global $submenu;
+
+        if ( 'botiga-dashboard' !== $parent_file ) {
+            return $submenu_file;
+        }
 
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-        return $pagenow === 'admin.php' && ( isset( $_GET[ 'page' ] ) && $_GET[ 'page' ] === 'athemes-patcher-preview-bp' );
+        $module_page = isset( $_GET['module-page'] ) ? sanitize_key( wp_unslash( $_GET['module-page'] ) ) : '';
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $tab = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : '';
+
+        $query_key   = '';
+        $query_value = '';
+
+        if ( $module_page ) {
+            $query_key   = 'module-page';
+            $query_value = $module_page;
+        } elseif ( $tab ) {
+            $query_key   = 'tab';
+            $query_value = $tab;
+        }
+
+        if ( $query_key && ! empty( $submenu['botiga-dashboard'] ) ) {
+            foreach ( $submenu['botiga-dashboard'] as $submenu_item ) {
+                if ( empty( $submenu_item[2] ) ) {
+                    continue;
+                }
+
+                $query = wp_parse_url( $submenu_item[2], PHP_URL_QUERY );
+
+                if ( ! $query ) {
+                    continue;
+                }
+
+                parse_str( $query, $query_args );
+
+                if (
+                    isset( $query_args[ $query_key ] ) &&
+                    $query_value === sanitize_key( $query_args[ $query_key ] )
+                ) {
+                    return $submenu_item[2];
+                }
+            }
+        }
+
+        return get_admin_url() . 'admin.php?page=botiga-dashboard';
     }
 
     /**
@@ -163,7 +210,7 @@ class Botiga_Dashboard
             'manage_options', 
             isset( $this->settings['menu_slug'] ) ? $this->settings['menu_slug'] : 'botiga-dashboard', 
             array( $this, 'html_dashboard' ),
-            get_template_directory_uri() . '/assets/img/admin/botiga-icon.svg',
+            'none',
             58.9
         );
 
@@ -225,17 +272,6 @@ class Botiga_Dashboard
             4
         );
 
-        // Add 'aThemes Patcher' link
-        add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
-            'botiga-dashboard',
-            esc_html__('Patcher', 'botiga'),
-            esc_html__('Patcher', 'botiga'),
-            'manage_options',
-            'athemes-patcher-preview-bp',
-            array( $this, 'html_patcher' ),
-            5
-        );
-
         // Add 'Upgrade' link
         if( ! defined( 'BOTIGA_PRO_VERSION' ) ) {
             add_submenu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_submenu_page
@@ -245,7 +281,7 @@ class Botiga_Dashboard
                 'manage_options',
                 botiga_upgrade_link( 'theme_submenu_page' ),
                 '',
-                6
+                5
             );
         }
 
@@ -258,6 +294,40 @@ class Botiga_Dashboard
             remove_menu_page( $botiga_awl_menu_slug );
         }
     }
+
+	/**
+	 * Paint the top-level menu icon.
+	 *
+	 * @return void
+	 */
+	public function admin_menu_icon_style() {
+		$menu_slug = isset( $this->settings['menu_slug'] ) ? $this->settings['menu_slug'] : 'botiga-dashboard';
+
+		// Percent-encoded copy of assets/img/admin/botiga-icon.svg.
+		$icon = 'data:image/svg+xml,%3Csvg%20width%3D%2220%22%20height%3D%2234%22%20viewBox%3D%220%205%2028%2034%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M26.8202%2014.2872L13.9437%205.25205L7.63218e-06%2012.5331L12.8765%2021.5683L26.8202%2014.2872Z%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22M27.5443%2016.0717L27.4676%2031.8017L13.4632%2038.9654L13.54%2023.2354L27.5443%2016.0717Z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E';
+		?>
+		<style id="botiga-admin-menu-icon">
+			#adminmenu .toplevel_page_<?php echo esc_attr( $menu_slug ); ?> div.wp-menu-image::before {
+				content: "";
+				width: 20px;
+				background-color: currentColor;
+				-webkit-mask-image: url("<?php echo esc_attr( $icon ); ?>");
+				mask-image: url("<?php echo esc_attr( $icon ); ?>");
+				-webkit-mask-repeat: no-repeat;
+				mask-repeat: no-repeat;
+				-webkit-mask-position: center;
+				mask-position: center;
+				-webkit-mask-size: contain;
+				mask-size: contain;
+			}
+			@media (forced-colors: active) {
+				#adminmenu .toplevel_page_<?php echo esc_attr( $menu_slug ); ?> div.wp-menu-image::before {
+					background-color: CanvasText;
+				}
+			}
+		</style>
+		<?php
+	}
 
     /**
      * Admin footer style.
@@ -367,15 +437,6 @@ class Botiga_Dashboard
                 'error'  => esc_html__( 'Something went wrong, please try again.', 'botiga' ),
             ),
         ) );
-    }
-
-
-    /**
-     * Enqueue aThemes Patcher preview scripts and styles.
-     * 
-     */
-    public function enqueue_patcher_scripts() {
-        wp_enqueue_style( 'wp-components' );
     }
 
     /**
@@ -723,13 +784,13 @@ class Botiga_Dashboard
             wp_send_json_error();
         }
 
-        $module   = ( isset( $_POST[ 'module' ] ) ) ? sanitize_text_field( wp_unslash( $_POST['module'] ) ) : '';
+        $module   = isset( $_POST['module'] ) ? sanitize_key( wp_unslash( $_POST['module'] ) ) : '';
         $activate = ( isset( $_POST[ 'activate' ] ) ) ? sanitize_text_field( wp_unslash( $_POST['activate'] ) ) : '';
 
         // Convert string to boolean
         $activate = ( $activate === 'true' ) ? true : false;
 
-        if ( empty( $module ) ) {
+        if ( empty( $module ) || ! in_array( $module, botiga_get_available_modules_ids(), true ) ) {
             wp_send_json_error();
         }
 
@@ -1114,14 +1175,6 @@ class Botiga_Dashboard
             <?php
             }
         }
-    }
-
-    /**
-     * HTML aThemes Patcher.
-     * 
-     */
-    public function html_patcher() {
-        require get_template_directory() . '/inc/dashboard/html-patcher.php';
     }
     
 	/**

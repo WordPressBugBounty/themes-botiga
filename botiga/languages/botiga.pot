@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: aThemes <team@athemes.com>\n"
 "Last-Translator: aThemes <team@athemes.com>\n"
-"POT-Creation-Date: 2026-08-20 12:25+0000\n"
+"POT-Creation-Date: 2026-09-10 13:28+0000\n"
 "Report-Msgid-Bugs-To: https://athemes.com/contact/\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -137,11 +137,11 @@ msgid "Are you sure you want to dismiss this notice?"
 msgstr ""
 
 #. translators: %s plugins html anchor link.
-#: functions.php:597
+#: functions.php:606
 msgid "It looks like your website is running Botiga Pro but not with its latest version. Please note that Botiga 1.1.9+ (free theme) requires Botiga Pro updated to a minimum version of 1.1.0. For it please go to %s and update Botiga Pro."
 msgstr ""
 
-#: functions.php:600
+#: functions.php:609
 msgid "Plugins"
 msgstr ""
 
@@ -234,7 +234,7 @@ msgstr ""
 msgid "Project Name: %s"
 msgstr ""
 
-#: inc/customizer-helpers.php:87, inc/customizer-helpers.php:85, template-parts/content-wishlist.php:145, inc/dashboard/class-dashboard.php:325, inc/plugins/merchant/class-merchant-overlaping-features-modal.php:314, inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:58
+#: inc/customizer-helpers.php:87, inc/customizer-helpers.php:85, template-parts/content-wishlist.php:145, inc/dashboard/class-dashboard.php:395, inc/plugins/merchant/class-merchant-overlaping-features-modal.php:314, inc/customizer/controls/typography-adobe/class_botiga_typography_adobe_kits.php:58
 msgid "Loading..."
 msgstr ""
 
@@ -594,7 +594,7 @@ msgstr ""
 msgid "SHARE:"
 msgstr ""
 
-#: inc/template-tags.php:248
+#: inc/template-tags.php:248, inc/setup-checklist/views/page-footer.php:17
 msgid "Facebook"
 msgstr ""
 
@@ -602,7 +602,7 @@ msgstr ""
 msgid "Twitter"
 msgstr ""
 
-#: inc/template-tags.php:256
+#: inc/template-tags.php:256, inc/setup-checklist/views/page-footer.php:27
 msgid "LinkedIn"
 msgstr ""
 
@@ -912,7 +912,7 @@ msgstr ""
 msgid "The submitted value could not be sanitized."
 msgstr ""
 
-#: inc/abilities/class-botiga-abilities.php:89, inc/classes/class-botiga-footer.php:242, inc/dashboard/class-dashboard.php:161, inc/dashboard/class-dashboard.php:162, inc/dashboard/html-notifications-sidebar.php:49, inc/modules/hf-builder/components/footer/copyright/copyright.php:17
+#: inc/abilities/class-botiga-abilities.php:89, inc/classes/class-botiga-footer.php:242, inc/dashboard/class-dashboard.php:208, inc/dashboard/class-dashboard.php:209, inc/dashboard/html-notifications-sidebar.php:49, inc/setup-checklist/views/notifications-drawer.php:56, inc/setup-checklist/views/page-header.php:24, inc/modules/hf-builder/components/footer/copyright/copyright.php:17
 msgid "Botiga"
 msgstr ""
 
@@ -1045,11 +1045,11 @@ msgstr ""
 msgid "Select a size chart"
 msgstr ""
 
-#: inc/classes/class-botiga-plugin-installer.php:58, inc/dashboard/class-dashboard.php:322
+#: inc/classes/class-botiga-plugin-installer.php:58, inc/dashboard/class-dashboard.php:392
 msgid "Installing..."
 msgstr ""
 
-#: inc/classes/class-botiga-plugin-installer.php:59, inc/dashboard/class-dashboard.php:323
+#: inc/classes/class-botiga-plugin-installer.php:59, inc/dashboard/class-dashboard.php:393
 msgid "Activating..."
 msgstr ""
 
@@ -1172,7 +1172,7 @@ msgstr ""
 msgid "Your API token is valid but you don't have fonts attached to this token."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:110
+#: inc/dashboard/class-dashboard-settings.php:110, inc/setup-checklist/class-botiga-setup-checklist-banner.php:47
 msgid "Welcome to Botiga"
 msgstr ""
 
@@ -1188,7 +1188,7 @@ msgstr ""
 msgid "Pick up where you left off! Click Resume Site Wizard to finish choosing your template and customizing your site’s design and branding."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:140, inc/dashboard/class-dashboard.php:243, inc/dashboard/class-dashboard.php:244
+#: inc/dashboard/class-dashboard-settings.php:140, inc/dashboard/class-dashboard.php:279, inc/dashboard/class-dashboard.php:280
 msgid "Upgrade to Pro"
 msgstr ""
 
@@ -1204,7 +1204,7 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:191, inc/dashboard/class-dashboard.php:196, inc/dashboard/class-dashboard.php:197
+#: inc/dashboard/class-dashboard-settings.php:191, inc/dashboard/class-dashboard.php:243, inc/dashboard/class-dashboard.php:244
 msgid "Starter Sites"
 msgstr ""
 
@@ -1216,7 +1216,7 @@ msgstr ""
 msgid "Free vs Pro"
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:202, inc/dashboard/class-dashboard-settings.php:208, inc/dashboard/class-dashboard-settings.php:894, inc/dashboard/class-dashboard.php:208, inc/dashboard/class-dashboard.php:209
+#: inc/dashboard/class-dashboard-settings.php:202, inc/dashboard/class-dashboard-settings.php:208, inc/dashboard/class-dashboard-settings.php:894, inc/dashboard/class-dashboard.php:255, inc/dashboard/class-dashboard.php:256
 msgid "Templates Builder"
 msgstr ""
 
@@ -1272,7 +1272,7 @@ msgstr ""
 msgid "Set the title and upload logo."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:315, inc/dashboard/class-dashboard-settings.php:343, inc/dashboard/class-dashboard-settings.php:351, inc/dashboard/class-dashboard-settings.php:359, inc/dashboard/class-dashboard-settings.php:325, inc/dashboard/class-dashboard-settings.php:333, inc/dashboard/class-dashboard-settings.php:369, inc/dashboard/class-dashboard-settings.php:377, inc/dashboard/class-dashboard-settings.php:385, inc/dashboard/class-dashboard-settings.php:393, inc/dashboard/class-dashboard-settings.php:401, inc/dashboard/class-dashboard-settings.php:409, inc/dashboard/class-dashboard-settings.php:417, inc/dashboard/class-dashboard-settings.php:425, inc/dashboard/class-dashboard-settings.php:433, inc/dashboard/class-dashboard-settings.php:441, inc/dashboard/class-dashboard-settings.php:449, inc/dashboard/class-dashboard-settings.php:457, inc/dashboard/class-dashboard-settings.php:474, inc/dashboard/class-dashboard-settings.php:485, inc/dashboard/class-dashboard-settings.php:502, inc/dashboard/class-dashboard-settings.php:512, inc/dashboard/class-dashboard-settings.php:522, inc/dashboard/class-dashboard-settings.php:539, inc/dashboard/class-dashboard-settings.php:567, inc/dashboard/class-dashboard-settings.php:576, inc/dashboard/class-dashboard-settings.php:585, inc/dashboard/class-dashboard-settings.php:595, inc/dashboard/class-dashboard-settings.php:605, inc/dashboard/class-dashboard-settings.php:615, inc/dashboard/class-dashboard-settings.php:625, inc/dashboard/class-dashboard-settings.php:635, inc/dashboard/class-dashboard-settings.php:644, inc/dashboard/class-dashboard-settings.php:653, inc/dashboard/class-dashboard-settings.php:662, inc/dashboard/class-dashboard-settings.php:671, inc/dashboard/class-dashboard-settings.php:680, inc/dashboard/class-dashboard-settings.php:689, inc/dashboard/class-dashboard-settings.php:698, inc/dashboard/class-dashboard-settings.php:707, inc/dashboard/class-dashboard-settings.php:717, inc/dashboard/class-dashboard-settings.php:727, inc/dashboard/class-dashboard-settings.php:736, inc/dashboard/class-dashboard-settings.php:745, inc/dashboard/class-dashboard-settings.php:754, inc/dashboard/class-dashboard-settings.php:763, inc/dashboard/class-dashboard-settings.php:773, inc/dashboard/class-dashboard-settings.php:782, inc/dashboard/class-dashboard-settings.php:791, inc/dashboard/class-dashboard-settings.php:801, inc/dashboard/class-dashboard-settings.php:819, inc/dashboard/class-dashboard-settings.php:829, inc/dashboard/class-dashboard-settings.php:839, inc/dashboard/class-dashboard-settings.php:848, inc/dashboard/class-dashboard-settings.php:857, inc/dashboard/class-dashboard-settings.php:874, inc/dashboard/class-dashboard.php:185, inc/dashboard/class-dashboard.php:186
+#: inc/dashboard/class-dashboard-settings.php:315, inc/dashboard/class-dashboard-settings.php:343, inc/dashboard/class-dashboard-settings.php:351, inc/dashboard/class-dashboard-settings.php:359, inc/dashboard/class-dashboard-settings.php:325, inc/dashboard/class-dashboard-settings.php:333, inc/dashboard/class-dashboard-settings.php:369, inc/dashboard/class-dashboard-settings.php:377, inc/dashboard/class-dashboard-settings.php:385, inc/dashboard/class-dashboard-settings.php:393, inc/dashboard/class-dashboard-settings.php:401, inc/dashboard/class-dashboard-settings.php:409, inc/dashboard/class-dashboard-settings.php:417, inc/dashboard/class-dashboard-settings.php:425, inc/dashboard/class-dashboard-settings.php:433, inc/dashboard/class-dashboard-settings.php:441, inc/dashboard/class-dashboard-settings.php:449, inc/dashboard/class-dashboard-settings.php:457, inc/dashboard/class-dashboard-settings.php:474, inc/dashboard/class-dashboard-settings.php:485, inc/dashboard/class-dashboard-settings.php:502, inc/dashboard/class-dashboard-settings.php:512, inc/dashboard/class-dashboard-settings.php:522, inc/dashboard/class-dashboard-settings.php:539, inc/dashboard/class-dashboard-settings.php:567, inc/dashboard/class-dashboard-settings.php:576, inc/dashboard/class-dashboard-settings.php:585, inc/dashboard/class-dashboard-settings.php:595, inc/dashboard/class-dashboard-settings.php:605, inc/dashboard/class-dashboard-settings.php:615, inc/dashboard/class-dashboard-settings.php:625, inc/dashboard/class-dashboard-settings.php:635, inc/dashboard/class-dashboard-settings.php:644, inc/dashboard/class-dashboard-settings.php:653, inc/dashboard/class-dashboard-settings.php:662, inc/dashboard/class-dashboard-settings.php:671, inc/dashboard/class-dashboard-settings.php:680, inc/dashboard/class-dashboard-settings.php:689, inc/dashboard/class-dashboard-settings.php:698, inc/dashboard/class-dashboard-settings.php:707, inc/dashboard/class-dashboard-settings.php:717, inc/dashboard/class-dashboard-settings.php:727, inc/dashboard/class-dashboard-settings.php:736, inc/dashboard/class-dashboard-settings.php:745, inc/dashboard/class-dashboard-settings.php:754, inc/dashboard/class-dashboard-settings.php:763, inc/dashboard/class-dashboard-settings.php:773, inc/dashboard/class-dashboard-settings.php:782, inc/dashboard/class-dashboard-settings.php:791, inc/dashboard/class-dashboard-settings.php:801, inc/dashboard/class-dashboard-settings.php:819, inc/dashboard/class-dashboard-settings.php:829, inc/dashboard/class-dashboard-settings.php:839, inc/dashboard/class-dashboard-settings.php:848, inc/dashboard/class-dashboard-settings.php:857, inc/dashboard/class-dashboard-settings.php:874, inc/dashboard/class-dashboard.php:232, inc/dashboard/class-dashboard.php:233, inc/setup-checklist/class-botiga-setup-checklist-banner.php:42
 msgid "Customize"
 msgstr ""
 
@@ -1412,7 +1412,7 @@ msgstr ""
 msgid "Set and use Adobe Fonts."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:483, inc/dashboard/class-dashboard.php:220, inc/dashboard/class-dashboard.php:221
+#: inc/dashboard/class-dashboard-settings.php:483, inc/dashboard/class-dashboard.php:267, inc/dashboard/class-dashboard.php:268
 msgid "Product Filters"
 msgstr ""
 
@@ -1428,7 +1428,7 @@ msgstr ""
 msgid "Upload your own custom fonts."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:510, inc/customizer/options/upsell.php:509
+#: inc/dashboard/class-dashboard-settings.php:510, inc/customizer/options/upsell.php:509, inc/setup-checklist/config/promotions.php:53
 msgid "Wishlist"
 msgstr ""
 
@@ -1460,7 +1460,7 @@ msgstr ""
 msgid "Swap the product image on mouse over."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:547
+#: inc/dashboard/class-dashboard-settings.php:547, inc/setup-checklist/config/promotions.php:35
 msgid "Variations Gallery"
 msgstr ""
 
@@ -1616,7 +1616,7 @@ msgstr ""
 msgid "Create any number of custom sidebars."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:725
+#: inc/dashboard/class-dashboard-settings.php:725, inc/setup-checklist/config/promotions.php:59
 msgid "Mega Menu"
 msgstr ""
 
@@ -1736,7 +1736,7 @@ msgstr ""
 msgid "Display a reading progress bar on single posts."
 msgstr ""
 
-#: inc/dashboard/class-dashboard-settings.php:865
+#: inc/dashboard/class-dashboard-settings.php:865, inc/setup-checklist/config/promotions.php:77
 msgid "Table of Contents"
 msgstr ""
 
@@ -1780,96 +1780,92 @@ msgstr ""
 msgid "Get Pro"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:173, inc/dashboard/class-dashboard.php:174, inc/dashboard/html-hero.php:69
+#: inc/dashboard/class-dashboard.php:220, inc/dashboard/class-dashboard.php:221, inc/dashboard/html-hero.php:67
 msgid "Theme Dashboard"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:231, inc/dashboard/class-dashboard.php:232
-msgid "Patcher"
-msgstr ""
-
-#: inc/dashboard/class-dashboard.php:320, inc/dashboard/html-home.php:65, inc/dashboard/html-home.php:182, inc/dashboard/html-settings-ai-mcp.php:74, inc/dashboard/html-settings-ai-mcp.php:136, inc/dashboard/html-settings-merchant.php:31, inc/dashboard/html-settings-misc.php:31, inc/dashboard/html-settings-misc.php:57, inc/dashboard/html-settings-misc.php:84, inc/dashboard/html-settings-performance.php:31, inc/dashboard/html-starter-sites.php:32
+#: inc/dashboard/class-dashboard.php:390, inc/dashboard/html-hero.php:32, inc/dashboard/html-home.php:65, inc/dashboard/html-home.php:182, inc/dashboard/html-settings-ai-mcp.php:74, inc/dashboard/html-settings-ai-mcp.php:136, inc/dashboard/html-settings-merchant.php:31, inc/dashboard/html-settings-misc.php:31, inc/dashboard/html-settings-misc.php:57, inc/dashboard/html-settings-misc.php:84, inc/dashboard/html-settings-performance.php:31, inc/dashboard/html-starter-sites.php:32, inc/setup-checklist/class-botiga-setup-checklist-promotions.php:165, inc/setup-checklist/class-botiga-setup-checklist.php:257
 msgid "Activate"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:321, inc/dashboard/html-home.php:56, inc/dashboard/html-home.php:173, inc/dashboard/html-settings-ai-mcp.php:60, inc/dashboard/html-settings-ai-mcp.php:122, inc/dashboard/html-settings-merchant.php:27, inc/dashboard/html-settings-misc.php:27, inc/dashboard/html-settings-misc.php:53, inc/dashboard/html-settings-misc.php:80, inc/dashboard/html-settings-performance.php:27
+#: inc/dashboard/class-dashboard.php:391, inc/dashboard/html-home.php:56, inc/dashboard/html-home.php:173, inc/dashboard/html-settings-ai-mcp.php:60, inc/dashboard/html-settings-ai-mcp.php:122, inc/dashboard/html-settings-merchant.php:27, inc/dashboard/html-settings-misc.php:27, inc/dashboard/html-settings-misc.php:53, inc/dashboard/html-settings-misc.php:80, inc/dashboard/html-settings-performance.php:27
 msgid "Deactivate"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:324
+#: inc/dashboard/class-dashboard.php:394
 msgid "Deactivating..."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:326, inc/dashboard/class-dashboard.php:364
+#: inc/dashboard/class-dashboard.php:396, inc/dashboard/class-dashboard.php:434
 msgid "Saving..."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:327, inc/dashboard/class-dashboard.php:365, inc/dashboard/class-dashboard.php:711
+#: inc/dashboard/class-dashboard.php:397, inc/dashboard/class-dashboard.php:435, inc/dashboard/class-dashboard.php:772
 msgid "Saved!"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:328
+#: inc/dashboard/class-dashboard.php:398
 msgid "You have unsaved changes."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:329, inc/dashboard/html-builder.php:162
+#: inc/dashboard/class-dashboard.php:399, inc/dashboard/html-builder.php:162
 msgid "Save"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:330, inc/plugins/merchant/class-merchant-overlaping-features-modal.php:315
+#: inc/dashboard/class-dashboard.php:400, inc/plugins/merchant/class-merchant-overlaping-features-modal.php:315
 msgid "Redirecting..."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:331
+#: inc/dashboard/class-dashboard.php:401
 msgid "Activated"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:332
+#: inc/dashboard/class-dashboard.php:402
 msgid "Deactivated"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:333
+#: inc/dashboard/class-dashboard.php:403
 msgid "Something went wrong, contact support."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:366, inc/dashboard/html-settings-white-label.php:184, inc/dashboard/html-settings-white-label.php:186
+#: inc/dashboard/class-dashboard.php:436, inc/dashboard/html-settings-white-label.php:184, inc/dashboard/html-settings-white-label.php:186
 msgid "Save Changes"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:367
+#: inc/dashboard/class-dashboard.php:437
 msgid "Something went wrong, please try again."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:557
+#: inc/dashboard/class-dashboard.php:618
 msgid "Insufficient permissions to install the plugin."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:587
+#: inc/dashboard/class-dashboard.php:648
 msgid "Failed to initialize or activate the plugin."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:648
+#: inc/dashboard/class-dashboard.php:709
 msgid "You are not allowed to do this."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:655
+#: inc/dashboard/class-dashboard.php:716
 msgid "White Label is available on the Agency plan."
 msgstr ""
 
 #. translators: %s: https://wordpress.org/
-#: inc/dashboard/class-dashboard.php:838
+#: inc/dashboard/class-dashboard.php:899
 msgid "Thank you for creating your website with <a href=\"%s\" class=\"botiga-dashboard-footer-link\" target=\"_blank\">Botiga</a>."
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:935
+#: inc/dashboard/class-dashboard.php:996
 msgid "Botiga Template Part - "
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:1043
+#: inc/dashboard/class-dashboard.php:1104
 msgid "Select existing"
 msgstr ""
 
-#: inc/dashboard/class-dashboard.php:1040
+#: inc/dashboard/class-dashboard.php:1101
 msgid "No templates found."
 msgstr ""
 
@@ -1877,11 +1873,11 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: inc/dashboard/html-builder.php:32, inc/dashboard/html-patcher.php:302, inc/dashboard/html-products-filter.php:82, inc/dashboard/html-templates-builder.php:156
+#: inc/dashboard/html-builder.php:32, inc/dashboard/html-products-filter.php:82, inc/dashboard/html-templates-builder.php:156
 msgid "Please note this feature is available only in Botiga Pro"
 msgstr ""
 
-#: inc/dashboard/html-builder.php:34, inc/dashboard/html-patcher.php:304, inc/dashboard/html-products-filter-seo.php:18, inc/dashboard/html-products-filter.php:31, inc/dashboard/html-settings-general.php:77, inc/dashboard/html-templates-builder.php:158, inc/customizer/controls/class_botiga_section_upsell_message.php:29
+#: inc/dashboard/html-builder.php:34, inc/dashboard/html-products-filter-seo.php:18, inc/dashboard/html-products-filter.php:31, inc/dashboard/html-settings-general.php:77, inc/dashboard/html-templates-builder.php:158, inc/customizer/controls/class_botiga_section_upsell_message.php:29
 msgid "Upgrade Now"
 msgstr ""
 
@@ -1965,15 +1961,15 @@ msgstr ""
 msgid "Add Template"
 msgstr ""
 
-#: inc/dashboard/html-dashboard.php:31
+#: inc/dashboard/html-dashboard.php:31, inc/setup-checklist/class-botiga-setup-checklist-banner.php:49, inc/setup-checklist/class-botiga-setup-checklist-page.php:65
 msgid "FREE"
 msgstr ""
 
-#: inc/dashboard/html-dashboard.php:31, inc/customizer/controls/class_botiga_panel_upsell.php:62, inc/customizer/controls/class_botiga_section_upsell.php:65
+#: inc/dashboard/html-dashboard.php:31, inc/setup-checklist/class-botiga-setup-checklist-banner.php:49, inc/setup-checklist/class-botiga-setup-checklist-page.php:65, inc/setup-checklist/class-botiga-setup-checklist-promotions.php:280, inc/customizer/controls/class_botiga_panel_upsell.php:62, inc/customizer/controls/class_botiga_section_upsell.php:65
 msgid "PRO"
 msgstr ""
 
-#: inc/dashboard/html-dashboard.php:36
+#: inc/dashboard/html-dashboard.php:36, inc/setup-checklist/views/page-header.php:38
 msgid "Theme News"
 msgstr ""
 
@@ -1985,28 +1981,28 @@ msgstr ""
 msgid "Upgrade To Pro Today"
 msgstr ""
 
-#: inc/dashboard/html-hero.php:31
-msgid "Hello, "
-msgstr ""
-
-#: inc/dashboard/html-hero.php:33
-msgid "👋🏻"
-msgstr ""
-
-#: inc/dashboard/html-hero.php:64
+#: inc/dashboard/html-hero.php:59
 msgid "Start Customizing"
 msgstr ""
 
-#: inc/dashboard/html-hero.php:60
+#: inc/dashboard/html-hero.php:53
 msgid "Resume wizard"
 msgstr ""
 
-#: inc/dashboard/html-hero.php:56, inc/dashboard/html-hero.php:52
+#: inc/dashboard/html-hero.php:47, inc/dashboard/html-hero.php:32
 msgid "Let’s Get Started"
 msgstr ""
 
-#: inc/dashboard/html-hero.php:77
+#: inc/dashboard/html-hero.php:43
 msgid "Clicking \"Let’s Get Started\" button will install and activate the Botiga \"aThemes Starter Sites\" plugin."
+msgstr ""
+
+#: inc/dashboard/html-hero.php:76
+msgid "Hello, "
+msgstr ""
+
+#: inc/dashboard/html-hero.php:76
+msgid "👋🏻"
 msgstr ""
 
 #: inc/dashboard/html-home.php:23
@@ -2017,7 +2013,7 @@ msgstr ""
 msgid "Go To Customizer"
 msgstr ""
 
-#: inc/dashboard/html-home.php:75, inc/dashboard/html-home.php:192, inc/dashboard/html-home.php:296, inc/dashboard/html-products-filter.php:50, inc/dashboard/html-templates-builder.php:146
+#: inc/dashboard/html-home.php:75, inc/dashboard/html-home.php:192, inc/dashboard/html-home.php:296, inc/dashboard/html-products-filter.php:50, inc/dashboard/html-templates-builder.php:146, inc/setup-checklist/views/page-header.php:62
 msgid "Documentation"
 msgstr ""
 
@@ -2037,7 +2033,7 @@ msgstr ""
 msgid "Botiga Pro Installed"
 msgstr ""
 
-#: inc/dashboard/html-home.php:106, inc/dashboard/html-products-filter-seo.php:17, inc/dashboard/html-products-filter.php:30
+#: inc/dashboard/html-home.php:106, inc/dashboard/html-products-filter-seo.php:17, inc/dashboard/html-products-filter.php:30, inc/setup-checklist/config/theme.php:18
 msgid "Activate Botiga Pro"
 msgstr ""
 
@@ -2093,7 +2089,7 @@ msgstr ""
 msgid "Browse Docs"
 msgstr ""
 
-#: inc/dashboard/html-home.php:313, inc/dashboard/html-home.php:313
+#: inc/dashboard/html-home.php:313, inc/dashboard/html-home.php:313, inc/setup-checklist/views/page-footer.php:69, inc/setup-checklist/views/page-header.php:74
 msgid "Support"
 msgstr ""
 
@@ -2141,36 +2137,32 @@ msgstr ""
 msgid "Close the sidebar"
 msgstr ""
 
-#: inc/dashboard/html-notifications-sidebar.php:37
+#: inc/dashboard/html-notifications-sidebar.php:37, inc/setup-checklist/views/notifications-drawer.php:39
 msgid "New Update"
 msgstr ""
 
-#: inc/dashboard/html-notifications-sidebar.php:35
+#: inc/dashboard/html-notifications-sidebar.php:35, inc/setup-checklist/views/notifications-drawer.php:22, inc/setup-checklist/views/notifications-drawer.php:39
 msgid "Latest News"
 msgstr ""
 
-#: inc/dashboard/html-notifications-sidebar.php:40
+#: inc/dashboard/html-notifications-sidebar.php:40, inc/setup-checklist/views/notifications-drawer.php:41
 msgid "Check the latest news from Botiga"
 msgstr ""
 
-#: inc/dashboard/html-notifications-sidebar.php:54, inc/customizer/controls/class_botiga_panel_upsell.php:64, inc/customizer/controls/class_botiga_section_upsell.php:67, inc/customizer/controls/class_botiga_section_upsell_message.php:71, inc/customizer/controls/class_botiga_upsell_message.php:63
+#: inc/dashboard/html-notifications-sidebar.php:54, inc/customizer/controls/class_botiga_panel_upsell.php:64, inc/customizer/controls/class_botiga_section_upsell.php:67, inc/customizer/controls/class_botiga_section_upsell_message.php:71, inc/customizer/controls/class_botiga_upsell_message.php:63, inc/setup-checklist/views/notifications-drawer.php:67
 msgid "Botiga Pro"
 msgstr ""
 
-#: inc/dashboard/html-notifications-sidebar.php:109, inc/dashboard/html-notifications-sidebar.php:166
+#: inc/dashboard/html-notifications-sidebar.php:109, inc/dashboard/html-notifications-sidebar.php:166, inc/setup-checklist/views/notification-feed.php:34
 msgid "No notifications found"
-msgstr ""
-
-#: inc/dashboard/html-patcher.php:348, inc/dashboard/html-products-filter-customization.php:16, inc/dashboard/html-products-filter-filter-presets.php:16, inc/dashboard/html-products-filter-general.php:16, inc/dashboard/html-products-filter-seo.php:20, inc/dashboard/html-templates-builder.php:189, inc/dashboard/html-templates-builder.php:205, inc/dashboard/html-templates-builder.php:221, inc/dashboard/html-templates-builder.php:237, inc/dashboard/html-templates-builder.php:253, inc/dashboard/html-templates-builder.php:269, inc/dashboard/html-templates-builder.php:285, inc/dashboard/html-templates-builder.php:301, inc/dashboard/html-templates-builder.php:317, inc/dashboard/html-templates-builder.php:333, inc/dashboard/html-templates-builder.php:349
-msgid "This is only available on Botiga Pro"
-msgstr ""
-
-#: inc/dashboard/html-patcher.php:344
-msgid "This will install and activate the aThemes Patcher plugin"
 msgstr ""
 
 #: inc/dashboard/html-products-filter-customization.php:16, inc/dashboard/html-products-filter-filter-presets.php:16, inc/dashboard/html-products-filter-general.php:16, inc/dashboard/html-products-filter-seo.php:20
 msgid "Activate Botiga Pro to use this feature"
+msgstr ""
+
+#: inc/dashboard/html-products-filter-customization.php:16, inc/dashboard/html-products-filter-filter-presets.php:16, inc/dashboard/html-products-filter-general.php:16, inc/dashboard/html-products-filter-seo.php:20, inc/dashboard/html-templates-builder.php:189, inc/dashboard/html-templates-builder.php:205, inc/dashboard/html-templates-builder.php:221, inc/dashboard/html-templates-builder.php:237, inc/dashboard/html-templates-builder.php:253, inc/dashboard/html-templates-builder.php:269, inc/dashboard/html-templates-builder.php:285, inc/dashboard/html-templates-builder.php:301, inc/dashboard/html-templates-builder.php:317, inc/dashboard/html-templates-builder.php:333, inc/dashboard/html-templates-builder.php:349
+msgid "This is only available on Botiga Pro"
 msgstr ""
 
 #: inc/dashboard/html-products-filter-customization.php:21
@@ -2486,6 +2478,38 @@ msgstr ""
 msgid "Ready to join 130,000+ WordPress creators who've found their perfect match?"
 msgstr ""
 
+#: inc/notices/class-botiga-patcher-eol.php:131
+msgid "Patcher update"
+msgstr ""
+
+#: inc/notices/class-botiga-patcher-eol.php:133
+msgid "The Patcher plugin is no longer needed. You can safely remove it from your site."
+msgstr ""
+
+#: inc/notices/class-botiga-patcher-eol.php:134
+msgid "Deactivate & Delete"
+msgstr ""
+
+#: inc/notices/class-botiga-patcher-eol.php:137
+msgid "Dismiss this notice."
+msgstr ""
+
+#: inc/notices/class-botiga-patcher-eol.php:153
+msgid "You do not have permission to dismiss this notice."
+msgstr ""
+
+#: inc/notices/class-botiga-patcher-eol.php:164
+msgid "Unable to identify the current login session."
+msgstr ""
+
+#: inc/notices/class-botiga-patcher-eol.php:186
+msgid "You do not have permission to delete plugins."
+msgstr ""
+
+#: inc/notices/class-botiga-patcher-eol.php:207
+msgid "You do not have permission to manage network plugins."
+msgstr ""
+
 #: inc/notices/class-botiga-pro-upsell.php:77
 msgid "Earn More with Your Botiga Store! 💰"
 msgstr ""
@@ -2513,6 +2537,78 @@ msgstr ""
 
 #: inc/notices/class-botiga-review.php:82
 msgid "I already rated it"
+msgstr ""
+
+#: inc/setup-checklist/class-botiga-setup-checklist-admin.php:98, inc/setup-checklist/views/page-header.php:81, inc/setup-checklist/views/setup-checklist.php:32
+msgid "Botiga Setup Checklist"
+msgstr ""
+
+#: inc/setup-checklist/class-botiga-setup-checklist-admin.php:223
+msgid "You are not allowed to dismiss this checklist."
+msgstr ""
+
+#: inc/setup-checklist/class-botiga-setup-checklist-admin.php:375
+msgid "Setup Checklist"
+msgstr ""
+
+#: inc/setup-checklist/class-botiga-setup-checklist-banner.php:37
+msgid "Start Building With Templates"
+msgstr ""
+
+#: inc/setup-checklist/class-botiga-setup-checklist-banner.php:40
+msgid "Resume Site Wizard"
+msgstr ""
+
+#: inc/setup-checklist/class-botiga-setup-checklist-banner.php:48
+msgid "Botiga is now installed and ready to go. To help you with the next step, we’ve gathered together on this page all the resources you might need. We hope you enjoy using Botiga."
+msgstr ""
+
+#: inc/setup-checklist/class-botiga-setup-checklist-notifications.php:99
+msgid "You are not allowed to update notifications."
+msgstr ""
+
+#: inc/setup-checklist/class-botiga-setup-checklist-notifications.php:112
+msgid "Invalid notification date."
+msgstr ""
+
+#: inc/setup-checklist/class-botiga-setup-checklist-promotions.php:154, inc/setup-checklist/class-botiga-setup-checklist-promotions.php:163, inc/setup-checklist/class-botiga-setup-checklist-promotions.php:193
+msgid "Installed"
+msgstr ""
+
+#: inc/setup-checklist/class-botiga-setup-checklist-promotions.php:171
+msgid "Install"
+msgstr ""
+
+#: inc/setup-checklist/class-botiga-setup-checklist-promotions.php:206
+msgid "Activate Pro"
+msgstr ""
+
+#: inc/setup-checklist/class-botiga-setup-checklist-promotions.php:219, inc/setup-checklist/config/theme.php:19
+msgid "Upgrade"
+msgstr ""
+
+#: inc/setup-checklist/class-botiga-setup-checklist-promotions.php:293
+msgid "View Module"
+msgstr ""
+
+#: inc/setup-checklist/class-botiga-setup-checklist-promotions.php:317
+msgid "View All Modules"
+msgstr ""
+
+#: inc/setup-checklist/class-botiga-setup-checklist-promotions.php:333, inc/setup-checklist/class-botiga-setup-checklist-promotions.php:356
+msgid "Activate Merchant"
+msgstr ""
+
+#: inc/setup-checklist/class-botiga-setup-checklist-promotions.php:334, inc/setup-checklist/class-botiga-setup-checklist-promotions.php:357
+msgid "Install Merchant"
+msgstr ""
+
+#: inc/setup-checklist/class-botiga-setup-checklist-promotions.php:379
+msgid "Activate Merchant Pro"
+msgstr ""
+
+#: inc/setup-checklist/class-botiga-setup-checklist-promotions.php:388
+msgid "Get Merchant Pro"
 msgstr ""
 
 #: template-parts/header/content-header-icons.php:22, template-parts/header-mobile/content-header-mobile-icons.php:21, template-parts/header-mobile/content-header-mobile-offcanvas-icons.php:21
@@ -4120,7 +4216,7 @@ msgstr ""
 msgid "More footer copyright options available in PRO version."
 msgstr ""
 
-#: inc/customizer/options/upsell.php:405
+#: inc/customizer/options/upsell.php:405, inc/setup-checklist/config/promotions.php:71
 msgid "Custom Sidebar"
 msgstr ""
 
@@ -4661,6 +4757,469 @@ msgstr ""
 
 #: inc/plugins/woocommerce-brands/woocommerce-brands.php:177
 msgid "Brand Image Height"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:16
+msgid "Set up the Basics"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:19
+msgid "Set Up Your Homepage"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:20
+msgid "Set a dedicated homepage so visitors land exactly where you want them."
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:22
+msgid "Edit Homepage"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:26
+msgid "Set Up Navigation Menu"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:27
+msgid "Guide visitors to the right places with a clear, well-organized menu."
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:29
+msgid "Setup Menu"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:33, inc/setup-checklist/config/actionable.php:36
+msgid "Customize Header"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:34
+msgid "Set the layout of your header, logo position, navigation, buttons, and more."
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:40, inc/setup-checklist/config/actionable.php:43
+msgid "Customize Footer"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:41
+msgid "Add social links, contact info, copyright text, or widgets to build a professional closing section."
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:47
+msgid "Set Up a Contact Form"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:48
+msgid "Add a contact form so visitors can reach you directly. Set up spam protection and email notifications."
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:50
+msgid "Install WPForms"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:55
+msgid "Review Your Key Pages"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:56
+msgid "Check that your key pages: About, Services, Contact are in place and ready."
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:58
+msgid "Review Pages"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:62
+msgid "Complete WooCommerce Onboarding"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:63
+msgid "Walk through WooCommerce setup to configure your store location, currency, and payment basics."
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:65
+msgid "Complete Onboarding"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:78
+msgid "Design Your Store"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:81
+msgid "Update Your Brand Style"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:82
+msgid "Set your default colors, fonts, and design rules so every page looks consistent."
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:84
+msgid "Update Style Guide"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:88
+msgid "Customize Shop Page"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:89
+msgid "Control how your product grid looks, columns, spacing, card style, and what information to display."
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:91
+msgid "Customize Shop"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:96
+msgid "Customize Product Page"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:97
+msgid "Design your individual product page, layout, image gallery style, add-to-cart placement, and more."
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:99
+msgid "Customize Product"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:104
+msgid "Customize Cart Page"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:105
+msgid "Style your cart page to match your store design and reduce drop-off before checkout."
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:107
+msgid "Customize Cart"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:112
+msgid "Set Up Your Page Layout"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:113
+msgid "Set the default layout for your inner pages, full width, sidebar left, or sidebar right."
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:115
+msgid "Customize Pages"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:119
+msgid "Customize Blog Options"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:120
+msgid "Control how your blog posts appear: layout, style, width, and more."
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:122
+msgid "Customize Blog"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:128
+msgid "Get Ready to Launch"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:131
+msgid "Make Sure Your Emails Deliver"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:132
+msgid "Make sure your WordPress emails always reach the inbox and more."
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:134
+msgid "Install WP Mail SMTP"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:139
+msgid "Enable Site Backup"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:140
+msgid "Set up automatic backups so your site is always recoverable if something goes wrong."
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:142
+msgid "Install Duplicator"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:147
+msgid "Improve Your SEO"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:148
+msgid "Improve your rankings, set meta titles and descriptions, and get found on Google."
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:150
+msgid "Install AIOSEO"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:155
+msgid "Set Up Privacy Compliance"
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:156
+msgid "Add a cookie consent banner and manage GDPR, CCPA, and privacy compliance for your visitors."
+msgstr ""
+
+#: inc/setup-checklist/config/actionable.php:158
+msgid "Install WPConsent"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:18
+msgid "Do More with Botiga Pro"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:20
+msgid "Plus dozens of other powerful features and elementor addons to meet all your site-building needs."
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:21
+msgid "View All Features"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:29
+msgid "Product Swatches"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:30
+msgid "Show variations as color, image, or label swatches"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:36
+msgid "Display unique galleries for each product variation"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:41
+msgid "Template Builder"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:42
+msgid "Build fully custom page layouts"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:47
+msgid "Video Gallery"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:48
+msgid "Showcase products with image and video galleries"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:54
+msgid "Let customers save products for later"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:60
+msgid "Create rich, multi-column menus with custom layouts"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:65
+msgid "Shop Filters"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:66
+msgid "Help shoppers find products faster with filters"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:72
+msgid "Assign custom sidebar to pages for a tailored layout"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:78
+msgid "Add automatic navigation for long content pages"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:84
+msgid "Grow Your Store's Revenue"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:87
+msgid "40+ WooCommerce modules to grow your store"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:92
+msgid "Product Labels"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:99
+msgid "Payment Logos"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:106
+msgid "Waitlist"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:113
+msgid "Product Bundles"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:120
+msgid "Stock Scarcity"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:127
+msgid "Bulk Discount"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:134
+msgid "Frequently Bought Together"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:141
+msgid "Side Cart"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:148
+msgid "Storewide Sale"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:155
+msgid "Buy X Get Y"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:162
+msgid "Set Up Recommended Tools"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:164
+msgid "Trusted plugins from our team to help your site grow."
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:168
+msgid "MonsterInsights"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:169
+msgid "See exactly where your visitors come from and what they do on your site, all inside WordPress."
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:176
+msgid "Reviews Feed"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:177
+msgid "Display Google, Yelp, and Tripadvisor reviews on your site to build trust with new visitors."
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:184
+msgid "OptinMonster"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:185
+msgid "Grow your email list and increase conversions with popups, slide-ins, and targeted campaigns."
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:192
+msgid "Universally"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:193
+msgid "Translate your site into languages automatically using AI no manual translation needed."
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:200
+msgid "Push Engage"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:201
+msgid "Turns abandoned carts into automated recovery campaigns on web push and WhatsApp."
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:208
+msgid "Easy Digital Downloads"
+msgstr ""
+
+#: inc/setup-checklist/config/promotions.php:209
+msgid "Easily sell digital products in WordPress, from eBooks to PDF files to software."
+msgstr ""
+
+#: inc/setup-checklist/views/actionable-sections.php:40
+msgid "Complete"
+msgstr ""
+
+#: inc/setup-checklist/views/actionable-sections.php:40
+msgid "Incomplete"
+msgstr ""
+
+#. translators: %s: current user's display name.
+#: inc/setup-checklist/views/banner.php:45
+msgid "Hello, %s 👋"
+msgstr ""
+
+#: inc/setup-checklist/views/notifications-drawer.php:27
+msgid "Close notifications"
+msgstr ""
+
+#: inc/setup-checklist/views/notifications-drawer.php:46
+msgid "Notification feeds"
+msgstr ""
+
+#: inc/setup-checklist/views/page-footer.php:22
+msgid "Instagram"
+msgstr ""
+
+#: inc/setup-checklist/views/page-footer.php:32
+msgid "X"
+msgstr ""
+
+#: inc/setup-checklist/views/page-footer.php:37
+msgid "YouTube"
+msgstr ""
+
+#: inc/setup-checklist/views/page-footer.php:60
+msgid "Dismiss This Checklist"
+msgstr ""
+
+#: inc/setup-checklist/views/page-footer.php:64
+msgid "Made with ♥ by the aThemes Team"
+msgstr ""
+
+#: inc/setup-checklist/views/page-footer.php:67
+msgid "aThemes resources"
+msgstr ""
+
+#: inc/setup-checklist/views/page-footer.php:73
+msgid "Docs"
+msgstr ""
+
+#: inc/setup-checklist/views/page-footer.php:77
+msgid "Community"
+msgstr ""
+
+#: inc/setup-checklist/views/page-footer.php:81
+msgid "Free Plugins"
+msgstr ""
+
+#: inc/setup-checklist/views/page-footer.php:104
+msgid "Please rate Botiga"
+msgstr ""
+
+#: inc/setup-checklist/views/page-footer.php:105
+msgid "Rate Botiga five stars on WordPress.org"
+msgstr ""
+
+#: inc/setup-checklist/views/page-footer.php:106
+msgid "on"
+msgstr ""
+
+#: inc/setup-checklist/views/page-footer.php:108
+msgid "to help us spread the word."
+msgstr ""
+
+#. translators: %s: Botiga version number.
+#: inc/setup-checklist/views/page-footer.php:116
+msgid "Botiga %s"
+msgstr ""
+
+#: inc/setup-checklist/views/page-header.php:86
+msgid "Setup Progress"
+msgstr ""
+
+#. translators: 1: completed sections, 2: total sections.
+#: inc/setup-checklist/views/page-header.php:92
+msgid "%1$d / %2$d"
 msgstr ""
 
 #: inc/customizer/controls/color-group/class_botiga_color_group.php:32
