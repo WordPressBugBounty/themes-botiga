@@ -6,6 +6,7 @@
  * Visible to every user (Lite included), positioned after Version Control.
  *  - Agency-tier sites get functional controls (toggle + fields) wired to the
  *    aThemes White Label plugin's own option.
+ *  - Sites managed by the standalone plugin reflect its current state read-only.
  *  - Every other tier gets a locked toggle that opens an upgrade modal.
  *
  * The controls read/write the plugin's exact option and keys
@@ -15,8 +16,9 @@
  * directions — nothing here reimplements the white-labeling behaviour.
  *
  * Eligibility and saving are provided by Botiga Pro
- * (botiga_white_label_is_available() and the AJAX save handler); this template
- * falls back to a locked state when Pro isn't present.
+ * (botiga_white_label_is_available() and the AJAX save handler). When Agency
+ * eligibility is unavailable, the standalone plugin is shown read-only; sites
+ * without either path fall back to the locked state.
  *
  * @package Dashboard
  */
@@ -37,7 +39,8 @@ if ( function_exists( 'botiga_white_label_get_settings' ) ) {
 $botiga_wl_settings = is_array( $botiga_wl_settings ) ? $botiga_wl_settings : array();
 
 $botiga_wl_plugin    = function_exists( 'botiga_white_label_plugin_available' ) ? botiga_white_label_plugin_available() : false;
-$botiga_wl_is_active = $botiga_wl_available && ! empty( $botiga_wl_settings['activate_white_label'] );
+$botiga_wl_is_active = ! empty( $botiga_wl_settings['activate_white_label'] );
+$botiga_wl_locked    = ! $botiga_wl_available && ! $botiga_wl_plugin;
 
 // Fields, in the order defined by the issue. Keys match the plugin exactly.
 $botiga_wl_fields = array(
@@ -76,6 +79,12 @@ $botiga_wl_license_url = add_query_arg(
 	admin_url( 'admin.php' )
 );
 
+$botiga_wl_plugin_settings_url = add_query_arg(
+	'page',
+	'athemes-white-label',
+	admin_url( 'themes.php' )
+);
+
 // Direct URL back to this White Label sub-tab — useful once White Label hides
 // the Botiga admin menu.
 $botiga_wl_settings_url = add_query_arg(
@@ -89,7 +98,7 @@ $botiga_wl_settings_url = add_query_arg(
 
 ?>
 
-<div class="botiga-dashboard-card botiga-dashboard-white-label<?php echo $botiga_wl_available ? '' : ' botiga-dashboard-white-label-locked'; ?>">
+<div class="botiga-dashboard-card botiga-dashboard-white-label<?php echo $botiga_wl_locked ? ' botiga-dashboard-white-label-locked' : ''; ?>">
 	<div class="botiga-dashboard-card-body">
 
 		<div class="botiga-dashboard-white-label-header">
@@ -98,7 +107,12 @@ $botiga_wl_settings_url = add_query_arg(
 			</h2>
 		</div>
 
-		<?php if ( $botiga_wl_available && ! $botiga_wl_plugin ) : ?>
+		<?php if ( $botiga_wl_plugin && ! $botiga_wl_available ) : ?>
+			<div class="botiga-dashboard-white-label-notice">
+				<?php echo esc_html__( 'White Label is managed by the aThemes White Label plugin.', 'botiga' ); ?>
+				<a href="<?php echo esc_url( $botiga_wl_plugin_settings_url ); ?>"><?php echo esc_html__( 'Open White Label settings', 'botiga' ); ?></a>
+			</div>
+		<?php elseif ( $botiga_wl_available && ! $botiga_wl_plugin ) : ?>
 			<div class="botiga-dashboard-white-label-notice">
 				<?php echo esc_html__( 'These settings are applied by Botiga Pro. Keep Botiga Pro active to apply them across your site.', 'botiga' ); ?>
 			</div>
@@ -118,6 +132,11 @@ $botiga_wl_settings_url = add_query_arg(
 				<?php if ( $botiga_wl_available ) : ?>
 					<label class="botiga-dashboard-white-label-switch" for="botiga_wl_activate">
 						<input type="checkbox" id="botiga_wl_activate" name="activate_white_label" value="1" <?php checked( $botiga_wl_is_active ); ?>>
+						<span class="botiga-dashboard-white-label-switch-track"></span>
+					</label>
+				<?php elseif ( $botiga_wl_plugin ) : ?>
+					<label class="botiga-dashboard-white-label-switch" for="botiga_wl_activate">
+						<input type="checkbox" id="botiga_wl_activate" <?php checked( $botiga_wl_is_active ); ?> disabled>
 						<span class="botiga-dashboard-white-label-switch-track"></span>
 					</label>
 				<?php else : ?>
@@ -194,7 +213,7 @@ $botiga_wl_settings_url = add_query_arg(
 	</div>
 </div>
 
-<?php if ( ! $botiga_wl_available ) : ?>
+<?php if ( $botiga_wl_locked ) : ?>
 	<div id="botiga-wl-modal" class="botiga-wl-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="botiga-wl-modal-title">
 		<div class="botiga-wl-modal-overlay"></div>
 		<div class="botiga-wl-modal-dialog">

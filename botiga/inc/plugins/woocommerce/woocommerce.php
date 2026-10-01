@@ -159,7 +159,7 @@ add_action( 'wp_enqueue_scripts', 'botiga_woocommerce_cart_fragments', 11 );
  */
 function botiga_woocommerce_active_body_class( $classes ) {
 	global $template;
-	$template_name = basename($template);
+	$template_name = ! empty( $template ) ? basename( $template ) : '';
 	
 	$single_breadcrumbs = get_theme_mod( 'single_breadcrumbs', 1 );
 	if( ! $single_breadcrumbs && is_single() ) {

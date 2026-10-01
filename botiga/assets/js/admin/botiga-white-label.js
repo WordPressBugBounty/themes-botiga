@@ -64,7 +64,7 @@
     var $activate = $('#botiga_wl_activate');
     var $bookmark = $('#botiga-wl-bookmark');
     var $fields = $('.botiga-dashboard-white-label-field, .botiga-dashboard-white-label-check');
-    if ($activate.length) {
+    if ($activate.length && !$activate.prop('disabled')) {
       var syncState = function syncState() {
         var on = $activate.is(':checked');
         $bookmark.toggle(on);

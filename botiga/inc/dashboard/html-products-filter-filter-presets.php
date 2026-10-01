@@ -13,7 +13,13 @@ $action_url = $is_pro_installed
 
 $target = $is_pro_installed ? '_self' : '_blank';
 
-$tooltip_message = $is_pro_installed ? __( 'Activate Botiga Pro to use this feature', 'botiga' ) : __( 'This is only available on Botiga Pro', 'botiga' );
+if ( ! empty( $this->settings['has_pro'] ) ) {
+	$tooltip_message = __( 'Activate Product Filters to use this feature', 'botiga' );
+} elseif ( $is_pro_installed ) {
+	$tooltip_message = __( 'Activate Botiga Pro to use this feature', 'botiga' );
+} else {
+	$tooltip_message = __( 'This is only available on Botiga Pro', 'botiga' );
+}
 ?>
 
 <div class="botiga-dashboard-card botiga-dashboard-card-no-box-shadow">

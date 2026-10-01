@@ -38,6 +38,13 @@ function botiga_dashboard_redirect_after_activate_pro( $location ) {
 	if ( empty( $plugin ) || false === stripos( $plugin, 'botiga-pro.php' ) ) {
 		return $location;
 	}
+
+	$redirect_args = array();
+	wp_parse_str( (string) wp_parse_url( $location, PHP_URL_QUERY ), $redirect_args );
+
+	if ( ! isset( $redirect_args['activate'] ) || 'true' !== $redirect_args['activate'] ) {
+		return $location;
+	}
 	
 	$args = array(
 		'page' => 'botiga-dashboard',
@@ -47,16 +54,33 @@ function botiga_dashboard_redirect_after_activate_pro( $location ) {
 		? array_map( 'sanitize_text_field', wp_unslash( $_REQUEST['activate_module'] ) )
 		: array();
 	
-	if ( ! empty( $activate_module['module-page'] ) && current_user_can( 'manage_options' ) ) {
-		$modules = get_option( 'botiga-modules', array() );
+	if ( ! empty( $activate_module ) && current_user_can( 'manage_options' ) ) {
+		$module_id = ! empty( $activate_module['module-id'] )
+			? sanitize_key( $activate_module['module-id'] )
+			: '';
 	
-		$module_page = sanitize_key( $activate_module['module-page'] );
+		$module_page = ! empty( $activate_module['module-page'] )
+			? sanitize_key( $activate_module['module-page'] )
+			: '';
 	
-		$modules[ $module_page ] = true;
+		if ( empty( $module_id ) ) {
+			$module_id = $module_page;
+		}
 	
-		update_option( 'botiga-modules', $modules );
+		if ( $module_id ) {
+			$modules = get_option( 'botiga-modules', array() );
+			$modules[ $module_id ] = true;
 	
-		$args['module-page'] = $module_page;
+			update_option( 'botiga-modules', $modules );
+		}
+	
+		if ( $module_page ) {
+			$args['module-page'] = $module_page;
+		}
+	
+		if ( ! empty( $activate_module['tab'] ) ) {
+			$args['tab'] = sanitize_key( $activate_module['tab'] );
+		}
 	
 		if ( ! empty( $activate_module['settings-page'] ) ) {
 			$args['settings-page'] = sanitize_key( $activate_module['settings-page'] );
@@ -92,15 +116,19 @@ function botiga_dashboard_settings() {
 	$settings['pro_activate_url']  = '';
 	
 	if ( ! empty( $pro_plugin_path ) ) {
-		$settings['pro_activate_url'] = wp_nonce_url(
-			add_query_arg(
-				array(
-					'action' => 'activate',
-					'plugin' => $pro_plugin_path,
+		// Keep the stored URL unescaped so callers can safely append activation context.
+		$settings['pro_activate_url'] = wp_specialchars_decode(
+			wp_nonce_url(
+				add_query_arg(
+					array(
+						'action' => 'activate',
+						'plugin' => $pro_plugin_path,
+					),
+					admin_url( 'plugins.php' )
 				),
-				admin_url( 'plugins.php' )
+				'activate-plugin_' . $pro_plugin_path
 			),
-			'activate-plugin_' . $pro_plugin_path
+			ENT_QUOTES
 		);
 	}
 
@@ -1002,22 +1030,17 @@ endif;
 
 if ( ! function_exists( 'botiga_white_label_plugin_available' ) ) :
 /**
- * Whether the aThemes White Label plugin is present to apply the settings.
+ * Whether the standalone aThemes White Label plugin is available.
  *
- * Only used to warn eligible (Agency) users when the plugin isn't active yet —
- * it never affects the locked/upsell state, which is driven purely by tier.
+ * The settings class is loaded only when the standalone plugin is active and
+ * its White Label functionality is available for the current site.
  *
  * @since 2.4.7
  *
  * @return bool
  */
 function botiga_white_label_plugin_available() {
-	/*
-	 * "Available" means something will actually apply these settings across the
-	 * site — either the standalone aThemes White Label plugin, or Botiga Pro's
-	 * built-in White Label engine. Both expose athemes_wl_get_data().
-	 */
-	return function_exists( 'athemes_wl_get_data' );
+	return class_exists( 'aThemes_White_Label_Settings' );
 }
 endif;
 

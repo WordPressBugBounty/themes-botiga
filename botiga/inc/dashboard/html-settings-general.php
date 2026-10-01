@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 <div class="botiga-dashboard-card botiga-dashboard-card-no-box-shadow">
     <div class="botiga-dashboard-card-body botiga-dashboard-card-body-content-with-dividers">
        
-        <?php if ( defined( 'BOTIGA_PRO_VERSION' ) ) : ?>
+        <?php if ( defined( 'BOTIGA_PRO_VERSION' ) && ! defined( 'BOTIGA_AWL_ACTIVE' ) ) : ?>
 
             <div class="botiga-dashboard-license-wrapper">
                 <h2 class="bt-mb-10px"><?php echo esc_html__( 'Botiga Pro License', 'botiga' ); ?></h2>
@@ -64,7 +64,7 @@ if (!defined('ABSPATH')) {
                 </div>
             </div>
 
-        <?php else : ?>
+        <?php elseif ( ! defined( 'BOTIGA_PRO_VERSION' ) ) : ?>
 
             <div class="botiga-dashboard-module-card">
                 <div class="botiga-dashboard-module-card-header">

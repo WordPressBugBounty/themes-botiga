@@ -1991,7 +1991,6 @@ body.sidebar-slide-opened:before {
   text-transform: uppercase;
   padding-top: 17px;
   padding-bottom: 17px;
-  pointer-events: auto;
 }
 @media (max-width: 991px) {
   .product-gallery-summary .botiga-single-addtocart-wrapper .button {
@@ -2423,6 +2422,10 @@ figure.woocommerce-product-gallery__wrapper div:not(:first-of-type) {
           flex-direction: column;
 }
 
+.single-product .variations_form.cart .single_add_to_cart_button.wc-variation-selection-needed {
+  pointer-events: auto;
+}
+
 .variations_form.cart .variations tbody > tr + tr > td {
   padding-top: 15px;
 }
@@ -2575,6 +2578,10 @@ form.cart .quantity.hidden {
 .botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item.product-addtocart .stock {
   margin-bottom: 0;
   margin-right: 20px;
+  white-space: nowrap;
+}
+.botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item.product-addtocart .woocommerce-error {
+  margin-bottom: 0;
 }
 .botiga-single-sticky-add-to-cart-wrapper .botiga-single-sticky-add-to-cart-wrapper-content .botiga-single-sticky-add-to-cart-item.product-addtocart .quantity {
   width: 175px;

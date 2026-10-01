@@ -237,9 +237,12 @@ if ( ! class_exists( 'Botiga_Abilities_Settings_Validator' ) ) {
 				? $control->choices
 				: array();
 
-			$allowed_values = array_keys( $choices );
+			if ( ! empty( $choices ) ) {
+				$choice_values  = array_keys( $choices );
+				$allowed_values = array_keys(
+					$this->field_schema->get_available_choices( $control )
+				);
 
-			if ( ! empty( $allowed_values ) ) {
 				$submitted_values = is_array( $value )
 					? $value
 					: array( $value );
@@ -253,6 +256,31 @@ if ( ! class_exists( 'Botiga_Abilities_Settings_Validator' ) ) {
 						)
 					) {
 						continue;
+					}
+
+					if (
+						in_array(
+							$submitted_value,
+							$choice_values,
+							true
+						) &&
+						$this->field_schema->choice_requires_pro(
+							$choices[ $submitted_value ]
+						)
+					) {
+						return new WP_Error(
+							'botiga_pro_value_unavailable',
+							__(
+								'The submitted value requires Botiga Pro to be active.',
+								'botiga'
+							),
+							array(
+								'status'           => 400,
+								'requires_pro'     => true,
+								'submitted_value'  => $submitted_value,
+								'available_values' => $allowed_values,
+							)
+						);
 					}
 
 					return new WP_Error(

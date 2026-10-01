@@ -4,10 +4,10 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.4.9
+Version: 2.5.0
 Tested up to: 7.1
 Requires PHP: 7
-Stable tag: 2.4.9
+Stable tag: 2.5.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,15 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.5.0 =
+* Fixed - Pro-only Customizer values being exposed and accepted through Botiga Abilities on Free installations.
+* Fixed - Product Filters locked controls showing the wrong activation tooltip when the module is disabled.
+* Fixed - PHP deprecation when rendering legacy WooCommerce widget previews in the Widgets screen and Customizer.
+* Fixed - White Label showing stale Botiga Pro license instructions after the license controls are hidden.
+* Fixed - White Label settings not reflecting the standalone aThemes White Label plugin state for non-Agency Botiga Pro licenses.
+* Fixed - Sticky Add To Cart not showing variation selection feedback when required product options are missing.
+* Fixed - Templates Builder actions opening the upgrade flow instead of activating an already installed Botiga Pro plugin and returning to Templates Builder.
+
 = 2.4.9 =
 * Added - Post-onboarding Setup Checklist with progress tracking and guided setup tasks.
 * Added - End-of-life notice for the aThemes Patcher plugin with an option to deactivate and delete it.

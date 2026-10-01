@@ -61,9 +61,7 @@ if ( ! class_exists( 'Botiga_Abilities_Field_Schema' ) ) {
 				return null;
 			}
 
-			$choices = is_array( $control->choices )
-				? $control->choices
-				: array();
+			$choices = $this->get_available_choices( $control );
 
 			$input_attrs = is_array( $control->input_attrs )
 				? $control->input_attrs
@@ -273,6 +271,22 @@ if ( ! class_exists( 'Botiga_Abilities_Field_Schema' ) ) {
 				);
 			}
 
+			$choices           = is_array( $control->choices )
+				? $control->choices
+				: array();
+			$available_choices = $this->get_available_choices( $control );
+
+			if ( ! empty( $choices ) && empty( $available_choices ) ) {
+				return array(
+					'writable'     => false,
+					'value_shape'  => 'opaque',
+					'write_reason' => __(
+						'This field does not provide a value that is available for the current Botiga installation.',
+						'botiga'
+					),
+				);
+			}
+
 			if ( 1 === count( $settings ) ) {
 				$setting = reset( $settings );
 
@@ -284,11 +298,7 @@ if ( ! class_exists( 'Botiga_Abilities_Field_Schema' ) ) {
 					);
 				}
 
-				$choices = is_array( $control->choices )
-					? $control->choices
-					: array();
-
-				if ( ! empty( $choices ) ) {
+				if ( ! empty( $available_choices ) ) {
 					return array(
 						'writable'     => true,
 						'value_shape'  => 'list',
@@ -326,6 +336,49 @@ if ( ! class_exists( 'Botiga_Abilities_Field_Schema' ) ) {
 				'value_shape'  => 'composite',
 				'write_reason' => null,
 			);
+		}
+
+		/**
+		 * Returns control choices available for the current Botiga installation.
+		 *
+		 * @since 2.4.10
+		 *
+		 * @param WP_Customize_Control $control Customizer control.
+		 *
+		 * @return array
+		 */
+		public function get_available_choices( $control ) {
+			$choices = is_array( $control->choices )
+				? $control->choices
+				: array();
+
+			if ( defined( 'BOTIGA_PRO_VERSION' ) ) {
+				return $choices;
+			}
+
+			foreach ( $choices as $choice_key => $choice ) {
+				if ( ! $this->choice_requires_pro( $choice ) ) {
+					continue;
+				}
+
+				unset( $choices[ $choice_key ] );
+			}
+
+			return $choices;
+		}
+
+		/**
+		 * Checks whether a control choice requires Botiga Pro.
+		 *
+		 * @since 2.4.10
+		 *
+		 * @param mixed $choice Control choice definition.
+		 *
+		 * @return bool
+		 */
+		public function choice_requires_pro( $choice ) {
+			return is_array( $choice ) &&
+				! empty( $choice['is_pro'] );
 		}
 
 		/**
