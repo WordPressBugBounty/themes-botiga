@@ -4,10 +4,10 @@ Contributors: athemes
 Tags: e-commerce, custom-menu, custom-logo, grid-layout, featured-images, right-sidebar, left-sidebar, custom-colors, editor-style, theme-options, threaded-comments, translation-ready, blog, one-column, two-columns, rtl-language-support, custom-background, custom-header, footer-widgets, post-formats, wide-blocks
 
 Requires at least: 5.4
-Version: 2.5.0
+Version: 2.5.1
 Tested up to: 7.1
 Requires PHP: 7
-Stable tag: 2.5.0
+Stable tag: 2.5.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,14 @@ Launch your store with Botiga. A beautiful theme that is optimized for both the 
 Botiga includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
+= 2.5.1 =
+* Fixed - Templates Builder exposing Botiga Pro activation actions to users without plugin activation permission.
+* Fixed - Botiga Abilities returning unavailable Pro-only saved Customizer values after Botiga Pro is deactivated.
+* Fixed - Header cart icon becoming unresponsive when the Side mini cart setting remains saved after Botiga Pro is deactivated.
+* Fixed - Load More pagination repeating products when third-party quantity markup omits expected quantity controls.
+* Fixed - Merchant Wishlist overlapping the Sticky Add to Cart bar on single product pages.
+* Fixed - Quick View button not working in Side Mini Cart cross-sell products.
+
 = 2.5.0 =
 * Fixed - Pro-only Customizer values being exposed and accepted through Botiga Abilities on Free installations.
 * Fixed - Product Filters locked controls showing the wrong activation tooltip when the module is disabled.

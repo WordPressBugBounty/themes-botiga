@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: aThemes <team@athemes.com>\n"
 "Last-Translator: aThemes <team@athemes.com>\n"
-"POT-Creation-Date: 2026-10-01 14:04+0000\n"
+"POT-Creation-Date: 2026-10-27 15:57+0000\n"
 "Report-Msgid-Bugs-To: https://athemes.com/contact/\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -411,15 +411,15 @@ msgstr ""
 msgid "WooCommerce"
 msgstr ""
 
-#: inc/template-functions.php:2455, inc/dashboard/class-dashboard-settings.php:475, inc/dashboard/html-templates-builder.php:131, inc/dashboard/html-templates-builder.php:328, inc/customizer/options/woocommerce/woocommerce-cart.php:12
+#: inc/template-functions.php:2455, inc/dashboard/class-dashboard-settings.php:475, inc/dashboard/html-templates-builder.php:145, inc/dashboard/html-templates-builder.php:342, inc/customizer/options/woocommerce/woocommerce-cart.php:12
 msgid "Cart"
 msgstr ""
 
-#: inc/template-functions.php:2459, inc/dashboard/class-dashboard-settings.php:483, inc/dashboard/html-templates-builder.php:141, inc/dashboard/html-templates-builder.php:344
+#: inc/template-functions.php:2459, inc/dashboard/class-dashboard-settings.php:483, inc/dashboard/html-templates-builder.php:155, inc/dashboard/html-templates-builder.php:358
 msgid "Checkout"
 msgstr ""
 
-#: inc/template-functions.php:2463, inc/dashboard/class-dashboard-settings.php:467, inc/dashboard/html-templates-builder.php:111, inc/dashboard/html-templates-builder.php:296, inc/customizer/options/woocommerce/woocommerce-single.php:14
+#: inc/template-functions.php:2463, inc/dashboard/class-dashboard-settings.php:467, inc/dashboard/html-templates-builder.php:125, inc/dashboard/html-templates-builder.php:310, inc/customizer/options/woocommerce/woocommerce-single.php:14
 msgid "Single Product"
 msgstr ""
 
@@ -443,7 +443,7 @@ msgstr ""
 msgid "Product Category Name"
 msgstr ""
 
-#: inc/template-functions.php:2489, inc/dashboard/html-templates-builder.php:151, inc/dashboard/html-templates-builder.php:360
+#: inc/template-functions.php:2489, inc/dashboard/html-templates-builder.php:165, inc/dashboard/html-templates-builder.php:374
 msgid "My Account"
 msgstr ""
 
@@ -451,7 +451,7 @@ msgstr ""
 msgid "Edit Account"
 msgstr ""
 
-#: inc/template-functions.php:2497, inc/dashboard/html-templates-builder.php:161, inc/dashboard/html-templates-builder.php:376
+#: inc/template-functions.php:2497, inc/dashboard/html-templates-builder.php:175, inc/dashboard/html-templates-builder.php:390
 msgid "Order Thank You"
 msgstr ""
 
@@ -511,7 +511,7 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: inc/template-functions.php:2591, inc/dashboard/html-templates-builder.php:91
+#: inc/template-functions.php:2591, inc/dashboard/html-templates-builder.php:105
 msgid "404"
 msgstr ""
 
@@ -810,31 +810,31 @@ msgstr ""
 msgid "The Botiga settings registry is unavailable."
 msgstr ""
 
-#: inc/abilities/class-botiga-abilities-field-schema.php:222
+#: inc/abilities/class-botiga-abilities-field-schema.php:326
 msgid "This field does not contain a configurable setting."
 msgstr ""
 
-#: inc/abilities/class-botiga-abilities-field-schema.php:239
+#: inc/abilities/class-botiga-abilities-field-schema.php:343
 msgid "This field uses a specialized core value mapping that requires a dedicated update schema."
 msgstr ""
 
-#: inc/abilities/class-botiga-abilities-field-schema.php:256
+#: inc/abilities/class-botiga-abilities-field-schema.php:360
 msgid "This field uses a complex value format that is available for reading but is not yet supported for updates."
 msgstr ""
 
-#: inc/abilities/class-botiga-abilities-field-schema.php:267
+#: inc/abilities/class-botiga-abilities-field-schema.php:371
 msgid "This field stores structured data that requires a dedicated update schema."
 msgstr ""
 
-#: inc/abilities/class-botiga-abilities-field-schema.php:283
+#: inc/abilities/class-botiga-abilities-field-schema.php:387
 msgid "This field does not provide a value that is available for the current Botiga installation."
 msgstr ""
 
-#: inc/abilities/class-botiga-abilities-field-schema.php:312
+#: inc/abilities/class-botiga-abilities-field-schema.php:416
 msgid "This array field does not provide a reliable list of supported values."
 msgstr ""
 
-#: inc/abilities/class-botiga-abilities-field-schema.php:327
+#: inc/abilities/class-botiga-abilities-field-schema.php:431
 msgid "This composite field contains structured values that require a dedicated update schema."
 msgstr ""
 
@@ -1881,23 +1881,23 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: inc/dashboard/html-builder.php:35, inc/dashboard/html-home.php:106, inc/dashboard/html-products-filter-seo.php:17, inc/dashboard/html-products-filter.php:30, inc/dashboard/html-templates-builder.php:31, inc/setup-checklist/config/theme.php:18
+#: inc/dashboard/html-builder.php:35, inc/dashboard/html-home.php:106, inc/dashboard/html-products-filter-seo.php:17, inc/dashboard/html-products-filter.php:30, inc/dashboard/html-templates-builder.php:39, inc/setup-checklist/config/theme.php:18
 msgid "Activate Botiga Pro"
 msgstr ""
 
-#: inc/dashboard/html-builder.php:36, inc/dashboard/html-products-filter-seo.php:18, inc/dashboard/html-products-filter.php:31, inc/dashboard/html-settings-general.php:77, inc/dashboard/html-templates-builder.php:32, inc/customizer/controls/class_botiga_section_upsell_message.php:29
+#: inc/dashboard/html-builder.php:36, inc/dashboard/html-products-filter-seo.php:18, inc/dashboard/html-products-filter.php:31, inc/dashboard/html-settings-general.php:77, inc/dashboard/html-templates-builder.php:42, inc/customizer/controls/class_botiga_section_upsell_message.php:29
 msgid "Upgrade Now"
 msgstr ""
 
-#: inc/dashboard/html-builder.php:50, inc/dashboard/html-products-filter.php:82, inc/dashboard/html-templates-builder.php:181
+#: inc/dashboard/html-builder.php:50, inc/dashboard/html-products-filter.php:82, inc/dashboard/html-templates-builder.php:195
 msgid "Please note this feature is available only in Botiga Pro"
 msgstr ""
 
-#: inc/dashboard/html-builder.php:68, inc/dashboard/html-templates-builder.php:198
+#: inc/dashboard/html-builder.php:68, inc/dashboard/html-templates-builder.php:212
 msgid "Please note that to use this feature you need to activate the Templates Builder module."
 msgstr ""
 
-#: inc/dashboard/html-builder.php:70, inc/dashboard/html-templates-builder.php:200
+#: inc/dashboard/html-builder.php:70, inc/dashboard/html-templates-builder.php:214
 msgid "Activate Templates Builder"
 msgstr ""
 
@@ -1945,7 +1945,7 @@ msgstr ""
 msgid "Select Existing"
 msgstr ""
 
-#: inc/dashboard/html-builder.php:154, inc/dashboard/html-templates-builder.php:207, inc/dashboard/html-templates-builder.php:220, inc/dashboard/html-templates-builder.php:236, inc/dashboard/html-templates-builder.php:252, inc/dashboard/html-templates-builder.php:268, inc/dashboard/html-templates-builder.php:284, inc/dashboard/html-templates-builder.php:300, inc/dashboard/html-templates-builder.php:316, inc/dashboard/html-templates-builder.php:332, inc/dashboard/html-templates-builder.php:348, inc/dashboard/html-templates-builder.php:364, inc/dashboard/html-templates-builder.php:380
+#: inc/dashboard/html-builder.php:154, inc/dashboard/html-templates-builder.php:221, inc/dashboard/html-templates-builder.php:234, inc/dashboard/html-templates-builder.php:250, inc/dashboard/html-templates-builder.php:266, inc/dashboard/html-templates-builder.php:282, inc/dashboard/html-templates-builder.php:298, inc/dashboard/html-templates-builder.php:314, inc/dashboard/html-templates-builder.php:330, inc/dashboard/html-templates-builder.php:346, inc/dashboard/html-templates-builder.php:362, inc/dashboard/html-templates-builder.php:378, inc/dashboard/html-templates-builder.php:394
 msgid "Create New"
 msgstr ""
 
@@ -2025,7 +2025,7 @@ msgstr ""
 msgid "Go To Customizer"
 msgstr ""
 
-#: inc/dashboard/html-home.php:75, inc/dashboard/html-home.php:192, inc/dashboard/html-home.php:296, inc/dashboard/html-products-filter.php:50, inc/dashboard/html-templates-builder.php:171, inc/setup-checklist/views/page-header.php:62
+#: inc/dashboard/html-home.php:75, inc/dashboard/html-home.php:192, inc/dashboard/html-home.php:296, inc/dashboard/html-products-filter.php:50, inc/dashboard/html-templates-builder.php:185, inc/setup-checklist/views/page-header.php:62
 msgid "Documentation"
 msgstr ""
 
@@ -2041,7 +2041,7 @@ msgstr ""
 msgid "Deactivate All"
 msgstr ""
 
-#: inc/dashboard/html-home.php:110
+#: inc/dashboard/html-home.php:110, inc/dashboard/html-templates-builder.php:40, inc/dashboard/html-templates-builder.php:48
 msgid "Botiga Pro Installed"
 msgstr ""
 
@@ -2165,11 +2165,11 @@ msgstr ""
 msgid "No notifications found"
 msgstr ""
 
-#: inc/dashboard/html-products-filter-customization.php:21, inc/dashboard/html-products-filter-filter-presets.php:21, inc/dashboard/html-products-filter-general.php:21, inc/dashboard/html-products-filter-seo.php:25, inc/dashboard/html-templates-builder.php:36
+#: inc/dashboard/html-products-filter-customization.php:21, inc/dashboard/html-products-filter-filter-presets.php:21, inc/dashboard/html-products-filter-general.php:21, inc/dashboard/html-products-filter-seo.php:25, inc/dashboard/html-templates-builder.php:50
 msgid "This is only available on Botiga Pro"
 msgstr ""
 
-#: inc/dashboard/html-products-filter-customization.php:19, inc/dashboard/html-products-filter-filter-presets.php:19, inc/dashboard/html-products-filter-general.php:19, inc/dashboard/html-products-filter-seo.php:23, inc/dashboard/html-templates-builder.php:35
+#: inc/dashboard/html-products-filter-customization.php:19, inc/dashboard/html-products-filter-filter-presets.php:19, inc/dashboard/html-products-filter-general.php:19, inc/dashboard/html-products-filter-seo.php:23, inc/dashboard/html-templates-builder.php:47
 msgid "Activate Botiga Pro to use this feature"
 msgstr ""
 
@@ -2413,31 +2413,31 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: inc/dashboard/html-templates-builder.php:51
+#: inc/dashboard/html-templates-builder.php:65
 msgid "All templates"
 msgstr ""
 
-#: inc/dashboard/html-templates-builder.php:61, inc/dashboard/html-templates-builder.php:216
+#: inc/dashboard/html-templates-builder.php:75, inc/dashboard/html-templates-builder.php:230
 msgid "Single"
 msgstr ""
 
-#: inc/dashboard/html-templates-builder.php:71, inc/dashboard/html-templates-builder.php:232
+#: inc/dashboard/html-templates-builder.php:85, inc/dashboard/html-templates-builder.php:246
 msgid "Archive"
 msgstr ""
 
-#: inc/dashboard/html-templates-builder.php:81, inc/dashboard/html-templates-builder.php:248, inc/dashboard/html-templates-builder.php:264
+#: inc/dashboard/html-templates-builder.php:95, inc/dashboard/html-templates-builder.php:262, inc/dashboard/html-templates-builder.php:278
 msgid "Page"
 msgstr ""
 
-#: inc/dashboard/html-templates-builder.php:101, inc/dashboard/html-templates-builder.php:280
+#: inc/dashboard/html-templates-builder.php:115, inc/dashboard/html-templates-builder.php:294
 msgid "Content Block"
 msgstr ""
 
-#: inc/dashboard/html-templates-builder.php:121, inc/dashboard/html-templates-builder.php:312
+#: inc/dashboard/html-templates-builder.php:135, inc/dashboard/html-templates-builder.php:326
 msgid "Shop Archive"
 msgstr ""
 
-#: inc/dashboard/html-templates-builder.php:208
+#: inc/dashboard/html-templates-builder.php:222
 msgid "Start from scratch and design a custom template tailored to your specific needs."
 msgstr ""
 

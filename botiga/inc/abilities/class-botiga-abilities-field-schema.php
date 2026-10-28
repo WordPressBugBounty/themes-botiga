@@ -46,6 +46,105 @@ if ( ! class_exists( 'Botiga_Abilities_Field_Schema' ) ) {
 		);
 
 		/**
+		 * Choice values registered only by Botiga Pro on existing Free controls.
+		 *
+		 * @var array<string, string[]>
+		 */
+		private const PRO_REGISTERED_CHOICE_VALUES = array(
+			'fonts_library' => array(
+				'custom',
+			),
+			'header_layout_desktop' => array(
+				'header_layout_6',
+				'header_layout_7',
+				'header_layout_8',
+			),
+			'shop_archive_layout' => array(
+				'product-masonry',
+			),
+			'single_post_meta_elements' => array(
+				'botiga_post_reading_time',
+			),
+			'footer_copyright_elements' => array(
+				'footer_payment_icons',
+				'footer_navigation_menu',
+				'footer_html',
+				'footer_shortcode',
+			),
+			'single_product_elements_order' => array(
+				'botiga_single_product_html',
+				'botiga_single_product_shortcode',
+				'botiga_single_product_reasons_to_buy',
+				'botiga_single_product_trust_badge_image',
+				'botiga_single_product_brand_image',
+				'botiga_pro_single_product_acf_field',
+			),
+			'shop_card_elements' => array(
+				'botiga_pro_shop_archive_product_card_acf_field',
+			),
+			'topbar_components_left' => array(
+				'html',
+				'shortcode',
+				'login_register',
+			),
+			'topbar_components_right' => array(
+				'html',
+				'shortcode',
+				'login_register',
+			),
+			'header_components_mobile' => array(
+				'html',
+				'shortcode',
+				'login_register',
+			),
+			'header_components_offcanvas' => array(
+				'html',
+				'shortcode',
+				'login_register',
+			),
+			'header_components_l1' => array(
+				'html',
+				'shortcode',
+				'login_register',
+			),
+			'header_components_l3left' => array(
+				'html',
+				'shortcode',
+				'login_register',
+			),
+			'header_components_l3right' => array(
+				'html',
+				'shortcode',
+				'login_register',
+			),
+			'header_components_l4top' => array(
+				'html',
+				'shortcode',
+				'login_register',
+			),
+			'header_components_l4bottom' => array(
+				'html',
+				'shortcode',
+				'login_register',
+			),
+			'header_components_l5topleft' => array(
+				'html',
+				'shortcode',
+				'login_register',
+			),
+			'header_components_l5topright' => array(
+				'html',
+				'shortcode',
+				'login_register',
+			),
+			'header_components_l5bottom' => array(
+				'html',
+				'shortcode',
+				'login_register',
+			),
+		);
+
+		/**
 		 * Builds the ability field data for a Customizer control.
 		 *
 		 * @since 2.4.8
@@ -61,7 +160,12 @@ if ( ! class_exists( 'Botiga_Abilities_Field_Schema' ) ) {
 				return null;
 			}
 
-			$choices = $this->get_available_choices( $control );
+			$choices  = $this->get_available_choices( $control );
+			$settings = $this->normalize_unavailable_choice_values(
+				$control,
+				$settings,
+				$choices
+			);
 
 			$input_attrs = is_array( $control->input_attrs )
 				? $control->input_attrs
@@ -379,6 +483,91 @@ if ( ! class_exists( 'Botiga_Abilities_Field_Schema' ) ) {
 		public function choice_requires_pro( $choice ) {
 			return is_array( $choice ) &&
 				! empty( $choice['is_pro'] );
+		}
+
+		/**
+		 * Returns known Pro-only values for a control.
+		 *
+		 * @since 2.5.1
+		 *
+		 * @param WP_Customize_Control $control Customizer control.
+		 *
+		 * @return array
+		 */
+		private function get_pro_only_choice_values( $control ) {
+			$pro_only_values = isset( self::PRO_REGISTERED_CHOICE_VALUES[ $control->id ] )
+				? self::PRO_REGISTERED_CHOICE_VALUES[ $control->id ]
+				: array();
+			$choices         = is_array( $control->choices )
+				? $control->choices
+				: array();
+
+			foreach ( $choices as $choice_key => $choice ) {
+				if ( ! $this->choice_requires_pro( $choice ) ) {
+					continue;
+				}
+
+				$pro_only_values[] = $choice_key;
+			}
+
+			return array_values( array_unique( $pro_only_values ) );
+		}
+
+		/**
+		 * Normalizes saved choice values that are unavailable without Botiga Pro.
+		 *
+		 * @since 2.5.1
+		 *
+		 * @param WP_Customize_Control $control           Customizer control.
+		 * @param array                $settings          Normalized settings data.
+		 * @param array                $available_choices Choices available for the current installation.
+		 *
+		 * @return array
+		 */
+		private function normalize_unavailable_choice_values( $control, $settings, $available_choices ) {
+			if ( defined( 'BOTIGA_PRO_VERSION' ) ) {
+				return $settings;
+			}
+
+			$pro_only_values = $this->get_pro_only_choice_values( $control );
+
+			if ( empty( $pro_only_values ) ) {
+				return $settings;
+			}
+
+			$available_values = array_keys( $available_choices );
+
+			foreach ( $settings as $setting_key => $setting ) {
+				$value   = $setting['value'];
+				$default = $setting['default'];
+
+				if ( is_array( $value ) ) {
+					$settings[ $setting_key ]['value'] = array_values(
+						array_filter(
+							$value,
+							static function ( $item ) use ( $pro_only_values ) {
+								return ! in_array( $item, $pro_only_values, true );
+							}
+						)
+					);
+					continue;
+				}
+
+				if ( ! in_array( $value, $pro_only_values, true ) ) {
+					continue;
+				}
+
+				if ( in_array( $default, $available_values, true ) ) {
+					$settings[ $setting_key ]['value'] = $default;
+					continue;
+				}
+
+				$settings[ $setting_key ]['value'] = ! empty( $available_values )
+					? reset( $available_values )
+					: null;
+			}
+
+			return $settings;
 		}
 
 		/**

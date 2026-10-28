@@ -12,27 +12,41 @@ if (!defined('ABSPATH')) {
 
 // @codingStandardsIgnoreStart WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
-$is_pro_installed = ! empty( $this->settings['has_pro_installed'] );
+$is_pro_installed     = ! empty( $this->settings['has_pro_installed'] );
+$can_activate_plugins = ! empty( $this->settings['can_activate_plugins'] );
+$can_activate_pro     = $is_pro_installed && $can_activate_plugins;
 
 $action_url = $is_pro_installed
-	? add_query_arg(
-		array(
-			'activate_module[module-id]'     => 'templates',
-			'activate_module[module-page]'   => 'builder',
-			'activate_module[settings-page]' => 'create-new',
-		),
-		$this->settings['pro_activate_url']
+	? (
+		$can_activate_pro
+			? add_query_arg(
+				array(
+					'activate_module[module-id]'     => 'templates',
+					'activate_module[module-page]'   => 'builder',
+					'activate_module[settings-page]' => 'create-new',
+				),
+				$this->settings['pro_activate_url']
+			)
+			: ''
 	)
 	: $this->settings['tb_upgrade_pro'];
 
 $target = $is_pro_installed ? '_self' : '_blank';
 
 $primary_action_label = $is_pro_installed
-	? __( 'Activate Botiga Pro', 'botiga' )
+	? (
+		$can_activate_pro
+			? __( 'Activate Botiga Pro', 'botiga' )
+			: __( 'Botiga Pro Installed', 'botiga' )
+	)
 	: __( 'Upgrade Now', 'botiga' );
 
 $tooltip_message = $is_pro_installed
-	? __( 'Activate Botiga Pro to use this feature', 'botiga' )
+	? (
+		$can_activate_pro
+			? __( 'Activate Botiga Pro to use this feature', 'botiga' )
+			: __( 'Botiga Pro Installed', 'botiga' )
+	)
 	: __( 'This is only available on Botiga Pro', 'botiga' );
 
 ?>
@@ -45,7 +59,7 @@ $tooltip_message = $is_pro_installed
                     <nav class="bt-navigation-links">
                         <ul>
                             <li class="bt-navigation-link has-separator">
-                                <a href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>">
+                                <a <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?>>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M17 4h-2v4.5h2V7h3V5.5h-3V4zM4 5.5h9V7H4V5.5zm16 5.75h-9v1.5h9v-1.5zm-16 0h3V10h2v4.25H7v-1.5H4v-1.5zM9 17H4v1.5h5V17zm4 0h7v1.5h-7V20h-2v-4.25h2V17z"></path>
                                     </svg><?php echo esc_html__( 'All templates', 'botiga' ); ?>
@@ -55,7 +69,7 @@ $tooltip_message = $is_pro_installed
                                 </a>
                             </li>
                             <li class="bt-navigation-link">
-                                <a href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>">
+                                <a <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?>>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M17 4h-2v4.5h2V7h3V5.5h-3V4zM4 5.5h9V7H4V5.5zm16 5.75h-9v1.5h9v-1.5zm-16 0h3V10h2v4.25H7v-1.5H4v-1.5zM9 17H4v1.5h5V17zm4 0h7v1.5h-7V20h-2v-4.25h2V17z"></path>
                                     </svg><?php echo esc_html__( 'Single', 'botiga' ); ?>
@@ -65,7 +79,7 @@ $tooltip_message = $is_pro_installed
                                 </a>
                             </li>
                             <li class="bt-navigation-link">
-                                <a href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>">
+                                <a <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?>>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M17 4h-2v4.5h2V7h3V5.5h-3V4zM4 5.5h9V7H4V5.5zm16 5.75h-9v1.5h9v-1.5zm-16 0h3V10h2v4.25H7v-1.5H4v-1.5zM9 17H4v1.5h5V17zm4 0h7v1.5h-7V20h-2v-4.25h2V17z"></path>
                                     </svg><?php echo esc_html__( 'Archive', 'botiga' ); ?>
@@ -75,7 +89,7 @@ $tooltip_message = $is_pro_installed
                                 </a>
                             </li>
                             <li class="bt-navigation-link">
-                                <a href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>">
+                                <a <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?>>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M17 4h-2v4.5h2V7h3V5.5h-3V4zM4 5.5h9V7H4V5.5zm16 5.75h-9v1.5h9v-1.5zm-16 0h3V10h2v4.25H7v-1.5H4v-1.5zM9 17H4v1.5h5V17zm4 0h7v1.5h-7V20h-2v-4.25h2V17z"></path>
                                     </svg><?php echo esc_html__( 'Page', 'botiga' ); ?>
@@ -85,7 +99,7 @@ $tooltip_message = $is_pro_installed
                                 </a>
                             </li>
                             <li class="bt-navigation-link">
-                                <a href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>">
+                                <a <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?>>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M3.445 16.505a.75.75 0 001.06.05l5.005-4.55 4.024 3.521 4.716-4.715V14h1.5V8.25H14v1.5h3.19l-3.724 3.723L9.49 9.995l-5.995 5.45a.75.75 0 00-.05 1.06z"></path>
                                     </svg><?php echo esc_html__( '404', 'botiga' ); ?>
@@ -95,7 +109,7 @@ $tooltip_message = $is_pro_installed
                                 </a>
                             </li>
                             <li class="bt-navigation-link has-separator">
-                                <a href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>">
+                                <a <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?>>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M18 5.5H6a.5.5 0 00-.5.5v3h13V6a.5.5 0 00-.5-.5zm.5 5H10v8h8a.5.5 0 00.5-.5v-7.5zm-10 0h-3V18a.5.5 0 00.5.5h2.5v-8zM6 4h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z"></path>
                                     </svg><?php echo esc_html__( 'Content Block', 'botiga' ); ?>
@@ -105,7 +119,7 @@ $tooltip_message = $is_pro_installed
                                 </a>
                             </li>
                             <li class="bt-navigation-link">
-                                <a href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>">
+                                <a <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?>>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path fill-rule="evenodd" d="M10.289 4.836A1 1 0 0111.275 4h1.306a1 1 0 01.987.836l.244 1.466c.787.26 1.503.679 2.108 1.218l1.393-.522a1 1 0 011.216.437l.653 1.13a1 1 0 01-.23 1.273l-1.148.944a6.025 6.025 0 010 2.435l1.149.946a1 1 0 01.23 1.272l-.653 1.13a1 1 0 01-1.216.437l-1.394-.522c-.605.54-1.32.958-2.108 1.218l-.244 1.466a1 1 0 01-.987.836h-1.306a1 1 0 01-.986-.836l-.244-1.466a5.995 5.995 0 01-2.108-1.218l-1.394.522a1 1 0 01-1.217-.436l-.653-1.131a1 1 0 01.23-1.272l1.149-.946a6.026 6.026 0 010-2.435l-1.148-.944a1 1 0 01-.23-1.272l.653-1.131a1 1 0 011.217-.437l1.393.522a5.994 5.994 0 012.108-1.218l.244-1.466zM14.929 12a3 3 0 11-6 0 3 3 0 016 0z" clip-rule="evenodd"></path>
                                     </svg><?php echo esc_html__( 'Single Product', 'botiga' ); ?>
@@ -115,7 +129,7 @@ $tooltip_message = $is_pro_installed
                                 </a>
                             </li>
                             <li class="bt-navigation-link">
-                                <a href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>">
+                                <a <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?>>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M17 4h-2v4.5h2V7h3V5.5h-3V4zM4 5.5h9V7H4V5.5zm16 5.75h-9v1.5h9v-1.5zm-16 0h3V10h2v4.25H7v-1.5H4v-1.5zM9 17H4v1.5h5V17zm4 0h7v1.5h-7V20h-2v-4.25h2V17z"></path>
                                     </svg><?php echo esc_html__( 'Shop Archive', 'botiga' ); ?>
@@ -125,7 +139,7 @@ $tooltip_message = $is_pro_installed
                                 </a>
                             </li>
                             <li class="bt-navigation-link">
-                                <a href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>">
+                                <a <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?>>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M18.5 5.5V8H20V5.5h2.5V4H20V1.5h-1.5V4H16v1.5h2.5zM12 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-6h-1.5v6a.5.5 0 01-.5.5H6a.5.5 0 01-.5-.5V6a.5.5 0 01.5-.5h6V4z"></path>
                                     </svg><?php echo esc_html__( 'Cart', 'botiga' ); ?>
@@ -135,7 +149,7 @@ $tooltip_message = $is_pro_installed
                                 </a>
                             </li>
                             <li class="bt-navigation-link">
-                                <a href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>">
+                                <a <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?>>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M18.3 5.6L9.9 16.9l-4.6-3.4-.9 1.2 5.8 4.3 9.3-12.6z"></path>
                                     </svg><?php echo esc_html__( 'Checkout', 'botiga' ); ?>
@@ -145,7 +159,7 @@ $tooltip_message = $is_pro_installed
                                 </a>
                             </li>
                             <li class="bt-navigation-link">
-                                <a href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>">
+                                <a <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?>>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M10 4.5a1 1 0 11-2 0 1 1 0 012 0zm1.5 0a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm2.25 7.5v-1A2.75 2.75 0 0011 8.25H7A2.75 2.75 0 004.25 11v1h1.5v-1c0-.69.56-1.25 1.25-1.25h4c.69 0 1.25.56 1.25 1.25v1h1.5zM4 20h9v-1.5H4V20zm16-4H4v-1.5h16V16z" fill-rule="evenodd" clip-rule="evenodd" />
                                     </svg><?php echo esc_html__( 'My Account', 'botiga' ); ?>
@@ -155,7 +169,7 @@ $tooltip_message = $is_pro_installed
                                 </a>
                             </li>
                             <li class="bt-navigation-link has-separator">
-                                <a href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>">
+                                <a <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?>>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
                                         <path d="M3.445 16.505a.75.75 0 001.06.05l5.005-4.55 4.024 3.521 4.716-4.715V14h1.5V8.25H14v1.5h3.19l-3.724 3.723L9.49 9.995l-5.995 5.45a.75.75 0 00-.05 1.06z"></path>
                                     </svg><?php echo esc_html__( 'Order Thank You', 'botiga' ); ?>
@@ -179,7 +193,7 @@ $tooltip_message = $is_pro_installed
                         <div class="botiga-dashboard-alert botiga-dashboard-alert-warning botiga-dashboard-alert-with-icon botiga-dashboard-alert-with-upsell-link">
                             <div class="alert-icon"><?php echo botiga_get_svg_icon( 'icon-warning' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
                             <p class="bt-text-color-grey"><?php echo esc_html__( 'Please note this feature is available only in Botiga Pro', 'botiga' ); ?></p>
-                            <a href="<?php echo esc_url( $action_url ); ?>" class="botiga-dashboard-external-link" target="<?php echo esc_attr( $target ); ?>">
+                            <a <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?> class="botiga-dashboard-external-link">
                                 <?php
                                 echo esc_html( $primary_action_label );
 
@@ -216,7 +230,7 @@ $tooltip_message = $is_pro_installed
                                                 <h2><?php echo esc_html__( 'Single', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
-                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>" data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
+                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip<?php if ( ! $action_url ) : ?> is-disabled<?php endif; ?>" <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?> data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
                                                     <?php echo esc_html__( 'Create New', 'botiga' ); ?>
                                                     <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                                 </a>
@@ -232,7 +246,7 @@ $tooltip_message = $is_pro_installed
                                                 <h2><?php echo esc_html__( 'Archive', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
-                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>" data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
+                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip<?php if ( ! $action_url ) : ?> is-disabled<?php endif; ?>" <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?> data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
                                                     <?php echo esc_html__( 'Create New', 'botiga' ); ?>
                                                     <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                                 </a>
@@ -248,7 +262,7 @@ $tooltip_message = $is_pro_installed
                                                 <h2><?php echo esc_html__( 'Page', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
-                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>" data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
+                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip<?php if ( ! $action_url ) : ?> is-disabled<?php endif; ?>" <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?> data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
                                                     <?php echo esc_html__( 'Create New', 'botiga' ); ?>
                                                     <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                                 </a>
@@ -264,7 +278,7 @@ $tooltip_message = $is_pro_installed
                                                 <h2><?php echo esc_html__( 'Page', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
-                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>" data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
+                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip<?php if ( ! $action_url ) : ?> is-disabled<?php endif; ?>" <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?> data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
                                                     <?php echo esc_html__( 'Create New', 'botiga' ); ?>
                                                     <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                                 </a>
@@ -280,7 +294,7 @@ $tooltip_message = $is_pro_installed
                                                 <h2><?php echo esc_html__( 'Content Block', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
-                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>" data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
+                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip<?php if ( ! $action_url ) : ?> is-disabled<?php endif; ?>" <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?> data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
                                                     <?php echo esc_html__( 'Create New', 'botiga' ); ?>
                                                     <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                                 </a>
@@ -296,7 +310,7 @@ $tooltip_message = $is_pro_installed
                                                 <h2><?php echo esc_html__( 'Single Product', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
-                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>" data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
+                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip<?php if ( ! $action_url ) : ?> is-disabled<?php endif; ?>" <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?> data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
                                                     <?php echo esc_html__( 'Create New', 'botiga' ); ?>
                                                     <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                                 </a>
@@ -312,7 +326,7 @@ $tooltip_message = $is_pro_installed
                                                 <h2><?php echo esc_html__( 'Shop Archive', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
-                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>" data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
+                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip<?php if ( ! $action_url ) : ?> is-disabled<?php endif; ?>" <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?> data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
                                                     <?php echo esc_html__( 'Create New', 'botiga' ); ?>
                                                     <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                                 </a>
@@ -328,7 +342,7 @@ $tooltip_message = $is_pro_installed
                                                 <h2><?php echo esc_html__( 'Cart', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
-                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>" data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
+                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip<?php if ( ! $action_url ) : ?> is-disabled<?php endif; ?>" <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?> data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
                                                     <?php echo esc_html__( 'Create New', 'botiga' ); ?>
                                                     <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                                 </a>
@@ -344,7 +358,7 @@ $tooltip_message = $is_pro_installed
                                                 <h2><?php echo esc_html__( 'Checkout', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
-                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>" data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
+                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip<?php if ( ! $action_url ) : ?> is-disabled<?php endif; ?>" <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?> data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
                                                     <?php echo esc_html__( 'Create New', 'botiga' ); ?>
                                                     <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                                 </a>
@@ -360,7 +374,7 @@ $tooltip_message = $is_pro_installed
                                                 <h2><?php echo esc_html__( 'My Account', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
-                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>" data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
+                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip<?php if ( ! $action_url ) : ?> is-disabled<?php endif; ?>" <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?> data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
                                                     <?php echo esc_html__( 'Create New', 'botiga' ); ?>
                                                     <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                                 </a>
@@ -376,7 +390,7 @@ $tooltip_message = $is_pro_installed
                                                 <h2><?php echo esc_html__( 'Order Thank You', 'botiga' ); ?></h2>
                                             </div>
                                             <div data-wp-c16t="true" data-wp-component="CardBody" class="components-card__body components-card-body bt-template-card__body css-188a3xf e19lxcc00">
-                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip" href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>" data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
+                                                <a class="components-button with-lock-icon is-primary botiga-dashboard-pro-tooltip<?php if ( ! $action_url ) : ?> is-disabled<?php endif; ?>" <?php if ( $action_url ) : ?>href="<?php echo esc_url( $action_url ); ?>" target="<?php echo esc_attr( $target ); ?>"<?php else : ?>aria-disabled="true"<?php endif; ?> data-tooltip-message="<?php echo esc_attr( $tooltip_message ); ?>">
                                                     <?php echo esc_html__( 'Create New', 'botiga' ); ?>
                                                     <?php botiga_get_svg_icon( 'icon-lock-outline', true ); ?>
                                                 </a>

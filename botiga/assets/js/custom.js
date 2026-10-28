@@ -1215,6 +1215,9 @@ botiga.qtyButton = {
         plus = wrapper.querySelector('.botiga-quantity-plus'),
         minus = wrapper.querySelector('.botiga-quantity-minus'),
         input = wrapper.querySelector('.input-text');
+      if (qtyInput === null || plus === null || minus === null || input === null) {
+        continue;
+      }
       plus.classList.add('show');
       minus.classList.add('show');
       qtyInput.addEventListener('change', function (e) {

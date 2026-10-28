@@ -52,7 +52,7 @@ if ( ! function_exists( 'botiga_woocommerce_cart_link' ) ) {
 		$mini_cart_style = get_theme_mod( 'mini_cart_style', 'default' );
 
 		$extra_atts = '';
-		if( $mini_cart_style === 'side' && ! is_cart() && ! is_checkout() ) {
+		if( $mini_cart_style === 'side' && defined( 'BOTIGA_PRO_VERSION' ) && ! is_cart() && ! is_checkout() ) {
 			$extra_atts = ' onclick="botiga.toggleClass.init(event, this, \'side-mini-cart-toggle\');" data-botiga-selector=".botiga-side-mini-cart" data-botiga-toggle-class="show"';
 		}
 
