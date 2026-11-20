@@ -129,6 +129,28 @@ function botiga_quick_view_needed_scripts() {
 }
 
 /**
+ * Check whether the current visitor may view a product in Quick View.
+ *
+ * @since 2.5.2
+ *
+ * @param WC_Product|false $product WooCommerce product.
+ * @return bool
+ */
+function botiga_quick_view_can_view_product( $product ) {
+	if ( ! $product instanceof WC_Product ) {
+		return false;
+	}
+
+	$product_id = $product instanceof WC_Product_Variation ? $product->get_parent_id() : $product->get_id();
+
+	if ( ! $product_id || post_password_required( $product_id ) ) {
+		return false;
+	}
+
+	return 'publish' === get_post_status( $product_id ) || current_user_can( 'read_post', $product_id );
+}
+
+/**
  * Quick view button
  * 
  * @param bool $product_id
@@ -140,6 +162,10 @@ function botiga_quick_view_needed_scripts() {
 function botiga_quick_view_button( $product = false, $do_echo = true, $block_layout = 'layout1' ) {
 	if( $product == false ) {
 		global $product; 
+	}
+
+	if ( ! botiga_quick_view_can_view_product( $product ) ) {
+		return '';
 	}
 
 	$product_id        = $product->get_id(); 
@@ -215,17 +241,24 @@ add_action( 'botiga_quick_view_after_add_to_cart_button', 'botiga_single_addtoca
  */
 function botiga_quick_view_content_callback_function() {
 	check_ajax_referer( 'botiga-qview-nonce', 'nonce' );
-	
-	if( !isset( $_POST['product_id'] ) ) {
-		return;
+
+	if ( ! isset( $_POST['product_id'] ) || ! is_scalar( $_POST['product_id'] ) ) {
+		wp_die();
+	}
+
+	$product_id = absint( $_POST['product_id'] );
+	$product    = wc_get_product( $product_id );
+
+	if ( ! botiga_quick_view_can_view_product( $product ) ) {
+		wp_die();
 	}
 
 	$args = array(
-		'product_id' => absint( $_POST['product_id'] ),
+		'product_id' => $product_id,
 	);
-	
+
 	botiga_get_template_part( 'template-parts/content', 'quick-view', $args );
-	
+
 	wp_die();
 }
 add_action( 'wp_ajax_botiga_quick_view_content', 'botiga_quick_view_content_callback_function' );

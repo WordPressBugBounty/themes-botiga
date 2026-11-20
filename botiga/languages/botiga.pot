@@ -8,7 +8,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: aThemes <team@athemes.com>\n"
 "Last-Translator: aThemes <team@athemes.com>\n"
-"POT-Creation-Date: 2026-10-27 15:57+0000\n"
+"POT-Creation-Date: 2026-11-19 14:24+0000\n"
 "Report-Msgid-Bugs-To: https://athemes.com/contact/\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -5626,40 +5626,40 @@ msgid "View your shopping cart"
 msgstr ""
 
 #. translators: %s: quick view product title
-#: inc/plugins/woocommerce/features/quick-view.php:157
+#: inc/plugins/woocommerce/features/quick-view.php:183
 msgid "Quick view the %s product"
 msgstr ""
 
-#: inc/plugins/woocommerce/features/quick-view.php:158
+#: inc/plugins/woocommerce/features/quick-view.php:184
 msgid "Quick View"
 msgstr ""
 
-#: inc/plugins/woocommerce/features/quick-view.php:195
+#: inc/plugins/woocommerce/features/quick-view.php:221
 msgid "Close quick view popup"
 msgstr ""
 
 #. translators: %s: customer review text
-#: inc/plugins/woocommerce/features/quick-view.php:288
+#: inc/plugins/woocommerce/features/quick-view.php:321
 msgid "%s customer review"
 msgid_plural "%s customer reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/plugins/woocommerce/features/quick-view.php:463
+#: inc/plugins/woocommerce/features/quick-view.php:496
 msgid "SKU:"
 msgstr ""
 
-#: inc/plugins/woocommerce/features/quick-view.php:463
+#: inc/plugins/woocommerce/features/quick-view.php:496
 msgid "N/A"
 msgstr ""
 
-#: inc/plugins/woocommerce/features/quick-view.php:467
+#: inc/plugins/woocommerce/features/quick-view.php:500
 msgid "Category:"
 msgid_plural "Categories:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/plugins/woocommerce/features/quick-view.php:469
+#: inc/plugins/woocommerce/features/quick-view.php:502
 msgid "Tag:"
 msgid_plural "Tags:"
 msgstr[0] ""

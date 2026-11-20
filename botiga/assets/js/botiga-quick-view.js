@@ -25,6 +25,7 @@ botiga.quickView = {
     popup.addEventListener('click', function (e) {
       if (null === e.target.closest('.botiga-quick-view-popup-content-ajax')) {
         popup.classList.remove('opened');
+        botiga.quickView.add_to_cart_ajax.disconnectNoticeObserver();
       }
     });
     document.addEventListener('click', function (e) {
@@ -33,6 +34,7 @@ botiga.quickView = {
         return;
       }
       e.preventDefault();
+      botiga.quickView.add_to_cart_ajax.disconnectNoticeObserver();
       var productId = button.getAttribute('data-product-id'),
         nonce = button.getAttribute('data-nonce');
       popup.classList.add('opened');
@@ -111,6 +113,7 @@ botiga.quickView = {
 botiga.quickView.add_to_cart_ajax = {
   isBound: false,
   isProcessing: false,
+  noticeObserver: null,
   init: function init() {
     if (this.isBound) {
       return;
@@ -158,6 +161,7 @@ botiga.quickView.add_to_cart_ajax = {
         beforeSend: function beforeSend() {
           $button.prop('disabled', true);
           $button.removeClass('added').addClass('loading');
+          _this.disconnectNoticeObserver();
           _this.clearNotices($insertTarget);
         },
         complete: function complete() {
@@ -180,6 +184,7 @@ botiga.quickView.add_to_cart_ajax = {
           }
           if (hasMessage) {
             _this.renderNotice('message', $response, $insertTarget);
+            _this.preserveNoticeAfterCartRefresh($response, $insertTarget);
             $button.data('botigaQuickViewLastResult', 'success');
 
             // Trigger Woo event for compatibility.
@@ -240,6 +245,39 @@ botiga.quickView.add_to_cart_ajax = {
 
     // Clone to avoid moving nodes out of $response.
     $target.append($newNotice.clone(true, true));
+  },
+  disconnectNoticeObserver: function disconnectNoticeObserver() {
+    if (!this.noticeObserver) {
+      return;
+    }
+    this.noticeObserver.disconnect();
+    this.noticeObserver = null;
+  },
+  preserveNoticeAfterCartRefresh: function preserveNoticeAfterCartRefresh($response, $target) {
+    var _this2 = this;
+    if (!document.body.classList.contains('woocommerce-cart') || !jQuery('.woocommerce-cart-form').length || !$target.length) {
+      return;
+    }
+    var $popup = $target.closest('.botiga-quick-view-popup');
+    if (!$popup.length) {
+      return;
+    }
+    this.disconnectNoticeObserver();
+
+    // The classic cart can remove notices after or across multiple refreshes.
+    this.noticeObserver = new MutationObserver(function () {
+      if (!$popup.hasClass('opened') || !jQuery.contains(document, $target[0])) {
+        _this2.disconnectNoticeObserver();
+        return;
+      }
+      if ($target.find('.woocommerce-message').length) {
+        return;
+      }
+      _this2.renderNotice('message', $response, $target);
+    });
+    this.noticeObserver.observe($target[0], {
+      childList: true
+    });
   },
   refreshFragments: function refreshFragments() {
     var ajaxUrl = window.woocommerce_params && window.woocommerce_params.ajax_url ? window.woocommerce_params.ajax_url : window.botiga && window.botiga.ajaxurl ? window.botiga.ajaxurl : '';

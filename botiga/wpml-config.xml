@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wpml-config>
+	<admin-texts>
+		<key name="theme_mods_botiga">
+			<!-- Header and top bar content. -->
+			<key name="header_button_text" />
+			<key name="header_button_link" />
+			<key name="header_html_content" />
+			<key name="header_contact_mail" />
+			<key name="header_contact_phone" />
+			<key name="topbar_text" />
+			<key name="topbar_html_content" />
+			<key name="topbar_contact_mail" />
+			<key name="topbar_contact_phone" />
+			<key name="login_register_welcome_message_text" />
+			<key name="login_register_link_text" />
+
+			<!-- Footer content. -->
+			<key name="footer_credits" />
+			<key name="footer_html_content" />
+			<key name="bhfb_footer_button_text" />
+			<key name="bhfb_footer_button_link" />
+
+			<!-- WooCommerce content. -->
+			<key name="sale_badge_text" />
+			<key name="sale_percentage_text" />
+			<key name="out_of_stock_text" />
+			<key name="botiga_single_product_html_content" />
+
+			<!-- Scroll-to-top content. -->
+			<key name="scrolltop_text" />
+		</key>
+	</admin-texts>
+</wpml-config>
